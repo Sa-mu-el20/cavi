@@ -41,6 +41,12 @@ CREATE INDEX IF NOT EXISTS idx_chat_participante_usuario_id
 ON chat_participante(usuario_id)
 """
 
+# Índices da tabela cidade
+CRIAR_INDICE_CIDADE_UF = """
+CREATE INDEX IF NOT EXISTS idx_cidade_uf
+ON cidade(uf)
+"""
+
 # Lista de todos os índices para criação
 TODOS_INDICES = [
     # Usuario
@@ -54,4 +60,6 @@ TODOS_INDICES = [
     # Chat
     CRIAR_INDICE_CHAT_MENSAGEM_SALA,
     CRIAR_INDICE_CHAT_PARTICIPANTE_USUARIO,
+    # Cidade
+    CRIAR_INDICE_CIDADE_UF,
 ]
