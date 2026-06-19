@@ -1,0 +1,82 @@
+/* =====================================================================
+   CAVI — base global (porte de design/cavi-react/src/index.css).
+   Aplica reset + tipografia da estética CAVI globalmente, sem Bootstrap.
+   Fonte do corpo: 'Hanken Grotesk'; títulos/números usam 'Jost' via
+   inline styles (theme.fonts.display) nos componentes.
+   ===================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Hanken Grotesk', sans-serif;
+  color: #1f1b18;
+  background: #faf8f3;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: #f4d8bd;
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: 'Hanken Grotesk', sans-serif;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #d97a2b !important;
+}
+
+/* Seta dos selects: arrow custom (SVG) afastado da borda direita.
+   !important vence o `background:'#fff'` inline (shorthand zera background-image)
+   e o padding inline, padronizando o espaçamento da seta em todos os selects. */
+select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231f1b18' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  padding-right: 42px !important;
+}
+
+::placeholder {
+  color: #b3ab9d;
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ddd6c8;
+  border-radius: 6px;
+  border: 3px solid #faf8f3;
+}
+
+/* Spinner CSS da estética CAVI (rotação usada pelos indicadores de carga). */
+@keyframes cavi-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* .cavi-root permanece como hook semântico nos layouts; sem estilo próprio
+   pois o reset acima já é global. Mantido como no-op para não exigir a
+   remoção da classe nos layouts já portados. */
+.cavi-root {
+  font-family: 'Hanken Grotesk', sans-serif;
+}
