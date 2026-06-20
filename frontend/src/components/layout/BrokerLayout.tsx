@@ -3,7 +3,7 @@ import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom'
 import { api } from '../../lib/api'
 import { useFetch } from '../../hooks/useFetch'
 import { useAuthStore } from '../../store/authStore'
-import { colors, fonts } from '../../lib/theme'
+import { colors } from '../../lib/theme'
 import type { ContaSite } from '../../lib/types'
 
 interface ItemProps {
@@ -93,15 +93,14 @@ export default function BrokerLayout() {
           to="/"
           style={{
             margin: '8px 8px 26px',
-            fontFamily: fonts.display,
-            fontWeight: 600,
-            fontSize: 24,
-            letterSpacing: 1,
-            color: colors.orange,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 9,
             textDecoration: 'none',
           }}
         >
-          CAVI
+          <img src="/assets/logo-icon-orange.svg" alt="" style={{ height: 28, display: 'block' }} />
+          <img src="/assets/logo-name-orange.svg" alt="CAVI" style={{ height: 20, display: 'block' }} />
         </Link>
         <div
           style={{

@@ -1,6 +1,6 @@
 import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom'
 import { useAuthStore } from '../../store/authStore'
-import { colors, fonts } from '../../lib/theme'
+import { colors } from '../../lib/theme'
 
 // Casca da administração da plataforma: sidebar escura + conteúdo.
 // Porte de cavi-react/src/layouts/AdminLayout.jsx. Usa authStore (logout).
@@ -47,15 +47,14 @@ export default function AdminLayout() {
           to="/"
           style={{
             margin: '8px 8px 8px',
-            fontFamily: fonts.display,
-            fontWeight: 600,
-            fontSize: 24,
-            letterSpacing: 1,
-            color: colors.cream,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 9,
             textDecoration: 'none',
           }}
         >
-          CAVI
+          <img src="/assets/logo-icon-cream.svg" alt="" style={{ height: 28, display: 'block' }} />
+          <img src="/assets/logo-name-cream.svg" alt="CAVI" style={{ height: 20, display: 'block' }} />
         </Link>
         <div
           style={{

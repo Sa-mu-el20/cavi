@@ -215,12 +215,18 @@ export default function AuthPage() {
               'radial-gradient(circle at 30% 80%, rgba(217,122,43,0.20), transparent 50%)',
           }}
         />
-        <Link to="/" style={{ position: 'relative', alignSelf: 'flex-start' }}>
-          <img
-            src="/assets/logo-cream.png"
-            alt="CAVI"
-            style={{ height: 30, cursor: 'pointer', display: 'block' }}
-          />
+        <Link
+          to="/"
+          style={{
+            position: 'relative',
+            alignSelf: 'flex-start',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
+          }}
+        >
+          <img src="/assets/logo-icon-cream.svg" alt="" style={{ height: 34, display: 'block' }} />
+          <img src="/assets/logo-name-cream.svg" alt="CAVI" style={{ height: 24, display: 'block' }} />
         </Link>
         <div style={{ position: 'relative' }}>
           <h2

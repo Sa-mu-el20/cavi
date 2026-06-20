@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { colors, fonts } from '../../lib/theme'
+import { colors } from '../../lib/theme'
 
 // Cabeçalho fixo da home pública / marketing.
 // Porte de cavi-react/src/components/PublicHeader.jsx. Sem asset de logo no app
@@ -33,16 +33,10 @@ export default function PublicHeader() {
       >
         <Link
           to="/"
-          style={{
-            fontFamily: fonts.display,
-            fontWeight: 600,
-            fontSize: 26,
-            letterSpacing: 1,
-            color: colors.orange,
-            textDecoration: 'none',
-          }}
+          style={{ display: 'flex', alignItems: 'center', gap: 9, textDecoration: 'none' }}
         >
-          CAVI
+          <img src="/assets/logo-icon-orange.svg" alt="" style={{ height: 30, display: 'block' }} />
+          <img src="/assets/logo-name-orange.svg" alt="CAVI" style={{ height: 22, display: 'block' }} />
         </Link>
         <nav style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
           <span style={linkStyle} onClick={() => navigate('/login')}>

@@ -196,17 +196,9 @@ export default function SiteLayout() {
             <span style={{ fontSize: 12, color: '#6b655b' }}>feito com</span>
             <Link
               to="/"
-              style={{
-                fontFamily: fonts.display,
-                fontWeight: 600,
-                fontSize: 18,
-                letterSpacing: 1,
-                color: colors.cream,
-                textDecoration: 'none',
-                opacity: 0.85,
-              }}
+              style={{ display: 'inline-flex', textDecoration: 'none', opacity: 0.85 }}
             >
-              CAVI
+              <img src="/assets/logo-name-cream.svg" alt="CAVI" style={{ height: 16, display: 'block' }} />
             </Link>
           </div>
         </div>

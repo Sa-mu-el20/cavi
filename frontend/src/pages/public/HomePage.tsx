@@ -455,17 +455,8 @@ export default function HomePage() {
             justifyContent: 'space-between',
           }}
         >
-          <span
-            style={{
-              fontFamily: fonts.display,
-              fontWeight: 600,
-              fontSize: 22,
-              letterSpacing: 1,
-              color: colors.orange,
-              opacity: 0.85,
-            }}
-          >
-            CAVI
+          <span style={{ display: 'inline-flex', opacity: 0.85 }}>
+            <img src="/assets/logo-name-orange.svg" alt="CAVI" style={{ height: 20, display: 'block' }} />
           </span>
           <div style={{ fontSize: 13, color: colors.mutedSoft }}>
             © 2026 CAVI · Termos de uso · Privacidade ·{' '}
