@@ -83,7 +83,7 @@ export default function Dashboard() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {atalho('＋', 'Cadastrar imóvel', () => navigate('/app/imoveis/novo'))}
               {atalho('⚙', 'Configurar meu site', () => navigate('/app/config'))}
-              {atalho('↗', 'Ver minha vitrine', () => navigate(`/v/${broker.slug}`))}
+              {atalho('↗', 'Ver meu catálogo', () => navigate(`/v/${broker.slug}`))}
             </div>
           </div>
           <div style={{ background: '#e6eed6', border: '1px solid #d6e2c0', borderRadius: 16, padding: 24 }}>

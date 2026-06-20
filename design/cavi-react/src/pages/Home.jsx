@@ -5,7 +5,7 @@ import PublicHeader from '../components/PublicHeader.jsx';
 import BrokerCard from '../components/BrokerCard.jsx';
 
 const PASSOS = [
-  { n: '01', t: 'Crie sua conta', d: 'Informe seu CRECI e dados de contato. Sua vitrine ganha um endereço próprio em segundos.' },
+  { n: '01', t: 'Crie sua conta', d: 'Informe seu CRECI e dados de contato. Seu catálogo ganha um endereço próprio em segundos.' },
   { n: '02', t: 'Cadastre seus imóveis', d: 'Fotos, preço, características e localização. Publique ou deixe oculto enquanto prepara o anúncio.' },
   { n: '03', t: 'Receba interessados', d: 'Compartilhe o link. Cada imóvel tem um botão de WhatsApp que leva o contato direto para você.' },
 ];
@@ -33,7 +33,7 @@ export default function Home() {
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: colors.green }} /> Para corretores e pequenas imobiliárias
           </div>
           <h1 style={{ fontFamily: fonts.display, fontWeight: 300, fontSize: 60, lineHeight: 1.04, letterSpacing: -1, margin: '0 0 22px' }}>
-            Sua vitrine de imóveis, <span style={{ color: colors.orange, fontWeight: 500 }}>pronta para vender.</span>
+            Seu catálogo de imóveis, <span style={{ color: colors.orange, fontWeight: 500 }}>pronto para vender.</span>
           </h1>
           <p style={{ fontSize: 19, lineHeight: 1.55, color: colors.muted, margin: '0 0 36px', maxWidth: 480 }}>
             Cadastre seus imóveis, publique um catálogo profissional com seu nome e receba interessados direto no WhatsApp. Sem comissão de plataforma, sem complicação.
@@ -43,7 +43,7 @@ export default function Home() {
               Começar gratuitamente
             </button>
             <button onClick={() => navigate('/v/albuquerque')} style={{ background: 'transparent', color: colors.ink, border: '1px solid #d8d0c2', borderRadius: 12, padding: '16px 26px', fontWeight: 600, fontSize: 16, cursor: 'pointer' }}>
-              Ver uma vitrine →
+              Ver um catálogo →
             </button>
           </div>
           <div style={{ display: 'flex', gap: 30, marginTop: 44 }}>
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* mock da vitrine */}
+        {/* mock do catálogo */}
         <div style={{ position: 'relative' }}>
           <div style={{ background: '#fff', border: `1px solid ${colors.border}`, borderRadius: 18, boxShadow: '0 30px 60px -28px rgba(60,45,25,0.30)', overflow: 'hidden' }}>
             <div style={{ height: 40, background: colors.cream, borderBottom: `1px solid ${colors.border}`, display: 'flex', alignItems: 'center', gap: 7, padding: '0 16px' }}>
@@ -109,7 +109,7 @@ export default function Home() {
       <section style={{ maxWidth: 1200, margin: '0 auto', padding: '56px 40px 40px' }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 30 }}>
           <div>
-            <Eyebrow>Vitrines no ar</Eyebrow>
+            <Eyebrow>Catálogos no ar</Eyebrow>
             <h2 style={{ fontFamily: fonts.display, fontWeight: 300, fontSize: 38, margin: 0, letterSpacing: -0.5 }}>Corretores na CAVI</h2>
           </div>
           <span style={{ fontSize: 15, color: colors.muted, cursor: 'pointer' }} onClick={() => navigate('/v/albuquerque')}>Ver todas →</span>
@@ -125,11 +125,11 @@ export default function Home() {
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 80% 20%, rgba(217,122,43,0.22), transparent 55%)' }} />
           <div style={{ position: 'relative' }}>
             <h2 style={{ fontFamily: fonts.display, fontWeight: 300, fontSize: 42, color: colors.bg, margin: '0 0 16px', letterSpacing: -0.5 }}>
-              Sua próxima venda começa com uma vitrine.
+              Sua próxima venda começa com um catálogo.
             </h2>
             <p style={{ fontSize: 18, color: '#bcb4a6', margin: '0 0 32px' }}>Comece com o plano gratuito. Sem cartão de crédito.</p>
             <button onClick={() => navigate('/login')} style={{ background: colors.orange, color: '#fff', border: 'none', borderRadius: 12, padding: '16px 34px', fontWeight: 600, fontSize: 16, cursor: 'pointer' }}>
-              Criar minha vitrine
+              Criar meu catálogo
             </button>
           </div>
         </div>

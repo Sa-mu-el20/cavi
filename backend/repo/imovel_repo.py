@@ -362,7 +362,7 @@ def listar_por_conta(
     Lista imóveis de uma conta-site, paginado, com filtros opcionais.
 
     Serve tanto a administração (``somente_publicados=False`` traz Publicado e
-    Oculto) quanto a vitrine pública (``somente_publicados=True``). Os ``items``
+    Oculto) quanto o catálogo público (``somente_publicados=True``). Os ``items``
     da ``Paginacao`` são entidades ``Imovel`` SEM agregados (use ``obter_detalhe``
     para carregar endereço/fotos de um item específico).
     """

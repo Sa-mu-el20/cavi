@@ -25,7 +25,7 @@ export default function ForgotPassword() {
             Sem acesso? A gente te coloca de volta.
           </h2>
           <p style={{ fontSize: 16, color: '#cfc7b9', lineHeight: 1.6, margin: 0, maxWidth: 420 }}>
-            Enviamos um link seguro para o seu e-mail. Você define uma nova senha e volta direto para o painel — sua vitrine continua no ar o tempo todo.
+            Enviamos um link seguro para o seu e-mail. Você define uma nova senha e volta direto para o painel — seu catálogo continua no ar o tempo todo.
           </p>
         </div>
         <div style={{ position: 'relative', fontSize: 13, color: '#7d766a' }}>O link expira em 30 minutos por segurança.</div>

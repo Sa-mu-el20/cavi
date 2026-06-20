@@ -10,7 +10,7 @@ from dtos.validators import (
 )
 
 
-# Cor padrão de destaque da vitrine (mesmo default do banco/model).
+# Cor padrão de destaque do catálogo (mesmo default do banco/model).
 COR_PADRAO = "#d97a2b"
 
 # Regex de cor hexadecimal (#rgb ou #rrggbb).
@@ -58,7 +58,7 @@ class AlterarStatusContaDTO(BaseModel):
     Aceita apenas os valores do enum ``StatusConta`` (Ativo|Inativo).
     """
 
-    status: str = Field(..., description="Novo status da vitrine (Ativo|Inativo)")
+    status: str = Field(..., description="Novo status do catálogo (Ativo|Inativo)")
 
     @field_validator("status")
     @classmethod
@@ -74,14 +74,14 @@ class AlterarStatusContaDTO(BaseModel):
 
 class ContaSiteDTO(BaseModel):
     """
-    DTO de criação/edição de uma ContaSite (vitrine pública do corretor).
+    DTO de criação/edição de uma ContaSite (catálogo público do corretor).
 
     O ``slug`` é opcional na entrada: se não informado, é derivado do
     ``nome_publico``; se informado, é normalizado. O status não é gerenciado
     por este DTO (use o fluxo administrativo de ativar/inativar).
     """
 
-    nome_publico: str = Field(..., description="Nome público exibido na vitrine")
+    nome_publico: str = Field(..., description="Nome público exibido no catálogo")
     slug: Optional[str] = Field(
         default=None,
         description="Slug único usado em /v/{slug}; derivado do nome se omitido",
@@ -98,7 +98,7 @@ class ContaSiteDTO(BaseModel):
     bairro: Optional[str] = Field(default=None, description="Bairro de atuação")
     cor: str = Field(
         default=COR_PADRAO,
-        description="Cor de destaque da vitrine em hexadecimal (ex #d97a2b)",
+        description="Cor de destaque do catálogo em hexadecimal (ex #d97a2b)",
     )
 
     _validar_nome_publico = field_validator("nome_publico")(

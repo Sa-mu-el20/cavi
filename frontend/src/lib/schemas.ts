@@ -170,7 +170,7 @@ export const cadastroCorretorSchema = z.object({
   cpf: cpfSchema,
   telefone: telefoneSchema,
   creci: creciSchema,
-  // Dados da vitrine (ContaSite)
+  // Dados do catálogo (ContaSite)
   nome_publico: nomePublicoSchema,
   cidade: z
     .string()
@@ -276,7 +276,7 @@ export const imovelSchema = z.object({
 })
 export type ImovelForm = z.infer<typeof imovelSchema>
 
-// ===== Filtros do catálogo (espelha query params de listar_imoveis_da_vitrine) =====
+// ===== Filtros do catálogo (espelha query params de listar_imoveis_do_catalogo) =====
 // Todos opcionais; valores vazios são omitidos da query pelo cliente HTTP.
 export const filtrosCatalogoSchema = z.object({
   finalidade: z.enum([FinalidadeImovel.VENDA, FinalidadeImovel.ALUGUEL]).optional(),

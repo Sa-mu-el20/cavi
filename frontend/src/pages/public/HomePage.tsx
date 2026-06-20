@@ -2,23 +2,23 @@ import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../lib/api'
 import { colors, fonts } from '../../lib/theme'
-import type { CorretorVitrine } from '../../lib/types'
+import type { CorretorCatalogo } from '../../lib/types'
 import { useFetch } from '../../hooks/useFetch'
 import PublicHeader from '../../components/cavi/PublicHeader'
 import BrokerCard from '../../components/cavi/BrokerCard'
 import Spinner from '../../components/ui/Spinner'
 import EmptyState from '../../components/ui/EmptyState'
 
-// Home pública do CAVI: hero + lista de vitrines ativas (GET /publico/corretores).
+// Home pública do CAVI: hero + lista de catálogos ativos (GET /publico/corretores).
 // Porte fiel de cavi-react/src/pages/Home.jsx, mas ligado à API real (sem JSON local):
 // dados vêm de useFetch -> api.get; cards usam o BrokerCard real (link p/ /v/:slug);
-// CTAs "sou corretor"/criar vitrine levam ao /login.
+// CTAs "sou corretor"/criar catálogo levam ao /login.
 
 const PASSOS = [
   {
     n: '01',
     t: 'Crie sua conta',
-    d: 'Informe seu CRECI e dados de contato. Sua vitrine ganha um endereço próprio em segundos.',
+    d: 'Informe seu CRECI e dados de contato. Seu catálogo ganha um endereço próprio em segundos.',
   },
   {
     n: '02',
@@ -80,12 +80,12 @@ export default function HomePage() {
   const navigate = useNavigate()
 
   const carregarCorretores = useCallback(
-    (signal: AbortSignal) => api.get<CorretorVitrine[]>('/publico/corretores', { signal }),
+    (signal: AbortSignal) => api.get<CorretorCatalogo[]>('/publico/corretores', { signal }),
     [],
   )
   const { data: corretores, carregando, erro } = useFetch(carregarCorretores)
 
-  const verPrimeiraVitrine = () => {
+  const verPrimeiraCatalogo = () => {
     const slug = corretores?.[0]?.slug
     navigate(slug ? `/v/${slug}` : '/login')
   }
@@ -134,8 +134,8 @@ export default function HomePage() {
               margin: '0 0 22px',
             }}
           >
-            Sua vitrine de imóveis,{' '}
-            <span style={{ color: colors.orange, fontWeight: 500 }}>pronta para vender.</span>
+            Seu catálogo de imóveis,{' '}
+            <span style={{ color: colors.orange, fontWeight: 500 }}>pronto para vender.</span>
           </h1>
           <p
             style={{
@@ -166,7 +166,7 @@ export default function HomePage() {
               Começar gratuitamente
             </button>
             <button
-              onClick={verPrimeiraVitrine}
+              onClick={verPrimeiraCatalogo}
               style={{
                 background: 'transparent',
                 color: colors.ink,
@@ -178,7 +178,7 @@ export default function HomePage() {
                 cursor: 'pointer',
               }}
             >
-              Ver uma vitrine →
+              Ver um catálogo →
             </button>
           </div>
           <div style={{ display: 'flex', gap: 30, marginTop: 44 }}>
@@ -208,7 +208,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* mock visual da vitrine (decorativo) */}
+        {/* mock visual do catálogo (decorativo) */}
         <div style={{ position: 'relative' }}>
           <div
             style={{
@@ -378,9 +378,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CORRETORES (vitrines no ar) */}
+      {/* CORRETORES (catálogos no ar) */}
       <section
-        id="vitrines"
+        id="catalogos"
         style={{ maxWidth: 1200, margin: '0 auto', padding: '56px 40px 40px', scrollMarginTop: 90 }}
       >
         <div
@@ -392,7 +392,7 @@ export default function HomePage() {
           }}
         >
           <div>
-            <Eyebrow>Vitrines no ar</Eyebrow>
+            <Eyebrow>Catálogos no ar</Eyebrow>
             <h2
               style={{
                 fontFamily: fonts.display,
@@ -408,7 +408,7 @@ export default function HomePage() {
           {(corretores?.length ?? 0) > 0 && (
             <span
               style={{ fontSize: 15, color: colors.muted, cursor: 'pointer' }}
-              onClick={() => navigate('/vitrines')}
+              onClick={() => navigate('/catalogos')}
             >
               Ver todas →
             </span>
@@ -416,18 +416,18 @@ export default function HomePage() {
         </div>
 
         {carregando ? (
-          <Spinner texto="Carregando vitrines..." />
+          <Spinner texto="Carregando catálogos..." />
         ) : erro ? (
           <EmptyState
             icon="⚠"
-            titulo="Não foi possível carregar as vitrines"
+            titulo="Não foi possível carregar os catálogos"
             mensagem={erro.message}
           />
         ) : (corretores?.length ?? 0) === 0 ? (
           <EmptyState
             icon="◳"
-            titulo="Nenhuma vitrine publicada ainda"
-            mensagem="Seja o primeiro corretor a publicar sua vitrine na CAVI."
+            titulo="Nenhum catálogo publicado ainda"
+            mensagem="Seja o primeiro corretor a publicar seu catálogo na CAVI."
           />
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
@@ -468,7 +468,7 @@ export default function HomePage() {
                 letterSpacing: -0.5,
               }}
             >
-              Sua próxima venda começa com uma vitrine.
+              Sua próxima venda começa com um catálogo.
             </h2>
             <p style={{ fontSize: 18, color: '#bcb4a6', margin: '0 0 32px' }}>
               Comece com o plano gratuito. Sem cartão de crédito.
@@ -486,7 +486,7 @@ export default function HomePage() {
                 cursor: 'pointer',
               }}
             >
-              Criar minha vitrine
+              Criar meu catálogo
             </button>
           </div>
         </div>

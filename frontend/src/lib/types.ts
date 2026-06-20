@@ -252,7 +252,7 @@ export interface BackupInfo {
   data_criacao: string
 }
 
-// ===== ContaSite (vitrine do corretor) =====
+// ===== ContaSite (catálogo do corretor) =====
 // Espelha backend/dtos/responses/conta_site_response.py: ContaSiteResponse.
 export interface ContaSite {
   id: number
@@ -290,7 +290,7 @@ export interface CorretorAdmin {
   data_atualizacao?: string | null
 }
 
-// Espelha ContaSiteResumoResponse (resumo público de vitrine).
+// Espelha ContaSiteResumoResponse (resumo público de catálogo).
 export interface ContaSiteResumo {
   nome_publico: string
   slug: string
@@ -368,9 +368,9 @@ export interface ImovelResumo {
   foto_principal?: string | null
 }
 
-// ===== Endpoints públicos da vitrine (publico_response.py) =====
-// Espelha CorretorVitrineResponse (card de corretor na Home).
-export interface CorretorVitrine {
+// ===== Endpoints públicos do catálogo (publico_response.py) =====
+// Espelha CorretorCatalogoResponse (card de corretor na Home).
+export interface CorretorCatalogo {
   nome_publico: string
   slug: string
   descricao?: string | null
@@ -384,8 +384,8 @@ export interface CorretorVitrine {
   qtd_imoveis_publicados: number
 }
 
-// Espelha VitrinePublicaResponse (cabeçalho de /v/{slug}).
-export interface VitrinePublica {
+// Espelha CatalogoPublicoResponse (cabeçalho de /v/{slug}).
+export interface CatalogoPublico {
   nome_publico: string
   slug: string
   descricao?: string | null
@@ -398,8 +398,8 @@ export interface VitrinePublica {
   logo?: string | null
 }
 
-// Espelha ImovelPublicoDetalheResponse (detalhe público + dados da vitrine).
+// Espelha ImovelPublicoDetalheResponse (detalhe público + dados do catálogo).
 export interface ImovelPublicoDetalhe {
   imovel: Imovel
-  vitrine: VitrinePublica
+  catalogo: CatalogoPublico
 }

@@ -67,7 +67,7 @@ export default function BrokerLayout() {
         </nav>
         <div style={{ height: 1, background: colors.borderSoft, margin: '16px 8px' }} />
         <div style={{ ...ghost, color: colors.muted }} onClick={() => navigate(`/v/${broker.slug}`)}>
-          <span style={{ fontSize: 17 }}>↗</span> Ver minha vitrine
+          <span style={{ fontSize: 17 }}>↗</span> Ver meu catálogo
         </div>
         <div style={{ marginTop: 'auto' }}>
           <div style={{ ...ghost, color: '#a89f90' }} onClick={() => navigate('/')}>

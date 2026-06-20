@@ -4,7 +4,7 @@ import { colors, fonts } from '../../lib/theme'
 import { useAuthStore } from '../../store/authStore'
 
 // Cabeçalho fixo da home pública / marketing.
-// Anônimo: Entrar + "Criar minha vitrine". Logado: "Olá, {nome}" com menu
+// Anônimo: Entrar + "Criar meu catálogo". Logado: "Olá, {nome}" com menu
 // suspenso (Painel do corretor/admin + Sair).
 export default function PublicHeader() {
   const navigate = useNavigate()
@@ -56,9 +56,9 @@ export default function PublicHeader() {
         <nav style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
           <span
             style={linkStyle}
-            onClick={() => navigate('/vitrines')}
+            onClick={() => navigate('/catalogos')}
           >
-            Ver vitrines
+            Ver catálogos
           </span>
           <span style={linkStyle} onClick={() => navigate('/login')}>
             Planos
@@ -160,7 +160,7 @@ export default function PublicHeader() {
                   cursor: 'pointer',
                 }}
               >
-                Criar minha vitrine
+                Criar meu catálogo
               </button>
             </>
           )}

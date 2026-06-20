@@ -1,7 +1,7 @@
 // Painel do corretor (/app). Porte de cavi-react/src/pages/Dashboard.jsx,
 // ligado aos endpoints reais:
 //   GET /api/imoveis/dashboard  -> { total, publicados, ocultos }
-//   GET /api/minha-conta        -> ContaSite (nome público + slug da vitrine)
+//   GET /api/minha-conta        -> ContaSite (nome público + slug do catálogo)
 //   GET /api/imoveis            -> PaginaResponse<ImovelResumo> (imóveis recentes)
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -234,14 +234,14 @@ export default function DashboardCorretorPage() {
               {atalho('＋', 'Cadastrar imóvel', () => navigate('/app/imoveis/novo'))}
               {atalho('⚙', 'Configurar meu site', () => navigate('/app/config'))}
               {slug &&
-                atalho('↗', 'Ver minha vitrine', () => navigate(`/v/${slug}`))}
+                atalho('↗', 'Ver meu catálogo', () => navigate(`/v/${slug}`))}
             </div>
           </div>
 
           {slug && (
             <div style={{ background: '#e6eed6', border: '1px solid #d6e2c0', borderRadius: 16, padding: 24 }}>
               <div style={{ fontSize: 14, color: colors.greenText, fontWeight: 600, marginBottom: 8 }}>
-                Sua vitrine
+                Seu catálogo
               </div>
               <div
                 style={{

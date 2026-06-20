@@ -1,6 +1,6 @@
 # CAVI — MVP (React)
 
-Vitrine de imóveis para corretores e pequenas imobiliárias. Conversão do protótipo de tela única para um projeto React real, componentizado, navegável por rotas e com dados fictícios em JSON.
+Catálogo de imóveis para corretores e pequenas imobiliárias. Conversão do protótipo de tela única para um projeto React real, componentizado, navegável por rotas e com dados fictícios em JSON.
 
 ## Rodar
 
@@ -23,7 +23,7 @@ Build de produção: `npm run build` · pré-visualizar build: `npm run preview`
 
 | Rota | Tela |
 |------|------|
-| `/` | Home pública (marketing + vitrines) |
+| `/` | Home pública (marketing + catálogos) |
 | `/login` | Entrar / Criar conta |
 | `/recuperar-senha` | Recuperação de senha (envio de link) |
 | `/v/:slug` | Catálogo público do corretor |
@@ -31,7 +31,7 @@ Build de produção: `npm run build` · pré-visualizar build: `npm run preview`
 | `/app` | Painel do corretor |
 | `/app/imoveis` | Lista de imóveis (busca + filtro de status) |
 | `/app/imoveis/novo` · `/app/imoveis/:id/editar` | Formulário de imóvel |
-| `/app/config` | Configurações da vitrine |
+| `/app/config` | Configurações do catálogo |
 | `/admin` | Administração da plataforma |
 
 ## Estrutura
@@ -55,10 +55,10 @@ public/assets/        # logos + fotos dos imóveis
 
 ## Dados fictícios
 
-Toda a base vive em `src/data/*.json` e é carregada no `DataProvider`. As ações de **publicar/ocultar imóvel** e **ativar/desativar corretor** alteram o estado em memória (não há backend). Os imóveis estão associados ao corretor logado (`Albuquerque Imóveis`, `corretorId: 1`); ligar outras vitrines a uma API ou a mais imóveis é só estender os JSONs.
+Toda a base vive em `src/data/*.json` e é carregada no `DataProvider`. As ações de **publicar/ocultar imóvel** e **ativar/desativar corretor** alteram o estado em memória (não há backend). Os imóveis estão associados ao corretor logado (`Albuquerque Imóveis`, `corretorId: 1`); ligar outros catálogos a uma API ou a mais imóveis é só estender os JSONs.
 
 ## Próximos passos sugeridos
 
 - Persistir o formulário de imóvel (hoje os campos são `defaultValue`; o submit apenas navega).
 - Trocar o Context por uma camada de API real quando houver backend.
-- Escopar imóveis por corretor para que cada vitrine tenha seu próprio catálogo.
+- Escopar imóveis por corretor para que cada corretor tenha seu próprio catálogo.

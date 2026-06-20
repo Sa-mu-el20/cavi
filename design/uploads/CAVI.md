@@ -41,7 +41,7 @@ erDiagram
 | **UsuarioPapel** | Permite que um mesmo usuário tenha um ou mais papéis no sistema. |
 | **Cliente** | Especialização de usuário para quem favorita imóveis e solicita anúncios. |
 | **Corretor** | Especialização de usuário com dados profissionais, principalmente CRECI. |
-| **ContaSite** | Representa o site/vitrine de um corretor ou pequena imobiliária. Guarda nome público, slug, domínio, WhatsApp, logo, cores e configurações visuais. |
+| **ContaSite** | Representa o site/catálogo de um corretor ou pequena imobiliária. Guarda nome público, slug, domínio, WhatsApp, logo, cores e configurações visuais. |
 | **MembroConta** | Permite que uma imobiliária tenha mais de um usuário/corretor vinculado, respeitando os limites dos planos. |
 | **Plano** | Guarda os planos Junior, Starter e Pro, com mensalidade, limite de autores, limite de imóveis, armazenamento e domínio próprio. O documento prevê planos recorrentes com diferentes níveis de recursos. |
 | **Assinatura** | Registra o plano contratado por uma conta/site, status da assinatura e datas de início, renovação ou cancelamento. |
@@ -127,19 +127,19 @@ erDiagram
 
 ## 3. Recorte para um MVP bem enxuto, mas usável
 
-O núcleo de valor do CAVI é permitir que um corretor tenha uma vitrine online simples, cadastre imóveis e receba contatos de interessados. Portanto, o MVP deve validar isso antes de implementar clientes autenticados, favoritos, solicitações de anúncio, estatísticas avançadas, pagamentos reais, SMS, PWA e personalização completa.
+O núcleo de valor do CAVI é permitir que um corretor tenha um catálogo online simples, cadastre imóveis e receba contatos de interessados. Portanto, o MVP deve validar isso antes de implementar clientes autenticados, favoritos, solicitações de anúncio, estatísticas avançadas, pagamentos reais, SMS, PWA e personalização completa.
 
 ### 3.1 Funcionalidades que entram no MVP
 
 | Área | Entra no MVP? | Justificativa |
 | --- | --- | --- |
-| Página inicial da CAVI com lista de corretores | Sim | Ajuda o visitante a encontrar vitrines de corretores. |
+| Página inicial da CAVI com lista de corretores | Sim | Ajuda o visitante a encontrar catálogos de corretores. |
 | Cadastro/login de corretor | Sim | Necessário para que o corretor use a plataforma sozinho. |
 | Área do corretor | Sim | Necessária para gerenciar imóveis. |
 | Cadastro, edição e listagem de imóveis | Sim | É a principal função do sistema. |
 | Upload de fotos do imóvel | Sim | Imóvel sem foto perde valor para o visitante. |
 | Publicar/ocultar imóvel | Sim | Permite controlar o que aparece no site. |
-| Site público do corretor | Sim | É a promessa principal: ter uma vitrine própria. |
+| Site público do corretor | Sim | É a promessa principal: ter um catálogo próprio. |
 | Catálogo público com filtros simples | Sim | Visitante precisa localizar imóveis. |
 | Detalhes do imóvel | Sim | Página essencial para conversão. |
 | Botão de WhatsApp | Sim | Forma simples de contato sem precisar criar módulo de mensagens. |
@@ -150,7 +150,7 @@ O núcleo de valor do CAVI é permitir que um corretor tenha uma vitrine online 
 | Funcionalidade | Motivo para adiar |
 | --- | --- |
 | Cadastro de cliente | Não é necessário para o visitante ver imóveis e chamar no WhatsApp. |
-| Favoritos | Exige cliente autenticado e não é essencial para validar a vitrine. |
+| Favoritos | Exige cliente autenticado e não é essencial para validar o catálogo. |
 | Solicitação de anúncio por cliente | Aumenta bastante o fluxo; pode ser substituída inicialmente por contato direto. |
 | Correção de solicitação reprovada | Depende da funcionalidade anterior. |
 | Gateway de pagamento | Pode começar com plano gratuito/teste ou controle manual. |
@@ -190,9 +190,9 @@ erDiagram
 | Entidade | Campos essenciais |
 | --- | --- |
 | **Usuario** | id, nome, CPF, telefone, e-mail, senha, tipo\_usuario, status. No MVP, tipos principais: administrador e corretor. |
-| **ContaSite** | id, usuario\_id, nome\_publico, slug, descricao, whatsapp, logo, status. Representa a vitrine pública do corretor. |
+| **ContaSite** | id, usuario\_id, nome\_publico, slug, descricao, whatsapp, logo, status. Representa o catálogo público do corretor. |
 | **Imovel** | id, conta\_site\_id, título, slug, descrição, tipo, finalidade, preço, área, quartos, banheiros, vagas, status\_publicacao. |
 | **EnderecoImovel** | id, imovel\_id, CEP, logradouro, número, bairro, cidade, UF, complemento. |
 | **FotoImovel** | id, imovel\_id, url\_arquivo, ordem, foto\_principal. |
 
-Esse MVP já permite o uso real mínimo: o corretor se cadastra, configura sua vitrine, cadastra imóveis com fotos, publica o catálogo e recebe interessados por WhatsApp. A partir daí, as próximas evoluções naturais seriam: favoritos, cadastro de cliente, solicitações de anúncio, assinatura/pagamento e estatísticas.
+Esse MVP já permite o uso real mínimo: o corretor se cadastra, configura seu catálogo, cadastra imóveis com fotos, publica o catálogo e recebe interessados por WhatsApp. A partir daí, as próximas evoluções naturais seriam: favoritos, cadastro de cliente, solicitações de anúncio, assinatura/pagamento e estatísticas.

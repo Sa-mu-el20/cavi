@@ -77,7 +77,7 @@ export default function Admin() {
               <div style={{ fontWeight: 600, fontSize: 15 }}>{c.qtd}</div>
               <div><Badge cor={st.cor} bg={st.bg}>{c.status}</Badge></div>
               <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-                <button onClick={() => navigate(`/v/${c.slug}`)} style={{ padding: '8px 13px', border: `1px solid ${colors.field}`, background: '#fff', borderRadius: 9, fontSize: 13, fontWeight: 600, color: colors.muted, cursor: 'pointer' }}>Vitrine</button>
+                <button onClick={() => navigate(`/v/${c.slug}`)} style={{ padding: '8px 13px', border: `1px solid ${colors.field}`, background: '#fff', borderRadius: 9, fontSize: 13, fontWeight: 600, color: colors.muted, cursor: 'pointer' }}>Catálogo</button>
                 <button onClick={() => toggleCorretor(c.id)} style={{ padding: '8px 13px', border: 'none', background: colors.bg, borderRadius: 9, fontSize: 13, fontWeight: 600, color: st.cor, cursor: 'pointer' }}>{c.status === 'Ativo' ? 'Desativar' : 'Ativar'}</button>
               </div>
             </div>

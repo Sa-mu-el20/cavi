@@ -20,10 +20,10 @@ export default function Config() {
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 28 }}>
         <div>
           <h1 style={{ fontFamily: fonts.display, fontWeight: 400, fontSize: 32, lineHeight: 1.15, margin: '0 0 4px' }}>Configurações do site</h1>
-          <div style={{ fontSize: 14, color: colors.mutedSoft }}>Personalize sua vitrine pública.</div>
+          <div style={{ fontSize: 14, color: colors.mutedSoft }}>Personalize seu catálogo público.</div>
         </div>
         <button onClick={() => navigate(`/v/${broker.slug}`)} style={{ background: '#fff', color: colors.ink, border: `1px solid ${colors.field}`, borderRadius: 11, padding: '13px 20px', fontWeight: 600, fontSize: 15, cursor: 'pointer' }}>
-          ↗ Ver vitrine
+          ↗ Ver catálogo
         </button>
       </div>
 
@@ -34,7 +34,7 @@ export default function Config() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div><Label>Nome público</Label><input defaultValue={broker.site} style={inputStyle} /></div>
               <div>
-                <Label>Endereço da vitrine</Label>
+                <Label>Endereço do catálogo</Label>
                 <div style={{ display: 'flex', alignItems: 'center', border: `1px solid ${colors.field}`, borderRadius: 10, overflow: 'hidden', background: '#fff' }}>
                   <span style={{ padding: '13px 0 13px 14px', fontSize: 15, color: colors.faint }}>cavi.ifes.site/v/</span>
                   <input defaultValue={broker.slug} style={{ flex: 1, padding: '13px 14px 13px 2px', border: 'none', fontSize: 15, background: 'transparent', outline: 'none' }} />
@@ -54,7 +54,7 @@ export default function Config() {
 
           <div style={{ background: '#fff', border: `1px solid ${colors.border}`, borderRadius: 16, padding: 30 }}>
             <h2 style={{ fontFamily: fonts.display, fontWeight: 500, fontSize: 18, margin: '0 0 6px' }}>Aparência</h2>
-            <p style={{ fontSize: 14, color: colors.mutedSoft, margin: '0 0 18px' }}>Logo e cor de destaque da sua vitrine.</p>
+            <p style={{ fontSize: 14, color: colors.mutedSoft, margin: '0 0 18px' }}>Logo e cor de destaque do seu catálogo.</p>
             <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
               <div>
                 <Label>Logo</Label>

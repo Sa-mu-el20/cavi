@@ -332,7 +332,7 @@ def carregar_corretores_demo():
     reaproveitados (não duplica). Datas de gravação usam ``agora()`` via repos.
     """
     if conta_site_repo.obter_todos():
-        logger.info("Já existem contas de vitrine. Seed de corretores não será executado.")
+        logger.info("Já existem contas de catálogo. Seed de corretores não será executado.")
         return
 
     contas_criadas = 0

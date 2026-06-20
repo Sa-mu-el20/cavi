@@ -3,22 +3,22 @@ import { useNavigate } from 'react-router-dom'
 import { api } from '../../lib/api'
 import { linkWhatsApp } from '../../lib/format'
 import { colors, fonts } from '../../lib/theme'
-import type { CorretorVitrine } from '../../lib/types'
+import type { CorretorCatalogo } from '../../lib/types'
 import { useFetch } from '../../hooks/useFetch'
 import Avatar from '../../components/cavi/Avatar'
 import PublicHeader from '../../components/cavi/PublicHeader'
 import EmptyState from '../../components/ui/EmptyState'
 import Spinner from '../../components/ui/Spinner'
 
-export default function VitrinesPage() {
+export default function CatalogosPage() {
   const navigate = useNavigate()
   const carregarCorretores = useCallback(
-    (signal: AbortSignal) => api.get<CorretorVitrine[]>('/publico/corretores', { signal }),
+    (signal: AbortSignal) => api.get<CorretorCatalogo[]>('/publico/corretores', { signal }),
     [],
   )
   const { data: corretores, carregando, erro } = useFetch(carregarCorretores)
 
-  const vitrines = useMemo(
+  const catalogos = useMemo(
     () =>
       [...(corretores ?? [])].sort((a, b) =>
         a.nome_publico.localeCompare(b.nome_publico, 'pt-BR', { sensitivity: 'base' }),
@@ -42,7 +42,7 @@ export default function VitrinesPage() {
               marginBottom: 12,
             }}
           >
-            Vitrines no ar
+            Catálogos no ar
           </div>
           <h1
             style={{
@@ -56,23 +56,23 @@ export default function VitrinesPage() {
             Corretores na CAVI
           </h1>
           <p style={{ maxWidth: 560, fontSize: 17, lineHeight: 1.55, color: colors.muted, margin: 0 }}>
-            Encontre vitrines públicas de corretores e imobiliárias cadastrados na plataforma.
+            Encontre catálogos públicos de corretores e imobiliárias cadastrados na plataforma.
           </p>
         </div>
 
         {carregando ? (
-          <Spinner texto="Carregando vitrines..." />
+          <Spinner texto="Carregando catálogos..." />
         ) : erro ? (
           <EmptyState
             icon="⚠"
-            titulo="Não foi possível carregar as vitrines"
+            titulo="Não foi possível carregar os catálogos"
             mensagem={erro.message}
           />
-        ) : vitrines.length === 0 ? (
+        ) : catalogos.length === 0 ? (
           <EmptyState
             icon="◳"
-            titulo="Nenhuma vitrine publicada ainda"
-            mensagem="Seja o primeiro corretor a publicar sua vitrine na CAVI."
+            titulo="Nenhum catálogo publicado ainda"
+            mensagem="Seja o primeiro corretor a publicar seu catálogo na CAVI."
           />
         ) : (
           <div
@@ -83,8 +83,8 @@ export default function VitrinesPage() {
               alignItems: 'stretch',
             }}
           >
-            {vitrines.map((corretor) => (
-              <VitrineCard
+            {catalogos.map((corretor) => (
+              <CatalogoCard
                 key={corretor.slug}
                 corretor={corretor}
                 onAbrir={() => navigate(`/v/${corretor.slug}`)}
@@ -118,11 +118,11 @@ export default function VitrinesPage() {
   )
 }
 
-function VitrineCard({
+function CatalogoCard({
   corretor,
   onAbrir,
 }: {
-  corretor: CorretorVitrine
+  corretor: CorretorCatalogo
   onAbrir: () => void
 }) {
   const local = [corretor.bairro, corretor.cidade, corretor.uf].filter(Boolean).join(' · ')
@@ -176,7 +176,7 @@ function VitrineCard({
           overflow: 'hidden',
         }}
       >
-        {corretor.descricao || 'Vitrine pública de imóveis cadastrada na CAVI.'}
+        {corretor.descricao || 'Catálogo público de imóveis cadastrado na CAVI.'}
       </p>
 
       <div style={{ fontSize: 14, color: colors.mutedSoft, marginBottom: 18 }}>
@@ -197,7 +197,7 @@ function VitrineCard({
             cursor: 'pointer',
           }}
         >
-          Ver vitrine
+          Ver catálogo
         </button>
         {whatsapp ? (
           <a

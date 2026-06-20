@@ -204,7 +204,7 @@ def _gerar_slug_unico(nome_publico: str) -> str:
 async def post_cadastrar_corretor(request: Request, dto: CadastroCorretorDTO):
     """
     Auto-cadastro de corretor: cria o Usuario (perfil Corretor) e a sua
-    ContaSite (vitrine pública) vinculada, com slug único derivado do
+    ContaSite (catálogo público) vinculada, com slug único derivado do
     nome público.
     """
     checar_rate_limit(cadastro_limiter, request)
@@ -249,15 +249,15 @@ async def post_cadastrar_corretor(request: Request, dto: CadastroCorretorDTO):
     )
     conta_id = conta_site_repo.inserir(conta)
     if not conta_id:
-        # Reverte o usuário recém-criado para não deixar corretor sem vitrine.
+        # Reverte o usuário recém-criado para não deixar corretor sem catálogo.
         usuario_repo.excluir(usuario_id)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Erro ao criar a vitrine do corretor. Tente novamente.",
+            detail="Erro ao criar o catálogo do corretor. Tente novamente.",
         )
 
     logger.info(
-        f"Novo corretor cadastrado: {usuario.email} (vitrine slug='{conta.slug}')"
+        f"Novo corretor cadastrado: {usuario.email} (catálogo slug='{conta.slug}')"
     )
     servico_email.enviar_boas_vindas(usuario.email, usuario.nome)
 

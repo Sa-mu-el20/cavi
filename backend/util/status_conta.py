@@ -1,8 +1,8 @@
 """
-Enum centralizado para o status de uma ContaSite (vitrine pública do corretor).
+Enum centralizado para o status de uma ContaSite (catálogo público do corretor).
 
 Este módulo define o Enum StatusConta que é a FONTE ÚNICA DA VERDADE
-para o status de contas de vitrine no sistema. SEMPRE use este Enum ao
+para o status de contas de catálogo no sistema. SEMPRE use este Enum ao
 referenciar status de conta, NUNCA strings literais.
 """
 
@@ -13,8 +13,8 @@ class StatusConta(EnumEntidade):
     """
     Enum para o status de uma ContaSite.
 
-    - ATIVO: a vitrine aparece publicamente em /v/{slug} e na home.
-    - INATIVO: a vitrine fica oculta ao público (ação administrativa).
+    - ATIVO: o catálogo aparece publicamente em /v/{slug} e na home.
+    - INATIVO: o catálogo fica oculto ao público (ação administrativa).
 
     Herda de EnumEntidade que fornece métodos úteis:
         - valores(): Lista todos os valores

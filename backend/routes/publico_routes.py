@@ -1,9 +1,9 @@
 """
-Rotas PÚBLICAS da vitrine do corretor (API JSON, sem autenticação).
+Rotas PÚBLICAS do catálogo do corretor (API JSON, sem autenticação).
 
 Expõem apenas dados de contas ``Ativo`` e imóveis ``Publicado``. Como são
 todos verbos GET, ficam naturalmente ISENTOS de CSRF. Servem a Home (listagem
-de corretores) e as páginas públicas ``/v/{slug}`` (vitrine + listagem de
+de corretores) e as páginas públicas ``/v/{slug}`` (catálogo + listagem de
 imóveis + detalhe do imóvel).
 
 Camada Routes da arquitetura Routes -> DTOs -> Repos -> SQL -> DB. Segue o
@@ -25,9 +25,9 @@ from fastapi import APIRouter, HTTPException, Request, status
 from dtos.responses.comum import PaginaResponse
 from dtos.responses.imovel_response import ImovelResponse, ImovelResumoResponse
 from dtos.responses.publico_response import (
-    CorretorVitrineResponse,
+    CorretorCatalogoResponse,
     ImovelPublicoDetalheResponse,
-    VitrinePublicaResponse,
+    CatalogoPublicoResponse,
 )
 
 # Models
@@ -66,12 +66,12 @@ publico_listagem_limiter = DynamicRateLimiter(
 # =============================================================================
 
 def _obter_conta_ativa_por_slug(slug: str) -> ContaSite:
-    """Resolve a vitrine pelo slug exigindo status Ativo (404 caso contrário)."""
+    """Resolve o catálogo pelo slug exigindo status Ativo (404 caso contrário)."""
     conta = conta_site_repo.obter_por_slug(slug)
     if not conta or conta.status != StatusConta.ATIVO:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Vitrine não encontrada.",
+            detail="Catálogo não encontrado.",
         )
     return conta
 
@@ -80,14 +80,14 @@ def _obter_conta_ativa_por_slug(slug: str) -> ContaSite:
 # Listagem de corretores (Home)
 # =============================================================================
 
-@router.get("/corretores", response_model=list[CorretorVitrineResponse])
+@router.get("/corretores", response_model=list[CorretorCatalogoResponse])
 async def listar_corretores(request: Request):
-    """Lista as vitrines ativas para a Home, com a contagem de imóveis publicados."""
+    """Lista os catálogos ativos para a Home, com a contagem de imóveis publicados."""
     checar_rate_limit(publico_listagem_limiter, request)
 
     contas = conta_site_repo.listar_ativas()
     return [
-        CorretorVitrineResponse.de_conta(
+        CorretorCatalogoResponse.de_conta(
             conta, imovel_repo.contar_publicados(conta.id)
         )
         for conta in contas
@@ -95,27 +95,27 @@ async def listar_corretores(request: Request):
 
 
 # =============================================================================
-# Vitrine pública (cabeçalho)
+# Catálogo público (cabeçalho)
 # =============================================================================
 
-@router.get("/vitrine/{slug}", response_model=VitrinePublicaResponse)
-async def obter_vitrine(request: Request, slug: str):
-    """Dados públicos de uma vitrine ativa (404 se inexistente ou Inativa)."""
+@router.get("/catalogo/{slug}", response_model=CatalogoPublicoResponse)
+async def obter_catalogo(request: Request, slug: str):
+    """Dados públicos de um catálogo ativo (404 se inexistente ou Inativo)."""
     checar_rate_limit(publico_listagem_limiter, request)
 
     conta = _obter_conta_ativa_por_slug(slug)
-    return VitrinePublicaResponse.de_conta(conta)
+    return CatalogoPublicoResponse.de_conta(conta)
 
 
 # =============================================================================
-# Imóveis publicados de uma vitrine (listagem com filtros)
+# Imóveis publicados de um catálogo (listagem com filtros)
 # =============================================================================
 
 @router.get(
-    "/vitrine/{slug}/imoveis",
+    "/catalogo/{slug}/imoveis",
     response_model=PaginaResponse[ImovelResumoResponse],
 )
-async def listar_imoveis_da_vitrine(
+async def listar_imoveis_do_catalogo(
     request: Request,
     slug: str,
     pagina: int = 1,
@@ -127,7 +127,7 @@ async def listar_imoveis_da_vitrine(
     preco_max: Optional[float] = None,
 ):
     """
-    Lista (paginado) os imóveis PUBLICADOS de uma vitrine ativa.
+    Lista (paginado) os imóveis PUBLICADOS de um catálogo ativo.
 
     Filtros opcionais: ``finalidade``, ``tipo``, ``bairro`` (parcial),
     ``preco_min`` e ``preco_max``.
@@ -163,10 +163,10 @@ async def listar_imoveis_da_vitrine(
 @router.get("/imoveis/{id}", response_model=ImovelPublicoDetalheResponse)
 async def obter_imovel(request: Request, id: int):
     """
-    Detalhe de um imóvel publicado (endereço + fotos) com os dados da vitrine.
+    Detalhe de um imóvel publicado (endereço + fotos) com os dados do catálogo.
 
     Retorna 404 se o imóvel não existir, estiver Oculto ou pertencer a uma
-    vitrine inexistente/Inativa.
+    um catálogo inexistente/Inativo.
     """
     checar_rate_limit(publico_listagem_limiter, request)
 
@@ -186,5 +186,5 @@ async def obter_imovel(request: Request, id: int):
 
     return ImovelPublicoDetalheResponse(
         imovel=ImovelResponse.de_imovel(imovel),
-        vitrine=VitrinePublicaResponse.de_conta(conta),
+        catalogo=CatalogoPublicoResponse.de_conta(conta),
     )

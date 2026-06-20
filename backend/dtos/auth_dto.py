@@ -53,7 +53,7 @@ class CadastroCorretorDTO(BaseModel):
     DTO de auto-cadastro de um corretor.
 
     Cria, em uma única operação, o ``Usuario`` (perfil Corretor) e a sua
-    ``ContaSite`` (vitrine pública). O ``slug`` da vitrine é derivado do
+    ``ContaSite`` (catálogo público). O ``slug`` do catálogo é derivado do
     ``nome_publico`` na rota (com garantia de unicidade), não vindo no DTO.
     """
 
@@ -65,8 +65,8 @@ class CadastroCorretorDTO(BaseModel):
     telefone: str = Field(..., description="Telefone do corretor")
     creci: str = Field(..., description="Número do CRECI do corretor")
 
-    # Dados da vitrine (ContaSite)
-    nome_publico: str = Field(..., description="Nome público exibido na vitrine")
+    # Dados do catálogo (ContaSite)
+    nome_publico: str = Field(..., description="Nome público exibido no catálogo")
     cidade: str = Field(..., description="Cidade de atuação")
     uf: str = Field(..., description="UF de atuação (sigla de 2 letras)")
     whatsapp: Optional[str] = Field(

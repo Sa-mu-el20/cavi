@@ -717,7 +717,7 @@ export default function ImovelFormPage() {
         }}
       >
         <div>
-          <div style={{ fontWeight: 600, fontSize: 16 }}>Publicar imóvel na vitrine</div>
+          <div style={{ fontWeight: 600, fontSize: 16 }}>Publicar imóvel no catálogo</div>
           <div style={{ fontSize: 13, color: colors.mutedSoft }}>
             Imóveis ocultos ficam salvos mas não aparecem no catálogo público.
           </div>

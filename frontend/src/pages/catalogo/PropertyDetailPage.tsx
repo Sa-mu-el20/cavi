@@ -1,6 +1,6 @@
 // Detalhe público de um imóvel (/v/:slug/imovel/:id).
 // Porte de cavi-react/src/pages/PropertyDetail.jsx, ligado à API real:
-// GET /api/publico/imoveis/{id} -> ImovelPublicoDetalhe ({ imovel, vitrine }).
+// GET /api/publico/imoveis/{id} -> ImovelPublicoDetalhe ({ imovel, catalogo }).
 // Galeria de fotos, características, endereço e botão WhatsApp com mensagem pré-pronta.
 import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -10,7 +10,7 @@ import { colors, fonts } from '../../lib/theme'
 import { formatarPrecoImovel, formatarArea, linkWhatsApp, urlMidia } from '../../lib/format'
 import { FinalidadeImovel } from '../../lib/types'
 import type { EnderecoImovel, ImovelPublicoDetalhe } from '../../lib/types'
-import { useVitrine } from '../../components/layout/SiteLayout'
+import { useCatalogo } from '../../components/layout/SiteLayout'
 import Avatar from '../../components/cavi/Avatar'
 import Badge from '../../components/cavi/Badge'
 
@@ -45,7 +45,7 @@ function montarEnderecoMapa(end?: EnderecoImovel | null): string {
 
 export default function PropertyDetailPage() {
   const { id, slug } = useParams()
-  const { slug: ctxSlug } = useVitrine()
+  const { slug: ctxSlug } = useCatalogo()
   const navigate = useNavigate()
   const [idx, setIdx] = useState(0)
 
@@ -72,7 +72,7 @@ export default function PropertyDetailPage() {
     )
   }
 
-  const { imovel: im, vitrine } = data
+  const { imovel: im, catalogo } = data
   const fin = finalidadeStyle(im.finalidade)
 
   // Galeria: ordena por `ordem`, priorizando a foto principal. Fallback para placeholder.
@@ -104,7 +104,7 @@ export default function PropertyDetailPage() {
     : ''
 
   const msg = `Olá! Tenho interesse no imóvel ${im.codigo ?? `#${im.id}`} — ${im.titulo}`
-  const wa = linkWhatsApp(vitrine.whatsapp, msg)
+  const wa = linkWhatsApp(catalogo.whatsapp, msg)
 
   return (
     <div style={{ maxWidth: 1180, margin: '0 auto', padding: '24px 40px 0' }}>
@@ -296,7 +296,7 @@ export default function PropertyDetailPage() {
             {im.codigo && (
               <div style={{ fontSize: 12, color: colors.faint, marginBottom: 22 }}>Código {im.codigo}</div>
             )}
-            {vitrine.whatsapp && (
+            {catalogo.whatsapp && (
               <a
                 href={wa}
                 target="_blank"
@@ -329,11 +329,11 @@ export default function PropertyDetailPage() {
                 borderTop: `1px solid ${colors.borderSoft}`,
               }}
             >
-              <Avatar corretor={vitrine} size={46} radius={11} fontSize={19} />
+              <Avatar corretor={catalogo} size={46} radius={11} fontSize={19} />
               <div>
-                <div style={{ fontWeight: 600, fontSize: 15 }}>{vitrine.nome_publico}</div>
-                {vitrine.creci && (
-                  <div style={{ fontSize: 13, color: colors.mutedSoft }}>{vitrine.creci}</div>
+                <div style={{ fontWeight: 600, fontSize: 15 }}>{catalogo.nome_publico}</div>
+                {catalogo.creci && (
+                  <div style={{ fontSize: 13, color: colors.mutedSoft }}>{catalogo.creci}</div>
                 )}
               </div>
             </div>

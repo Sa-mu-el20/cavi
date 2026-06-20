@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { colors, fonts } from '../../lib/theme'
-import type { CorretorVitrine } from '../../lib/types'
+import type { CorretorCatalogo } from '../../lib/types'
 import Avatar from './Avatar'
 
 interface BrokerCardProps {
-  corretor: CorretorVitrine
+  corretor: CorretorCatalogo
 }
 
-// Cartão de corretor (vitrines no ar, na home pública).
+// Cartão de corretor (catálogos no ar, na home pública).
 // Porte de cavi-react/src/components/BrokerCard.jsx.
 export default function BrokerCard({ corretor }: BrokerCardProps) {
   const navigate = useNavigate()

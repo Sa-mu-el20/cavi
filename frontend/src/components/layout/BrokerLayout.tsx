@@ -50,7 +50,7 @@ export default function BrokerLayout() {
     [],
   )
 
-  const nome = conta?.nome_publico ?? usuario?.nome ?? 'Minha vitrine'
+  const nome = conta?.nome_publico ?? usuario?.nome ?? 'Meu catálogo'
   const inicial = nome ? nome[0].toUpperCase() : '?'
   const subtitulo = [conta?.cidade, conta?.uf].filter(Boolean).join(' / ') || 'Corretor'
 
@@ -164,7 +164,7 @@ export default function BrokerLayout() {
             style={{ ...ghost, color: colors.muted }}
             onClick={() => navigate(`/v/${conta.slug}`)}
           >
-            <span style={{ fontSize: 17 }}>↗</span> Ver minha vitrine
+            <span style={{ fontSize: 17 }}>↗</span> Ver meu catálogo
           </div>
         )}
         <div style={{ marginTop: 'auto' }}>

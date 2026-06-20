@@ -1,4 +1,4 @@
-// Configurações da vitrine pública do corretor (/app/config).
+// Configurações do catálogo público do corretor (/app/config).
 // Porte de cavi-react/src/pages/Config.jsx, ligado à API real:
 //   GET  /api/minha-conta  -> ContaSite
 //   PUT  /api/minha-conta  -> ContaSite (nome_publico, slug, descricao,
@@ -147,7 +147,7 @@ export default function ConfigSitePage() {
     try {
       const atualizada = await api.put<ContaSite>('/minha-conta', parsed.data)
       setForm(vazioParaForm(atualizada))
-      toast.sucesso('Vitrine atualizada com sucesso.')
+      toast.sucesso('Catálogo atualizado com sucesso.')
     } catch (e) {
       if (e instanceof ApiError) {
         if (e.status === 422 && e.errors) {
@@ -182,10 +182,10 @@ export default function ConfigSitePage() {
       <div style={{ padding: '34px 44px', maxWidth: 980 }}>
         <EmptyState
           icon="◳"
-          titulo={naoCadastrada ? 'Vitrine ainda não cadastrada' : 'Não foi possível carregar'}
+          titulo={naoCadastrada ? 'Catálogo ainda não cadastrado' : 'Não foi possível carregar'}
           mensagem={
             naoCadastrada
-              ? 'Sua vitrine pública ainda não está disponível para edição.'
+              ? 'Seu catálogo público ainda não está disponível para edição.'
               : erro?.message || 'Tente novamente em instantes.'
           }
         >
@@ -251,7 +251,7 @@ export default function ConfigSitePage() {
             Configurações do site
           </h1>
           <div style={{ fontSize: 14, color: colors.mutedSoft }}>
-            Personalize sua vitrine pública.
+            Personalize seu catálogo público.
           </div>
         </div>
         <button
@@ -271,7 +271,7 @@ export default function ConfigSitePage() {
             fontFamily: fonts.body,
           }}
         >
-          ↗ Ver vitrine
+          ↗ Ver catálogo
         </button>
       </div>
 
@@ -305,7 +305,7 @@ export default function ConfigSitePage() {
                 <ErroCampo msg={errosCampo.nome_publico} />
               </div>
               <div>
-                <Label>Endereço da vitrine</Label>
+                <Label>Endereço do catálogo</Label>
                 <div
                   style={{
                     display: 'flex',
@@ -425,7 +425,7 @@ export default function ConfigSitePage() {
           <div style={cardStyle}>
             <h2 style={{ ...h2Style, margin: '0 0 6px' }}>Aparência</h2>
             <p style={{ fontSize: 14, color: colors.mutedSoft, margin: '0 0 18px' }}>
-              Logo e cor de destaque da sua vitrine.
+              Logo e cor de destaque do seu catálogo.
             </p>
             <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start', flexWrap: 'wrap' }}>
               <div>
@@ -433,7 +433,7 @@ export default function ConfigSitePage() {
                 {data.logo ? (
                   <img
                     src={data.logo}
-                    alt="Logo da vitrine"
+                    alt="Logo do catálogo"
                     style={{
                       width: 96,
                       height: 96,
@@ -585,7 +585,7 @@ export default function ConfigSitePage() {
                       textOverflow: 'ellipsis',
                     }}
                   >
-                    {form.nome_publico || 'Minha vitrine'}
+                    {form.nome_publico || 'Meu catálogo'}
                   </div>
                   <div style={{ fontSize: 11, color: colors.mutedSoft }}>
                     {form.creci ? `CRECI ${form.creci}` : 'Corretor de imóveis'}

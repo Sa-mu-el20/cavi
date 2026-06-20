@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { colors, fonts } from '../theme.js';
 import Avatar from './Avatar.jsx';
 
-// Cartão de corretor (vitrines no ar, na home pública).
+// Cartão de corretor (catálogos no ar, na home pública).
 export default function BrokerCard({ corretor }) {
   const navigate = useNavigate();
   const [hover, setHover] = useState(false);

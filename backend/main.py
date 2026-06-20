@@ -160,7 +160,7 @@ ROUTERS = [
     (admin_corretores_router, ["Admin - Corretores"], "admin de corretores"),
     (conta_site_router, ["Conta Site (Corretor)"], "conta/site do corretor"),
     (imoveis_router, ["Imóveis (Corretor)"], "imóveis do corretor"),
-    (publico_router, ["Público"], "público (vitrine)"),
+    (publico_router, ["Público"], "público (catálogo)"),
 ]
 
 for router, tags, nome in ROUTERS:

@@ -78,7 +78,7 @@ export default function RedefinirSenhaPage() {
             Defina uma nova senha e volte ao painel.
           </h2>
           <p style={{ fontSize: 16, color: '#cfc7b9', lineHeight: 1.6, margin: 0, maxWidth: 420 }}>
-            Escolha uma senha forte. Sua vitrine permanece no ar enquanto você atualiza o acesso.
+            Escolha uma senha forte. Seu catálogo permanece no ar enquanto você atualiza o acesso.
           </p>
         </div>
         <div style={{ position: 'relative', fontSize: 13, color: '#7d766a' }}>

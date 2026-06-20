@@ -1,15 +1,15 @@
 """
 Rotas da ContaSite do corretor autenticado (API JSON).
 
-A ContaSite é a vitrine pública do corretor (relação 1-para-1 com o
+A ContaSite é o catálogo público do corretor (relação 1-para-1 com o
 usuário de perfil ``Corretor``). Estas rotas permitem que o próprio
 corretor logado:
 
-- Consulte sua vitrine (``GET /minha-conta``).
-- Atualize os dados editáveis da vitrine (``PUT /minha-conta``).
+- Consulte seu catálogo (``GET /minha-conta``).
+- Atualize os dados editáveis do catálogo (``PUT /minha-conta``).
 
-A vitrine **não** é criada implicitamente: se o corretor ainda não tiver
-uma, ``GET`` e ``PUT`` retornam 404 (o cadastro inicial é feito por outro
+O catálogo **não** é criado implicitamente: se o corretor ainda não tiver
+um, ``GET`` e ``PUT`` retornam 404 (o cadastro inicial é feito por outro
 fluxo). O ``slug`` é único globalmente (usado em ``/v/{slug}``); a
 unicidade é validada antes de gravar.
 
@@ -71,12 +71,12 @@ conta_atualizar_limiter = DynamicRateLimiter(
 # =============================================================================
 
 def _obter_conta_do_usuario(usuario_logado: UsuarioLogado) -> ContaSite:
-    """Carrega a vitrine do corretor logado ou levanta 404."""
+    """Carrega o catálogo do corretor logado ou levanta 404."""
     conta = conta_site_repo.obter_por_usuario(usuario_logado.id)
     if not conta:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Você ainda não possui uma vitrine cadastrada.",
+            detail="Você ainda não possui um catálogo cadastrado.",
         )
     return conta
 
@@ -91,7 +91,7 @@ async def obter_minha_conta(
     request: Request,
     usuario_logado: Optional[UsuarioLogado] = None,
 ):
-    """Retorna a vitrine do corretor logado (404 se ainda não existir)."""
+    """Retorna o catálogo do corretor logado (404 se ainda não existir)."""
     assert usuario_logado is not None
     conta = _obter_conta_do_usuario(usuario_logado)
     return ContaSiteResponse.de_conta(conta)
@@ -109,7 +109,7 @@ async def atualizar_minha_conta(
     usuario_logado: Optional[UsuarioLogado] = None,
 ):
     """
-    Atualiza os dados editáveis da vitrine do corretor logado.
+    Atualiza os dados editáveis do catálogo do corretor logado.
 
     Campos atualizados: ``nome_publico``, ``slug``, ``descricao``,
     ``whatsapp``, ``creci``, ``cidade``, ``uf``, ``bairro`` e ``cor``.
@@ -117,7 +117,7 @@ async def atualizar_minha_conta(
     alterado por esta rota; o ``logo`` é gerenciado pelo fluxo de upload.
 
     Valida a unicidade do ``slug`` (já normalizado pelo DTO) contra as
-    demais vitrines antes de gravar.
+    demais catálogos antes de gravar.
     """
     assert usuario_logado is not None
     checar_rate_limit(conta_atualizar_limiter, request)
@@ -125,12 +125,12 @@ async def atualizar_minha_conta(
     conta = _obter_conta_do_usuario(usuario_logado)
 
     # Unicidade de slug: o slug já vem normalizado pelo DTO. Só conflita se
-    # pertencer a OUTRA vitrine (a própria pode manter o mesmo slug).
+    # pertencer a OUTRO catálogo (o próprio pode manter o mesmo slug).
     existente = conta_site_repo.obter_por_slug(dto.slug)
     if existente and existente.id != conta.id:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
-            detail="Este slug já está em uso por outra vitrine. Escolha outro.",
+            detail="Este slug já está em uso por outro catálogo. Escolha outro.",
         )
 
     # Aplica os campos editáveis sobre a entidade carregada (preserva
@@ -148,11 +148,11 @@ async def atualizar_minha_conta(
     if not conta_site_repo.atualizar(conta):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Erro ao atualizar a vitrine. Tente novamente.",
+            detail="Erro ao atualizar o catálogo. Tente novamente.",
         )
 
     logger.info(
-        f"Vitrine {conta.id} (slug '{conta.slug}') atualizada pelo "
+        f"Catálogo {conta.id} (slug '{conta.slug}') atualizado pelo "
         f"usuário {usuario_logado.id}"
     )
 

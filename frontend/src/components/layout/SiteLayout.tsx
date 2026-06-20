@@ -3,28 +3,28 @@ import { api } from '../../lib/api'
 import { useFetch } from '../../hooks/useFetch'
 import { colors, fonts } from '../../lib/theme'
 import { linkWhatsApp } from '../../lib/format'
-import type { VitrinePublica } from '../../lib/types'
+import type { CatalogoPublico } from '../../lib/types'
 import Avatar from '../cavi/Avatar'
 
-// Contexto exposto às páginas filhas da vitrine pública.
-export interface VitrineContext {
+// Contexto exposto às páginas filhas do catálogo público.
+export interface CatalogoContext {
   slug: string
-  vitrine: VitrinePublica
+  catalogo: CatalogoPublico
 }
 
-export function useVitrine(): VitrineContext {
-  return useOutletContext<VitrineContext>()
+export function useCatalogo(): CatalogoContext {
+  return useOutletContext<CatalogoContext>()
 }
 
-// Casca da vitrine pública de um corretor: header + conteúdo + rodapé.
-// Porte de cavi-react/src/layouts/SiteLayout.jsx. Busca o cabeçalho da vitrine
-// (GET /api/publico/vitrine/{slug}) e o expõe via Outlet context.
+// Casca do catálogo público de um corretor: header + conteúdo + rodapé.
+// Porte de cavi-react/src/layouts/SiteLayout.jsx. Busca o cabeçalho do catálogo
+// (GET /api/publico/catalogo/{slug}) e o expõe via Outlet context.
 export default function SiteLayout() {
   const { slug = '' } = useParams()
   const navigate = useNavigate()
 
-  const { data: vitrine, carregando, erro } = useFetch<VitrinePublica>(
-    (signal) => api.get<VitrinePublica>(`/publico/vitrine/${slug}`, { signal }),
+  const { data: catalogo, carregando, erro } = useFetch<CatalogoPublico>(
+    (signal) => api.get<CatalogoPublico>(`/publico/catalogo/${slug}`, { signal }),
     [slug],
   )
 
@@ -40,12 +40,12 @@ export default function SiteLayout() {
           color: colors.muted,
         }}
       >
-        Carregando vitrine…
+        Carregando catálogo…
       </div>
     )
   }
 
-  if (erro || !vitrine) {
+  if (erro || !catalogo) {
     return (
       <div
         className="cavi-root"
@@ -61,10 +61,10 @@ export default function SiteLayout() {
         }}
       >
         <div style={{ fontFamily: fonts.display, fontSize: 28, fontWeight: 500 }}>
-          Vitrine não encontrada
+          Catálogo não encontrado
         </div>
         <div style={{ color: colors.muted }}>
-          A vitrine “{slug}” não existe ou não está ativa.
+          O catálogo “{slug}” não existe ou não está ativo.
         </div>
         <Link to="/" style={{ color: colors.orange, fontWeight: 600, marginTop: 8 }}>
           ← Voltar ao CAVI
@@ -73,7 +73,7 @@ export default function SiteLayout() {
     )
   }
 
-  const local = [vitrine.bairro, vitrine.cidade].filter(Boolean).join(', ')
+  const local = [catalogo.bairro, catalogo.cidade].filter(Boolean).join(', ')
 
   return (
     <div
@@ -107,9 +107,9 @@ export default function SiteLayout() {
         >
           <div
             style={{ display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer' }}
-            onClick={() => navigate(`/v/${vitrine.slug}`)}
+            onClick={() => navigate(`/v/${catalogo.slug}`)}
           >
-            <Avatar corretor={vitrine} size={40} radius={10} fontSize={18} />
+            <Avatar corretor={catalogo} size={40} radius={10} fontSize={18} />
             <div>
               <div
                 style={{
@@ -119,10 +119,10 @@ export default function SiteLayout() {
                   lineHeight: 1.1,
                 }}
               >
-                {vitrine.nome_publico}
+                {catalogo.nome_publico}
               </div>
-              {vitrine.creci && (
-                <div style={{ fontSize: 12, color: colors.mutedSoft }}>{vitrine.creci}</div>
+              {catalogo.creci && (
+                <div style={{ fontSize: 12, color: colors.mutedSoft }}>{catalogo.creci}</div>
               )}
             </div>
           </div>
@@ -143,13 +143,13 @@ export default function SiteLayout() {
             <span style={{ width: 1, height: 20, background: colors.border }} />
             <span
               style={{ fontSize: 15, color: colors.muted, cursor: 'pointer' }}
-              onClick={() => navigate(`/v/${vitrine.slug}`)}
+              onClick={() => navigate(`/v/${catalogo.slug}`)}
             >
               Imóveis
             </span>
-            {vitrine.whatsapp && (
+            {catalogo.whatsapp && (
               <a
-                href={linkWhatsApp(vitrine.whatsapp)}
+                href={linkWhatsApp(catalogo.whatsapp)}
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -173,7 +173,7 @@ export default function SiteLayout() {
       </header>
 
       <div style={{ flex: 1 }}>
-        <Outlet context={{ slug, vitrine } satisfies VitrineContext} />
+        <Outlet context={{ slug, catalogo } satisfies CatalogoContext} />
       </div>
 
       <footer style={{ background: colors.ink, marginTop: 64 }}>
@@ -196,10 +196,10 @@ export default function SiteLayout() {
                 color: colors.bg,
               }}
             >
-              {vitrine.nome_publico}
+              {catalogo.nome_publico}
             </div>
             <div style={{ fontSize: 13, color: '#8a8275', marginTop: 4 }}>
-              {[local, vitrine.creci].filter(Boolean).join(' · ')}
+              {[local, catalogo.creci].filter(Boolean).join(' · ')}
             </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>

@@ -12,7 +12,7 @@ import AdminLayout from './components/layout/AdminLayout'
 
 // Páginas públicas / institucionais
 import HomePage from './pages/public/HomePage'
-import VitrinesPage from './pages/public/VitrinesPage'
+import CatalogosPage from './pages/public/CatalogosPage'
 import NotFoundPage from './pages/public/NotFoundPage'
 
 // Autenticação (login + auto-cadastro de corretor com alternância por abas)
@@ -20,9 +20,9 @@ import AuthPage from './pages/public/AuthPage'
 import EsqueciSenhaPage from './pages/auth/EsqueciSenhaPage'
 import RedefinirSenhaPage from './pages/auth/RedefinirSenhaPage'
 
-// Vitrine pública (/v/:slug)
-import CatalogPage from './pages/vitrine/CatalogPage'
-import PropertyDetailPage from './pages/vitrine/PropertyDetailPage'
+// Catálogo público (/v/:slug)
+import CatalogPage from './pages/catalogo/CatalogPage'
+import PropertyDetailPage from './pages/catalogo/PropertyDetailPage'
 
 // Painel do corretor (/app)
 import DashboardCorretorPage from './pages/corretor/DashboardCorretorPage'
@@ -41,12 +41,12 @@ export const router = createBrowserRouter([
     children: [
       // ===== Público / institucional =====
       { path: '/', element: <HomePage /> },
-      { path: '/vitrines', element: <VitrinesPage /> },
+      { path: '/catalogos', element: <CatalogosPage /> },
       { path: '/login', element: <AuthPage /> },
       { path: '/esqueci-senha', element: <EsqueciSenhaPage /> },
       { path: '/redefinir-senha', element: <RedefinirSenhaPage /> },
 
-      // ===== Vitrine pública do corretor =====
+      // ===== Catálogo público do corretor =====
       {
         path: '/v/:slug',
         element: <SiteLayout />,

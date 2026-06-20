@@ -43,7 +43,7 @@ export function formatarMoeda(valor: number): string {
 }
 
 /**
- * Preço de imóvel no estilo da vitrine CAVI: "R$ 1.250.000" (sem centavos),
+ * Preço de imóvel no estilo do catálogo CAVI: "R$ 1.250.000" (sem centavos),
  * com sufixo "/mês" quando a finalidade é Aluguel. Porte de fmtPreco do design.
  */
 export function formatarPrecoImovel(preco: number, finalidade?: string | null): string {

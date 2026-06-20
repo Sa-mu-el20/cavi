@@ -1,4 +1,4 @@
-// Administração de corretores (/admin): lista paginada de vitrines com
+// Administração de corretores (/admin): lista paginada de catálogos com
 // ativar/desativar. Layout portado de cavi-react/src/pages/Admin.jsx, ligado
 // à API real (GET /api/admin/corretores, PATCH /api/admin/corretores/{id}/status).
 import { useState } from 'react'
@@ -70,20 +70,20 @@ export default function AdminCorretoresPage() {
     const ativo = c.status === StatusConta.ATIVO
     const novoStatus = ativo ? StatusConta.INATIVO : StatusConta.ATIVO
     pedirConfirmacao({
-      titulo: ativo ? 'Desativar vitrine' : 'Ativar vitrine',
+      titulo: ativo ? 'Desativar catálogo' : 'Ativar catálogo',
       mensagem: ativo
-        ? `Deseja desativar a vitrine de ${c.nome_publico}? Ela deixará de aparecer publicamente.`
-        : `Deseja reativar a vitrine de ${c.nome_publico}?`,
+        ? `Deseja desativar o catálogo de ${c.nome_publico}? Ele deixará de aparecer publicamente.`
+        : `Deseja reativar o catálogo de ${c.nome_publico}?`,
       detalhes: c.usuario_email ?? undefined,
       tipo: ativo ? 'danger' : 'warning',
       textoConfirmar: ativo ? 'Desativar' : 'Ativar',
       onConfirmar: async () => {
         try {
           await api.patch(`/admin/corretores/${c.conta_id}/status`, { status: novoStatus })
-          toast.sucesso(ativo ? 'Vitrine desativada.' : 'Vitrine ativada.')
+          toast.sucesso(ativo ? 'Catálogo desativado.' : 'Catálogo ativado.')
           recarregar()
         } catch (e) {
-          toast.erro(e instanceof ApiError ? e.message : 'Erro ao alterar o status da vitrine.')
+          toast.erro(e instanceof ApiError ? e.message : 'Erro ao alterar o status do catálogo.')
         }
       },
     })
@@ -119,7 +119,7 @@ export default function AdminCorretoresPage() {
           marginBottom: 30,
         }}
       >
-        <StatCard label="Vitrines (página)" value={itens.length} />
+        <StatCard label="Catálogos (página)" value={itens.length} />
         <StatCard
           label="Contas ativas (página)"
           value={itens.filter((c) => c.status === StatusConta.ATIVO).length}
@@ -216,7 +216,7 @@ export default function AdminCorretoresPage() {
             color: colors.faint,
           }}
         >
-          <div>Vitrine / Corretor</div>
+          <div>Catálogo / Corretor</div>
           <div>Cidade</div>
           <div>Imóveis</div>
           <div>Status</div>
@@ -234,7 +234,7 @@ export default function AdminCorretoresPage() {
             <EmptyState
               icon="◳"
               titulo="Nenhum corretor encontrado"
-              mensagem="Nenhuma vitrine corresponde aos filtros aplicados."
+              mensagem="Nenhum catálogo corresponde aos filtros aplicados."
             />
           </div>
         ) : (
@@ -299,7 +299,7 @@ export default function AdminCorretoresPage() {
                       cursor: 'pointer',
                     }}
                   >
-                    Vitrine
+                    Catálogo
                   </button>
                   <button
                     onClick={() => alternarStatus(c)}

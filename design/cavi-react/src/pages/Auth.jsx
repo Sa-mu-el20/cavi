@@ -63,7 +63,7 @@ export default function Auth() {
             <button onClick={() => setTab('cadastro')} style={tabBtn(cadastro)}>Criar conta</button>
           </div>
           <h1 style={{ fontFamily: fonts.display, fontWeight: 400, fontSize: 28, margin: '0 0 6px' }}>
-            {cadastro ? 'Crie sua vitrine' : 'Bem-vindo de volta'}
+            {cadastro ? 'Crie seu catálogo' : 'Bem-vindo de volta'}
           </h1>
           <p style={{ fontSize: 15, color: colors.muted, margin: '0 0 26px' }}>
             {cadastro ? 'Comece grátis e publique seus imóveis hoje.' : 'Acesse o painel da sua imobiliária.'}

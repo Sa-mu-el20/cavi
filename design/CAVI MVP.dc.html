@@ -31,10 +31,10 @@
     <div style="max-width:1200px; margin:0 auto; padding:0 40px; height:74px; display:flex; align-items:center; justify-content:space-between;">
       <img src="assets/logo-orange.png" alt="CAVI" style="height:30px; width:auto; cursor:pointer;" onClick="{{ goHome }}">
       <nav style="display:flex; align-items:center; gap:36px;">
-        <span style="font-size:15px; color:#6f6a60; cursor:pointer;" onClick="{{ goVitrineDemo }}">Ver vitrines</span>
+        <span style="font-size:15px; color:#6f6a60; cursor:pointer;" onClick="{{ goCatalogoDemo }}">Ver catálogos</span>
         <span style="font-size:15px; color:#6f6a60; cursor:pointer;" onClick="{{ goLogin }}">Planos</span>
         <span style="font-size:15px; color:#6f6a60; cursor:pointer;" onClick="{{ goLogin }}">Entrar</span>
-        <button onClick="{{ goLogin }}" style="background:#d97a2b; color:#fff; border:none; border-radius:10px; padding:11px 22px; font-weight:600; font-size:15px; cursor:pointer;">Criar minha vitrine</button>
+        <button onClick="{{ goLogin }}" style="background:#d97a2b; color:#fff; border:none; border-radius:10px; padding:11px 22px; font-weight:600; font-size:15px; cursor:pointer;">Criar meu catálogo</button>
       </nav>
     </div>
   </header>
@@ -45,11 +45,11 @@
       <div style="display:inline-flex; align-items:center; gap:8px; background:#e6eed6; color:#5a7d43; padding:7px 14px; border-radius:999px; font-size:13px; font-weight:600; margin-bottom:26px;">
         <span style="width:7px;height:7px;border-radius:50%;background:#9dc689;"></span> Para corretores e pequenas imobiliárias
       </div>
-      <h1 style="font-family:'Jost',sans-serif; font-weight:300; font-size:60px; line-height:1.04; letter-spacing:-1px; margin:0 0 22px;">Sua vitrine de imóveis, <span style="color:#d97a2b; font-weight:500;">pronta para vender.</span></h1>
+      <h1 style="font-family:'Jost',sans-serif; font-weight:300; font-size:60px; line-height:1.04; letter-spacing:-1px; margin:0 0 22px;">Seu catálogo de imóveis, <span style="color:#d97a2b; font-weight:500;">pronto para vender.</span></h1>
       <p style="font-size:19px; line-height:1.55; color:#6f6a60; margin:0 0 36px; max-width:480px;">Cadastre seus imóveis, publique um catálogo profissional com seu nome e receba interessados direto no WhatsApp. Sem comissão de plataforma, sem complicação.</p>
       <div style="display:flex; gap:14px; align-items:center;">
         <button onClick="{{ goLogin }}" style="background:#d97a2b; color:#fff; border:none; border-radius:12px; padding:16px 30px; font-weight:600; font-size:16px; cursor:pointer;">Começar gratuitamente</button>
-        <button onClick="{{ goVitrineDemo }}" style="background:transparent; color:#1f1b18; border:1px solid #d8d0c2; border-radius:12px; padding:16px 26px; font-weight:600; font-size:16px; cursor:pointer;">Ver uma vitrine →</button>
+        <button onClick="{{ goCatalogoDemo }}" style="background:transparent; color:#1f1b18; border:1px solid #d8d0c2; border-radius:12px; padding:16px 26px; font-weight:600; font-size:16px; cursor:pointer;">Ver um catálogo →</button>
       </div>
       <div style="display:flex; gap:30px; margin-top:44px;">
         <div><div style="font-family:'Jost',sans-serif; font-size:30px; font-weight:500;">95</div><div style="font-size:13px; color:#948d80;">corretores ativos</div></div>
@@ -89,7 +89,7 @@
       <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:34px;">
         <div style="font-family:'Jost',sans-serif; font-size:15px; font-weight:600; color:#d97a2b; margin-bottom:18px;">01</div>
         <h3 style="font-family:'Jost',sans-serif; font-weight:500; font-size:22px; margin:0 0 10px;">Crie sua conta</h3>
-        <p style="font-size:15px; line-height:1.55; color:#6f6a60; margin:0;">Informe seu CRECI e dados de contato. Sua vitrine ganha um endereço próprio em segundos.</p>
+        <p style="font-size:15px; line-height:1.55; color:#6f6a60; margin:0;">Informe seu CRECI e dados de contato. Seu catálogo ganha um endereço próprio em segundos.</p>
       </div>
       <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:34px;">
         <div style="font-family:'Jost',sans-serif; font-size:15px; font-weight:600; color:#d97a2b; margin-bottom:18px;">02</div>
@@ -108,10 +108,10 @@
   <section style="max-width:1200px; margin:0 auto; padding:56px 40px 40px;">
     <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:30px;">
       <div>
-        <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#9dc689; margin-bottom:12px;">Vitrines no ar</div>
+        <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#9dc689; margin-bottom:12px;">Catálogos no ar</div>
         <h2 style="font-family:'Jost',sans-serif; font-weight:300; font-size:38px; margin:0; letter-spacing:-0.5px;">Corretores na CAVI</h2>
       </div>
-      <span style="font-size:15px; color:#6f6a60; cursor:pointer;" onClick="{{ goVitrineDemo }}">Ver todas →</span>
+      <span style="font-size:15px; color:#6f6a60; cursor:pointer;" onClick="{{ goCatalogoDemo }}">Ver todas →</span>
     </div>
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
       <sc-for list="{{ corretores }}" as="c" hint-placeholder-count="6">
@@ -137,9 +137,9 @@
     <div style="background:#1f1b18; border-radius:22px; padding:64px; text-align:center; position:relative; overflow:hidden;">
       <div style="position:absolute; inset:0; background:radial-gradient(circle at 80% 20%, rgba(217,122,43,0.22), transparent 55%);"></div>
       <div style="position:relative;">
-        <h2 style="font-family:'Jost',sans-serif; font-weight:300; font-size:42px; color:#faf8f3; margin:0 0 16px; letter-spacing:-0.5px;">Sua próxima venda começa com uma vitrine.</h2>
+        <h2 style="font-family:'Jost',sans-serif; font-weight:300; font-size:42px; color:#faf8f3; margin:0 0 16px; letter-spacing:-0.5px;">Sua próxima venda começa com um catálogo.</h2>
         <p style="font-size:18px; color:#bcb4a6; margin:0 0 32px;">Comece com o plano gratuito. Sem cartão de crédito.</p>
-        <button onClick="{{ goLogin }}" style="background:#d97a2b; color:#fff; border:none; border-radius:12px; padding:16px 34px; font-weight:600; font-size:16px; cursor:pointer;">Criar minha vitrine</button>
+        <button onClick="{{ goLogin }}" style="background:#d97a2b; color:#fff; border:none; border-radius:12px; padding:16px 34px; font-weight:600; font-size:16px; cursor:pointer;">Criar meu catálogo</button>
       </div>
     </div>
   </section>
@@ -210,7 +210,7 @@
       <img src="assets/logo-cream.png" alt="CAVI" style="height:30px; position:relative; cursor:pointer; align-self:flex-start;" onClick="{{ goHome }}">
       <div style="position:relative;">
         <h2 style="font-family:'Jost',sans-serif; font-weight:300; font-size:40px; color:#faf8f3; line-height:1.1; margin:0 0 20px; letter-spacing:-0.5px;">Sem acesso? A gente te coloca de volta.</h2>
-        <p style="font-size:16px; color:#cfc7b9; line-height:1.6; margin:0; max-width:420px;">Enviamos um link seguro para o seu e-mail. Você define uma nova senha e volta direto para o painel — sua vitrine continua no ar o tempo todo.</p>
+        <p style="font-size:16px; color:#cfc7b9; line-height:1.6; margin:0; max-width:420px;">Enviamos um link seguro para o seu e-mail. Você define uma nova senha e volta direto para o painel — seu catálogo continua no ar o tempo todo.</p>
       </div>
       <div style="position:relative; font-size:13px; color:#7d766a;">O link expira em 30 minutos por segurança.</div>
     </div>
@@ -388,7 +388,7 @@
         <div onClick="{{ goConfig }}" style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:15px; color:{{ navConfigFg }}; background:{{ navConfigBg }};"><span style="font-size:17px;">⚙</span> Configurar site</div>
       </nav>
       <div style="height:1px; background:#f0ebe0; margin:16px 8px;"></div>
-      <div onClick="{{ goVitrineDemo }}" style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:15px; color:#6f6a60;"><span style="font-size:17px;">↗</span> Ver minha vitrine</div>
+      <div onClick="{{ goCatalogoDemo }}" style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:15px; color:#6f6a60;"><span style="font-size:17px;">↗</span> Ver meu catálogo</div>
       <div style="margin-top:auto;">
         <div onClick="{{ goHome }}" style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:15px; color:#a89f90;"><span style="font-size:17px;">⏻</span> Sair</div>
       </div>
@@ -434,7 +434,7 @@
                 <div style="display:flex; flex-direction:column; gap:10px;">
                   <div onClick="{{ goNovoImovel }}" style="display:flex; align-items:center; gap:12px; padding:13px; border:1px solid #f0ebe0; border-radius:11px; cursor:pointer; font-weight:600; font-size:15px;" style-hover="border-color:#d97a2b;"><span style="color:#d97a2b; font-size:18px;">＋</span> Cadastrar imóvel</div>
                   <div onClick="{{ goConfig }}" style="display:flex; align-items:center; gap:12px; padding:13px; border:1px solid #f0ebe0; border-radius:11px; cursor:pointer; font-weight:600; font-size:15px;" style-hover="border-color:#d97a2b;"><span style="color:#d97a2b; font-size:18px;">⚙</span> Configurar meu site</div>
-                  <div onClick="{{ goVitrineDemo }}" style="display:flex; align-items:center; gap:12px; padding:13px; border:1px solid #f0ebe0; border-radius:11px; cursor:pointer; font-weight:600; font-size:15px;" style-hover="border-color:#d97a2b;"><span style="color:#d97a2b; font-size:18px;">↗</span> Ver minha vitrine</div>
+                  <div onClick="{{ goCatalogoDemo }}" style="display:flex; align-items:center; gap:12px; padding:13px; border:1px solid #f0ebe0; border-radius:11px; cursor:pointer; font-weight:600; font-size:15px;" style-hover="border-color:#d97a2b;"><span style="color:#d97a2b; font-size:18px;">↗</span> Ver meu catálogo</div>
                 </div>
               </div>
               <div style="background:#e6eed6; border:1px solid #d6e2c0; border-radius:16px; padding:24px;">
@@ -545,7 +545,7 @@
           </div>
 
           <div style="display:flex; align-items:center; justify-content:space-between; background:#fff; border:1px solid #ece7db; border-radius:16px; padding:22px 30px; margin-bottom:28px;">
-            <div><div style="font-weight:600; font-size:16px;">Publicar imóvel na vitrine</div><div style="font-size:13px; color:#948d80;">Imóveis ocultos ficam salvos mas não aparecem no catálogo público.</div></div>
+            <div><div style="font-weight:600; font-size:16px;">Publicar imóvel no catálogo</div><div style="font-size:13px; color:#948d80;">Imóveis ocultos ficam salvos mas não aparecem no catálogo público.</div></div>
             <div style="width:52px; height:30px; border-radius:999px; background:#9dc689; position:relative; cursor:pointer;"><div style="position:absolute; top:3px; right:3px; width:24px; height:24px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div></div>
           </div>
 
@@ -559,8 +559,8 @@
       <sc-if value="{{ scrConfig }}" hint-placeholder-val="{{ false }}">
         <div style="padding:34px 44px; max-width:980px;">
           <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:28px;">
-            <div><h1 style="font-family:'Jost',sans-serif; font-weight:400; font-size:32px; line-height:1.15; margin:0 0 4px;">Configurações do site</h1><div style="font-size:14px; color:#948d80;">Personalize sua vitrine pública.</div></div>
-            <button onClick="{{ goVitrineDemo }}" style="background:#fff; color:#1f1b18; border:1px solid #e4ddcd; border-radius:11px; padding:13px 20px; font-weight:600; font-size:15px; cursor:pointer;">↗ Ver vitrine</button>
+            <div><h1 style="font-family:'Jost',sans-serif; font-weight:400; font-size:32px; line-height:1.15; margin:0 0 4px;">Configurações do site</h1><div style="font-size:14px; color:#948d80;">Personalize seu catálogo público.</div></div>
+            <button onClick="{{ goCatalogoDemo }}" style="background:#fff; color:#1f1b18; border:1px solid #e4ddcd; border-radius:11px; padding:13px 20px; font-weight:600; font-size:15px; cursor:pointer;">↗ Ver catálogo</button>
           </div>
 
           <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:24px; align-items:start;">
@@ -569,7 +569,7 @@
                 <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:18px; margin:0 0 20px;">Identidade</h2>
                 <div style="display:flex; flex-direction:column; gap:16px;">
                   <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Nome público</label><input defaultValue="Albuquerque Imóveis" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
-                  <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Endereço da vitrine</label>
+                  <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Endereço do catálogo</label>
                     <div style="display:flex; align-items:center; border:1px solid #e4ddcd; border-radius:10px; overflow:hidden; background:#fff;"><span style="padding:13px 0 13px 14px; font-size:15px; color:#b3ab9d;">cavi.ifes.site/v/</span><input defaultValue="albuquerque" style="flex:1; padding:13px 14px 13px 2px; border:none; font-size:15px; background:transparent; outline:none;"></div>
                   </div>
                   <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Apresentação</label><textarea rows="3" defaultValue="Especialista em imóveis de alto padrão na Zona Oeste de São Paulo. Atendimento próximo, da visita à assinatura." style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff; resize:vertical; line-height:1.5;"></textarea></div>
@@ -586,7 +586,7 @@
 
               <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:30px;">
                 <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:18px; margin:0 0 6px;">Aparência</h2>
-                <p style="font-size:14px; color:#948d80; margin:0 0 18px;">Logo e cor de destaque da sua vitrine.</p>
+                <p style="font-size:14px; color:#948d80; margin:0 0 18px;">Logo e cor de destaque do seu catálogo.</p>
                 <div style="display:flex; gap:24px; align-items:flex-start;">
                   <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:8px;">Logo</label><div style="width:96px; height:96px; border:2px dashed #d8d0c2; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; cursor:pointer; color:#a59d8e;"><span style="font-size:22px;">＋</span><span style="font-size:11px; font-weight:600;">Enviar</span></div></div>
                   <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:8px;">Cor de destaque</label>
@@ -674,7 +674,7 @@
                 <div style="font-weight:600; font-size:15px;">{{ c.qtd }}</div>
                 <div><span style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px; background:{{ c.stBg }}; color:{{ c.stCor }};">{{ c.status }}</span></div>
                 <div style="display:flex; gap:8px; justify-content:flex-end;">
-                  <button onClick="{{ c.openSite }}" style="padding:8px 13px; border:1px solid #e4ddcd; background:#fff; border-radius:9px; font-size:13px; font-weight:600; color:#6f6a60; cursor:pointer;">Vitrine</button>
+                  <button onClick="{{ c.openSite }}" style="padding:8px 13px; border:1px solid #e4ddcd; background:#fff; border-radius:9px; font-size:13px; font-weight:600; color:#6f6a60; cursor:pointer;">Catálogo</button>
                   <button onClick="{{ c.toggle }}" style="padding:8px 13px; border:none; background:#faf8f3; border-radius:9px; font-size:13px; font-weight:600; color:{{ c.stCor }}; cursor:pointer;">{{ c.acaoLabel }}</button>
                 </div>
               </div>
@@ -814,7 +814,7 @@ class Component extends DCLogic {
       goHome: go('home'), goLogin: go('login'), goDashboard: go('dashboard'),
       goImoveis: go('imoveis'), goConfig: go('config'), goNovoImovel: go('imovel-form',{}),
       goAdmin: go('admin'),
-      goVitrineDemo: go('catalogo',{slug:broker.slug}),
+      goCatalogoDemo: go('catalogo',{slug:broker.slug}),
       goCatalogoActive: go('catalogo',{slug:activeCorretor.slug}),
 
       // sidebar active states
@@ -832,7 +832,7 @@ class Component extends DCLogic {
       recuperarPendente: !s.recuperarEnviado,
       enviarRecuperar: ()=>this.setState({recuperarEnviado:true}),
       reenviarRecuperar: ()=>this.setState({recuperarEnviado:false}),
-      authTitle: cadastro ? 'Crie sua vitrine' : 'Bem-vindo de volta',
+      authTitle: cadastro ? 'Crie seu catálogo' : 'Bem-vindo de volta',
       authSub: cadastro ? 'Comece grátis e publique seus imóveis hoje.' : 'Acesse o painel da sua imobiliária.',
       authBtn: cadastro ? 'Criar conta e começar' : 'Entrar no painel',
       entrarBg: cadastro?'transparent':'#fff', entrarFg: cadastro?'#948d80':'#1f1b18', entrarShadow: cadastro?'none':'0 1px 3px rgba(0,0,0,0.08)',

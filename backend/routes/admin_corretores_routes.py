@@ -1,10 +1,10 @@
 """
-Rotas administrativas para gerenciamento de corretores e suas vitrines (API JSON).
+Rotas administrativas para gerenciamento de corretores e seus catálogos (API JSON).
 
 Permite que administradores:
-- Listem todos os corretores do sistema (usuário + vitrine + qtd de imóveis),
+- Listem todos os corretores do sistema (usuário + catálogo + qtd de imóveis),
   de forma paginada e com filtros opcionais (termo e status).
-- Ativem/inativem a vitrine (``ContaSite``) de um corretor.
+- Ativem/inativem o catálogo (``ContaSite``) de um corretor.
 
 Camada Routes da arquitetura Routes -> DTOs -> Repos -> SQL -> DB. Respostas
 seguem o contrato de API (envelope ``PaginaResponse`` na listagem; erros via
@@ -71,12 +71,12 @@ admin_corretores_limiter = DynamicRateLimiter(
 # =============================================================================
 
 def _obter_conta_ou_404(conta_id: int) -> ContaSite:
-    """Carrega a vitrine (``ContaSite``) pelo ID ou lança 404."""
+    """Carrega o catálogo (``ContaSite``) pelo ID ou lança 404."""
     conta = conta_site_repo.obter_por_id(conta_id)
     if not conta:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Corretor (vitrine) não encontrado.",
+            detail="Corretor (catálogo) não encontrado.",
         )
     return conta
 
@@ -96,7 +96,7 @@ async def listar(
     usuario_logado: Optional[UsuarioLogado] = None,
 ):
     """
-    Lista os corretores (vitrines) de forma paginada.
+    Lista os corretores (catálogos) de forma paginada.
 
     Filtros opcionais:
     - ``q``: termo aplicado a nome público, nome/e-mail do usuário e cidade.
@@ -134,7 +134,7 @@ async def listar(
 
 
 # =============================================================================
-# Alteração de status (ativar/inativar vitrine)
+# Alteração de status (ativar/inativar catálogo)
 # =============================================================================
 
 @router.patch("/{conta_id}/status", response_model=ContaSiteResponse)
@@ -145,7 +145,7 @@ async def alterar_status(
     dto: AlterarStatusContaDTO,
     usuario_logado: Optional[UsuarioLogado] = None,
 ):
-    """Ativa ou inativa a vitrine (``ContaSite``) de um corretor."""
+    """Ativa ou inativa o catálogo (``ContaSite``) de um corretor."""
     assert usuario_logado is not None
     checar_rate_limit(admin_corretores_limiter, request)
 
@@ -155,11 +155,11 @@ async def alterar_status(
     if not conta_site_repo.alterar_status(conta_id, novo_status):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Erro ao alterar o status da vitrine. Tente novamente.",
+            detail="Erro ao alterar o status do catálogo. Tente novamente.",
         )
 
     logger.info(
-        f"Vitrine {conta_id} alterada para status '{novo_status.value}' "
+        f"Catálogo {conta_id} alterado para status '{novo_status.value}' "
         f"por admin {usuario_logado.id}"
     )
 

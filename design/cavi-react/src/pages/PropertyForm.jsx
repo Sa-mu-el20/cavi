@@ -115,7 +115,7 @@ export default function PropertyForm() {
 
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#fff', border: `1px solid ${colors.border}`, borderRadius: 16, padding: '22px 30px', marginBottom: 28 }}>
         <div>
-          <div style={{ fontWeight: 600, fontSize: 16 }}>Publicar imóvel na vitrine</div>
+          <div style={{ fontWeight: 600, fontSize: 16 }}>Publicar imóvel no catálogo</div>
           <div style={{ fontSize: 13, color: colors.mutedSoft }}>Imóveis ocultos ficam salvos mas não aparecem no catálogo público.</div>
         </div>
         <div

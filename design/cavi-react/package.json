@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "CAVI — vitrine de imóveis para corretores. MVP em React.",
+  "description": "CAVI — catálogo de imóveis para corretores. MVP em React.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

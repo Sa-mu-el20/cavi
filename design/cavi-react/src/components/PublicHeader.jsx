@@ -32,7 +32,7 @@ export default function PublicHeader() {
           <img src="/assets/logo-orange.png" alt="CAVI" style={{ height: 30, width: 'auto', cursor: 'pointer', display: 'block' }} />
         </Link>
         <nav style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
-          <span style={linkStyle} onClick={() => navigate('/v/albuquerque')}>Ver vitrines</span>
+          <span style={linkStyle} onClick={() => navigate('/v/albuquerque')}>Ver catálogos</span>
           <span style={linkStyle} onClick={() => navigate('/login')}>Planos</span>
           <span style={linkStyle} onClick={() => navigate('/login')}>Entrar</span>
           <button
@@ -48,7 +48,7 @@ export default function PublicHeader() {
               cursor: 'pointer',
             }}
           >
-            Criar minha vitrine
+            Criar meu catálogo
           </button>
         </nav>
       </div>

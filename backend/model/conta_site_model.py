@@ -8,11 +8,11 @@ from util.status_conta import StatusConta
 @dataclass
 class ContaSite:
     """
-    Vitrine pública do corretor (1 por usuário com perfil corretor/vendedor).
+    Catálogo público do corretor (1 por usuário com perfil corretor/vendedor).
 
     Mapeia a tabela ``conta_site``. O ``slug`` é único e usado na rota
     pública ``/v/{slug}``. ``status`` controla a aparição pública e a ação
-    administrativa de ativar/inativar a vitrine.
+    administrativa de ativar/inativar o catálogo.
     """
 
     id: int

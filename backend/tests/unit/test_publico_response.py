@@ -1,8 +1,8 @@
-from dtos.responses.publico_response import CorretorVitrineResponse
+from dtos.responses.publico_response import CorretorCatalogoResponse
 from model.conta_site_model import ContaSite
 
 
-def test_corretor_vitrine_response_inclui_whatsapp_publico():
+def test_corretor_catalogo_response_inclui_whatsapp_publico():
     conta = ContaSite(
         id=1,
         usuario_id=10,
@@ -17,7 +17,7 @@ def test_corretor_vitrine_response_inclui_whatsapp_publico():
         cor="#d97a2b",
     )
 
-    response = CorretorVitrineResponse.de_conta(conta, qtd_imoveis_publicados=24)
+    response = CorretorCatalogoResponse.de_conta(conta, qtd_imoveis_publicados=24)
 
     assert response.whatsapp == "(11) 99812-4470"
     assert response.nome_publico == "Albuquerque Imóveis"

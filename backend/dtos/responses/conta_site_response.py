@@ -1,4 +1,4 @@
-"""Schemas de resposta do módulo de ContaSite (vitrine pública do corretor)."""
+"""Schemas de resposta do módulo de ContaSite (catálogo público do corretor)."""
 from datetime import datetime
 from typing import Optional
 
@@ -8,7 +8,7 @@ from model.conta_site_model import ContaSite
 
 
 class ContaSiteResponse(BaseModel):
-    """Representação completa de uma conta de vitrine (dono/admin)."""
+    """Representação completa de uma conta de catálogo (dono/admin)."""
 
     id: int
     usuario_id: int
@@ -20,7 +20,7 @@ class ContaSiteResponse(BaseModel):
     cidade: Optional[str] = None
     uf: Optional[str] = None
     bairro: Optional[str] = None
-    cor: str = Field(..., description="Cor de destaque da vitrine (hexadecimal)")
+    cor: str = Field(..., description="Cor de destaque do catálogo (hexadecimal)")
     logo: Optional[str] = Field(
         default=None, description="Caminho do logo em /static/uploads ou null"
     )
@@ -56,13 +56,13 @@ class ContaSiteResponse(BaseModel):
 
 class CorretorAdminResponse(BaseModel):
     """
-    Item da listagem administrativa de corretores (usuário + vitrine).
+    Item da listagem administrativa de corretores (usuário + catálogo).
 
-    Agrega dados do usuário corretor, da sua vitrine (``ContaSite``) e a
+    Agrega dados do usuário corretor, do seu catálogo (``ContaSite``) e a
     quantidade de imóveis cadastrados, para a visão de gestão do admin.
     """
 
-    conta_id: int = Field(..., description="ID da ContaSite (vitrine)")
+    conta_id: int = Field(..., description="ID da ContaSite (catálogo)")
     usuario_id: int = Field(..., description="ID do usuário corretor")
     usuario_nome: Optional[str] = Field(
         default=None, description="Nome do usuário corretor"
@@ -70,13 +70,13 @@ class CorretorAdminResponse(BaseModel):
     usuario_email: Optional[str] = Field(
         default=None, description="E-mail do usuário corretor"
     )
-    nome_publico: str = Field(..., description="Nome público da vitrine")
+    nome_publico: str = Field(..., description="Nome público do catálogo")
     slug: str = Field(..., description="Slug usado em /v/{slug}")
     cidade: Optional[str] = None
     uf: Optional[str] = None
-    status: str = Field(..., description="Status da vitrine (Ativo|Inativo)")
+    status: str = Field(..., description="Status do catálogo (Ativo|Inativo)")
     qtd_imoveis: int = Field(
-        ..., description="Quantidade de imóveis cadastrados na vitrine"
+        ..., description="Quantidade de imóveis cadastrados no catálogo"
     )
     data_cadastro: Optional[datetime] = None
     data_atualizacao: Optional[datetime] = None
@@ -102,7 +102,7 @@ class CorretorAdminResponse(BaseModel):
 
 class ContaSiteResumoResponse(BaseModel):
     """
-    Resumo público de uma vitrine, usado na home (listagem de corretores).
+    Resumo público de um catálogo, usado na home (listagem de corretores).
 
     Expõe apenas campos seguros para exibição pública — sem e-mail do
     usuário nem datas internas.
@@ -114,7 +114,7 @@ class ContaSiteResumoResponse(BaseModel):
     cidade: Optional[str] = None
     uf: Optional[str] = None
     bairro: Optional[str] = None
-    cor: str = Field(..., description="Cor de destaque da vitrine (hexadecimal)")
+    cor: str = Field(..., description="Cor de destaque do catálogo (hexadecimal)")
     logo: Optional[str] = Field(
         default=None, description="Caminho do logo em /static/uploads ou null"
     )

@@ -20,7 +20,7 @@ export default function App() {
       <Route path="/login" element={<Auth />} />
       <Route path="/recuperar-senha" element={<ForgotPassword />} />
 
-      {/* Vitrine pública do corretor */}
+      {/* Catálogo público do corretor */}
       <Route path="/v/:slug" element={<SiteLayout />}>
         <Route index element={<Catalog />} />
         <Route path="imovel/:id" element={<PropertyDetail />} />

@@ -4,7 +4,7 @@ import { colors, fonts } from '../theme.js';
 import { waLink } from '../lib/format.js';
 import Avatar from '../components/Avatar.jsx';
 
-// Casca da vitrine pública de um corretor: header + conteúdo + rodapé.
+// Casca do catálogo público de um corretor: header + conteúdo + rodapé.
 export default function SiteLayout() {
   const { slug } = useParams();
   const navigate = useNavigate();

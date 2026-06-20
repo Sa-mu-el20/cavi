@@ -1,5 +1,5 @@
 """
-Repositório de ContaSite (vitrine pública do corretor).
+Repositório de ContaSite (catálogo público do corretor).
 
 Camada de acesso a dados (SQL puro com prepared statements, sem ORM) para a
 entidade ``ContaSite``. Há no máximo uma conta por usuário corretor
@@ -77,7 +77,7 @@ def criar_tabela() -> bool:
 
 def inserir(conta: ContaSite) -> Optional[int]:
     """
-    Insere uma nova conta de vitrine.
+    Insere uma nova conta de catálogo.
 
     Args:
         conta: Objeto ContaSite a ser inserido.
@@ -109,7 +109,7 @@ def inserir(conta: ContaSite) -> Optional[int]:
 
 def atualizar(conta: ContaSite) -> bool:
     """
-    Atualiza os dados editáveis de uma conta de vitrine.
+    Atualiza os dados editáveis de uma conta de catálogo.
 
     O ``status`` não é alterado por aqui (use ``alterar_status``), e
     ``usuario_id`` é imutável.
@@ -141,7 +141,7 @@ def atualizar(conta: ContaSite) -> bool:
 
 def alterar_status(id: int, status: StatusConta) -> bool:
     """
-    Altera o status (Ativo/Inativo) de uma conta de vitrine.
+    Altera o status (Ativo/Inativo) de uma conta de catálogo.
 
     Args:
         id: ID da conta.
@@ -161,7 +161,7 @@ def alterar_status(id: int, status: StatusConta) -> bool:
 
 
 def obter_todos() -> list[ContaSite]:
-    """Retorna todas as contas de vitrine (para admin), com dados do usuário."""
+    """Retorna todas as contas de catálogo (para admin), com dados do usuário."""
     with obter_conexao() as conn:
         cursor = conn.cursor()
         cursor.execute(OBTER_TODOS)
@@ -170,7 +170,7 @@ def obter_todos() -> list[ContaSite]:
 
 
 def obter_por_id(id: int) -> Optional[ContaSite]:
-    """Retorna uma conta de vitrine pelo seu ID, ou None se não encontrada."""
+    """Retorna uma conta de catálogo pelo seu ID, ou None se não encontrada."""
     with obter_conexao() as conn:
         cursor = conn.cursor()
         cursor.execute(OBTER_POR_ID, (id,))
@@ -180,10 +180,10 @@ def obter_por_id(id: int) -> Optional[ContaSite]:
 
 def obter_por_slug(slug: str) -> Optional[ContaSite]:
     """
-    Retorna a conta de vitrine pelo slug (rota pública /v/{slug}).
+    Retorna a conta de catálogo pelo slug (rota pública /v/{slug}).
 
     Args:
-        slug: Slug único da vitrine.
+        slug: Slug único do catálogo.
 
     Returns:
         Objeto ContaSite ou None se não encontrada.
@@ -197,13 +197,13 @@ def obter_por_slug(slug: str) -> Optional[ContaSite]:
 
 def obter_por_usuario(usuario_id: int) -> Optional[ContaSite]:
     """
-    Retorna a conta de vitrine de um usuário (relação 1-para-1), ou None.
+    Retorna a conta de catálogo de um usuário (relação 1-para-1), ou None.
 
     Args:
         usuario_id: ID do usuário corretor.
 
     Returns:
-        Objeto ContaSite ou None se o usuário não tiver vitrine.
+        Objeto ContaSite ou None se o usuário não tiver catálogo.
     """
     with obter_conexao() as conn:
         cursor = conn.cursor()
@@ -213,7 +213,7 @@ def obter_por_usuario(usuario_id: int) -> Optional[ContaSite]:
 
 
 def listar_ativas() -> list[ContaSite]:
-    """Retorna apenas as contas com status Ativo (vitrine pública/home)."""
+    """Retorna apenas as contas com status Ativo (catálogo público/home)."""
     with obter_conexao() as conn:
         cursor = conn.cursor()
         cursor.execute(LISTAR_ATIVAS)
@@ -222,7 +222,7 @@ def listar_ativas() -> list[ContaSite]:
 
 
 def excluir(id: int) -> bool:
-    """Exclui uma conta de vitrine pelo ID."""
+    """Exclui uma conta de catálogo pelo ID."""
     with obter_conexao() as conn:
         cursor = conn.cursor()
         cursor.execute(EXCLUIR, (id,))

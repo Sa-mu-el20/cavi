@@ -301,7 +301,7 @@ export default function AuthPage() {
           </div>
 
           <h1 style={{ fontFamily: fonts.display, fontWeight: 400, fontSize: 28, margin: '0 0 6px' }}>
-            {cadastro ? 'Crie sua vitrine' : 'Bem-vindo de volta'}
+            {cadastro ? 'Crie seu catálogo' : 'Bem-vindo de volta'}
           </h1>
           <p style={{ fontSize: 15, color: colors.muted, margin: '0 0 26px' }}>
             {cadastro
@@ -350,7 +350,7 @@ export default function AuthPage() {
                 maxLength={15}
               />
               <Field
-                label="Nome público da vitrine"
+                label="Nome público do catálogo"
                 placeholder="Marina Imóveis"
                 value={nomePublico}
                 onChange={(e) => setNomePublico(e.target.value)}

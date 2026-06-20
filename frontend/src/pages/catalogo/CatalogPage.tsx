@@ -1,13 +1,13 @@
-// Catálogo público da vitrine (/v/:slug). Porte de cavi-react/src/pages/Catalog.jsx,
-// ligado à API real: cabeçalho via contexto do SiteLayout (GET /api/publico/vitrine/{slug})
-// e listagem paginada com filtros (GET /api/publico/vitrine/{slug}/imoveis).
+// Catálogo público do catálogo (/v/:slug). Porte de cavi-react/src/pages/Catalog.jsx,
+// ligado à API real: cabeçalho via contexto do SiteLayout (GET /api/publico/catalogo/{slug})
+// e listagem paginada com filtros (GET /api/publico/catalogo/{slug}/imoveis).
 import { useMemo, useState } from 'react'
 import { api } from '../../lib/api'
 import { useFetch } from '../../hooks/useFetch'
 import { colors, fonts } from '../../lib/theme'
 import { FinalidadeImovel, TipoImovel } from '../../lib/types'
 import type { ImovelResumo, PaginaResponse } from '../../lib/types'
-import { useVitrine } from '../../components/layout/SiteLayout'
+import { useCatalogo } from '../../components/layout/SiteLayout'
 import PropertyCard from '../../components/cavi/PropertyCard'
 import Pagination from '../../components/ui/Pagination'
 
@@ -57,7 +57,7 @@ function Select({
 }
 
 export default function CatalogPage() {
-  const { slug, vitrine } = useVitrine()
+  const { slug, catalogo } = useCatalogo()
   const [f, setF] = useState<Filtros>(FILTROS_VAZIOS)
   const [pagina, setPagina] = useState(1)
 
@@ -79,14 +79,14 @@ export default function CatalogPage() {
 
   const { data, carregando, erro } = useFetch<PaginaResponse<ImovelResumo>>(
     (signal) =>
-      api.get<PaginaResponse<ImovelResumo>>(`/publico/vitrine/${slug}/imoveis`, {
+      api.get<PaginaResponse<ImovelResumo>>(`/publico/catalogo/${slug}/imoveis`, {
         params,
         signal,
       }),
     [slug, params],
   )
 
-  const local = [vitrine.bairro, vitrine.cidade].filter(Boolean).join(', ')
+  const local = [catalogo.bairro, catalogo.cidade].filter(Boolean).join(', ')
   const itens = data?.items ?? []
   const total = data?.total ?? 0
 
@@ -118,7 +118,7 @@ export default function CatalogPage() {
               maxWidth: 680,
             }}
           >
-            {vitrine.descricao || vitrine.nome_publico}
+            {catalogo.descricao || catalogo.nome_publico}
           </h1>
           <div style={{ fontSize: 15, color: colors.mutedSoft }}>
             {carregando

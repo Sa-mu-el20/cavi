@@ -1,7 +1,7 @@
 """
 Rotas de gerenciamento de imóveis pelo CORRETOR autenticado (API JSON).
 
-Todos os endpoints são escopados à ``conta_site`` do usuário logado (vitrine do
+Todos os endpoints são escopados à ``conta_site`` do usuário logado (catálogo do
 corretor): a conta é resolvida por ``conta_site_repo.obter_por_usuario`` e cada
 imóvel só é acessível/editável se ``imovel.conta_site_id`` for igual ao
 ``id`` dessa conta (ownership). Caso contrário, 403.
@@ -103,12 +103,12 @@ def _gerar_slug(texto: str) -> str:
 
 
 def _obter_conta_do_usuario(usuario_logado: UsuarioLogado) -> ContaSite:
-    """Resolve a conta-site (vitrine) do corretor logado (404 se não existir)."""
+    """Resolve a conta-site (catálogo) do corretor logado (404 se não existir)."""
     conta = conta_site_repo.obter_por_usuario(usuario_logado.id)
     if not conta:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Você ainda não possui uma vitrine. Crie sua vitrine antes de cadastrar imóveis.",
+            detail="Você ainda não possui um catálogo. Crie seu catálogo antes de cadastrar imóveis.",
         )
     return conta
 

@@ -1,6 +1,6 @@
 // Quadrado com a inicial do corretor, na cor da marca dele.
 // Porte de cavi-react/src/components/Avatar.jsx, tipado contra o contrato real
-// (nome_publico + cor) das vitrines.
+// (nome_publico + cor) dos catálogos.
 
 interface AvatarBrand {
   nome_publico: string
