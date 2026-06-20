@@ -317,7 +317,7 @@ export default function ConfigSitePage() {
                   }}
                 >
                   <span style={{ padding: '13px 0 13px 14px', fontSize: 15, color: colors.faint }}>
-                    cavi.com.br/
+                    cavi.ifes.site/
                   </span>
                   <input
                     value={form.slug}
@@ -543,7 +543,7 @@ export default function ConfigSitePage() {
                 textOverflow: 'ellipsis',
               }}
             >
-              cavi.com.br/{slugPreview}
+              cavi.ifes.site/{slugPreview}
             </div>
             <div style={{ padding: 22 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 11, marginBottom: 18 }}>
