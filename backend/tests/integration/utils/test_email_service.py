@@ -165,9 +165,12 @@ class TestEnviarBoasVindas:
 
             # Verifica conteúdo
             call_args = mock_enviar.call_args
-            assert call_args.kwargs['assunto'] == "Bem-vindo ao Sistema"
+            assert call_args.kwargs['assunto'] == f"Bem-vindo ao {servico.app_name}"
             assert "Novo Usuario" in call_args.kwargs['html']
             assert "Bem-vindo" in call_args.kwargs['html']
+            # Parte texto-plano deve acompanhar o HTML (multipart anti-spam)
+            assert call_args.kwargs['texto']
+            assert "Novo Usuario" in call_args.kwargs['texto']
 
     def test_boas_vindas_falha_retorna_false(self):
         """Deve retornar False quando envio falha"""
