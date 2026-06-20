@@ -39,6 +39,12 @@ export default function PublicHeader() {
           <img src="/assets/logo-name-orange.svg" alt="CAVI" style={{ height: 22, display: 'block' }} />
         </Link>
         <nav style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
+          <span
+            style={linkStyle}
+            onClick={() => document.getElementById('vitrines')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Ver vitrines
+          </span>
           <span style={linkStyle} onClick={() => navigate('/login')}>
             Planos
           </span>

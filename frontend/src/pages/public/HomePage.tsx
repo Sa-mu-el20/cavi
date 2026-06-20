@@ -32,6 +32,21 @@ const PASSOS = [
   },
 ]
 
+const HERO_IMOVEIS_EXEMPLO = [
+  {
+    preco: 'R$ 890.000',
+    detalhes: '2 quartos · 78m²',
+    foto: '/assets/hero-property-apartment.jpg',
+    alt: 'Sala integrada de apartamento moderno com varanda',
+  },
+  {
+    preco: 'R$ 1.180.000',
+    detalhes: '3 quartos · 110m²',
+    foto: '/assets/hero-property-balcony.jpg',
+    alt: 'Varanda ampla de imóvel moderno com paisagismo',
+  },
+]
+
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <div
@@ -213,21 +228,8 @@ export default function HomePage() {
                 cavi.ifes.site/albuquerque
               </span>
             </div>
-            <div
-              style={{
-                height: 200,
-                background: `linear-gradient(135deg, ${colors.cream}, #e7ddcb)`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <span style={{ fontSize: 56, color: colors.faint }} aria-hidden>
-                ⌂
-              </span>
-            </div>
-            <div style={{ padding: 20 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+            <div style={{ padding: 22 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
                 <div
                   style={{
                     width: 32,
@@ -249,25 +251,27 @@ export default function HomePage() {
                 </div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-                {(
-                  [
-                    ['R$ 890.000', '2 quartos · 78m²'],
-                    ['R$ 1.180.000', '3 quartos · 110m²'],
-                  ] as [string, string][]
-                ).map(([p, d]) => (
+                {HERO_IMOVEIS_EXEMPLO.map((imovel) => (
                   <div
-                    key={p}
+                    key={imovel.preco}
                     style={{ border: `1px solid ${colors.borderSoft}`, borderRadius: 10, overflow: 'hidden' }}
                   >
-                    <div
+                    <img
+                      src={imovel.foto}
+                      alt={imovel.alt}
                       style={{
-                        height: 64,
-                        background: `linear-gradient(135deg, ${colors.cream}, #e7ddcb)`,
+                        width: '100%',
+                        height: 108,
+                        objectFit: 'cover',
+                        display: 'block',
+                        background: colors.cream,
                       }}
                     />
                     <div style={{ padding: '8px 10px' }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: colors.orange }}>{p}</div>
-                      <div style={{ fontSize: 11, color: colors.mutedSoft }}>{d}</div>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: colors.orange }}>
+                        {imovel.preco}
+                      </div>
+                      <div style={{ fontSize: 11, color: colors.mutedSoft }}>{imovel.detalhes}</div>
                     </div>
                   </div>
                 ))}
@@ -332,7 +336,10 @@ export default function HomePage() {
       </section>
 
       {/* CORRETORES (vitrines no ar) */}
-      <section style={{ maxWidth: 1200, margin: '0 auto', padding: '56px 40px 40px' }}>
+      <section
+        id="vitrines"
+        style={{ maxWidth: 1200, margin: '0 auto', padding: '56px 40px 40px', scrollMarginTop: 90 }}
+      >
         <div
           style={{
             display: 'flex',
