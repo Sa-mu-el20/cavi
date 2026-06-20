@@ -9,7 +9,7 @@ import { useFetch } from '../../hooks/useFetch'
 import { colors, fonts } from '../../lib/theme'
 import { formatarPrecoImovel, formatarArea, linkWhatsApp, urlMidia } from '../../lib/format'
 import { FinalidadeImovel } from '../../lib/types'
-import type { ImovelPublicoDetalhe } from '../../lib/types'
+import type { EnderecoImovel, ImovelPublicoDetalhe } from '../../lib/types'
 import { useVitrine } from '../../components/layout/SiteLayout'
 import Avatar from '../../components/cavi/Avatar'
 import Badge from '../../components/cavi/Badge'
@@ -35,6 +35,12 @@ function StatBox({ label, value }: { label: string; value: string | number }) {
       <div style={{ fontFamily: fonts.display, fontSize: 22, fontWeight: 500 }}>{value}</div>
     </div>
   )
+}
+
+function montarEnderecoMapa(end?: EnderecoImovel | null): string {
+  if (!end) return ''
+  const ruaNumero = [end.logradouro, end.numero].filter(Boolean).join(', ')
+  return [ruaNumero, end.bairro, end.cidade, end.uf, end.cep, 'Brasil'].filter(Boolean).join(', ')
 }
 
 export default function PropertyDetailPage() {
@@ -89,6 +95,13 @@ export default function PropertyDetailPage() {
     : ''
 
   const localResumo = end ? [end.bairro, end.cidade].filter(Boolean).join(', ') : ''
+  const enderecoMapa = montarEnderecoMapa(end)
+  const urlMapa = enderecoMapa
+    ? `https://www.google.com/maps?q=${encodeURIComponent(enderecoMapa)}&output=embed`
+    : ''
+  const urlMapaExterno = enderecoMapa
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(enderecoMapa)}`
+    : ''
 
   const msg = `Olá! Tenho interesse no imóvel ${im.codigo ?? `#${im.id}`} — ${im.titulo}`
   const wa = linkWhatsApp(vitrine.whatsapp, msg)
@@ -189,37 +202,65 @@ export default function PropertyDetailPage() {
               >
                 <span style={{ color: colors.orange }}>⚲</span> {linhaEndereco || '—'}
               </div>
-              <div
-                style={{
-                  height: 240,
-                  borderRadius: 14,
-                  border: `1px solid ${colors.border}`,
-                  backgroundImage:
-                    'linear-gradient(#eee9dd 1px,transparent 1px),linear-gradient(90deg,#eee9dd 1px,transparent 1px)',
-                  backgroundSize: '34px 34px',
-                  backgroundColor: colors.cream,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                }}
-              >
+              {urlMapa ? (
                 <div
                   style={{
-                    width: 18,
-                    height: 18,
-                    borderRadius: '50%',
-                    background: colors.orange,
-                    boxShadow: '0 0 0 8px rgba(217,122,43,0.18)',
-                    position: 'absolute',
-                    left: '46%',
-                    top: '42%',
+                    borderRadius: 14,
+                    border: `1px solid ${colors.border}`,
+                    overflow: 'hidden',
+                    background: colors.cream,
                   }}
-                />
-                <span style={{ position: 'absolute', bottom: 14, right: 16, fontSize: 12, color: colors.faint }}>
-                  Mapa ilustrativo
-                </span>
-              </div>
+                >
+                  <iframe
+                    title={`Mapa de ${linhaEndereco || im.titulo}`}
+                    src={urlMapa}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    style={{
+                      width: '100%',
+                      height: 260,
+                      border: 0,
+                      display: 'block',
+                    }}
+                  />
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'flex-end',
+                      padding: '10px 12px',
+                      borderTop: `1px solid ${colors.borderSoft}`,
+                      background: '#fff',
+                    }}
+                  >
+                    <a
+                      href={urlMapaExterno}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{
+                        color: colors.orange,
+                        fontSize: 13,
+                        fontWeight: 700,
+                        textDecoration: 'none',
+                      }}
+                    >
+                      Abrir no Google Maps
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  style={{
+                    borderRadius: 14,
+                    border: `1px solid ${colors.border}`,
+                    background: colors.cream,
+                    padding: 28,
+                    color: colors.mutedSoft,
+                    fontSize: 14,
+                  }}
+                >
+                  Endereço insuficiente para exibir o mapa.
+                </div>
+              )}
             </div>
           )}
         </div>
