@@ -76,7 +76,15 @@ export default function SiteLayout() {
   const local = [vitrine.bairro, vitrine.cidade].filter(Boolean).join(', ')
 
   return (
-    <div className="cavi-root" style={{ minHeight: '100vh', background: colors.bg }}>
+    <div
+      className="cavi-root"
+      style={{
+        minHeight: '100vh',
+        background: colors.bg,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <header
         style={{
           position: 'sticky',
@@ -164,7 +172,9 @@ export default function SiteLayout() {
         </div>
       </header>
 
-      <Outlet context={{ slug, vitrine } satisfies VitrineContext} />
+      <div style={{ flex: 1 }}>
+        <Outlet context={{ slug, vitrine } satisfies VitrineContext} />
+      </div>
 
       <footer style={{ background: colors.ink, marginTop: 64 }}>
         <div
