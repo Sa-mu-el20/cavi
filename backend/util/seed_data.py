@@ -23,14 +23,14 @@ from util.datetime_util import agora
 # Documentada aqui para facilitar o teste manual das páginas protegidas.
 SENHA_PADRAO_SEED = "1234aA@#"
 
-# Caminho do arquivo de seed de usuários (raiz_do_projeto/data/usuarios_seed.json).
+# Caminho do arquivo de seed de usuários (raiz_do_projeto/data/admin_seed.json).
 # Este arquivo é gerado/atualizado pelo scripts/configurar_projeto.py.
-CAMINHO_SEED_USUARIOS = Path(__file__).resolve().parent.parent / "data" / "usuarios_seed.json"
+CAMINHO_SEED_USUARIOS = Path(__file__).resolve().parent.parent / "data" / "admin_seed.json"
 
 
 def _ler_usuarios_do_json() -> list[dict]:
     """
-    Lê os usuários definidos em data/usuarios_seed.json.
+    Lê os usuários definidos em data/admin_seed.json.
 
     Returns:
         Lista de dicionários de usuários. Retorna lista vazia se o arquivo
@@ -75,7 +75,7 @@ def carregar_usuarios_seed():
     """
     Carrega usuários padrão no banco de dados.
 
-    Prioriza os usuários definidos em data/usuarios_seed.json (gerado pelo
+    Prioriza os usuários definidos em data/admin_seed.json (gerado pelo
     scripts/configurar_projeto.py). Caso o arquivo não exista ou esteja vazio/inválido,
     gera automaticamente 1 usuário para cada perfil do enum Perfil como fallback.
 

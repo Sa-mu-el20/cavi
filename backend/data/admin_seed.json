@@ -1,0 +1,10 @@
+{
+  "usuarios": [
+    {
+      "nome": "Administrador Padrão",
+      "email": "cavi@ifes.site",
+      "senha": "Admin!123",
+      "perfil": "Administrador"
+    }
+  ]
+}
