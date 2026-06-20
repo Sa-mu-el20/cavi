@@ -45,6 +45,18 @@ const HERO_IMOVEIS_EXEMPLO = [
     foto: '/assets/hero-property-balcony.jpg',
     alt: 'Varanda ampla de imóvel moderno com paisagismo',
   },
+  {
+    preco: 'R$ 640.000',
+    detalhes: '1 quarto · 52m²',
+    foto: '/assets/hero-property-studio.jpg',
+    alt: 'Apartamento compacto com cozinha integrada e quarto ao fundo',
+  },
+  {
+    preco: 'R$ 1.650.000',
+    detalhes: '4 quartos · 180m²',
+    foto: '/assets/hero-property-pool.jpg',
+    alt: 'Área externa de imóvel premium com piscina e deck',
+  },
 ]
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -250,7 +262,38 @@ export default function HomePage() {
                   Albuquerque Imóveis
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+              <div
+                style={{
+                  height: 38,
+                  border: `1px solid ${colors.borderSoft}`,
+                  borderRadius: 10,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 9,
+                  padding: '0 12px',
+                  color: colors.mutedSoft,
+                  fontSize: 12,
+                  marginBottom: 14,
+                  background: '#fffdfa',
+                }}
+              >
+                <svg
+                  aria-hidden="true"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m16.2 16.2 4 4" />
+                </svg>
+                <span>Buscar por bairro ou código</span>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: 12 }}>
                 {HERO_IMOVEIS_EXEMPLO.map((imovel) => (
                   <div
                     key={imovel.preco}
