@@ -232,7 +232,6 @@ export default function DashboardCorretorPage() {
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {atalho('＋', 'Cadastrar imóvel', () => navigate('/app/imoveis/novo'))}
-              {atalho('🏠', 'Meus imóveis', () => navigate('/app/imoveis'))}
               {atalho('⚙', 'Configurar meu site', () => navigate('/app/config'))}
               {slug &&
                 atalho('↗', 'Ver minha vitrine', () => navigate(`/v/${slug}`))}
