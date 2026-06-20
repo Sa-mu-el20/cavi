@@ -71,6 +71,26 @@ export const esqueciSenhaSchema = z.object({
 })
 export type EsqueciSenhaForm = z.infer<typeof esqueciSenhaSchema>
 
+// ===== Edição do próprio perfil (espelha EditarPerfilDTO) =====
+export const editarPerfilSchema = z.object({
+  nome: nomePessoaSchema,
+  email: emailSchema,
+})
+export type EditarPerfilForm = z.infer<typeof editarPerfilSchema>
+
+// ===== Alteração da própria senha (espelha AlterarSenhaDTO) =====
+export const alterarSenhaSchema = z
+  .object({
+    senha_atual: z.string().min(1, 'Informe a senha atual'),
+    senha_nova: senhaSchema,
+    confirmar_senha: z.string().min(1, 'Confirme a nova senha'),
+  })
+  .refine((d) => d.senha_nova === d.confirmar_senha, {
+    message: 'As senhas não coincidem',
+    path: ['confirmar_senha'],
+  })
+export type AlterarSenhaForm = z.infer<typeof alterarSenhaSchema>
+
 export const redefinirSenhaSchema = z
   .object({
     senha: senhaSchema,

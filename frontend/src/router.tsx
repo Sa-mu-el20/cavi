@@ -28,6 +28,7 @@ import DashboardCorretorPage from './pages/corretor/DashboardCorretorPage'
 import ImoveisListaPage from './pages/corretor/ImoveisListaPage'
 import ImovelFormPage from './pages/corretor/ImovelFormPage'
 import ConfigSitePage from './pages/corretor/ConfigSitePage'
+import EditPerfilPage from './pages/corretor/EditPerfilPage'
 
 // Administração (/admin)
 import AdminCorretoresPage from './pages/admin/AdminCorretoresPage'
@@ -66,6 +67,7 @@ export const router = createBrowserRouter([
               { path: 'imoveis/novo', element: <ImovelFormPage /> },
               { path: 'imoveis/:id/editar', element: <ImovelFormPage /> },
               { path: 'config', element: <ConfigSitePage /> },
+              { path: 'perfil', element: <EditPerfilPage /> },
             ],
           },
         ],

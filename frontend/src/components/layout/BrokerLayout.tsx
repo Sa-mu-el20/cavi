@@ -154,6 +154,9 @@ export default function BrokerLayout() {
           <Item to="/app/config" icon="⚙">
             Configurar site
           </Item>
+          <Item to="/app/perfil" icon="⊙">
+            Meu perfil
+          </Item>
         </nav>
         <div style={{ height: 1, background: colors.borderSoft, margin: '16px 8px' }} />
         {conta?.slug && (
