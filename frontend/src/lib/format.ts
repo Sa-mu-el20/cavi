@@ -63,6 +63,17 @@ export function linkWhatsApp(numero?: string | null, msg?: string): string {
   return 'https://wa.me/55' + d + (msg ? '?text=' + encodeURIComponent(msg) : '')
 }
 
+/**
+ * Normaliza o caminho de uma mídia servida pelo backend para uso em `src`.
+ * `url_arquivo` vem como "static/uploads/..." (sem barra inicial); sem o prefixo
+ * "/" o navegador resolve relativo à rota atual (ex.: /v/slug/imovel/static/...),
+ * quebrando a imagem. URLs absolutas (http/https ou já com "/") passam intactas.
+ */
+export function urlMidia(caminho?: string | null): string {
+  if (!caminho) return ''
+  return caminho.startsWith('/') || caminho.startsWith('http') ? caminho : `/${caminho}`
+}
+
 /** Bytes -> "1,2 MB". */
 export function formatarBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`

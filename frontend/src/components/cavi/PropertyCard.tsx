@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { colors, fonts } from '../../lib/theme'
-import { formatarPrecoImovel } from '../../lib/format'
+import { formatarPrecoImovel, urlMidia } from '../../lib/format'
 import { FinalidadeImovel, TipoImovel } from '../../lib/types'
 import type { ImovelResumo } from '../../lib/types'
 import Badge from './Badge'
@@ -45,7 +45,7 @@ export default function PropertyCard({ imovel, slug }: PropertyCardProps) {
       <div style={{ position: 'relative', background: colors.cream }}>
         {imovel.foto_principal ? (
           <img
-            src={imovel.foto_principal}
+            src={urlMidia(imovel.foto_principal)}
             alt={imovel.titulo}
             style={{ width: '100%', height: 190, objectFit: 'cover', display: 'block' }}
           />

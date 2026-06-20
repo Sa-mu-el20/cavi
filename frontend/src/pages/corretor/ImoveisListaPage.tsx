@@ -9,7 +9,7 @@ import { api } from '../../lib/api'
 import { useFetch } from '../../hooks/useFetch'
 import { toast, useUIStore } from '../../store/uiStore'
 import { colors, fonts } from '../../lib/theme'
-import { formatarPrecoImovel } from '../../lib/format'
+import { formatarPrecoImovel, urlMidia } from '../../lib/format'
 import { StatusImovel, type ImovelResumo, type PaginaResponse } from '../../lib/types'
 import Badge from '../../components/cavi/Badge'
 import Pagination from '../../components/ui/Pagination'
@@ -280,7 +280,7 @@ export default function ImoveisListaPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0 }}>
                   {im.foto_principal ? (
                     <img
-                      src={im.foto_principal}
+                      src={urlMidia(im.foto_principal)}
                       alt=""
                       style={{
                         width: 66,

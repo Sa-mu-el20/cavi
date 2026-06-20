@@ -7,7 +7,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { api } from '../../lib/api'
 import { useFetch } from '../../hooks/useFetch'
 import { colors, fonts } from '../../lib/theme'
-import { formatarPrecoImovel, formatarArea, linkWhatsApp } from '../../lib/format'
+import { formatarPrecoImovel, formatarArea, linkWhatsApp, urlMidia } from '../../lib/format'
 import { FinalidadeImovel } from '../../lib/types'
 import type { ImovelPublicoDetalhe } from '../../lib/types'
 import { useVitrine } from '../../components/layout/SiteLayout'
@@ -76,7 +76,7 @@ export default function PropertyDetailPage() {
   })
   const temFotos = fotos.length > 0
   const idxSeguro = Math.min(idx, Math.max(fotos.length - 1, 0))
-  const mainSrc = temFotos ? fotos[idxSeguro].url_arquivo : undefined
+  const mainSrc = temFotos ? urlMidia(fotos[idxSeguro].url_arquivo) : undefined
 
   const end = im.endereco
   const linhaEndereco = end
@@ -140,7 +140,7 @@ export default function PropertyDetailPage() {
               {fotos.map((foto, i) => (
                 <img
                   key={foto.id}
-                  src={foto.url_arquivo}
+                  src={urlMidia(foto.url_arquivo)}
                   alt={foto.legenda ?? im.titulo}
                   onClick={() => setIdx(i)}
                   style={{

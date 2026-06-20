@@ -10,7 +10,7 @@ import StatCard from '../../components/cavi/StatCard'
 import Spinner from '../../components/ui/Spinner'
 import { useFetch } from '../../hooks/useFetch'
 import { api } from '../../lib/api'
-import { formatarPrecoImovel } from '../../lib/format'
+import { formatarPrecoImovel, urlMidia } from '../../lib/format'
 import { useAuthStore } from '../../store/authStore'
 import { colors, fonts } from '../../lib/theme'
 import { StatusImovel } from '../../lib/types'
@@ -176,7 +176,7 @@ export default function DashboardCorretorPage() {
                   >
                     {im.foto_principal ? (
                       <img
-                        src={im.foto_principal}
+                        src={urlMidia(im.foto_principal)}
                         alt={im.titulo}
                         style={{ width: 62, height: 48, objectFit: 'cover', borderRadius: 8, flex: 'none' }}
                       />
