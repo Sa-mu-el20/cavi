@@ -237,7 +237,7 @@ export default function HomePage() {
                 />
               ))}
               <span style={{ marginLeft: 12, fontSize: 12, color: colors.faint }}>
-                cavi.ifes.site/albuquerque
+                cavi.ifes.site/v/albuquerque
               </span>
             </div>
             <div style={{ padding: 22 }}>

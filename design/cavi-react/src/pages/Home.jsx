@@ -64,7 +64,7 @@ export default function Home() {
           <div style={{ background: '#fff', border: `1px solid ${colors.border}`, borderRadius: 18, boxShadow: '0 30px 60px -28px rgba(60,45,25,0.30)', overflow: 'hidden' }}>
             <div style={{ height: 40, background: colors.cream, borderBottom: `1px solid ${colors.border}`, display: 'flex', alignItems: 'center', gap: 7, padding: '0 16px' }}>
               {[0, 1, 2].map((i) => <span key={i} style={{ width: 10, height: 10, borderRadius: '50%', background: '#e4ddcd' }} />)}
-              <span style={{ marginLeft: 12, fontSize: 12, color: colors.faint }}>cavi.ifes.site/albuquerque</span>
+              <span style={{ marginLeft: 12, fontSize: 12, color: colors.faint }}>cavi.ifes.site/v/albuquerque</span>
             </div>
             <img src="/assets/prop-02.png" alt="" style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }} />
             <div style={{ padding: 20 }}>

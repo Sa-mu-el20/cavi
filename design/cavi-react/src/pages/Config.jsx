@@ -36,7 +36,7 @@ export default function Config() {
               <div>
                 <Label>Endereço da vitrine</Label>
                 <div style={{ display: 'flex', alignItems: 'center', border: `1px solid ${colors.field}`, borderRadius: 10, overflow: 'hidden', background: '#fff' }}>
-                  <span style={{ padding: '13px 0 13px 14px', fontSize: 15, color: colors.faint }}>cavi.ifes.site/</span>
+                  <span style={{ padding: '13px 0 13px 14px', fontSize: 15, color: colors.faint }}>cavi.ifes.site/v/</span>
                   <input defaultValue={broker.slug} style={{ flex: 1, padding: '13px 14px 13px 2px', border: 'none', fontSize: 15, background: 'transparent', outline: 'none' }} />
                 </div>
               </div>
@@ -86,7 +86,7 @@ export default function Config() {
         <div style={{ position: 'sticky', top: 34 }}>
           <div style={{ fontSize: 13, fontWeight: 600, color: colors.mutedSoft, marginBottom: 10 }}>Pré-visualização</div>
           <div style={{ background: '#fff', border: `1px solid ${colors.border}`, borderRadius: 16, overflow: 'hidden', boxShadow: '0 18px 44px -28px rgba(60,45,25,0.35)' }}>
-            <div style={{ height: 34, background: colors.cream, borderBottom: `1px solid ${colors.border}`, display: 'flex', alignItems: 'center', padding: '0 14px', fontSize: 12, color: colors.faint }}>cavi.ifes.site/{broker.slug}</div>
+            <div style={{ height: 34, background: colors.cream, borderBottom: `1px solid ${colors.border}`, display: 'flex', alignItems: 'center', padding: '0 14px', fontSize: 12, color: colors.faint }}>cavi.ifes.site/v/{broker.slug}</div>
             <div style={{ padding: 22 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 11, marginBottom: 18 }}>
                 <div style={{ width: 40, height: 40, borderRadius: 10, background: cor, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 18 }}>{broker.site[0]}</div>
