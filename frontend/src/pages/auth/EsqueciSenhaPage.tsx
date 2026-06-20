@@ -126,23 +126,32 @@ export default function EsqueciSenhaPage() {
             <div>
               <div
                 style={{
-                  width: 52,
-                  height: 52,
-                  borderRadius: 14,
-                  background: '#e6eed6',
-                  color: colors.greenText,
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 26,
-                  marginBottom: 20,
+                  gap: 14,
+                  marginBottom: 12,
                 }}
               >
-                ✓
+                <div
+                  style={{
+                    width: 52,
+                    height: 52,
+                    flex: '0 0 52px',
+                    borderRadius: 14,
+                    background: '#e6eed6',
+                    color: colors.greenText,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: 26,
+                  }}
+                >
+                  ✓
+                </div>
+                <h1 style={{ fontFamily: fonts.display, fontWeight: 400, fontSize: 28, lineHeight: 1.2, margin: 0 }}>
+                  Verifique seu e-mail
+                </h1>
               </div>
-              <h1 style={{ fontFamily: fonts.display, fontWeight: 400, fontSize: 28, margin: '0 0 6px' }}>
-                Verifique seu e-mail
-              </h1>
               <p style={{ fontSize: 15, color: colors.muted, lineHeight: 1.6, margin: '0 0 26px' }}>
                 {MENSAGEM_GENERICA}
               </p>
