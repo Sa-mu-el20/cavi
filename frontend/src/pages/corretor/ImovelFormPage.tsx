@@ -350,8 +350,29 @@ export default function ImovelFormPage() {
   // ---------------------------------------------------------------------------
   if (carregando) {
     return (
-      <div style={{ padding: '60px 44px', color: colors.mutedSoft, fontFamily: fonts.body }}>
-        <span className="spinner-border spinner-border-sm me-2" /> Carregando imóvel...
+      <div
+        style={{
+          padding: '60px 44px',
+          color: colors.mutedSoft,
+          fontFamily: fonts.body,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 10,
+        }}
+      >
+        <span
+          aria-hidden
+          style={{
+            display: 'inline-block',
+            width: 16,
+            height: 16,
+            border: `2px solid ${colors.border}`,
+            borderTopColor: colors.orange,
+            borderRadius: '50%',
+            animation: 'cavi-spin 0.7s linear infinite',
+          }}
+        />
+        Carregando imóvel...
       </div>
     )
   }
@@ -657,7 +678,18 @@ export default function ImovelFormPage() {
                 }}
               >
                 {enviandoFoto ? (
-                  <span className="spinner-border spinner-border-sm" />
+                  <span
+                    aria-hidden
+                    style={{
+                      display: 'inline-block',
+                      width: 18,
+                      height: 18,
+                      border: `2px solid ${colors.border}`,
+                      borderTopColor: colors.orange,
+                      borderRadius: '50%',
+                      animation: 'cavi-spin 0.7s linear infinite',
+                    }}
+                  />
                 ) : (
                   <>
                     <span style={{ fontSize: 22 }}>＋</span>

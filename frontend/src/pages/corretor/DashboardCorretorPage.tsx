@@ -195,7 +195,7 @@ export default function DashboardCorretorPage() {
                           fontSize: 18,
                         }}
                       >
-                        <i className="bi bi-image" />
+                        <span aria-hidden>◳</span>
                       </div>
                     )}
                     <div style={{ flex: 1, minWidth: 0 }}>

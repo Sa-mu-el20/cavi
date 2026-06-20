@@ -168,7 +168,7 @@ export default function ImoveisListaPage() {
               color: colors.faint,
             }}
           >
-            <i className="bi bi-search" />
+            <span aria-hidden>⌕</span>
           </span>
           <input
             value={busca}
@@ -304,7 +304,7 @@ export default function ImoveisListaPage() {
                         color: colors.faint,
                       }}
                     >
-                      <i className="bi bi-house" />
+                      <span aria-hidden>⌂</span>
                     </div>
                   )}
                   <div style={{ minWidth: 0 }}>

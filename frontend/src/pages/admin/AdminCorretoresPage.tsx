@@ -232,7 +232,7 @@ export default function AdminCorretoresPage() {
         ) : itens.length === 0 ? (
           <div style={{ padding: 32 }}>
             <EmptyState
-              icon="shop"
+              icon="◳"
               titulo="Nenhum corretor encontrado"
               mensagem="Nenhuma vitrine corresponde aos filtros aplicados."
             />

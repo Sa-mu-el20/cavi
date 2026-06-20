@@ -1,178 +1,82 @@
-/* Estilos customizados portados do WebStandard (static/css/custom.css). */
-
-:root {
-  --primary-color: #0d6efd;
-  --secondary-color: #6c757d;
-  --success-color: #198754;
-  --danger-color: #dc3545;
-  --warning-color: #ffc107;
-  --info-color: #0dcaf0;
-  --light-color: #f8f9fa;
-  --dark-color: #212529;
-}
-
-/* ===== UTILITY CLASSES ===== */
-
-.shadow-hover {
-  transition: box-shadow 0.3s ease-in-out;
-}
-.shadow-hover:hover {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
-
-.fs-hero {
-  font-size: 15rem;
-}
-
-.resize-none {
-  resize: none;
-}
-
-.object-top {
-  object-position: top;
-}
-
-/* Error pages */
-.error-code {
-  font-size: 10rem;
-  font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-.error-container {
-  padding: 60px 15px;
-}
-.error-traceback {
-  max-height: 400px;
-}
-
-/* Theme selection cards */
-.tema-card-btn {
-  transition: all 0.3s;
-  outline: 1px solid var(--secondary-color);
-  outline-offset: -1px;
-}
-.tema-card-btn:hover:not(.tema-selected) {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-.tema-card-btn.tema-selected {
-  outline: 6px solid var(--primary-color);
-}
-
-.preview-120 {
-  width: 120px;
-  height: 120px;
-  overflow: hidden;
-}
-
-/* Text truncation utilities */
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.5;
-  max-height: 4.5em;
-}
-
-/* ===== BTN-GROUP RESPONSIVO ===== */
-.btn-group-responsive {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-.btn-group-responsive > .btn,
-.btn-group-responsive > .btn-check + .btn {
-  border-radius: 0;
-}
-.btn-group-responsive > .btn:first-of-type,
-.btn-group-responsive > .btn-check:first-of-type + .btn {
-  border-top-left-radius: var(--bs-btn-border-radius);
-  border-top-right-radius: var(--bs-btn-border-radius);
-}
-.btn-group-responsive > .btn:last-of-type,
-.btn-group-responsive > .btn-check:last-of-type + .btn {
-  border-bottom-left-radius: var(--bs-btn-border-radius);
-  border-bottom-right-radius: var(--bs-btn-border-radius);
-}
-@media (min-width: 576px) {
-  .btn-group-responsive {
-    flex-direction: row;
-  }
-  .btn-group-responsive > .btn,
-  .btn-group-responsive > .btn-check + .btn {
-    border-radius: 0;
-    flex: 1;
-  }
-  .btn-group-responsive > .btn:first-of-type,
-  .btn-group-responsive > .btn-check:first-of-type + .btn {
-    border-top-left-radius: var(--bs-btn-border-radius);
-    border-bottom-left-radius: var(--bs-btn-border-radius);
-    border-top-right-radius: 0;
-  }
-  .btn-group-responsive > .btn:last-of-type,
-  .btn-group-responsive > .btn-check:last-of-type + .btn {
-    border-top-right-radius: var(--bs-btn-border-radius);
-    border-bottom-right-radius: var(--bs-btn-border-radius);
-    border-bottom-left-radius: 0;
-  }
-}
-
-/* Toast container (bottom-right) */
-#toast-container {
-  bottom: 20px;
-  top: auto;
-  right: 20px;
-  left: auto;
-  z-index: 1090;
-}
-
 /* =====================================================================
-   CAVI — estética da vitrine (porte de cavi-react/src/index.css).
-   Escopado por .cavi-root para conviver com as telas Bootstrap legadas
-   sem quebrá-las. Os layouts/components novos vivem dentro de .cavi-root.
+   CAVI — base global (porte de design/cavi-react/src/index.css).
+   Aplica reset + tipografia da estética CAVI globalmente, sem Bootstrap.
+   Fonte do corpo: 'Hanken Grotesk'; títulos/números usam 'Jost' via
+   inline styles (theme.fonts.display) nos componentes.
    ===================================================================== */
 
-.cavi-root {
+* {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
   font-family: 'Hanken Grotesk', sans-serif;
   color: #1f1b18;
   background: #faf8f3;
   -webkit-font-smoothing: antialiased;
 }
-.cavi-root *,
-.cavi-root *::before,
-.cavi-root *::after {
-  box-sizing: border-box;
-}
-.cavi-root a {
+
+a {
   color: inherit;
 }
-.cavi-root ::selection {
+
+::selection {
   background: #f4d8bd;
 }
-.cavi-root input,
-.cavi-root select,
-.cavi-root textarea,
-.cavi-root button {
+
+input,
+select,
+textarea,
+button {
   font-family: 'Hanken Grotesk', sans-serif;
 }
-.cavi-root input:focus,
-.cavi-root select:focus,
-.cavi-root textarea:focus {
+
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
   border-color: #d97a2b !important;
 }
-.cavi-root ::placeholder {
+
+/* Seta dos selects: arrow custom (SVG) afastado da borda direita.
+   !important vence o `background:'#fff'` inline (shorthand zera background-image)
+   e o padding inline, padronizando o espaçamento da seta em todos os selects. */
+select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231f1b18' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  padding-right: 42px !important;
+}
+
+::placeholder {
   color: #b3ab9d;
 }
-.cavi-root ::-webkit-scrollbar {
+
+::-webkit-scrollbar {
   width: 11px;
   height: 11px;
 }
-.cavi-root ::-webkit-scrollbar-thumb {
+
+::-webkit-scrollbar-thumb {
   background: #ddd6c8;
   border-radius: 6px;
   border: 3px solid #faf8f3;
+}
+
+/* Spinner CSS da estética CAVI (rotação usada pelos indicadores de carga). */
+@keyframes cavi-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* .cavi-root permanece como hook semântico nos layouts; sem estilo próprio
+   pois o reset acima já é global. Mantido como no-op para não exigir a
+   remoção da classe nos layouts já portados. */
+.cavi-root {
+  font-family: 'Hanken Grotesk', sans-serif;
 }

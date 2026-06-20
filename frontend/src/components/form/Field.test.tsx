@@ -11,10 +11,12 @@ describe('TextField', () => {
     expect(onChange).toHaveBeenCalledWith('João')
   })
 
-  it('exibe erro e marca o input como inválido', () => {
+  it('exibe erro e aplica borda de erro no input', () => {
     render(<TextField label="Email" name="email" value="x" onChange={() => {}} erro="E-mail inválido" />)
     expect(screen.getByText('E-mail inválido')).toBeInTheDocument()
-    expect(screen.getByLabelText('Email').className).toContain('is-invalid')
+    // Borda vermelha de erro aplicada via estilo inline (CSS-in-JS, sem Bootstrap).
+    // jsdom serializa #c0392b como rgb(192, 57, 43).
+    expect(screen.getByLabelText('Email').getAttribute('style')).toContain('rgb(192, 57, 43)')
   })
 
   it('mostra ajuda quando não há erro', () => {

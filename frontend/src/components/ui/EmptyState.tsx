@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react'
+import { colors, fonts } from '../../lib/theme'
 
-// Estado vazio reutilizável (espelha templates/macros/empty_states.html).
+// Estado vazio reutilizável (estética CAVI, sem Bootstrap).
+// `icon` é um glyph unicode (ex.: ◳, ⚠, ⌂). Default neutro.
 export default function EmptyState({
-  icon = 'inbox',
+  icon = '◳',
   titulo,
   mensagem,
   children,
@@ -13,10 +15,24 @@ export default function EmptyState({
   children?: ReactNode
 }) {
   return (
-    <div className="text-center text-muted py-5">
-      <i className={`bi bi-${icon}`} style={{ fontSize: '3rem' }} />
-      <h5 className="mt-3">{titulo}</h5>
-      {mensagem && <p className="mb-3">{mensagem}</p>}
+    <div style={{ textAlign: 'center', padding: '48px 0', fontFamily: fonts.body }}>
+      <div aria-hidden style={{ fontSize: 48, lineHeight: 1, color: colors.faint }}>
+        {icon}
+      </div>
+      <h5
+        style={{
+          fontFamily: fonts.display,
+          fontWeight: 500,
+          fontSize: 20,
+          color: colors.ink,
+          margin: '16px 0 6px',
+        }}
+      >
+        {titulo}
+      </h5>
+      {mensagem && (
+        <p style={{ color: colors.muted, fontSize: 15, margin: '0 0 18px' }}>{mensagem}</p>
+      )}
       {children}
     </div>
   )

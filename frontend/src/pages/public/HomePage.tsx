@@ -210,7 +210,7 @@ export default function HomePage() {
                 />
               ))}
               <span style={{ marginLeft: 12, fontSize: 12, color: colors.faint }}>
-                dwa.ifes.site/albuquerque
+                cavi.ifes.site/albuquerque
               </span>
             </div>
             <div
@@ -222,11 +222,9 @@ export default function HomePage() {
                 justifyContent: 'center',
               }}
             >
-              <i
-                className="bi bi-house-door"
-                style={{ fontSize: 56, color: colors.faint }}
-                aria-hidden
-              />
+              <span style={{ fontSize: 56, color: colors.faint }} aria-hidden>
+                ⌂
+              </span>
             </div>
             <div style={{ padding: 20 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
@@ -371,13 +369,13 @@ export default function HomePage() {
           <Spinner texto="Carregando vitrines..." />
         ) : erro ? (
           <EmptyState
-            icon="exclamation-triangle"
+            icon="⚠"
             titulo="Não foi possível carregar as vitrines"
             mensagem={erro.message}
           />
         ) : (corretores?.length ?? 0) === 0 ? (
           <EmptyState
-            icon="shop"
+            icon="◳"
             titulo="Nenhuma vitrine publicada ainda"
             mensagem="Seja o primeiro corretor a publicar sua vitrine na CAVI."
           />

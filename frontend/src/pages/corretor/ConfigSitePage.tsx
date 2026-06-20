@@ -180,7 +180,7 @@ export default function ConfigSitePage() {
     return (
       <div style={{ padding: '34px 44px', maxWidth: 980 }}>
         <EmptyState
-          icon="shop"
+          icon="◳"
           titulo={naoCadastrada ? 'Vitrine ainda não cadastrada' : 'Não foi possível carregar'}
           mensagem={
             naoCadastrada
@@ -189,7 +189,20 @@ export default function ConfigSitePage() {
           }
         >
           {!naoCadastrada && (
-            <button type="button" className="btn btn-outline-primary" onClick={recarregar}>
+            <button
+              type="button"
+              onClick={recarregar}
+              style={{
+                background: 'transparent',
+                color: colors.orange,
+                border: `1px solid ${colors.orange}`,
+                borderRadius: 10,
+                padding: '10px 18px',
+                fontWeight: 600,
+                fontSize: 14,
+                cursor: 'pointer',
+              }}
+            >
               Tentar novamente
             </button>
           )}

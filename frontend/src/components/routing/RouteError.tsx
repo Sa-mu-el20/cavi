@@ -1,7 +1,9 @@
+import type { CSSProperties } from 'react'
 import { Link, useRouteError, isRouteErrorResponse } from 'react-router-dom'
+import { colors, fonts } from '../../lib/theme'
 
 // errorElement da rota raiz: isola crashes de render para que um erro em uma
-// página não derrube o app inteiro (white screen). Espelha errors/500.html.
+// página não derrube o app inteiro (white screen).
 export default function RouteError() {
   const error = useRouteError()
 
@@ -16,22 +18,61 @@ export default function RouteError() {
   }
 
   return (
-    <div className="container">
-      <div className="error-container text-center">
-        <div className="error-code text-danger">
-          <i className="bi bi-exclamation-triangle" />
-        </div>
-        <h2 className="mb-3">{titulo}</h2>
-        <p className="text-muted mb-4">{detalhe}</p>
-        <div className="d-flex gap-2 justify-content-center">
-          <Link to="/" className="btn btn-primary">
-            <i className="bi bi-house me-2" /> Início
-          </Link>
-          <button className="btn btn-outline-secondary" onClick={() => window.location.reload()}>
-            <i className="bi bi-arrow-clockwise me-2" /> Recarregar
-          </button>
-        </div>
+    <div
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        padding: 40,
+        background: colors.bg,
+        fontFamily: fonts.body,
+      }}
+    >
+      <div aria-hidden style={{ fontSize: 64, lineHeight: 1, color: colors.orange }}>
+        ⚠
+      </div>
+      <h2 style={{ fontFamily: fonts.display, fontWeight: 500, fontSize: 28, margin: '18px 0 8px' }}>
+        {titulo}
+      </h2>
+      <p style={{ color: colors.muted, fontSize: 16, margin: '0 0 28px', maxWidth: 480 }}>
+        {detalhe}
+      </p>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <Link to="/" style={botaoPrimario}>
+          <span aria-hidden>⌂</span> Início
+        </Link>
+        <button onClick={() => window.location.reload()} style={botaoSecundario}>
+          Recarregar
+        </button>
       </div>
     </div>
   )
+}
+
+const botaoPrimario: CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: 8,
+  background: colors.orange,
+  color: '#fff',
+  borderRadius: 10,
+  padding: '12px 22px',
+  fontWeight: 600,
+  fontSize: 15,
+  textDecoration: 'none',
+}
+
+const botaoSecundario: CSSProperties = {
+  background: 'transparent',
+  color: colors.muted,
+  border: `1px solid ${colors.border}`,
+  borderRadius: 10,
+  padding: '12px 22px',
+  fontWeight: 600,
+  fontSize: 15,
+  fontFamily: fonts.body,
+  cursor: 'pointer',
 }
