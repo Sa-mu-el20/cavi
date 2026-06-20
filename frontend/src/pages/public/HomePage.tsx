@@ -408,7 +408,7 @@ export default function HomePage() {
           {(corretores?.length ?? 0) > 0 && (
             <span
               style={{ fontSize: 15, color: colors.muted, cursor: 'pointer' }}
-              onClick={verPrimeiraVitrine}
+              onClick={() => navigate('/vitrines')}
             >
               Ver todas →
             </span>

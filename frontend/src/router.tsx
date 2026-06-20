@@ -12,6 +12,7 @@ import AdminLayout from './components/layout/AdminLayout'
 
 // Páginas públicas / institucionais
 import HomePage from './pages/public/HomePage'
+import VitrinesPage from './pages/public/VitrinesPage'
 import NotFoundPage from './pages/public/NotFoundPage'
 
 // Autenticação (login + auto-cadastro de corretor com alternância por abas)
@@ -40,6 +41,7 @@ export const router = createBrowserRouter([
     children: [
       // ===== Público / institucional =====
       { path: '/', element: <HomePage /> },
+      { path: '/vitrines', element: <VitrinesPage /> },
       { path: '/login', element: <AuthPage /> },
       { path: '/esqueci-senha', element: <EsqueciSenhaPage /> },
       { path: '/redefinir-senha', element: <RedefinirSenhaPage /> },

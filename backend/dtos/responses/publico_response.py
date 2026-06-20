@@ -6,8 +6,9 @@ Estes payloads expõem APENAS dados seguros de contas ``Ativo`` e imóveis
 administrativos. São consumidos pelas páginas públicas do SPA (Home e
 ``/v/{slug}``).
 
-- ``CorretorVitrineResponse``: card de corretor na Home (inclui ``creci`` e a
-  contagem de imóveis publicados ``qtd_imoveis_publicados``).
+- ``CorretorVitrineResponse``: card de corretor na Home/lista de vitrines
+  (inclui ``whatsapp``, ``creci`` e a contagem de imóveis publicados
+  ``qtd_imoveis_publicados``).
 - ``VitrinePublicaResponse``: dados públicos da conta para o cabeçalho da
   vitrine, incluindo ``whatsapp`` e ``creci`` (front gera o link ``wa.me``).
 - ``ImovelPublicoDetalheResponse``: detalhe de um imóvel publicado já
@@ -33,6 +34,7 @@ class CorretorVitrineResponse(BaseModel):
     cidade: Optional[str] = None
     uf: Optional[str] = None
     bairro: Optional[str] = None
+    whatsapp: Optional[str] = None
     creci: Optional[str] = None
     cor: str = Field(..., description="Cor de destaque da vitrine (hexadecimal)")
     logo: Optional[str] = Field(
@@ -54,6 +56,7 @@ class CorretorVitrineResponse(BaseModel):
             cidade=conta.cidade,
             uf=conta.uf,
             bairro=conta.bairro,
+            whatsapp=conta.whatsapp,
             creci=conta.creci,
             cor=conta.cor,
             logo=conta.logo,

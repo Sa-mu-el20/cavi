@@ -56,7 +56,7 @@ export default function PublicHeader() {
         <nav style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
           <span
             style={linkStyle}
-            onClick={() => document.getElementById('vitrines')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => navigate('/vitrines')}
           >
             Ver vitrines
           </span>

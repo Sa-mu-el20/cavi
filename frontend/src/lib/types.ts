@@ -377,6 +377,7 @@ export interface CorretorVitrine {
   cidade?: string | null
   uf?: string | null
   bairro?: string | null
+  whatsapp?: string | null
   creci?: string | null
   cor: string
   logo?: string | null
