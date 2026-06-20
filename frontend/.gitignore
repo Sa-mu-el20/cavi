@@ -34,3 +34,4 @@ coverage/
 
 # Sistema operacional
 .DS_Store
+package-lock.json
