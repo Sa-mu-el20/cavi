@@ -240,7 +240,7 @@ export default function HomePage() {
                 />
               ))}
               <span style={{ marginLeft: 12, fontSize: 12, color: colors.faint }}>
-                cavi.ifes.site/v/albuquerque
+                cavi.ifes.site/v/cavi
               </span>
             </div>
             <div style={{ padding: 22 }}>
@@ -259,10 +259,10 @@ export default function HomePage() {
                     fontSize: 15,
                   }}
                 >
-                  A
+                  C
                 </div>
                 <div style={{ fontFamily: fonts.display, fontWeight: 500, fontSize: 17 }}>
-                  Albuquerque Imóveis
+                  CAVI Imóveis
                 </div>
               </div>
               <div
