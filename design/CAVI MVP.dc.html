@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  body{ margin:0; }
+  ::selection{ background:#f4d8bd; }
+  input,select,textarea,button{ font-family:'Hanken Grotesk',sans-serif; }
+  input:focus,select:focus,textarea:focus{ outline:none; border-color:#d97a2b !important; }
+  ::placeholder{ color:#b3ab9d; }
+  ::-webkit-scrollbar{ width:11px;height:11px; }
+  ::-webkit-scrollbar-thumb{ background:#ddd6c8; border-radius:6px; border:3px solid #faf8f3; }
+</style>
+</helmet>
+
+<div style="min-height:100vh; background:#faf8f3; font-family:'Hanken Grotesk',sans-serif; color:#1f1b18; -webkit-font-smoothing:antialiased;">
+
+<!-- ===================== PUBLIC CAVI (HOME) ===================== -->
+<sc-if value="{{ isCavi }}" hint-placeholder-val="{{ true }}">
+  <header style="position:sticky; top:0; z-index:50; background:rgba(250,248,243,0.85); backdrop-filter:blur(12px); border-bottom:1px solid #ece7db;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 40px; height:74px; display:flex; align-items:center; justify-content:space-between;">
+      <img src="assets/logo-orange.png" alt="CAVI" style="height:30px; width:auto; cursor:pointer;" onClick="{{ goHome }}">
+      <nav style="display:flex; align-items:center; gap:36px;">
+        <span style="font-size:15px; color:#6f6a60; cursor:pointer;" onClick="{{ goVitrineDemo }}">Ver vitrines</span>
+        <span style="font-size:15px; color:#6f6a60; cursor:pointer;" onClick="{{ goLogin }}">Planos</span>
+        <span style="font-size:15px; color:#6f6a60; cursor:pointer;" onClick="{{ goLogin }}">Entrar</span>
+        <button onClick="{{ goLogin }}" style="background:#d97a2b; color:#fff; border:none; border-radius:10px; padding:11px 22px; font-weight:600; font-size:15px; cursor:pointer;">Criar minha vitrine</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="max-width:1200px; margin:0 auto; padding:84px 40px 56px; display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; background:#e6eed6; color:#5a7d43; padding:7px 14px; border-radius:999px; font-size:13px; font-weight:600; margin-bottom:26px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:#9dc689;"></span> Para corretores e pequenas imobiliárias
+      </div>
+      <h1 style="font-family:'Jost',sans-serif; font-weight:300; font-size:60px; line-height:1.04; letter-spacing:-1px; margin:0 0 22px;">Sua vitrine de imóveis, <span style="color:#d97a2b; font-weight:500;">pronta para vender.</span></h1>
+      <p style="font-size:19px; line-height:1.55; color:#6f6a60; margin:0 0 36px; max-width:480px;">Cadastre seus imóveis, publique um catálogo profissional com seu nome e receba interessados direto no WhatsApp. Sem comissão de plataforma, sem complicação.</p>
+      <div style="display:flex; gap:14px; align-items:center;">
+        <button onClick="{{ goLogin }}" style="background:#d97a2b; color:#fff; border:none; border-radius:12px; padding:16px 30px; font-weight:600; font-size:16px; cursor:pointer;">Começar gratuitamente</button>
+        <button onClick="{{ goVitrineDemo }}" style="background:transparent; color:#1f1b18; border:1px solid #d8d0c2; border-radius:12px; padding:16px 26px; font-weight:600; font-size:16px; cursor:pointer;">Ver uma vitrine →</button>
+      </div>
+      <div style="display:flex; gap:30px; margin-top:44px;">
+        <div><div style="font-family:'Jost',sans-serif; font-size:30px; font-weight:500;">95</div><div style="font-size:13px; color:#948d80;">corretores ativos</div></div>
+        <div style="width:1px; background:#ece7db;"></div>
+        <div><div style="font-family:'Jost',sans-serif; font-size:30px; font-weight:500;">2.400+</div><div style="font-size:13px; color:#948d80;">imóveis publicados</div></div>
+        <div style="width:1px; background:#ece7db;"></div>
+        <div><div style="font-family:'Jost',sans-serif; font-size:30px; font-weight:500;">12</div><div style="font-size:13px; color:#948d80;">cidades</div></div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <div style="background:#fff; border:1px solid #ece7db; border-radius:18px; box-shadow:0 30px 60px -28px rgba(60,45,25,0.30); overflow:hidden;">
+        <div style="height:40px; background:#f6f3ec; border-bottom:1px solid #ece7db; display:flex; align-items:center; gap:7px; padding:0 16px;">
+          <span style="width:10px;height:10px;border-radius:50%;background:#e4ddcd;"></span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#e4ddcd;"></span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#e4ddcd;"></span>
+          <span style="margin-left:12px; font-size:12px; color:#a59d8e;">cavi.com.br/albuquerque</span>
+        </div>
+        <img src="assets/prop-02.png" alt="" style="width:100%; height:200px; object-fit:cover; display:block;">
+        <div style="padding:20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;"><div style="width:32px;height:32px;border-radius:8px;background:#d97a2b;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;">A</div><div style="font-family:'Jost',sans-serif; font-weight:500; font-size:17px;">Albuquerque Imóveis</div></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div style="border:1px solid #f0ebe0; border-radius:10px; overflow:hidden;"><img src="assets/prop-01.png" style="width:100%;height:64px;object-fit:cover;display:block;"><div style="padding:8px 10px;"><div style="font-size:13px;font-weight:700;color:#d97a2b;">R$ 890.000</div><div style="font-size:11px;color:#948d80;">2 quartos · 78m²</div></div></div>
+            <div style="border:1px solid #f0ebe0; border-radius:10px; overflow:hidden;"><img src="assets/prop-04.png" style="width:100%;height:64px;object-fit:cover;display:block;"><div style="padding:8px 10px;"><div style="font-size:13px;font-weight:700;color:#d97a2b;">R$ 1.180.000</div><div style="font-size:11px;color:#948d80;">3 quartos · 110m²</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section style="max-width:1200px; margin:0 auto; padding:56px 40px 40px;">
+    <div style="text-align:center; margin-bottom:44px;">
+      <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#9dc689; margin-bottom:12px;">Como funciona</div>
+      <h2 style="font-family:'Jost',sans-serif; font-weight:300; font-size:38px; margin:0; letter-spacing:-0.5px;">No ar em três passos</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:28px;">
+      <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:34px;">
+        <div style="font-family:'Jost',sans-serif; font-size:15px; font-weight:600; color:#d97a2b; margin-bottom:18px;">01</div>
+        <h3 style="font-family:'Jost',sans-serif; font-weight:500; font-size:22px; margin:0 0 10px;">Crie sua conta</h3>
+        <p style="font-size:15px; line-height:1.55; color:#6f6a60; margin:0;">Informe seu CRECI e dados de contato. Sua vitrine ganha um endereço próprio em segundos.</p>
+      </div>
+      <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:34px;">
+        <div style="font-family:'Jost',sans-serif; font-size:15px; font-weight:600; color:#d97a2b; margin-bottom:18px;">02</div>
+        <h3 style="font-family:'Jost',sans-serif; font-weight:500; font-size:22px; margin:0 0 10px;">Cadastre seus imóveis</h3>
+        <p style="font-size:15px; line-height:1.55; color:#6f6a60; margin:0;">Fotos, preço, características e localização. Publique ou deixe oculto enquanto prepara o anúncio.</p>
+      </div>
+      <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:34px;">
+        <div style="font-family:'Jost',sans-serif; font-size:15px; font-weight:600; color:#d97a2b; margin-bottom:18px;">03</div>
+        <h3 style="font-family:'Jost',sans-serif; font-weight:500; font-size:22px; margin:0 0 10px;">Receba interessados</h3>
+        <p style="font-size:15px; line-height:1.55; color:#6f6a60; margin:0;">Compartilhe o link. Cada imóvel tem um botão de WhatsApp que leva o contato direto para você.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORRETORES -->
+  <section style="max-width:1200px; margin:0 auto; padding:56px 40px 40px;">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:30px;">
+      <div>
+        <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#9dc689; margin-bottom:12px;">Vitrines no ar</div>
+        <h2 style="font-family:'Jost',sans-serif; font-weight:300; font-size:38px; margin:0; letter-spacing:-0.5px;">Corretores na CAVI</h2>
+      </div>
+      <span style="font-size:15px; color:#6f6a60; cursor:pointer;" onClick="{{ goVitrineDemo }}">Ver todas →</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      <sc-for list="{{ corretores }}" as="c" hint-placeholder-count="6">
+        <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:26px; cursor:pointer; transition:box-shadow .15s, transform .15s;" style-hover="box-shadow:0 18px 40px -22px rgba(60,45,25,0.30); transform:translateY(-3px);" onClick="{{ c.openSite }}">
+          <div style="display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+            <div style="width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:21px; color:#fff; background:{{ c.cor }};">{{ c.inicial }}</div>
+            <div>
+              <div style="font-family:'Jost',sans-serif; font-weight:500; font-size:19px; line-height:1.2;">{{ c.site }}</div>
+              <div style="font-size:13px; color:#948d80;">{{ c.nome }}</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between; padding-top:18px; border-top:1px solid #f0ebe0;">
+            <div style="font-size:14px; color:#6f6a60;">{{ c.bairro }}, {{ c.cidade }}</div>
+            <div style="font-size:13px; font-weight:600; color:#d97a2b;">{{ c.qtd }} imóveis</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:1200px; margin:0 auto; padding:48px 40px 80px;">
+    <div style="background:#1f1b18; border-radius:22px; padding:64px; text-align:center; position:relative; overflow:hidden;">
+      <div style="position:absolute; inset:0; background:radial-gradient(circle at 80% 20%, rgba(217,122,43,0.22), transparent 55%);"></div>
+      <div style="position:relative;">
+        <h2 style="font-family:'Jost',sans-serif; font-weight:300; font-size:42px; color:#faf8f3; margin:0 0 16px; letter-spacing:-0.5px;">Sua próxima venda começa com uma vitrine.</h2>
+        <p style="font-size:18px; color:#bcb4a6; margin:0 0 32px;">Comece com o plano gratuito. Sem cartão de crédito.</p>
+        <button onClick="{{ goLogin }}" style="background:#d97a2b; color:#fff; border:none; border-radius:12px; padding:16px 34px; font-weight:600; font-size:16px; cursor:pointer;">Criar minha vitrine</button>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #ece7db;">
+    <div style="max-width:1200px; margin:0 auto; padding:36px 40px; display:flex; align-items:center; justify-content:space-between;">
+      <img src="assets/logo-ink.png" alt="CAVI" style="height:24px; opacity:0.85;">
+      <div style="font-size:13px; color:#948d80;">© 2026 CAVI · Termos de uso · Privacidade · <span style="cursor:pointer;" onClick="{{ goAdmin }}">Admin</span></div>
+    </div>
+  </footer>
+</sc-if>
+
+<!-- ===================== AUTH (LOGIN/CADASTRO) ===================== -->
+<sc-if value="{{ isAuth }}" hint-placeholder-val="{{ true }}">
+  <div style="min-height:100vh; display:grid; grid-template-columns:1fr 1fr;">
+    <div style="background:#1f1b18; padding:56px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden;">
+      <div style="position:absolute; inset:0; background:radial-gradient(circle at 30% 80%, rgba(217,122,43,0.20), transparent 50%);"></div>
+      <img src="assets/logo-cream.png" alt="CAVI" style="height:30px; position:relative; cursor:pointer; align-self:flex-start;" onClick="{{ goHome }}">
+      <div style="position:relative;">
+        <h2 style="font-family:'Jost',sans-serif; font-weight:300; font-size:40px; color:#faf8f3; line-height:1.1; margin:0 0 20px; letter-spacing:-0.5px;">Tudo o que você precisa para vender online.</h2>
+        <div style="display:flex; flex-direction:column; gap:16px; margin-top:28px;">
+          <div style="display:flex; align-items:center; gap:12px; color:#cfc7b9; font-size:16px;"><span style="color:#9dc689;">✓</span> Catálogo com seu nome e suas cores</div>
+          <div style="display:flex; align-items:center; gap:12px; color:#cfc7b9; font-size:16px;"><span style="color:#9dc689;">✓</span> Imóveis ilimitados no plano Pro</div>
+          <div style="display:flex; align-items:center; gap:12px; color:#cfc7b9; font-size:16px;"><span style="color:#9dc689;">✓</span> Contatos direto no WhatsApp</div>
+        </div>
+      </div>
+      <div style="position:relative; font-size:13px; color:#7d766a;">Plano gratuito · sem cartão de crédito</div>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:center; padding:40px;">
+      <div style="width:100%; max-width:380px;">
+        <div style="display:flex; background:#f1ede4; border-radius:12px; padding:5px; margin-bottom:30px;">
+          <button onClick="{{ tabEntrar }}" style="flex:1; border:none; cursor:pointer; padding:11px; border-radius:9px; font-weight:600; font-size:15px; background:{{ entrarBg }}; color:{{ entrarFg }}; box-shadow:{{ entrarShadow }};">Entrar</button>
+          <button onClick="{{ tabCadastro }}" style="flex:1; border:none; cursor:pointer; padding:11px; border-radius:9px; font-weight:600; font-size:15px; background:{{ cadastroBg }}; color:{{ cadastroFg }}; box-shadow:{{ cadastroShadow }};">Criar conta</button>
+        </div>
+        <h1 style="font-family:'Jost',sans-serif; font-weight:400; font-size:28px; margin:0 0 6px;">{{ authTitle }}</h1>
+        <p style="font-size:15px; color:#6f6a60; margin:0 0 26px;">{{ authSub }}</p>
+
+        <sc-if value="{{ authCadastro }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:8px;">
+            <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Nome completo</label><input placeholder="Marina Albuquerque" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+            <div style="display:flex; gap:12px;">
+              <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">CPF</label><input placeholder="000.000.000-00" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+              <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">CRECI</label><input placeholder="SP 154.882" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+            </div>
+            <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Telefone / WhatsApp</label><input placeholder="(11) 99812-4470" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+          </div>
+        </sc-if>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">E-mail</label><input placeholder="voce@email.com" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+          <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Senha</label><input type="password" placeholder="••••••••" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+        </div>
+        <sc-if value="{{ authLogin }}" hint-placeholder-val="{{ true }}">
+          <div style="text-align:right; margin-top:12px;"><span style="font-size:14px; color:#d97a2b; font-weight:600; cursor:pointer;" onClick="{{ goRecuperar }}">Esqueci minha senha</span></div>
+        </sc-if>
+        <button onClick="{{ fazerLogin }}" style="width:100%; margin-top:24px; background:#d97a2b; color:#fff; border:none; border-radius:11px; padding:15px; font-weight:600; font-size:16px; cursor:pointer;">{{ authBtn }}</button>
+        <div style="text-align:center; margin-top:18px; font-size:14px; color:#948d80; cursor:pointer;" onClick="{{ goHome }}">← Voltar para a CAVI</div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<!-- ===================== RECUPERAR SENHA ===================== -->
+<sc-if value="{{ isRecuperar }}" hint-placeholder-val="{{ false }}">
+  <div style="min-height:100vh; display:grid; grid-template-columns:1fr 1fr;">
+    <div style="background:#1f1b18; padding:56px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden;">
+      <div style="position:absolute; inset:0; background:radial-gradient(circle at 30% 80%, rgba(217,122,43,0.20), transparent 50%);"></div>
+      <img src="assets/logo-cream.png" alt="CAVI" style="height:30px; position:relative; cursor:pointer; align-self:flex-start;" onClick="{{ goHome }}">
+      <div style="position:relative;">
+        <h2 style="font-family:'Jost',sans-serif; font-weight:300; font-size:40px; color:#faf8f3; line-height:1.1; margin:0 0 20px; letter-spacing:-0.5px;">Sem acesso? A gente te coloca de volta.</h2>
+        <p style="font-size:16px; color:#cfc7b9; line-height:1.6; margin:0; max-width:420px;">Enviamos um link seguro para o seu e-mail. Você define uma nova senha e volta direto para o painel — sua vitrine continua no ar o tempo todo.</p>
+      </div>
+      <div style="position:relative; font-size:13px; color:#7d766a;">O link expira em 30 minutos por segurança.</div>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:center; padding:40px;">
+      <div style="width:100%; max-width:380px;">
+        <sc-if value="{{ recuperarEnviado }}" hint-placeholder-val="{{ false }}">
+          <div style="width:52px; height:52px; border-radius:14px; background:#e6eed6; color:#5a7d43; display:flex; align-items:center; justify-content:center; font-size:26px; margin-bottom:20px;">✓</div>
+          <h1 style="font-family:'Jost',sans-serif; font-weight:400; font-size:28px; margin:0 0 6px;">Verifique seu e-mail</h1>
+          <p style="font-size:15px; color:#6f6a60; line-height:1.6; margin:0 0 26px;">Se houver uma conta para esse endereço, enviamos um link para redefinir a senha. Confira também a caixa de spam.</p>
+          <button onClick="{{ goLogin }}" style="width:100%; background:#d97a2b; color:#fff; border:none; border-radius:11px; padding:15px; font-weight:600; font-size:16px; cursor:pointer;">Voltar para o login</button>
+          <div style="text-align:center; margin-top:18px; font-size:14px; color:#948d80;">Não recebeu? <span style="color:#d97a2b; font-weight:600; cursor:pointer;" onClick="{{ reenviarRecuperar }}">Reenviar</span></div>
+        </sc-if>
+        <sc-if value="{{ recuperarPendente }}" hint-placeholder-val="{{ true }}">
+          <h1 style="font-family:'Jost',sans-serif; font-weight:400; font-size:28px; margin:0 0 6px;">Recuperar senha</h1>
+          <p style="font-size:15px; color:#6f6a60; margin:0 0 26px;">Informe o e-mail da sua conta. Enviaremos um link para você criar uma nova senha.</p>
+          <label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">E-mail</label>
+          <input type="email" placeholder="voce@email.com" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;">
+          <button onClick="{{ enviarRecuperar }}" style="width:100%; margin-top:24px; background:#d97a2b; color:#fff; border:none; border-radius:11px; padding:15px; font-weight:600; font-size:16px; cursor:pointer;">Enviar link de recuperação</button>
+          <div style="text-align:center; margin-top:18px; font-size:14px; color:#948d80; cursor:pointer;" onClick="{{ goLogin }}">← Voltar para o login</div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<!-- ===================== CORRETOR SITE (CATÁLOGO + DETALHE) ===================== -->
+<sc-if value="{{ isSite }}" hint-placeholder-val="{{ false }}">
+  <header style="position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #ece7db;">
+    <div style="max-width:1180px; margin:0 auto; padding:0 40px; height:72px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:12px; cursor:pointer;" onClick="{{ goCatalogoActive }}">
+        <div style="width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px; color:#fff; background:{{ corretorAtivo.cor }};">{{ corretorAtivo.inicial }}</div>
+        <div>
+          <div style="font-family:'Jost',sans-serif; font-weight:500; font-size:19px; line-height:1.1;">{{ corretorAtivo.site }}</div>
+          <div style="font-size:12px; color:#948d80;">{{ corretorAtivo.creci }}</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:26px;">
+        <span style="display:inline-flex; align-items:center; gap:6px; font-size:14px; color:#a59d8e; cursor:pointer;" onClick="{{ goHome }}">← CAVI</span>
+        <span style="width:1px; height:20px; background:#ece7db;"></span>
+        <span style="font-size:15px; color:#6f6a60; cursor:pointer;" onClick="{{ goCatalogoActive }}">Imóveis</span>
+        <a href="{{ corretorAtivoWa }}" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:#9dc689; color:#1f3d18; text-decoration:none; border-radius:10px; padding:10px 18px; font-weight:600; font-size:14px;">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <sc-if value="{{ scrCatalogo }}" hint-placeholder-val="{{ false }}">
+    <section style="background:linear-gradient(180deg,#fff, #faf8f3);">
+      <div style="max-width:1180px; margin:0 auto; padding:46px 40px 30px;">
+        <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#9dc689; margin-bottom:12px;">{{ corretorAtivo.bairro }}, {{ corretorAtivo.cidade }}</div>
+        <h1 style="font-family:'Jost',sans-serif; font-weight:300; font-size:44px; margin:0 0 14px; letter-spacing:-0.5px; max-width:680px;">{{ corretorAtivo.sobre }}</h1>
+        <div style="font-size:15px; color:#948d80;">{{ catalogoCount }} imóveis disponíveis</div>
+      </div>
+    </section>
+
+    <div style="max-width:1180px; margin:0 auto; padding:0 40px;">
+      <div style="background:#fff; border:1px solid #ece7db; border-radius:14px; padding:16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; box-shadow:0 8px 24px -18px rgba(60,45,25,0.30);">
+        <select value="{{ fFinalidade }}" onChange="{{ onFinalidade }}" style="flex:1; min-width:140px; padding:12px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff; color:#1f1b18; cursor:pointer;">
+          <option value="">Finalidade · todas</option><option value="Venda">Venda</option><option value="Aluguel">Aluguel</option>
+        </select>
+        <select value="{{ fTipo }}" onChange="{{ onTipo }}" style="flex:1; min-width:140px; padding:12px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff; color:#1f1b18; cursor:pointer;">
+          <option value="">Tipo · todos</option><option value="Apartamento">Apartamento</option><option value="Casa">Casa</option><option value="Cobertura">Cobertura</option><option value="Studio">Studio</option><option value="Loft">Loft</option><option value="Sala comercial">Sala comercial</option>
+        </select>
+        <select value="{{ fBairro }}" onChange="{{ onBairro }}" style="flex:1; min-width:140px; padding:12px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff; color:#1f1b18; cursor:pointer;">
+          <option value="">Bairro · todos</option><option value="Pinheiros">Pinheiros</option><option value="Vila Madalena">Vila Madalena</option><option value="Alto de Pinheiros">Alto de Pinheiros</option><option value="Itaim Bibi">Itaim Bibi</option>
+        </select>
+        <select value="{{ fPrecoMax }}" onChange="{{ onPrecoMax }}" style="flex:1; min-width:140px; padding:12px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff; color:#1f1b18; cursor:pointer;">
+          <option value="">Preço máximo</option><option value="600000">até R$ 600 mil</option><option value="1000000">até R$ 1 mi</option><option value="1500000">até R$ 1,5 mi</option><option value="2000000">até R$ 2 mi</option>
+        </select>
+        <button onClick="{{ limparFiltros }}" style="padding:12px 18px; border:1px solid #e4ddcd; background:#faf8f3; border-radius:10px; font-size:14px; font-weight:600; color:#6f6a60; cursor:pointer;">Limpar</button>
+      </div>
+    </div>
+
+    <div style="max-width:1180px; margin:0 auto; padding:30px 40px 0;">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+        <sc-for list="{{ catalogo }}" as="im" hint-placeholder-count="6">
+          <div onClick="{{ im.open }}" style="background:#fff; border:1px solid #ece7db; border-radius:16px; overflow:hidden; cursor:pointer; transition:box-shadow .15s, transform .15s;" style-hover="box-shadow:0 22px 44px -24px rgba(60,45,25,0.34); transform:translateY(-3px);">
+            <div style="position:relative;">
+              {{ im.fotoCard }}
+              <span style="position:absolute; top:14px; left:14px; background:{{ im.finBg }}; color:{{ im.finCor }}; font-size:12px; font-weight:700; padding:5px 11px; border-radius:999px;">{{ im.finalidade }}</span>
+            </div>
+            <div style="padding:18px 20px 20px;">
+              <div style="font-family:'Jost',sans-serif; font-weight:600; font-size:23px; color:#1f1b18; margin-bottom:4px;">{{ im.precoFmt }}</div>
+              <div style="font-weight:600; font-size:16px; line-height:1.3; margin-bottom:8px;">{{ im.titulo }}</div>
+              <div style="font-size:14px; color:#948d80; margin-bottom:14px;">{{ im.bairro }}, {{ im.cidade }}</div>
+              <div style="display:flex; gap:14px; padding-top:14px; border-top:1px solid #f0ebe0; font-size:13px; color:#6f6a60;">
+                <span>◴ {{ im.quartos }} quartos</span><span>◇ {{ im.banheiros }} banh</span><span>▭ {{ im.area }}m²</span>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+</sc-if>
+  <sc-if value="{{ scrDetalhe }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1180px; margin:0 auto; padding:24px 40px 0;">
+      <div style="font-size:14px; color:#948d80; margin-bottom:20px;"><span style="cursor:pointer;" onClick="{{ goCatalogoActive }}">Imóveis</span> &nbsp;/&nbsp; <span style="color:#6f6a60;">{{ detalhe.titulo }}</span></div>
+      <div style="display:grid; grid-template-columns:1.55fr 1fr; gap:40px; align-items:start;">
+
+        <div>
+          <div style="border-radius:18px; overflow:hidden; border:1px solid #ece7db; margin-bottom:14px;">
+            {{ galeriaMain }}
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px;">
+            <sc-for list="{{ galeria }}" as="g" hint-placeholder-count="4">
+              {{ g.thumb }}
+            </sc-for>
+          </div>
+
+          <div style="margin-top:36px;">
+            <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:24px; margin:0 0 14px;">Sobre o imóvel</h2>
+            <p style="font-size:16px; line-height:1.65; color:#5b564d; margin:0 0 28px;">{{ detalhe.descricao }}</p>
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px;">
+              <div style="background:#faf8f3; border:1px solid #f0ebe0; border-radius:12px; padding:18px;"><div style="font-size:13px; color:#948d80; margin-bottom:6px;">Área</div><div style="font-family:'Jost',sans-serif; font-size:22px; font-weight:500;">{{ detalhe.area }}m²</div></div>
+              <div style="background:#faf8f3; border:1px solid #f0ebe0; border-radius:12px; padding:18px;"><div style="font-size:13px; color:#948d80; margin-bottom:6px;">Quartos</div><div style="font-family:'Jost',sans-serif; font-size:22px; font-weight:500;">{{ detalhe.quartos }}</div></div>
+              <div style="background:#faf8f3; border:1px solid #f0ebe0; border-radius:12px; padding:18px;"><div style="font-size:13px; color:#948d80; margin-bottom:6px;">Banheiros</div><div style="font-family:'Jost',sans-serif; font-size:22px; font-weight:500;">{{ detalhe.banheiros }}</div></div>
+              <div style="background:#faf8f3; border:1px solid #f0ebe0; border-radius:12px; padding:18px;"><div style="font-size:13px; color:#948d80; margin-bottom:6px;">Vagas</div><div style="font-family:'Jost',sans-serif; font-size:22px; font-weight:500;">{{ detalhe.vagas }}</div></div>
+            </div>
+          </div>
+
+          <div style="margin-top:36px;">
+            <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:24px; margin:0 0 14px;">Localização</h2>
+            <div style="display:flex; align-items:center; gap:10px; font-size:16px; color:#5b564d; margin-bottom:16px;"><span style="color:#d97a2b;">⚲</span> {{ detalhe.logradouro }}, {{ detalhe.numero }} — {{ detalhe.bairro }}, {{ detalhe.cidade }}/{{ detalhe.uf }}</div>
+            <div style="height:240px; border-radius:14px; border:1px solid #ece7db; background-image:linear-gradient(#eee9dd 1px,transparent 1px),linear-gradient(90deg,#eee9dd 1px,transparent 1px); background-size:34px 34px; background-color:#f6f3ec; display:flex; align-items:center; justify-content:center; position:relative;">
+              <div style="width:18px; height:18px; border-radius:50%; background:#d97a2b; box-shadow:0 0 0 8px rgba(217,122,43,0.18); position:absolute; left:46%; top:42%;"></div>
+              <span style="position:absolute; bottom:14px; right:16px; font-size:12px; color:#a59d8e;">Mapa ilustrativo</span>
+            </div>
+          </div>
+        </div>
+
+        <aside style="position:sticky; top:96px;">
+          <div style="background:#fff; border:1px solid #ece7db; border-radius:18px; padding:26px; box-shadow:0 16px 40px -26px rgba(60,45,25,0.35);">
+            <span style="display:inline-block; background:{{ detalhe.finBg }}; color:{{ detalhe.finCor }}; font-size:12px; font-weight:700; padding:5px 11px; border-radius:999px; margin-bottom:14px;">{{ detalhe.finalidade }}</span>
+            <div style="font-family:'Jost',sans-serif; font-weight:600; font-size:34px; letter-spacing:-0.5px; margin-bottom:6px;">{{ detalhe.precoFmt }}</div>
+            <h1 style="font-weight:600; font-size:20px; line-height:1.35; margin:0 0 6px;">{{ detalhe.titulo }}</h1>
+            <div style="font-size:14px; color:#948d80; margin-bottom:8px;">{{ detalhe.bairro }}, {{ detalhe.cidade }}</div>
+            <div style="font-size:12px; color:#b3ab9d; margin-bottom:22px;">Código {{ detalhe.codigo }}</div>
+            <a href="{{ detalheWa }}" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#9dc689; color:#1f3d18; text-decoration:none; border-radius:12px; padding:15px; font-weight:700; font-size:16px; margin-bottom:12px;">Falar no WhatsApp</a>
+            <button style="width:100%; background:#1f1b18; color:#faf8f3; border:none; border-radius:12px; padding:15px; font-weight:600; font-size:15px; cursor:pointer;">Tenho interesse</button>
+            <div style="display:flex; align-items:center; gap:12px; margin-top:24px; padding-top:22px; border-top:1px solid #f0ebe0;">
+              <div style="width:46px; height:46px; border-radius:11px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:19px; color:#fff; background:{{ corretorAtivo.cor }};">{{ corretorAtivo.inicial }}</div>
+              <div><div style="font-weight:600; font-size:15px;">{{ corretorAtivo.nome }}</div><div style="font-size:13px; color:#948d80;">{{ corretorAtivo.creci }}</div></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+</sc-if>
+
+  <footer style="background:#1f1b18; margin-top:64px;">
+    <div style="max-width:1180px; margin:0 auto; padding:40px; display:flex; align-items:center; justify-content:space-between;">
+      <div>
+        <div style="font-family:'Jost',sans-serif; font-weight:500; font-size:20px; color:#faf8f3;">{{ corretorAtivo.site }}</div>
+        <div style="font-size:13px; color:#8a8275; margin-top:4px;">{{ corretorAtivo.bairro }}, {{ corretorAtivo.cidade }} · {{ corretorAtivo.creci }}</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:18px;">
+        <span style="font-size:12px; color:#6b655b;">feito com</span>
+        <img src="assets/logo-cream.png" style="height:20px; opacity:0.8; cursor:pointer;" onClick="{{ goHome }}">
+      </div>
+    </div>
+  </footer>
+</sc-if>
+
+<!-- ===================== BROKER APP ===================== -->
+<sc-if value="{{ isBroker }}" hint-placeholder-val="{{ false }}">
+  <div style="display:flex; min-height:100vh;">
+    <aside style="width:248px; flex:none; background:#fff; border-right:1px solid #ece7db; padding:24px 16px; display:flex; flex-direction:column; position:sticky; top:0; height:100vh;">
+      <img src="assets/logo-orange.png" alt="CAVI" style="height:26px; align-self:flex-start; margin:8px 8px 26px; cursor:pointer;" onClick="{{ goHome }}">
+      <div style="display:flex; align-items:center; gap:11px; padding:12px; background:#faf8f3; border-radius:12px; margin-bottom:20px;">
+        <div style="width:38px; height:38px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; color:#fff; background:#d97a2b;">A</div>
+        <div style="overflow:hidden;"><div style="font-weight:600; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Albuquerque Imóveis</div><div style="font-size:12px; color:#948d80;">Plano Pro</div></div>
+      </div>
+      <nav style="display:flex; flex-direction:column; gap:4px;">
+        <div onClick="{{ goDashboard }}" style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:15px; color:{{ navDashFg }}; background:{{ navDashBg }};"><span style="font-size:17px;">◳</span> Painel</div>
+        <div onClick="{{ goImoveis }}" style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:15px; color:{{ navImoveisFg }}; background:{{ navImoveisBg }};"><span style="font-size:17px;">⌂</span> Meus imóveis</div>
+        <div onClick="{{ goConfig }}" style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:15px; color:{{ navConfigFg }}; background:{{ navConfigBg }};"><span style="font-size:17px;">⚙</span> Configurar site</div>
+      </nav>
+      <div style="height:1px; background:#f0ebe0; margin:16px 8px;"></div>
+      <div onClick="{{ goVitrineDemo }}" style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:15px; color:#6f6a60;"><span style="font-size:17px;">↗</span> Ver minha vitrine</div>
+      <div style="margin-top:auto;">
+        <div onClick="{{ goHome }}" style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:15px; color:#a89f90;"><span style="font-size:17px;">⏻</span> Sair</div>
+      </div>
+    </aside>
+    <main style="flex:1; min-width:0;">
+      <sc-if value="{{ scrDashboard }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:34px 44px;">
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:30px;">
+            <div>
+              <div style="font-size:14px; color:#948d80; margin-bottom:4px;">Bom dia, Marina 👋</div>
+              <h1 style="font-family:'Jost',sans-serif; font-weight:400; font-size:32px; line-height:1.1; margin:0;">Painel</h1>
+            </div>
+            <button onClick="{{ goNovoImovel }}" style="background:#d97a2b; color:#fff; border:none; border-radius:11px; padding:13px 22px; font-weight:600; font-size:15px; cursor:pointer;">+ Novo imóvel</button>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:32px;">
+            <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:24px;"><div style="font-size:14px; color:#948d80; margin-bottom:10px;">Imóveis</div><div style="font-family:'Jost',sans-serif; font-size:38px; font-weight:500; line-height:1;">{{ total }}</div></div>
+            <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:24px;"><div style="font-size:14px; color:#948d80; margin-bottom:10px;">Publicados</div><div style="font-family:'Jost',sans-serif; font-size:38px; font-weight:500; line-height:1; color:#5a7d43;">{{ publicados }}</div></div>
+            <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:24px;"><div style="font-size:14px; color:#948d80; margin-bottom:10px;">Ocultos</div><div style="font-family:'Jost',sans-serif; font-size:38px; font-weight:500; line-height:1; color:#a89f90;">{{ ocultos }}</div></div>
+            <div style="background:#1f1b18; border:1px solid #1f1b18; border-radius:16px; padding:24px;"><div style="font-size:14px; color:#bcb4a6; margin-bottom:10px;">Contatos no WhatsApp</div><div style="font-family:'Jost',sans-serif; font-size:38px; font-weight:500; line-height:1; color:#fff;">{{ contatos }}</div></div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1.6fr 1fr; gap:24px;">
+            <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:24px;">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;">
+                <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:20px; margin:0;">Imóveis recentes</h2>
+                <span style="font-size:14px; color:#d97a2b; cursor:pointer; font-weight:600;" onClick="{{ goImoveis }}">Ver todos →</span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <sc-for list="{{ recentes }}" as="im" hint-placeholder-count="4">
+                  <div onClick="{{ im.open }}" style="display:flex; align-items:center; gap:14px; padding:12px; border-radius:12px; cursor:pointer;" style-hover="background:#faf8f3;">
+                    {{ im.fotoSm }}
+                    <div style="flex:1; min-width:0;"><div style="font-weight:600; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ im.titulo }}</div><div style="font-size:13px; color:#948d80;">{{ im.precoFmt }} · {{ im.bairro }}</div></div>
+                    <span style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px; background:{{ im.stBg }}; color:{{ im.stCor }}; flex:none;">{{ im.status }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:24px;">
+              <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:24px;">
+                <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:20px; margin:0 0 16px;">Atalhos</h2>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <div onClick="{{ goNovoImovel }}" style="display:flex; align-items:center; gap:12px; padding:13px; border:1px solid #f0ebe0; border-radius:11px; cursor:pointer; font-weight:600; font-size:15px;" style-hover="border-color:#d97a2b;"><span style="color:#d97a2b; font-size:18px;">＋</span> Cadastrar imóvel</div>
+                  <div onClick="{{ goConfig }}" style="display:flex; align-items:center; gap:12px; padding:13px; border:1px solid #f0ebe0; border-radius:11px; cursor:pointer; font-weight:600; font-size:15px;" style-hover="border-color:#d97a2b;"><span style="color:#d97a2b; font-size:18px;">⚙</span> Configurar meu site</div>
+                  <div onClick="{{ goVitrineDemo }}" style="display:flex; align-items:center; gap:12px; padding:13px; border:1px solid #f0ebe0; border-radius:11px; cursor:pointer; font-weight:600; font-size:15px;" style-hover="border-color:#d97a2b;"><span style="color:#d97a2b; font-size:18px;">↗</span> Ver minha vitrine</div>
+                </div>
+              </div>
+              <div style="background:#e6eed6; border:1px solid #d6e2c0; border-radius:16px; padding:24px;">
+                <div style="font-size:14px; color:#5a7d43; font-weight:600; margin-bottom:8px;">Total de acessos</div>
+                <div style="font-family:'Jost',sans-serif; font-size:38px; font-weight:500; line-height:1; color:#1f1b18;">{{ acessos }}</div>
+                <div style="font-size:13px; color:#6f7d56; margin-top:8px;">visitas aos seus imóveis nos últimos 30 dias</div>
+              </div>
+            </div>
+          </div>
+        </div>
+</sc-if>
+      <sc-if value="{{ scrImoveis }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:34px 44px;">
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:26px;">
+            <div>
+              <h1 style="font-family:'Jost',sans-serif; font-weight:400; font-size:32px; line-height:1.15; margin:0 0 4px;">Meus imóveis</h1>
+              <div style="font-size:14px; color:#948d80;">{{ total }} imóveis · {{ publicados }} publicados</div>
+            </div>
+            <button onClick="{{ goNovoImovel }}" style="background:#d97a2b; color:#fff; border:none; border-radius:11px; padding:13px 22px; font-weight:600; font-size:15px; cursor:pointer;">+ Novo imóvel</button>
+          </div>
+
+          <div style="display:flex; gap:12px; margin-bottom:18px;">
+            <div style="flex:1; position:relative;"><span style="position:absolute; left:14px; top:50%; transform:translateY(-50%); color:#b3ab9d;">⌕</span><input placeholder="Buscar por título, código ou bairro" style="width:100%; padding:12px 14px 12px 38px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+            <select style="padding:12px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff; color:#1f1b18; cursor:pointer;"><option>Todos os status</option><option>Publicados</option><option>Ocultos</option></select>
+          </div>
+
+          <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; overflow:hidden;">
+            <div style="display:grid; grid-template-columns:3fr 1.3fr 1.4fr 1fr 1.6fr; gap:16px; padding:14px 22px; background:#faf8f3; border-bottom:1px solid #ece7db; font-size:12px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:#a59d8e;">
+              <div>Imóvel</div><div>Tipo</div><div>Preço</div><div>Status</div><div style="text-align:right;">Ações</div>
+            </div>
+            <sc-for list="{{ imoveisAll }}" as="im" hint-placeholder-count="9">
+              <div style="display:grid; grid-template-columns:3fr 1.3fr 1.4fr 1fr 1.6fr; gap:16px; padding:14px 22px; align-items:center; border-bottom:1px solid #f4f0e7;">
+                <div style="display:flex; align-items:center; gap:14px; min-width:0;">
+                  {{ im.fotoMd }}
+                  <div style="min-width:0;"><div style="font-weight:600; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ im.titulo }}</div><div style="font-size:12px; color:#b3ab9d;">{{ im.codigo }} · {{ im.bairro }}</div></div>
+                </div>
+                <div style="font-size:14px; color:#6f6a60;">{{ im.tipo }}<div style="font-size:12px; color:#b3ab9d;">{{ im.finalidade }}</div></div>
+                <div style="font-weight:700; font-size:15px; color:#1f1b18;">{{ im.precoFmt }}</div>
+                <div><span style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px; background:{{ im.stBg }}; color:{{ im.stCor }};">{{ im.status }}</span></div>
+                <div style="display:flex; gap:8px; justify-content:flex-end;">
+                  <button onClick="{{ im.edit }}" style="padding:8px 13px; border:1px solid #e4ddcd; background:#fff; border-radius:9px; font-size:13px; font-weight:600; color:#6f6a60; cursor:pointer;">Editar</button>
+                  <button onClick="{{ im.toggle }}" style="padding:8px 13px; border:1px solid #e4ddcd; background:#fff; border-radius:9px; font-size:13px; font-weight:600; color:#6f6a60; cursor:pointer;">{{ im.toggleLabel }}</button>
+                  <button onClick="{{ im.open }}" style="padding:8px 13px; border:none; background:#faf8f3; border-radius:9px; font-size:13px; font-weight:600; color:#d97a2b; cursor:pointer;">Ver</button>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+</sc-if>
+      <sc-if value="{{ scrForm }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:34px 44px; max-width:920px;">
+          <div style="font-size:14px; color:#948d80; margin-bottom:20px;"><span style="cursor:pointer;" onClick="{{ goImoveis }}">Meus imóveis</span> &nbsp;/&nbsp; <span style="color:#6f6a60;">{{ formTitle }}</span></div>
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:28px;">
+            <div><h1 style="font-family:'Jost',sans-serif; font-weight:400; font-size:32px; line-height:1.15; margin:0 0 4px;">{{ formTitle }}</h1><div style="font-size:14px; color:#948d80;">{{ formSub }}</div></div>
+          </div>
+
+          <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:30px; margin-bottom:22px;">
+            <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:18px; margin:0 0 20px;">Informações principais</h2>
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Título do anúncio</label><input defaultValue="{{ fiTitulo }}" placeholder="Ex: Apartamento reformado em Pinheiros" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+              <div style="display:flex; gap:16px;">
+                <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Tipo</label><select defaultValue="{{ fiTipo }}" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff; cursor:pointer;"><option>Apartamento</option><option>Casa</option><option>Cobertura</option><option>Studio</option><option>Loft</option><option>Sala comercial</option></select></div>
+                <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Finalidade</label><select defaultValue="{{ fiFinalidade }}" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff; cursor:pointer;"><option>Venda</option><option>Aluguel</option></select></div>
+                <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Preço (R$)</label><input defaultValue="{{ fiPreco }}" placeholder="890000" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+              </div>
+              <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Descrição</label><textarea rows="4" defaultValue="{{ fiDescricao }}" placeholder="Descreva os destaques do imóvel..." style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff; resize:vertical; line-height:1.5;"></textarea></div>
+            </div>
+          </div>
+
+          <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:30px; margin-bottom:22px;">
+            <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:18px; margin:0 0 20px;">Características</h2>
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px;">
+              <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Área (m²)</label><input defaultValue="{{ fiArea }}" placeholder="78" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+              <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Quartos</label><input defaultValue="{{ fiQuartos }}" placeholder="2" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+              <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Banheiros</label><input defaultValue="{{ fiBanheiros }}" placeholder="2" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+              <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Vagas</label><input defaultValue="{{ fiVagas }}" placeholder="1" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+            </div>
+          </div>
+
+          <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:30px; margin-bottom:22px;">
+            <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:18px; margin:0 0 20px;">Endereço</h2>
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div style="display:flex; gap:16px;">
+                <div style="width:180px;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">CEP</label><input defaultValue="{{ fiCep }}" placeholder="05422-010" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+                <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Logradouro</label><input defaultValue="{{ fiLogradouro }}" placeholder="Rua dos Pinheiros" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+                <div style="width:120px;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Número</label><input defaultValue="{{ fiNumero }}" placeholder="1240" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+              </div>
+              <div style="display:flex; gap:16px;">
+                <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Bairro</label><input defaultValue="{{ fiBairro }}" placeholder="Pinheiros" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+                <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Complemento</label><input defaultValue="{{ fiComplemento }}" placeholder="Apto 81" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+                <div style="width:200px;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Cidade / UF</label><input defaultValue="São Paulo / SP" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:30px; margin-bottom:22px;">
+            <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:18px; margin:0 0 6px;">Fotos</h2>
+            <p style="font-size:14px; color:#948d80; margin:0 0 18px;">A primeira foto será a capa do anúncio. Arraste para reordenar.</p>
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px;">
+              <sc-for list="{{ formGaleria }}" as="g" hint-placeholder-count="4">
+                <div style="position:relative; border-radius:12px; overflow:hidden; border:1px solid #f0ebe0;">
+                  {{ g.img }}
+                  <span style="position:absolute; top:6px; right:6px; width:22px; height:22px; border-radius:6px; background:rgba(31,27,24,0.7); color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; cursor:pointer;">×</span>
+                </div>
+              </sc-for>
+              <div style="height:96px; border:2px dashed #d8d0c2; border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; cursor:pointer; color:#a59d8e;"><span style="font-size:22px;">＋</span><span style="font-size:12px; font-weight:600;">Adicionar</span></div>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; justify-content:space-between; background:#fff; border:1px solid #ece7db; border-radius:16px; padding:22px 30px; margin-bottom:28px;">
+            <div><div style="font-weight:600; font-size:16px;">Publicar imóvel na vitrine</div><div style="font-size:13px; color:#948d80;">Imóveis ocultos ficam salvos mas não aparecem no catálogo público.</div></div>
+            <div style="width:52px; height:30px; border-radius:999px; background:#9dc689; position:relative; cursor:pointer;"><div style="position:absolute; top:3px; right:3px; width:24px; height:24px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div></div>
+          </div>
+
+          <div style="display:flex; gap:12px; justify-content:flex-end;">
+            <button onClick="{{ cancelarForm }}" style="padding:14px 24px; border:1px solid #e4ddcd; background:#fff; border-radius:11px; font-weight:600; font-size:15px; color:#6f6a60; cursor:pointer;">Cancelar</button>
+            <button onClick="{{ preverImovel }}" style="padding:14px 24px; border:1px solid #e4ddcd; background:#fff; border-radius:11px; font-weight:600; font-size:15px; color:#1f1b18; cursor:pointer;">Pré-visualizar</button>
+            <button onClick="{{ salvarImovel }}" style="padding:14px 28px; border:none; background:#d97a2b; color:#fff; border-radius:11px; font-weight:600; font-size:15px; cursor:pointer;">Salvar imóvel</button>
+          </div>
+        </div>
+</sc-if>
+      <sc-if value="{{ scrConfig }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:34px 44px; max-width:980px;">
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:28px;">
+            <div><h1 style="font-family:'Jost',sans-serif; font-weight:400; font-size:32px; line-height:1.15; margin:0 0 4px;">Configurações do site</h1><div style="font-size:14px; color:#948d80;">Personalize sua vitrine pública.</div></div>
+            <button onClick="{{ goVitrineDemo }}" style="background:#fff; color:#1f1b18; border:1px solid #e4ddcd; border-radius:11px; padding:13px 20px; font-weight:600; font-size:15px; cursor:pointer;">↗ Ver vitrine</button>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:24px; align-items:start;">
+            <div style="display:flex; flex-direction:column; gap:22px;">
+              <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:30px;">
+                <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:18px; margin:0 0 20px;">Identidade</h2>
+                <div style="display:flex; flex-direction:column; gap:16px;">
+                  <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Nome público</label><input defaultValue="Albuquerque Imóveis" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+                  <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Endereço da vitrine</label>
+                    <div style="display:flex; align-items:center; border:1px solid #e4ddcd; border-radius:10px; overflow:hidden; background:#fff;"><span style="padding:13px 0 13px 14px; font-size:15px; color:#b3ab9d;">cavi.com.br/</span><input defaultValue="albuquerque" style="flex:1; padding:13px 14px 13px 2px; border:none; font-size:15px; background:transparent; outline:none;"></div>
+                  </div>
+                  <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">Apresentação</label><textarea rows="3" defaultValue="Especialista em imóveis de alto padrão na Zona Oeste de São Paulo. Atendimento próximo, da visita à assinatura." style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff; resize:vertical; line-height:1.5;"></textarea></div>
+                </div>
+              </div>
+
+              <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:30px;">
+                <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:18px; margin:0 0 20px;">Contato</h2>
+                <div style="display:flex; gap:16px;">
+                  <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">WhatsApp</label><input defaultValue="(11) 99812-4470" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+                  <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:6px;">E-mail de contato</label><input defaultValue="marina@albuquerqueimoveis.com.br" style="width:100%; padding:13px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+                </div>
+              </div>
+
+              <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:30px;">
+                <h2 style="font-family:'Jost',sans-serif; font-weight:500; font-size:18px; margin:0 0 6px;">Aparência</h2>
+                <p style="font-size:14px; color:#948d80; margin:0 0 18px;">Logo e cor de destaque da sua vitrine.</p>
+                <div style="display:flex; gap:24px; align-items:flex-start;">
+                  <div><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:8px;">Logo</label><div style="width:96px; height:96px; border:2px dashed #d8d0c2; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; cursor:pointer; color:#a59d8e;"><span style="font-size:22px;">＋</span><span style="font-size:11px; font-weight:600;">Enviar</span></div></div>
+                  <div style="flex:1;"><label style="display:block; font-size:13px; font-weight:600; color:#6f6a60; margin-bottom:8px;">Cor de destaque</label>
+                    <div style="display:flex; gap:12px;">
+                      <div style="width:40px; height:40px; border-radius:10px; background:#d97a2b; cursor:pointer; box-shadow:0 0 0 3px #fff, 0 0 0 5px #d97a2b;"></div>
+                      <div style="width:40px; height:40px; border-radius:10px; background:#5a8f7b; cursor:pointer;"></div>
+                      <div style="width:40px; height:40px; border-radius:10px; background:#3f6f9e; cursor:pointer;"></div>
+                      <div style="width:40px; height:40px; border-radius:10px; background:#b8863b; cursor:pointer;"></div>
+                      <div style="width:40px; height:40px; border-radius:10px; background:#8a6fb0; cursor:pointer;"></div>
+                      <div style="width:40px; height:40px; border-radius:10px; background:#1f1b18; cursor:pointer;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex; gap:12px; justify-content:flex-end;">
+                <button style="padding:14px 28px; border:none; background:#d97a2b; color:#fff; border-radius:11px; font-weight:600; font-size:15px; cursor:pointer;">Salvar alterações</button>
+              </div>
+            </div>
+
+            <div style="position:sticky; top:34px;">
+              <div style="font-size:13px; font-weight:600; color:#948d80; margin-bottom:10px;">Pré-visualização</div>
+              <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; overflow:hidden; box-shadow:0 18px 44px -28px rgba(60,45,25,0.35);">
+                <div style="height:34px; background:#f6f3ec; border-bottom:1px solid #ece7db; display:flex; align-items:center; padding:0 14px; font-size:12px; color:#a59d8e;">cavi.com.br/albuquerque</div>
+                <div style="padding:22px;">
+                  <div style="display:flex; align-items:center; gap:11px; margin-bottom:18px;"><div style="width:40px; height:40px; border-radius:10px; background:#d97a2b; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">A</div><div><div style="font-family:'Jost',sans-serif; font-weight:500; font-size:17px;">Albuquerque Imóveis</div><div style="font-size:11px; color:#948d80;">CRECI-SP 154.882</div></div></div>
+                  <img src="assets/prop-02.png" style="width:100%; height:110px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+                  <div style="font-family:'Jost',sans-serif; font-weight:600; font-size:18px; color:#d97a2b;">R$ 1.650.000</div>
+                  <div style="font-size:13px; color:#6f6a60;">Cobertura duplex · Vila Madalena</div>
+                  <div style="margin-top:14px; background:#9dc689; color:#1f3d18; text-align:center; padding:9px; border-radius:9px; font-size:13px; font-weight:700;">WhatsApp</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</sc-if>
+    </main>
+  </div>
+</sc-if>
+
+<!-- ===================== ADMIN ===================== -->
+<sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}">
+  <div style="display:flex; min-height:100vh;">
+    <aside style="width:248px; flex:none; background:#1f1b18; padding:24px 16px; display:flex; flex-direction:column; position:sticky; top:0; height:100vh;">
+      <img src="assets/logo-cream.png" alt="CAVI" style="height:26px; align-self:flex-start; margin:8px 8px 8px; cursor:pointer;" onClick="{{ goHome }}">
+      <div style="font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#7d766a; margin:0 8px 24px;">Administração</div>
+      <nav style="display:flex; flex-direction:column; gap:4px;">
+        <div style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:15px; color:#1f1b18; background:#d97a2b;"><span style="font-size:17px;">☷</span> Corretores</div>
+        <div style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:default; font-weight:600; font-size:15px; color:#6b655b;"><span style="font-size:17px;">⊞</span> Visão geral</div>
+        <div style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:default; font-weight:600; font-size:15px; color:#6b655b;"><span style="font-size:17px;">◷</span> Assinaturas</div>
+      </nav>
+      <div style="margin-top:auto;"><div onClick="{{ goHome }}" style="display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:15px; color:#7d766a;"><span style="font-size:17px;">⏻</span> Sair</div></div>
+    </aside>
+    <main style="flex:1; min-width:0;">
+        <div style="padding:34px 44px;">
+          <div style="margin-bottom:28px;">
+            <h1 style="font-family:'Jost',sans-serif; font-weight:400; font-size:32px; line-height:1.15; margin:0 0 4px;">Corretores cadastrados</h1>
+            <div style="font-size:14px; color:#948d80;">Acompanhe as contas criadas na plataforma.</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:30px;">
+            <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:24px;"><div style="font-size:14px; color:#948d80; margin-bottom:10px;">Corretores</div><div style="font-family:'Jost',sans-serif; font-size:38px; font-weight:500; line-height:1;">{{ admTotal }}</div></div>
+            <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:24px;"><div style="font-size:14px; color:#948d80; margin-bottom:10px;">Contas ativas</div><div style="font-family:'Jost',sans-serif; font-size:38px; font-weight:500; line-height:1; color:#5a7d43;">{{ admAtivos }}</div></div>
+            <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:24px;"><div style="font-size:14px; color:#948d80; margin-bottom:10px;">Imóveis publicados</div><div style="font-family:'Jost',sans-serif; font-size:38px; font-weight:500; line-height:1;">{{ admImoveis }}</div></div>
+            <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; padding:24px;"><div style="font-size:14px; color:#948d80; margin-bottom:10px;">Assinantes Pro</div><div style="font-family:'Jost',sans-serif; font-size:38px; font-weight:500; line-height:1; color:#c06a22;">{{ admPro }}</div></div>
+          </div>
+
+          <div style="display:flex; gap:12px; margin-bottom:18px;">
+            <div style="flex:1; position:relative;"><span style="position:absolute; left:14px; top:50%; transform:translateY(-50%); color:#b3ab9d;">⌕</span><input placeholder="Buscar corretor, site ou cidade" style="width:100%; padding:12px 14px 12px 38px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff;"></div>
+            <select style="padding:12px 14px; border:1px solid #e4ddcd; border-radius:10px; font-size:15px; background:#fff; color:#1f1b18; cursor:pointer;"><option>Todos os planos</option><option>Pro</option><option>Starter</option><option>Junior</option></select>
+          </div>
+
+          <div style="background:#fff; border:1px solid #ece7db; border-radius:16px; overflow:hidden;">
+            <div style="display:grid; grid-template-columns:2.4fr 1.4fr 1fr 0.9fr 1fr 1.4fr; gap:16px; padding:14px 22px; background:#faf8f3; border-bottom:1px solid #ece7db; font-size:12px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:#a59d8e;">
+              <div>Site / Corretor</div><div>Cidade</div><div>Plano</div><div>Imóveis</div><div>Status</div><div style="text-align:right;">Ação</div>
+            </div>
+            <sc-for list="{{ corretores }}" as="c" hint-placeholder-count="6">
+              <div style="display:grid; grid-template-columns:2.4fr 1.4fr 1fr 0.9fr 1fr 1.4fr; gap:16px; padding:14px 22px; align-items:center; border-bottom:1px solid #f4f0e7;">
+                <div style="display:flex; align-items:center; gap:13px; min-width:0;">
+                  <div style="width:42px; height:42px; border-radius:10px; flex:none; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px; color:#fff; background:{{ c.cor }};">{{ c.inicial }}</div>
+                  <div style="min-width:0;"><div style="font-weight:600; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ c.site }}</div><div style="font-size:12px; color:#b3ab9d;">{{ c.nome }} · {{ c.creci }}</div></div>
+                </div>
+                <div style="font-size:14px; color:#6f6a60;">{{ c.cidade }}<div style="font-size:12px; color:#b3ab9d;">desde {{ c.desde }}</div></div>
+                <div><span style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px; background:{{ c.planoBg }}; color:{{ c.planoCor }};">{{ c.plano }}</span></div>
+                <div style="font-weight:600; font-size:15px;">{{ c.qtd }}</div>
+                <div><span style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px; background:{{ c.stBg }}; color:{{ c.stCor }};">{{ c.status }}</span></div>
+                <div style="display:flex; gap:8px; justify-content:flex-end;">
+                  <button onClick="{{ c.openSite }}" style="padding:8px 13px; border:1px solid #e4ddcd; background:#fff; border-radius:9px; font-size:13px; font-weight:600; color:#6f6a60; cursor:pointer;">Vitrine</button>
+                  <button onClick="{{ c.toggle }}" style="padding:8px 13px; border:none; background:#faf8f3; border-radius:9px; font-size:13px; font-weight:600; color:{{ c.stCor }}; cursor:pointer;">{{ c.acaoLabel }}</button>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top:18px; font-size:13px; color:#a59d8e; cursor:pointer;" onClick="{{ goHome }}">Atalho de demonstração: <span style="color:#d97a2b; font-weight:600;">abrir entrada do administrador a partir da Home</span></div>
+        </div>
+      </main>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    const P = n => 'assets/prop-' + String(n).padStart(2,'0') + '.png';
+    const im = (id,codigo,titulo,tipo,finalidade,preco,area,q,b,v,bairro,status,destaque,acessos,contatos,gal,descricao)=>({
+      id,codigo,titulo,tipo,finalidade,preco,area,quartos:q,banheiros:b,vagas:v,
+      bairro,cidade:'São Paulo',uf:'SP',status,destaque,acessos,contatos,
+      foto:P(gal[0]), galeria:gal.map(P),
+      cep:'05422-0'+String(10+id), logradouro:'Rua dos Pinheiros', numero:String(100+id*7),
+      complemento: v>0 ? 'Apto '+(id*10+1) : '', descricao
+    });
+    this.state = {
+      screen:'home', params:{}, authTab:'entrar', galeriaIdx:0,
+      filtros:{ finalidade:'', tipo:'', bairro:'', precoMax:'' },
+      corretores:[
+        {id:1,nome:'Marina Albuquerque',site:'Albuquerque Imóveis',slug:'albuquerque',cidade:'São Paulo',uf:'SP',bairro:'Pinheiros',whatsapp:'(11) 99812-4470',creci:'CRECI-SP 154.882',plano:'Pro',qtd:24,status:'Ativo',desde:'Mar 2024',cor:'#d97a2b',sobre:'Especialista em imóveis de alto padrão na Zona Oeste de São Paulo. Atendimento próximo, da visita à assinatura.'},
+        {id:2,nome:'Ricardo Tavares',site:'RT Imobiliária',slug:'rtimoveis',cidade:'Recife',uf:'PE',bairro:'Boa Viagem',whatsapp:'(81) 99645-2210',creci:'CRECI-PE 21.337',plano:'Starter',qtd:11,status:'Ativo',desde:'Jun 2024',cor:'#5a8f7b',sobre:'Apartamentos e coberturas à beira-mar em Boa Viagem.'},
+        {id:3,nome:'Júlia Monteiro',site:'Monteiro Lar',slug:'monteirolar',cidade:'Belo Horizonte',uf:'MG',bairro:'Savassi',whatsapp:'(31) 98712-9043',creci:'CRECI-MG 33.901',plano:'Starter',qtd:9,status:'Ativo',desde:'Ago 2024',cor:'#b8863b',sobre:'Imóveis residenciais na região centro-sul de BH.'},
+        {id:4,nome:'Eduardo Salles',site:'Salles & Co',slug:'salles',cidade:'São Paulo',uf:'SP',bairro:'Moema',whatsapp:'(11) 99120-7781',creci:'CRECI-SP 188.245',plano:'Pro',qtd:31,status:'Ativo',desde:'Jan 2024',cor:'#3f6f9e',sobre:'Curadoria de apartamentos em Moema e Vila Nova Conceição.'},
+        {id:5,nome:'Camila Reis',site:'Reis Imóveis',slug:'reisimoveis',cidade:'Curitiba',uf:'PR',bairro:'Batel',whatsapp:'(41) 99588-3360',creci:'CRECI-PR 14.502',plano:'Junior',qtd:6,status:'Inativo',desde:'Out 2024',cor:'#8a6fb0',sobre:'Imóveis selecionados no Batel e Água Verde.'},
+        {id:6,nome:'Fernando Dias',site:'Dias Negócios Imobiliários',slug:'diasimob',cidade:'Fortaleza',uf:'CE',bairro:'Meireles',whatsapp:'(85) 99701-1185',creci:'CRECI-CE 9.880',plano:'Starter',qtd:14,status:'Ativo',desde:'Mai 2024',cor:'#c2693f',sobre:'Apartamentos no Meireles e Aldeota.'}
+      ],
+      imoveis:[
+        im(1,'AB-1042','Apartamento reformado em Pinheiros','Apartamento','Venda',890000,78,2,2,1,'Pinheiros','Publicado',true,312,18,[1,10,4,13],'Apartamento totalmente reformado, com cozinha integrada, piso em porcelanato e armários planejados. A poucos passos da Rua dos Pinheiros e do metrô Faria Lima.'),
+        im(2,'AB-1088','Cobertura duplex na Vila Madalena','Cobertura','Venda',1650000,142,3,3,2,'Vila Madalena','Publicado',true,489,27,[2,11,5,14],'Cobertura duplex com terraço gourmet, vista aberta para a Vila Madalena e churrasqueira. Acabamento de alto padrão e 2 vagas cobertas.'),
+        im(3,'AB-1110','Studio mobiliado a 2 min do metrô','Studio','Aluguel',3200,32,1,1,0,'Pinheiros','Publicado',false,201,12,[3,12,7,15],'Studio compacto e funcional, mobiliado e pronto para morar. Condomínio com lavanderia e portaria 24h, a 2 minutos do metrô.'),
+        im(4,'AB-0997','Casa de vila com quintal','Casa','Venda',1180000,110,3,2,2,'Vila Madalena','Publicado',false,356,21,[4,1,8,11],'Charmosa casa de vila com quintal ensolarado, ideal para quem busca tranquilidade no coração da Vila Madalena.'),
+        im(5,'AB-1131','Apartamento garden no Alto de Pinheiros','Apartamento','Venda',1420000,96,3,2,2,'Alto de Pinheiros','Oculto',false,88,4,[5,2,9,12],'Apartamento garden com área externa privativa, perfeito para pets. Condomínio com lazer completo no Alto de Pinheiros.'),
+        im(6,'AB-1150','Sala comercial na Faria Lima','Sala comercial','Aluguel',5800,45,0,1,1,'Itaim Bibi','Publicado',false,143,9,[6,3,10,13],'Sala comercial em edifício corporativo na Faria Lima, com recepção, ar-condicionado central e 1 vaga.'),
+        im(7,'AB-1077','Apartamento compacto para investir','Apartamento','Venda',540000,42,1,1,1,'Pinheiros','Publicado',false,274,15,[7,4,11,14],'Apartamento compacto com ótima rentabilidade para locação. Excelente localização e baixo custo de condomínio.'),
+        im(8,'AB-1162','Casa térrea com edícula','Casa','Venda',1950000,220,4,3,3,'Alto de Pinheiros','Oculto',false,52,2,[8,5,12,15],'Casa térrea com amplo jardim, edícula independente e 3 vagas. Terreno de 360m² em rua arborizada.'),
+        im(9,'AB-1099','Loft estilo industrial','Loft','Aluguel',4500,68,1,1,1,'Vila Madalena','Publicado',true,318,22,[9,6,13,1],'Loft estilo industrial com pé-direito duplo, mezanino e acabamento em concreto aparente. Espaço versátil para morar ou trabalhar.')
+      ]
+    };
+  }
+
+  go(screen, params){ this.setState({screen, params: params||{}, galeriaIdx:0}); try{ window.scrollTo(0,0); }catch(e){} }
+  fmt(p, fin){ return 'R$ ' + Number(p).toLocaleString('pt-BR') + (fin==='Aluguel' ? '/mês' : ''); }
+  togglePub(id){ this.setState(s=>({ imoveis: s.imoveis.map(i=> i.id===id ? {...i, status: i.status==='Publicado'?'Oculto':'Publicado'} : i) })); }
+  toggleCorretor(id){ this.setState(s=>({ corretores: s.corretores.map(c=> c.id===id ? {...c, status: c.status==='Ativo'?'Inativo':'Ativo'} : c) })); }
+  setFiltro(k,v){ this.setState(s=>({ filtros: {...s.filtros, [k]:v} })); }
+  waLink(num, msg){ const d = String(num).replace(/\D/g,''); return 'https://wa.me/55'+d + (msg?('?text='+encodeURIComponent(msg)):''); }
+
+  renderVals(){
+    const s = this.state; const screen = s.screen;
+    const go = (sc,p)=>()=>this.go(sc,p);
+    const fmt = (p,f)=>this.fmt(p,f);
+    const broker = s.corretores[0];
+    const brokerView = {...broker, inicial: broker.site[0]};
+    const activeCorretor = s.corretores.find(c=>c.slug===s.params.slug) || broker;
+    const corretorAtivo = {...activeCorretor, inicial: activeCorretor.site[0]};
+
+    const mkImg = (src, style) => React.createElement('img', { src, style });
+    const decorate = im => ({
+      ...im,
+      precoFmt: fmt(im.preco, im.finalidade),
+      fotoCard: mkImg(im.foto, { width:'100%', height:'190px', objectFit:'cover', display:'block' }),
+      fotoSm: mkImg(im.foto, { width:'62px', height:'48px', objectFit:'cover', borderRadius:'8px', flex:'none' }),
+      fotoMd: mkImg(im.foto, { width:'66px', height:'50px', objectFit:'cover', borderRadius:'8px', flex:'none' }),
+      especs: im.tipo==='Sala comercial' ? (im.area+'m² · '+im.vagas+' vaga') : (im.quartos+' quartos · '+im.banheiros+' banh · '+im.area+'m²'),
+      finCor: im.finalidade==='Venda' ? '#d97a2b' : '#5a8f7b',
+      finBg: im.finalidade==='Venda' ? '#fbeedd' : '#e2efe6',
+      publicado: im.status==='Publicado',
+      toggleLabel: im.status==='Publicado' ? 'Ocultar' : 'Publicar',
+      stCor: im.status==='Publicado' ? '#5a7d43' : '#a89f90',
+      stBg: im.status==='Publicado' ? '#e6eed6' : '#efeae0',
+      open: go('imovel-detalhe',{id:im.id, slug:activeCorretor.slug}),
+      edit: go('imovel-form',{id:im.id}),
+      toggle: ()=>this.togglePub(im.id)
+    });
+
+    const imoveisAll = s.imoveis.map(decorate);
+    const f = s.filtros;
+    const catalogo = imoveisAll.filter(i=>i.status==='Publicado').filter(i=>
+      (!f.finalidade || i.finalidade===f.finalidade) &&
+      (!f.tipo || i.tipo===f.tipo) &&
+      (!f.bairro || i.bairro===f.bairro) &&
+      (!f.precoMax || i.preco <= Number(f.precoMax))
+    );
+    const detalhe = imoveisAll.find(i=>i.id===s.params.id) || imoveisAll[0];
+    const galeria = detalhe ? detalhe.galeria.map((src,i)=>({
+      thumb: React.createElement('img', { src, onClick:()=>this.setState({galeriaIdx:i}), style:{ width:'100%', height:'84px', objectFit:'cover', borderRadius:'10px', cursor:'pointer', border: i===s.galeriaIdx?'2px solid #d97a2b':'2px solid transparent', opacity: i===s.galeriaIdx?1:0.7 } })
+    })) : [];
+    const galeriaMainSrc = detalhe ? (detalhe.galeria[s.galeriaIdx] || detalhe.foto) : '';
+    const galeriaMain = detalhe ? React.createElement('img', { src: galeriaMainSrc, alt: detalhe.titulo, style:{ width:'100%', height:'420px', objectFit:'cover', display:'block' } }) : null;
+
+    const corretoresView = s.corretores.map(c=>({
+      ...c, inicial: c.site[0], ativo: c.status==='Ativo',
+      acaoLabel: c.status==='Ativo' ? 'Desativar' : 'Ativar',
+      stCor: c.status==='Ativo' ? '#5a7d43' : '#b56b6b',
+      stBg: c.status==='Ativo' ? '#e6eed6' : '#f4e3e3',
+      planoBg: c.plano==='Pro' ? '#fbeedd' : (c.plano==='Starter' ? '#e7eef3' : '#efeae0'),
+      planoCor: c.plano==='Pro' ? '#c06a22' : (c.plano==='Starter' ? '#3f6f9e' : '#8a8275'),
+      openSite: go('catalogo',{slug:c.slug}),
+      toggle: ()=>this.toggleCorretor(c.id)
+    }));
+
+    const total = s.imoveis.length;
+    const publicados = s.imoveis.filter(i=>i.status==='Publicado').length;
+    const ocultos = total - publicados;
+    const acessos = s.imoveis.reduce((a,i)=>a+i.acessos,0);
+    const contatos = s.imoveis.reduce((a,i)=>a+i.contatos,0);
+
+    const editing = !!s.params.id && screen==='imovel-form';
+    const fi = editing ? (s.imoveis.find(i=>i.id===s.params.id)||{}) : {};
+
+    const isBroker = ['dashboard','imoveis','imovel-form','config'].includes(screen);
+    const cadastro = s.authTab==='cadastro';
+
+    return {
+      // groups
+      isCavi: screen==='home',
+      isAuth: screen==='login',
+      isRecuperar: screen==='recuperar',
+      isSite: screen==='catalogo' || screen==='imovel-detalhe',
+      isBroker, isAdmin: screen==='admin',
+      scrCatalogo: screen==='catalogo', scrDetalhe: screen==='imovel-detalhe',
+      scrDashboard: screen==='dashboard', scrImoveis: screen==='imoveis',
+      scrForm: screen==='imovel-form', scrConfig: screen==='config',
+
+      // nav
+      goHome: go('home'), goLogin: go('login'), goDashboard: go('dashboard'),
+      goImoveis: go('imoveis'), goConfig: go('config'), goNovoImovel: go('imovel-form',{}),
+      goAdmin: go('admin'),
+      goVitrineDemo: go('catalogo',{slug:broker.slug}),
+      goCatalogoActive: go('catalogo',{slug:activeCorretor.slug}),
+
+      // sidebar active states
+      navDashBg: screen==='dashboard'?'#fbeedd':'transparent', navDashFg: screen==='dashboard'?'#c06a22':'#6f6a60',
+      navImoveisBg: screen==='imoveis'?'#fbeedd':'transparent', navImoveisFg: screen==='imoveis'?'#c06a22':'#6f6a60',
+      navConfigBg: screen==='config'?'#fbeedd':'transparent', navConfigFg: screen==='config'?'#c06a22':'#6f6a60',
+
+      // auth
+      authCadastro: cadastro,
+      authLogin: !cadastro,
+      tabEntrar: ()=>this.setState({authTab:'entrar'}), tabCadastro: ()=>this.setState({authTab:'cadastro'}),
+      fazerLogin: go('dashboard'),
+      goRecuperar: ()=>this.setState({screen:'recuperar', recuperarEnviado:false}),
+      recuperarEnviado: !!s.recuperarEnviado,
+      recuperarPendente: !s.recuperarEnviado,
+      enviarRecuperar: ()=>this.setState({recuperarEnviado:true}),
+      reenviarRecuperar: ()=>this.setState({recuperarEnviado:false}),
+      authTitle: cadastro ? 'Crie sua vitrine' : 'Bem-vindo de volta',
+      authSub: cadastro ? 'Comece grátis e publique seus imóveis hoje.' : 'Acesse o painel da sua imobiliária.',
+      authBtn: cadastro ? 'Criar conta e começar' : 'Entrar no painel',
+      entrarBg: cadastro?'transparent':'#fff', entrarFg: cadastro?'#948d80':'#1f1b18', entrarShadow: cadastro?'none':'0 1px 3px rgba(0,0,0,0.08)',
+      cadastroBg: cadastro?'#fff':'transparent', cadastroFg: cadastro?'#1f1b18':'#948d80', cadastroShadow: cadastro?'0 1px 3px rgba(0,0,0,0.08)':'none',
+
+      // data
+      corretores: corretoresView,
+      corretorAtivo, corretorAtivoWa: this.waLink(activeCorretor.whatsapp),
+      broker: brokerView,
+      catalogo, catalogoCount: catalogo.length,
+      detalhe, galeria, galeriaMain,
+      detalheWa: detalhe ? this.waLink(activeCorretor.whatsapp, 'Olá! Tenho interesse no imóvel '+detalhe.codigo+' — '+detalhe.titulo) : '#',
+      imoveisAll,
+      destaques: imoveisAll.filter(i=>i.status==='Publicado').slice(0,3),
+      recentes: imoveisAll.slice(0,4),
+
+      // filtros
+      fFinalidade: f.finalidade, fTipo: f.tipo, fBairro: f.bairro, fPrecoMax: f.precoMax,
+      onFinalidade: e=>this.setFiltro('finalidade', e.target.value),
+      onTipo: e=>this.setFiltro('tipo', e.target.value),
+      onBairro: e=>this.setFiltro('bairro', e.target.value),
+      onPrecoMax: e=>this.setFiltro('precoMax', e.target.value),
+      limparFiltros: ()=>this.setState({filtros:{finalidade:'',tipo:'',bairro:'',precoMax:''}}),
+
+      // stats
+      total, publicados, ocultos, acessos, contatos,
+
+      // admin stats
+      admTotal: s.corretores.length,
+      admAtivos: s.corretores.filter(c=>c.status==='Ativo').length,
+      admImoveis: s.corretores.reduce((a,c)=>a+c.qtd,0),
+      admPro: s.corretores.filter(c=>c.plano==='Pro').length,
+
+      // form
+      editing,
+      formTitle: editing ? 'Editar imóvel' : 'Cadastrar imóvel',
+      formSub: editing ? ('Código '+fi.codigo+' · '+fi.bairro) : 'Preencha os dados do novo imóvel.',
+      fiTitulo: fi.titulo||'', fiTipo: fi.tipo||'Apartamento', fiFinalidade: fi.finalidade||'Venda',
+      fiPreco: fi.preco||'', fiDescricao: fi.descricao||'', fiArea: fi.area||'', fiQuartos: fi.quartos||'',
+      fiBanheiros: fi.banheiros||'', fiVagas: fi.vagas||'', fiCep: fi.cep||'', fiLogradouro: fi.logradouro||'',
+      fiNumero: fi.numero||'', fiBairro: fi.bairro||'', fiComplemento: fi.complemento||'',
+      formGaleria: editing ? (fi.galeria||[]).slice(0,4).map(src=>({ img: React.createElement('img', { src, style:{ width:'100%', height:'96px', objectFit:'cover', display:'block' } }) })) : [],
+      formPublicado: editing ? fi.status==='Publicado' : true,
+      salvarImovel: go('imoveis'), cancelarForm: go('imoveis'),
+      preverImovel: editing ? go('imovel-detalhe',{id:fi.id, slug:broker.slug}) : go('catalogo',{slug:broker.slug})
+    };
+  }
+}
+</script>
+</body>
+</html>

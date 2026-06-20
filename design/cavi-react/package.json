@@ -1,0 +1,21 @@
+{
+  "name": "cavi-mvp",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "CAVI — vitrine de imóveis para corretores. MVP em React.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router": "^8.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.0.0"
+  }
+}
