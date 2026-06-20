@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { api, ApiError } from '../../lib/api'
 import { useFetch } from '../../hooks/useFetch'
 import { contaSiteSchema } from '../../lib/schemas'
+import { mascararTelefone } from '../../lib/masks'
 import type { ContaSite } from '../../lib/types'
 import { colors, fonts } from '../../lib/theme'
 import { toast } from '../../store/uiStore'
@@ -45,7 +46,7 @@ function vazioParaForm(conta: ContaSite): FormState {
     nome_publico: conta.nome_publico ?? '',
     slug: conta.slug ?? '',
     descricao: conta.descricao ?? '',
-    whatsapp: conta.whatsapp ?? '',
+    whatsapp: mascararTelefone(conta.whatsapp ?? ''),
     creci: conta.creci ?? '',
     cidade: conta.cidade ?? '',
     uf: conta.uf ?? '',
@@ -360,8 +361,10 @@ export default function ConfigSitePage() {
                   <Label>WhatsApp</Label>
                   <input
                     value={form.whatsapp}
-                    onChange={(e) => setCampo('whatsapp', e.target.value)}
+                    onChange={(e) => setCampo('whatsapp', mascararTelefone(e.target.value))}
                     placeholder="(00) 00000-0000"
+                    inputMode="tel"
+                    maxLength={15}
                     style={inputStyle(!!errosCampo.whatsapp)}
                   />
                   <ErroCampo msg={errosCampo.whatsapp} />

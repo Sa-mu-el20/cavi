@@ -12,6 +12,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import { ApiError, api, garantirCsrf } from '../../lib/api'
 import { imovelSchema, type ImovelForm } from '../../lib/schemas'
+import { formatarNumeroComoMoedaInput, mascararMoeda, moedaParaNumero } from '../../lib/masks'
 import { colors, fonts } from '../../lib/theme'
 import { StatusImovel, TipoImovel, FinalidadeImovel } from '../../lib/types'
 import type { Imovel } from '../../lib/types'
@@ -118,7 +119,7 @@ function camposDeImovel(im: Imovel): CamposForm {
     titulo: im.titulo ?? '',
     tipo: im.tipo ?? TipoImovel.APARTAMENTO,
     finalidade: im.finalidade ?? FinalidadeImovel.VENDA,
-    preco: im.preco != null ? String(im.preco) : '',
+    preco: formatarNumeroComoMoedaInput(im.preco),
     codigo: im.codigo ?? '',
     descricao: im.descricao ?? '',
     area: im.area != null ? String(im.area) : '',
@@ -154,7 +155,7 @@ function montarPayload(c: CamposForm, status: string): unknown {
     titulo: c.titulo.trim(),
     tipo: c.tipo,
     finalidade: c.finalidade,
-    preco: c.preco.trim() === '' ? undefined : c.preco,
+    preco: moedaParaNumero(c.preco),
     codigo: opcStr(c.codigo),
     descricao: opcStr(c.descricao),
     area: opcNum(c.area),
@@ -443,8 +444,8 @@ export default function ImovelFormPage() {
               <Label>Preço (R$)</Label>
               <input
                 value={campos.preco}
-                onChange={(e) => set('preco', e.target.value)}
-                placeholder="890000"
+                onChange={(e) => set('preco', mascararMoeda(e.target.value))}
+                placeholder="890.000,00"
                 inputMode="decimal"
                 style={{ ...inputStyle, borderColor: erros.preco ? '#e0a89e' : colors.field }}
               />

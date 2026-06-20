@@ -14,6 +14,7 @@ import { useAuthStore } from '../../store/authStore'
 import { toast } from '../../store/uiStore'
 import { colors, fonts } from '../../lib/theme'
 import { loginSchema, cadastroCorretorSchema } from '../../lib/schemas'
+import { mascararCpf, mascararTelefone } from '../../lib/masks'
 import { Perfil } from '../../lib/types'
 import type { Usuario } from '../../lib/types'
 
@@ -325,8 +326,10 @@ export default function AuthPage() {
                   label="CPF"
                   placeholder="000.000.000-00"
                   value={cpf}
-                  onChange={(e) => setCpf(e.target.value)}
+                  onChange={(e) => setCpf(mascararCpf(e.target.value))}
                   erro={erros.cpf?.[0]}
+                  inputMode="numeric"
+                  maxLength={14}
                 />
                 <Field
                   label="CRECI"
@@ -340,9 +343,11 @@ export default function AuthPage() {
                 label="Telefone / WhatsApp"
                 placeholder="(11) 99812-4470"
                 value={telefone}
-                onChange={(e) => setTelefone(e.target.value)}
+                onChange={(e) => setTelefone(mascararTelefone(e.target.value))}
                 erro={erros.telefone?.[0] ?? erros.whatsapp?.[0]}
                 autoComplete="tel"
+                inputMode="tel"
+                maxLength={15}
               />
               <Field
                 label="Nome público da vitrine"
