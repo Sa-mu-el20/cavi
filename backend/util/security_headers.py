@@ -73,6 +73,8 @@ class MiddlewareSegurancaHeaders(BaseHTTPMiddleware):
             "img-src 'self' data: https:",
             "font-src 'self' https://cdn.jsdelivr.net",
             "connect-src 'self'",
+            # Permite apenas iframes do Google Maps na página pública do imóvel.
+            "frame-src 'self' https://www.google.com https://maps.google.com",
             "frame-ancestors 'none'",
             # Bloquear object e embed para prevenir plugins maliciosos
             "object-src 'none'",

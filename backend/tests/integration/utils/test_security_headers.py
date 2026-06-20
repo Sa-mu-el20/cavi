@@ -57,6 +57,7 @@ class TestMiddlewareSegurancaHeaders:
         assert "script-src 'self'" in csp
         assert "style-src 'self'" in csp
         assert "img-src 'self'" in csp
+        assert "frame-src 'self' https://www.google.com https://maps.google.com" in csp
         assert "frame-ancestors 'none'" in csp
         assert "object-src 'none'" in csp
         assert "base-uri 'self'" in csp

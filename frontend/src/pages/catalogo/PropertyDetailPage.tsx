@@ -37,10 +37,18 @@ function StatBox({ label, value }: { label: string; value: string | number }) {
   )
 }
 
-function montarEnderecoMapa(end?: EnderecoImovel | null): string {
+export function montarEnderecoMapa(end?: EnderecoImovel | null): string {
   if (!end) return ''
   const ruaNumero = [end.logradouro, end.numero].filter(Boolean).join(', ')
   return [ruaNumero, end.bairro, end.cidade, end.uf, end.cep, 'Brasil'].filter(Boolean).join(', ')
+}
+
+export function montarUrlMapaEmbed(endereco: string): string {
+  return endereco ? `https://maps.google.com/maps?q=${encodeURIComponent(endereco)}&output=embed` : ''
+}
+
+export function montarUrlMapaExterno(endereco: string): string {
+  return endereco ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(endereco)}` : ''
 }
 
 export default function PropertyDetailPage() {
@@ -96,12 +104,8 @@ export default function PropertyDetailPage() {
 
   const localResumo = end ? [end.bairro, end.cidade].filter(Boolean).join(', ') : ''
   const enderecoMapa = montarEnderecoMapa(end)
-  const urlMapa = enderecoMapa
-    ? `https://www.google.com/maps?q=${encodeURIComponent(enderecoMapa)}&output=embed`
-    : ''
-  const urlMapaExterno = enderecoMapa
-    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(enderecoMapa)}`
-    : ''
+  const urlMapa = montarUrlMapaEmbed(enderecoMapa)
+  const urlMapaExterno = montarUrlMapaExterno(enderecoMapa)
 
   const msg = `Olá! Tenho interesse no imóvel ${im.codigo ?? `#${im.id}`} — ${im.titulo}`
   const wa = linkWhatsApp(catalogo.whatsapp, msg)

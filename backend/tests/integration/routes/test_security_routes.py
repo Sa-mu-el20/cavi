@@ -32,10 +32,11 @@ class TestSecurityHeaders:
         assert "Permissions-Policy" in headers
 
     def test_csp_restringe_origens(self, client):
-        """CSP deve declarar default-src 'self'"""
+        """CSP deve restringir origens e liberar o iframe do Google Maps"""
         response = client.get("/health")
         csp = response.headers.get("Content-Security-Policy", "")
         assert "default-src 'self'" in csp
+        assert "frame-src 'self' https://www.google.com https://maps.google.com" in csp
 
 
 class TestSQLInjection:
