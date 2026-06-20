@@ -1,188 +1,480 @@
-import { Link } from 'react-router-dom'
+import { useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { api } from '../../lib/api'
+import { colors, fonts } from '../../lib/theme'
+import type { CorretorVitrine } from '../../lib/types'
+import { useFetch } from '../../hooks/useFetch'
+import PublicHeader from '../../components/cavi/PublicHeader'
+import BrokerCard from '../../components/cavi/BrokerCard'
+import Spinner from '../../components/ui/Spinner'
+import EmptyState from '../../components/ui/EmptyState'
 
-const APP_NAME = 'Sistema Web'
+// Home pública do CAVI: hero + lista de vitrines ativas (GET /publico/corretores).
+// Porte fiel de cavi-react/src/pages/Home.jsx, mas ligado à API real (sem JSON local):
+// dados vêm de useFetch -> api.get; cards usam o BrokerCard real (link p/ /v/:slug);
+// CTAs "sou corretor"/criar vitrine levam ao /login.
 
-interface Recurso {
-  icone: string
-  cor: string
-  titulo: string
-  texto: string
-}
-
-const recursos: Recurso[] = [
+const PASSOS = [
   {
-    icone: 'bi-shield-check',
-    cor: 'text-primary',
-    titulo: 'Segurança',
-    texto: 'Sistema seguro com autenticação robusta e criptografia de dados',
+    n: '01',
+    t: 'Crie sua conta',
+    d: 'Informe seu CRECI e dados de contato. Sua vitrine ganha um endereço próprio em segundos.',
   },
   {
-    icone: 'bi-person-circle',
-    cor: 'text-info',
-    titulo: 'Perfil Personalizável',
-    texto: 'Personalize seu perfil com foto e informações pessoais',
+    n: '02',
+    t: 'Cadastre seus imóveis',
+    d: 'Fotos, preço, características e localização. Publique ou deixe oculto enquanto prepara o anúncio.',
   },
   {
-    icone: 'bi-speedometer2',
-    cor: 'text-warning',
-    titulo: 'Rápido e Responsivo',
-    texto: 'Interface moderna que funciona em qualquer dispositivo',
-  },
-  {
-    icone: 'bi-bell',
-    cor: 'text-danger',
-    titulo: 'Notificações',
-    texto: 'Receba alertas e notificações sobre suas atividades',
-  },
-  {
-    icone: 'bi-gear',
-    cor: 'text-secondary',
-    titulo: 'Configurável',
-    texto: 'Ajuste o sistema de acordo com suas preferências',
+    n: '03',
+    t: 'Receba interessados',
+    d: 'Compartilhe o link. Cada imóvel tem um botão de WhatsApp que leva o contato direto para você.',
   },
 ]
 
-interface Faq {
-  id: string
-  pergunta: string
-  resposta: string
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      style={{
+        fontSize: 13,
+        fontWeight: 700,
+        letterSpacing: 1.5,
+        textTransform: 'uppercase',
+        color: colors.green,
+        marginBottom: 12,
+      }}
+    >
+      {children}
+    </div>
+  )
 }
-
-const faqs: Faq[] = [
-  {
-    id: 'faq1',
-    pergunta: 'Como criar uma conta?',
-    resposta:
-      'Basta clicar em "Criar Conta" no menu superior, preencher seus dados e confirmar. O processo é rápido e gratuito!',
-  },
-  {
-    id: 'faq2',
-    pergunta: 'O sistema é seguro?',
-    resposta:
-      'Sim! Utilizamos criptografia de ponta e as melhores práticas de segurança para proteger seus dados. Suas senhas são armazenadas de forma segura e nunca são expostas.',
-  },
-  {
-    id: 'faq3',
-    pergunta: 'Posso alterar meus dados depois?',
-    resposta:
-      'Claro! Você pode atualizar seus dados pessoais, foto de perfil e senha a qualquer momento através da seção "Meu Perfil" no seu dashboard.',
-  },
-  {
-    id: 'faq4',
-    pergunta: 'Esqueci minha senha, o que fazer?',
-    resposta:
-      'Na tela de login, clique em "Esqueci minha senha" e siga as instruções. Você receberá um e-mail com um link para redefinir sua senha.',
-  },
-]
 
 export default function HomePage() {
+  const navigate = useNavigate()
+
+  const carregarCorretores = useCallback(
+    (signal: AbortSignal) => api.get<CorretorVitrine[]>('/publico/corretores', { signal }),
+    [],
+  )
+  const { data: corretores, carregando, erro } = useFetch(carregarCorretores)
+
+  const verPrimeiraVitrine = () => {
+    const slug = corretores?.[0]?.slug
+    navigate(slug ? `/v/${slug}` : '/login')
+  }
+
   return (
-    <>
-      {/* Hero Section */}
-      <div className="mb-5">
-        <div className="bg-primary text-white rounded-4 shadow-lg p-5 pb-3">
-          <div className="row align-items-center">
-            <div className="col-lg-6">
-              <h1 className="display-4 fw-bold mb-4">Bem-vindo ao {APP_NAME}</h1>
-              <p className="lead mb-4">
-                Uma plataforma completa e moderna para gerenciar suas atividades de forma simples e
-                eficiente.
-              </p>
-              <div className="d-flex gap-3 flex-column flex-sm-row">
-                <Link to="/cadastrar" className="btn btn-light btn-lg">
-                  <i className="bi bi-person-plus" /> Criar Conta
-                </Link>
-                <Link to="/sobre" className="btn btn-outline-light btn-lg">
-                  <i className="bi bi-info-circle" /> Saiba mais
-                </Link>
+    <div style={{ minHeight: '100vh', background: colors.bg, fontFamily: fonts.body }}>
+      <PublicHeader />
+
+      {/* HERO */}
+      <section
+        style={{
+          maxWidth: 1200,
+          margin: '0 auto',
+          padding: '84px 40px 56px',
+          display: 'grid',
+          gridTemplateColumns: '1.05fr 0.95fr',
+          gap: 64,
+          alignItems: 'center',
+        }}
+      >
+        <div>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              background: '#e6eed6',
+              color: colors.greenText,
+              padding: '7px 14px',
+              borderRadius: 999,
+              fontSize: 13,
+              fontWeight: 600,
+              marginBottom: 26,
+            }}
+          >
+            <span style={{ width: 7, height: 7, borderRadius: '50%', background: colors.green }} />{' '}
+            Para corretores e pequenas imobiliárias
+          </div>
+          <h1
+            style={{
+              fontFamily: fonts.display,
+              fontWeight: 300,
+              fontSize: 60,
+              lineHeight: 1.04,
+              letterSpacing: -1,
+              margin: '0 0 22px',
+            }}
+          >
+            Sua vitrine de imóveis,{' '}
+            <span style={{ color: colors.orange, fontWeight: 500 }}>pronta para vender.</span>
+          </h1>
+          <p
+            style={{
+              fontSize: 19,
+              lineHeight: 1.55,
+              color: colors.muted,
+              margin: '0 0 36px',
+              maxWidth: 480,
+            }}
+          >
+            Cadastre seus imóveis, publique um catálogo profissional com seu nome e receba
+            interessados direto no WhatsApp. Sem comissão de plataforma, sem complicação.
+          </p>
+          <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+            <button
+              onClick={() => navigate('/login')}
+              style={{
+                background: colors.orange,
+                color: '#fff',
+                border: 'none',
+                borderRadius: 12,
+                padding: '16px 30px',
+                fontWeight: 600,
+                fontSize: 16,
+                cursor: 'pointer',
+              }}
+            >
+              Começar gratuitamente
+            </button>
+            <button
+              onClick={verPrimeiraVitrine}
+              style={{
+                background: 'transparent',
+                color: colors.ink,
+                border: '1px solid #d8d0c2',
+                borderRadius: 12,
+                padding: '16px 26px',
+                fontWeight: 600,
+                fontSize: 16,
+                cursor: 'pointer',
+              }}
+            >
+              Ver uma vitrine →
+            </button>
+          </div>
+          <div style={{ display: 'flex', gap: 30, marginTop: 44 }}>
+            {(
+              [
+                [String(corretores?.length ?? 0), 'corretores ativos'],
+                [
+                  String(
+                    (corretores ?? []).reduce((s, c) => s + (c.qtd_imoveis_publicados || 0), 0),
+                  ),
+                  'imóveis publicados',
+                ],
+                [
+                  String(new Set((corretores ?? []).map((c) => c.cidade).filter(Boolean)).size),
+                  'cidades',
+                ],
+              ] as [string, string][]
+            ).map(([v, l], i) => (
+              <div key={l} style={{ display: 'flex', gap: 30 }}>
+                {i > 0 && <div style={{ width: 1, background: colors.border }} />}
+                <div>
+                  <div style={{ fontFamily: fonts.display, fontSize: 30, fontWeight: 500 }}>{v}</div>
+                  <div style={{ fontSize: 13, color: colors.mutedSoft }}>{l}</div>
+                </div>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* mock visual da vitrine (decorativo) */}
+        <div style={{ position: 'relative' }}>
+          <div
+            style={{
+              background: '#fff',
+              border: `1px solid ${colors.border}`,
+              borderRadius: 18,
+              boxShadow: '0 30px 60px -28px rgba(60,45,25,0.30)',
+              overflow: 'hidden',
+            }}
+          >
+            <div
+              style={{
+                height: 40,
+                background: colors.cream,
+                borderBottom: `1px solid ${colors.border}`,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 7,
+                padding: '0 16px',
+              }}
+            >
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  style={{ width: 10, height: 10, borderRadius: '50%', background: '#e4ddcd' }}
+                />
+              ))}
+              <span style={{ marginLeft: 12, fontSize: 12, color: colors.faint }}>
+                dwa.ifes.site/albuquerque
+              </span>
             </div>
-            <div className="col-lg-6 text-center mt-4 mt-lg-0">
-              <i className="bi bi-laptop display-1 opacity-25" style={{ fontSize: '8rem' }} />
+            <div
+              style={{
+                height: 200,
+                background: `linear-gradient(135deg, ${colors.cream}, #e7ddcb)`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <i
+                className="bi bi-house-door"
+                style={{ fontSize: 56, color: colors.faint }}
+                aria-hidden
+              />
+            </div>
+            <div style={{ padding: 20 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                <div
+                  style={{
+                    width: 32,
+                    height: 32,
+                    borderRadius: 8,
+                    background: colors.orange,
+                    color: '#fff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 700,
+                    fontSize: 15,
+                  }}
+                >
+                  A
+                </div>
+                <div style={{ fontFamily: fonts.display, fontWeight: 500, fontSize: 17 }}>
+                  Albuquerque Imóveis
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                {(
+                  [
+                    ['R$ 890.000', '2 quartos · 78m²'],
+                    ['R$ 1.180.000', '3 quartos · 110m²'],
+                  ] as [string, string][]
+                ).map(([p, d]) => (
+                  <div
+                    key={p}
+                    style={{ border: `1px solid ${colors.borderSoft}`, borderRadius: 10, overflow: 'hidden' }}
+                  >
+                    <div
+                      style={{
+                        height: 64,
+                        background: `linear-gradient(135deg, ${colors.cream}, #e7ddcb)`,
+                      }}
+                    />
+                    <div style={{ padding: '8px 10px' }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: colors.orange }}>{p}</div>
+                      <div style={{ fontSize: 11, color: colors.mutedSoft }}>{d}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Recursos Section */}
-      <div className="mb-5" id="recursos">
-        <div className="text-center mb-5">
-          <h2 className="fw-bold">Recursos Principais</h2>
-          <p className="text-muted">Tudo que você precisa em um só lugar</p>
+      {/* COMO FUNCIONA */}
+      <section style={{ maxWidth: 1200, margin: '0 auto', padding: '56px 40px 40px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 44 }}>
+          <Eyebrow>Como funciona</Eyebrow>
+          <h2
+            style={{
+              fontFamily: fonts.display,
+              fontWeight: 300,
+              fontSize: 38,
+              margin: 0,
+              letterSpacing: -0.5,
+            }}
+          >
+            No ar em três passos
+          </h2>
         </div>
-
-        <div className="row g-4">
-          {recursos.map((recurso) => (
-            <div className="col-md-4" key={recurso.titulo}>
-              <div className="card h-100 shadow-sm shadow-hover text-center">
-                <div className="card-body p-4">
-                  <div className="mb-3">
-                    <i className={`bi ${recurso.icone} ${recurso.cor} display-3`} />
-                  </div>
-                  <h5 className="card-title">{recurso.titulo}</h5>
-                  <p className="card-text text-muted">{recurso.texto}</p>
-                </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 28 }}>
+          {PASSOS.map((p) => (
+            <div
+              key={p.n}
+              style={{
+                background: '#fff',
+                border: `1px solid ${colors.border}`,
+                borderRadius: 16,
+                padding: 34,
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: fonts.display,
+                  fontSize: 15,
+                  fontWeight: 600,
+                  color: colors.orange,
+                  marginBottom: 18,
+                }}
+              >
+                {p.n}
               </div>
+              <h3
+                style={{
+                  fontFamily: fonts.display,
+                  fontWeight: 500,
+                  fontSize: 22,
+                  margin: '0 0 10px',
+                }}
+              >
+                {p.t}
+              </h3>
+              <p style={{ fontSize: 15, lineHeight: 1.55, color: colors.muted, margin: 0 }}>{p.d}</p>
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* CTA Section */}
-      <div className="mb-5">
-        <div className="card bg-primary text-white shadow-lg shadow-hover">
-          <div className="card-body text-center p-5">
-            <h2 className="fw-bold mb-4">Pronto para começar?</h2>
-            <p className="lead mb-4">Crie sua conta gratuitamente e comece a usar agora mesmo!</p>
-            <div className="d-flex justify-content-center gap-3 flex-column flex-sm-row">
-              <Link to="/cadastrar" className="btn btn-light btn-lg">
-                <i className="bi bi-person-plus" /> Criar Conta Grátis
-              </Link>
-              <Link to="/login" className="btn btn-outline-light btn-lg">
-                <i className="bi bi-box-arrow-in-right" /> Já tenho conta
-              </Link>
-            </div>
+      {/* CORRETORES (vitrines no ar) */}
+      <section style={{ maxWidth: 1200, margin: '0 auto', padding: '56px 40px 40px' }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            justifyContent: 'space-between',
+            marginBottom: 30,
+          }}
+        >
+          <div>
+            <Eyebrow>Vitrines no ar</Eyebrow>
+            <h2
+              style={{
+                fontFamily: fonts.display,
+                fontWeight: 300,
+                fontSize: 38,
+                margin: 0,
+                letterSpacing: -0.5,
+              }}
+            >
+              Corretores na CAVI
+            </h2>
+          </div>
+          {(corretores?.length ?? 0) > 0 && (
+            <span
+              style={{ fontSize: 15, color: colors.muted, cursor: 'pointer' }}
+              onClick={verPrimeiraVitrine}
+            >
+              Ver todas →
+            </span>
+          )}
+        </div>
+
+        {carregando ? (
+          <Spinner texto="Carregando vitrines..." />
+        ) : erro ? (
+          <EmptyState
+            icon="exclamation-triangle"
+            titulo="Não foi possível carregar as vitrines"
+            mensagem={erro.message}
+          />
+        ) : (corretores?.length ?? 0) === 0 ? (
+          <EmptyState
+            icon="shop"
+            titulo="Nenhuma vitrine publicada ainda"
+            mensagem="Seja o primeiro corretor a publicar sua vitrine na CAVI."
+          />
+        ) : (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+            {corretores!.map((c) => (
+              <BrokerCard key={c.slug} corretor={c} />
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* CTA */}
+      <section style={{ maxWidth: 1200, margin: '0 auto', padding: '48px 40px 80px' }}>
+        <div
+          style={{
+            background: colors.ink,
+            borderRadius: 22,
+            padding: 64,
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'radial-gradient(circle at 80% 20%, rgba(217,122,43,0.22), transparent 55%)',
+            }}
+          />
+          <div style={{ position: 'relative' }}>
+            <h2
+              style={{
+                fontFamily: fonts.display,
+                fontWeight: 300,
+                fontSize: 42,
+                color: colors.bg,
+                margin: '0 0 16px',
+                letterSpacing: -0.5,
+              }}
+            >
+              Sua próxima venda começa com uma vitrine.
+            </h2>
+            <p style={{ fontSize: 18, color: '#bcb4a6', margin: '0 0 32px' }}>
+              Comece com o plano gratuito. Sem cartão de crédito.
+            </p>
+            <button
+              onClick={() => navigate('/login')}
+              style={{
+                background: colors.orange,
+                color: '#fff',
+                border: 'none',
+                borderRadius: 12,
+                padding: '16px 34px',
+                fontWeight: 600,
+                fontSize: 16,
+                cursor: 'pointer',
+              }}
+            >
+              Criar minha vitrine
+            </button>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* FAQ Section */}
-      <div className="mb-5">
-        <div className="text-center mb-5">
-          <h2 className="fw-bold">Perguntas Frequentes</h2>
-          <p className="text-muted">Tire suas dúvidas sobre o sistema</p>
-        </div>
-
-        <div className="row">
-          <div className="col-lg-8 mx-auto">
-            <div className="accordion" id="faqAccordion">
-              {faqs.map((faq, indice) => (
-                <div className="accordion-item" key={faq.id}>
-                  <h2 className="accordion-header">
-                    <button
-                      className={`accordion-button${indice === 0 ? '' : ' collapsed'}`}
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target={`#${faq.id}`}
-                      aria-expanded={indice === 0}
-                      aria-controls={faq.id}
-                    >
-                      {faq.pergunta}
-                    </button>
-                  </h2>
-                  <div
-                    id={faq.id}
-                    className={`accordion-collapse collapse${indice === 0 ? ' show' : ''}`}
-                    data-bs-parent="#faqAccordion"
-                  >
-                    <div className="accordion-body">{faq.resposta}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+      <footer style={{ borderTop: `1px solid ${colors.border}` }}>
+        <div
+          style={{
+            maxWidth: 1200,
+            margin: '0 auto',
+            padding: '36px 40px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <span
+            style={{
+              fontFamily: fonts.display,
+              fontWeight: 600,
+              fontSize: 22,
+              letterSpacing: 1,
+              color: colors.orange,
+              opacity: 0.85,
+            }}
+          >
+            CAVI
+          </span>
+          <div style={{ fontSize: 13, color: colors.mutedSoft }}>
+            © 2026 CAVI · Termos de uso · Privacidade ·{' '}
+            <span style={{ cursor: 'pointer' }} onClick={() => navigate('/login')}>
+              Sou corretor
+            </span>
           </div>
         </div>
-      </div>
-    </>
+      </footer>
+    </div>
   )
 }

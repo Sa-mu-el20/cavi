@@ -56,7 +56,7 @@ class TestCsrfToken:
 class TestCadastrar:
     def _payload(self, **over):
         base = {
-            "perfil": Perfil.CLIENTE.value,
+            "perfil": Perfil.CORRETOR.value,
             "nome": "Fulano de Tal",
             "email": "fulano@example.com",
             "senha": "Senha@123",
@@ -73,7 +73,7 @@ class TestCadastrar:
         corpo = resp.json()
         assert corpo["email"] == "fulano@example.com"
         assert corpo["nome"] == "Fulano de Tal"
-        assert corpo["perfil"] == Perfil.CLIENTE.value
+        assert corpo["perfil"] == Perfil.CORRETOR.value
         assert "id" in corpo
         assert "senha" not in corpo  # nunca expor senha
 

@@ -179,7 +179,7 @@ def usuario_teste():
         "nome": "Usuario Teste",
         "email": "teste@example.com",
         "senha": "Senha@123",
-        "perfil": Perfil.CLIENTE.value  # Usa Enum Perfil
+        "perfil": Perfil.CORRETOR.value  # Usa Enum Perfil
     }
 
 
@@ -200,7 +200,7 @@ def criar_usuario(client):
     Fixture que retorna uma função para criar usuários
     Útil para criar múltiplos usuários em um teste
     """
-    def _criar_usuario(nome: str, email: str, senha: str, perfil: str = Perfil.CLIENTE.value):
+    def _criar_usuario(nome: str, email: str, senha: str, perfil: str = Perfil.CORRETOR.value):
         """Cadastra um usuário via endpoint JSON de cadastro (com CSRF)."""
         token = client.get("/api/csrf-token").json()["token"]
         response = client.post("/api/cadastrar", json={
@@ -282,19 +282,19 @@ def admin_autenticado(client, criar_usuario, fazer_login, admin_teste):
 
 @pytest.fixture
 def vendedor_teste():
-    """Dados de um vendedor de teste"""
+    """Dados de um segundo corretor de teste (mantém o nome de fixture legado)"""
     return {
-        "nome": "Vendedor Teste",
+        "nome": "Corretor Secundario Teste",
         "email": "vendedor@example.com",
         "senha": "Vendedor@123",
-        "perfil": Perfil.VENDEDOR.value
+        "perfil": Perfil.CORRETOR.value
     }
 
 
 @pytest.fixture
 def vendedor_autenticado(client, criar_usuario, fazer_login, vendedor_teste):
     """
-    Fixture que retorna um cliente autenticado como vendedor
+    Fixture que retorna um cliente autenticado como corretor (segundo usuário)
     """
     # Importar para manipular diretamente o banco
     from repo import usuario_repo
@@ -307,7 +307,7 @@ def vendedor_autenticado(client, criar_usuario, fazer_login, vendedor_teste):
         nome=vendedor_teste["nome"],
         email=vendedor_teste["email"],
         senha=criar_hash_senha(vendedor_teste["senha"]),
-        perfil=Perfil.VENDEDOR.value
+        perfil=Perfil.CORRETOR.value
     )
     usuario_repo.inserir(vendedor)
 
@@ -361,13 +361,13 @@ def dois_usuarios(client, criar_usuario):
         "nome": "Usuario Um",
         "email": "usuario1@example.com",
         "senha": "Senha@123",
-        "perfil": Perfil.CLIENTE.value
+        "perfil": Perfil.CORRETOR.value
     }
     usuario2 = {
         "nome": "Usuario Dois",
         "email": "usuario2@example.com",
         "senha": "Senha@456",
-        "perfil": Perfil.CLIENTE.value
+        "perfil": Perfil.CORRETOR.value
     }
 
     # Criar ambos usuários
@@ -440,7 +440,7 @@ def criar_usuario_direto():
         nome: str,
         email: str,
         senha: str,
-        perfil: str = Perfil.CLIENTE.value
+        perfil: str = Perfil.CORRETOR.value
     ) -> int:
         """
         Cria usuário diretamente no banco.
@@ -449,7 +449,7 @@ def criar_usuario_direto():
             nome: Nome do usuário
             email: Email do usuário
             senha: Senha (será hasheada)
-            perfil: Perfil do usuário (padrão: Cliente)
+            perfil: Perfil do usuário (padrão: Corretor)
 
         Returns:
             ID do usuário criado

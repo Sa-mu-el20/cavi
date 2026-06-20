@@ -33,7 +33,7 @@ def _registrar(client, nome, email, senha="Senha@123"):
     resp = client.post(
         "/api/cadastrar",
         json={
-            "perfil": "Cliente",
+            "perfil": "Corretor",
             "nome": nome,
             "email": email,
             "senha": senha,

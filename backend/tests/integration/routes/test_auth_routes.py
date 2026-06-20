@@ -48,7 +48,7 @@ class TestLogin:
         corpo = response.json()
         assert corpo["email"] == usuario_teste["email"]
         assert corpo["nome"] == usuario_teste["nome"]
-        assert corpo["perfil"] == Perfil.CLIENTE.value
+        assert corpo["perfil"] == Perfil.CORRETOR.value
         assert "foto_url" in corpo
         # Senha nunca deve ser exposta
         assert "senha" not in corpo
@@ -143,7 +143,7 @@ class TestCadastro:
         response = client.post(
             "/api/cadastrar",
             json={
-                "perfil": Perfil.CLIENTE.value,
+                "perfil": Perfil.CORRETOR.value,
                 "nome": "Novo Usuario",
                 "email": "novo@example.com",
                 "senha": "Senha@123",
@@ -156,7 +156,7 @@ class TestCadastro:
         corpo = response.json()
         assert corpo["email"] == "novo@example.com"
         assert corpo["nome"] == "Novo Usuario"
-        assert corpo["perfil"] == Perfil.CLIENTE.value
+        assert corpo["perfil"] == Perfil.CORRETOR.value
         assert corpo["id"] > 0
         assert "senha" not in corpo
 
@@ -168,7 +168,7 @@ class TestCadastro:
         client.post(
             "/api/cadastrar",
             json={
-                "perfil": Perfil.CLIENTE.value,
+                "perfil": Perfil.CORRETOR.value,
                 "nome": "Usuario Teste",
                 "email": "persist@example.com",
                 "senha": "Senha@123",
@@ -179,7 +179,7 @@ class TestCadastro:
 
         usuario = usuario_repo.obter_por_email("persist@example.com")
         assert usuario is not None
-        assert usuario.perfil == Perfil.CLIENTE.value
+        assert usuario.perfil == Perfil.CORRETOR.value
 
     def test_cadastro_com_email_duplicado_retorna_409(self, client, criar_usuario, usuario_teste):
         """E-mail já cadastrado deve retornar 409 (conflito)"""
@@ -193,7 +193,7 @@ class TestCadastro:
         response = client.post(
             "/api/cadastrar",
             json={
-                "perfil": Perfil.CLIENTE.value,
+                "perfil": Perfil.CORRETOR.value,
                 "nome": "Outro Nome",
                 "email": usuario_teste["email"],
                 "senha": "OutraSenha@123",
@@ -214,7 +214,7 @@ class TestCadastro:
         response = client.post(
             "/api/cadastrar",
             json={
-                "perfil": Perfil.CLIENTE.value,
+                "perfil": Perfil.CORRETOR.value,
                 "nome": "Usuario Teste",
                 "email": "diff@example.com",
                 "senha": "Senha@123",
@@ -232,7 +232,7 @@ class TestCadastro:
         response = client.post(
             "/api/cadastrar",
             json={
-                "perfil": Perfil.CLIENTE.value,
+                "perfil": Perfil.CORRETOR.value,
                 "nome": "Usuario Teste",
                 "email": "fraca@example.com",
                 "senha": "123456",

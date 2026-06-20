@@ -42,6 +42,27 @@ export function formatarMoeda(valor: number): string {
   return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 }
 
+/**
+ * Preço de imóvel no estilo da vitrine CAVI: "R$ 1.250.000" (sem centavos),
+ * com sufixo "/mês" quando a finalidade é Aluguel. Porte de fmtPreco do design.
+ */
+export function formatarPrecoImovel(preco: number, finalidade?: string | null): string {
+  const base = 'R$ ' + Number(preco).toLocaleString('pt-BR', { maximumFractionDigits: 0 })
+  return finalidade === 'Aluguel' ? base + '/mês' : base
+}
+
+/** Área em m²: "120 m²" (vazio/nulo -> "-"). */
+export function formatarArea(area?: number | null): string {
+  if (area == null) return '-'
+  return `${Number(area).toLocaleString('pt-BR', { maximumFractionDigits: 0 })} m²`
+}
+
+/** Monta link wa.me a partir de um número (com DDI 55). Porte de waLink. */
+export function linkWhatsApp(numero?: string | null, msg?: string): string {
+  const d = String(numero ?? '').replace(/\D/g, '')
+  return 'https://wa.me/55' + d + (msg ? '?text=' + encodeURIComponent(msg) : '')
+}
+
 /** Bytes -> "1,2 MB". */
 export function formatarBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`

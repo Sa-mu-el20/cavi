@@ -2,138 +2,83 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import RootGate from './components/routing/RootGate'
 import RouteError from './components/routing/RouteError'
-import ProtectedRoute from './components/routing/ProtectedRoute'
+import CorretorRoute from './components/routing/CorretorRoute'
 import AdminRoute from './components/routing/AdminRoute'
-import PublicLayout from './components/layout/PublicLayout'
-import PrivateLayout from './components/layout/PrivateLayout'
 
-// Páginas públicas
+// Layouts da estética CAVI
+import SiteLayout from './components/layout/SiteLayout'
+import BrokerLayout from './components/layout/BrokerLayout'
+import AdminLayout from './components/layout/AdminLayout'
+
+// Páginas públicas / institucionais
 import HomePage from './pages/public/HomePage'
-import SobrePage from './pages/public/SobrePage'
 import NotFoundPage from './pages/public/NotFoundPage'
-import LoginPage from './pages/auth/LoginPage'
-import CadastroPage from './pages/auth/CadastroPage'
+
+// Autenticação (login + auto-cadastro de corretor com alternância por abas)
+import AuthPage from './pages/public/AuthPage'
 import EsqueciSenhaPage from './pages/auth/EsqueciSenhaPage'
 import RedefinirSenhaPage from './pages/auth/RedefinirSenhaPage'
 
-// Exemplos
-import ExemplosIndexPage from './pages/exemplos/ExemplosIndexPage'
-import CamposFormularioPage from './pages/exemplos/CamposFormularioPage'
-import GradeCartoesPage from './pages/exemplos/GradeCartoesPage'
-import ListaTabelaPage from './pages/exemplos/ListaTabelaPage'
-import DetalhesProdutoPage from './pages/exemplos/DetalhesProdutoPage'
-import DetalhesServicoPage from './pages/exemplos/DetalhesServicoPage'
-import DetalhesPerfilPage from './pages/exemplos/DetalhesPerfilPage'
-import DetalhesImovelPage from './pages/exemplos/DetalhesImovelPage'
+// Vitrine pública (/v/:slug)
+import CatalogPage from './pages/vitrine/CatalogPage'
+import PropertyDetailPage from './pages/vitrine/PropertyDetailPage'
 
-// Usuário
-import DashboardPage from './pages/usuario/DashboardPage'
-import PerfilVisualizarPage from './pages/usuario/PerfilVisualizarPage'
-import PerfilEditarPage from './pages/usuario/PerfilEditarPage'
-import AlterarSenhaPage from './pages/usuario/AlterarSenhaPage'
+// Painel do corretor (/app)
+import DashboardCorretorPage from './pages/corretor/DashboardCorretorPage'
+import ImoveisListaPage from './pages/corretor/ImoveisListaPage'
+import ImovelFormPage from './pages/corretor/ImovelFormPage'
+import ConfigSitePage from './pages/corretor/ConfigSitePage'
 
-// Chamados
-import ChamadosListarPage from './pages/chamados/ChamadosListarPage'
-import ChamadoCadastrarPage from './pages/chamados/ChamadoCadastrarPage'
-import ChamadoVisualizarPage from './pages/chamados/ChamadoVisualizarPage'
-
-// Notificações
-import NotificacoesPage from './pages/notificacoes/NotificacoesPage'
-
-// Pagamentos
-import PagamentosListarPage from './pages/pagamentos/PagamentosListarPage'
-import PagamentoCriarPage from './pages/pagamentos/PagamentoCriarPage'
-import PagamentoDetalhesPage from './pages/pagamentos/PagamentoDetalhesPage'
-import PagamentoSucessoPage from './pages/pagamentos/PagamentoSucessoPage'
-import PagamentoPendentePage from './pages/pagamentos/PagamentoPendentePage'
-import PagamentoFalhaPage from './pages/pagamentos/PagamentoFalhaPage'
-
-// Admin
-import AdminUsuariosListarPage from './pages/admin/usuarios/AdminUsuariosListarPage'
-import AdminUsuarioCadastrarPage from './pages/admin/usuarios/AdminUsuarioCadastrarPage'
-import AdminUsuarioEditarPage from './pages/admin/usuarios/AdminUsuarioEditarPage'
-import AdminChamadosListarPage from './pages/admin/chamados/AdminChamadosListarPage'
-import AdminChamadoResponderPage from './pages/admin/chamados/AdminChamadoResponderPage'
-import AdminPagamentosListarPage from './pages/admin/pagamentos/AdminPagamentosListarPage'
-import AdminPagamentoDetalhesPage from './pages/admin/pagamentos/AdminPagamentoDetalhesPage'
-import AdminBackupsPage from './pages/admin/backups/AdminBackupsPage'
-import AdminConfiguracoesPage from './pages/admin/config/AdminConfiguracoesPage'
-import AdminAuditoriaLogsPage from './pages/admin/auditoria/AdminAuditoriaLogsPage'
-import AdminAuditoriaRegistrosPage from './pages/admin/auditoria/AdminAuditoriaRegistrosPage'
+// Administração (/admin)
+import AdminCorretoresPage from './pages/admin/AdminCorretoresPage'
 
 export const router = createBrowserRouter([
   {
     element: <RootGate />,
     errorElement: <RouteError />,
     children: [
-      // ===== Público =====
+      // ===== Público / institucional =====
+      { path: '/', element: <HomePage /> },
+      { path: '/login', element: <AuthPage /> },
+      { path: '/esqueci-senha', element: <EsqueciSenhaPage /> },
+      { path: '/redefinir-senha', element: <RedefinirSenhaPage /> },
+
+      // ===== Vitrine pública do corretor =====
       {
-        element: <PublicLayout />,
+        path: '/v/:slug',
+        element: <SiteLayout />,
         children: [
-          { path: '/', element: <HomePage /> },
-          { path: '/index', element: <HomePage /> },
-          { path: '/sobre', element: <SobrePage /> },
-          { path: '/login', element: <LoginPage /> },
-          { path: '/cadastrar', element: <CadastroPage /> },
-          { path: '/esqueci-senha', element: <EsqueciSenhaPage /> },
-          { path: '/redefinir-senha', element: <RedefinirSenhaPage /> },
-          { path: '/exemplos', element: <ExemplosIndexPage /> },
-          { path: '/exemplos/campos-formulario', element: <CamposFormularioPage /> },
-          { path: '/exemplos/grade-cartoes', element: <GradeCartoesPage /> },
-          { path: '/exemplos/lista-tabela', element: <ListaTabelaPage /> },
-          { path: '/exemplos/detalhes-produto', element: <DetalhesProdutoPage /> },
-          { path: '/exemplos/detalhes-servico', element: <DetalhesServicoPage /> },
-          { path: '/exemplos/detalhes-perfil', element: <DetalhesPerfilPage /> },
-          { path: '/exemplos/detalhes-imovel', element: <DetalhesImovelPage /> },
+          { index: true, element: <CatalogPage /> },
+          { path: 'imovel/:id', element: <PropertyDetailPage /> },
         ],
       },
 
-      // ===== Autenticado (qualquer perfil) =====
+      // ===== Painel do corretor =====
       {
-        element: <ProtectedRoute />,
+        element: <CorretorRoute />,
         children: [
           {
-            element: <PrivateLayout />,
+            path: '/app',
+            element: <BrokerLayout />,
             children: [
-              { path: '/usuario', element: <DashboardPage /> },
-              { path: '/usuario/perfil/visualizar', element: <PerfilVisualizarPage /> },
-              { path: '/usuario/perfil/editar', element: <PerfilEditarPage /> },
-              { path: '/usuario/perfil/alterar-senha', element: <AlterarSenhaPage /> },
-              { path: '/chamados/listar', element: <ChamadosListarPage /> },
-              { path: '/chamados/cadastrar', element: <ChamadoCadastrarPage /> },
-              { path: '/chamados/:id/visualizar', element: <ChamadoVisualizarPage /> },
-              { path: '/notificacoes', element: <NotificacoesPage /> },
-              { path: '/pagamentos/listar', element: <PagamentosListarPage /> },
-              { path: '/pagamentos/criar', element: <PagamentoCriarPage /> },
-              { path: '/pagamentos/sucesso', element: <PagamentoSucessoPage /> },
-              { path: '/pagamentos/paypal/capturar', element: <PagamentoSucessoPage /> },
-              { path: '/pagamentos/pendente', element: <PagamentoPendentePage /> },
-              { path: '/pagamentos/falha', element: <PagamentoFalhaPage /> },
-              { path: '/pagamentos/:id', element: <PagamentoDetalhesPage /> },
+              { index: true, element: <DashboardCorretorPage /> },
+              { path: 'imoveis', element: <ImoveisListaPage /> },
+              { path: 'imoveis/novo', element: <ImovelFormPage /> },
+              { path: 'imoveis/:id/editar', element: <ImovelFormPage /> },
+              { path: 'config', element: <ConfigSitePage /> },
             ],
           },
         ],
       },
 
-      // ===== Administrador =====
+      // ===== Administração da plataforma =====
       {
         element: <AdminRoute />,
         children: [
           {
-            element: <PrivateLayout />,
-            children: [
-              { path: '/admin/usuarios/listar', element: <AdminUsuariosListarPage /> },
-              { path: '/admin/usuarios/cadastrar', element: <AdminUsuarioCadastrarPage /> },
-              { path: '/admin/usuarios/editar/:id', element: <AdminUsuarioEditarPage /> },
-              { path: '/admin/chamados/listar', element: <AdminChamadosListarPage /> },
-              { path: '/admin/chamados/:id/responder', element: <AdminChamadoResponderPage /> },
-              { path: '/admin/pagamentos', element: <AdminPagamentosListarPage /> },
-              { path: '/admin/pagamentos/:id', element: <AdminPagamentoDetalhesPage /> },
-              { path: '/admin/backups/listar', element: <AdminBackupsPage /> },
-              { path: '/admin/configuracoes', element: <AdminConfiguracoesPage /> },
-              { path: '/admin/auditoria', element: <AdminAuditoriaLogsPage /> },
-              { path: '/admin/auditoria/registros', element: <AdminAuditoriaRegistrosPage /> },
-            ],
+            path: '/admin',
+            element: <AdminLayout />,
+            children: [{ index: true, element: <AdminCorretoresPage /> }],
           },
         ],
       },

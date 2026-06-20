@@ -5,6 +5,8 @@ CREATE TABLE IF NOT EXISTS usuario (
     email TEXT UNIQUE NOT NULL,
     senha TEXT NOT NULL,
     perfil TEXT NOT NULL,
+    cpf TEXT,
+    telefone TEXT,
     token_redefinicao TEXT,
     data_token TIMESTAMP,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -13,13 +15,13 @@ CREATE TABLE IF NOT EXISTS usuario (
 """
 
 INSERIR = """
-INSERT INTO usuario (nome, email, senha, perfil)
-VALUES (?, ?, ?, ?)
+INSERT INTO usuario (nome, email, senha, perfil, cpf, telefone)
+VALUES (?, ?, ?, ?, ?, ?)
 """
 
 ALTERAR = """
 UPDATE usuario
-SET nome = ?, email = ?, perfil = ?, data_atualizacao = CURRENT_TIMESTAMP
+SET nome = ?, email = ?, perfil = ?, cpf = ?, telefone = ?, data_atualizacao = CURRENT_TIMESTAMP
 WHERE id = ?
 """
 
@@ -63,7 +65,7 @@ ORDER BY nome
 """
 
 BUSCAR_POR_TERMO = """
-SELECT id, nome, email, senha, perfil,
+SELECT id, nome, email, senha, perfil, cpf, telefone,
        token_redefinicao, data_token,
        data_cadastro AS "data_cadastro [timestamp]",
        data_atualizacao AS "data_atualizacao [timestamp]"

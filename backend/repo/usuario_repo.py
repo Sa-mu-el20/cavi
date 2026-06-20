@@ -38,6 +38,8 @@ def _row_to_usuario(row: sqlite3.Row) -> Usuario:
         email=row["email"],
         senha=row["senha"],
         perfil=row["perfil"],
+        cpf=row["cpf"],
+        telefone=row["telefone"],
         token_redefinicao=row["token_redefinicao"],
         data_token=row["data_token"],
         data_cadastro=row["data_cadastro"],
@@ -59,7 +61,9 @@ def inserir(usuario: Usuario) -> Optional[int]:
             usuario.nome,
             usuario.email,
             usuario.senha,
-            usuario.perfil
+            usuario.perfil,
+            usuario.cpf,
+            usuario.telefone
         ))
         usuario_id = cursor.lastrowid
 
@@ -77,6 +81,8 @@ def alterar(usuario: Usuario) -> bool:
             usuario.nome,
             usuario.email,
             usuario.perfil,
+            usuario.cpf,
+            usuario.telefone,
             usuario.id
         ))
         return cursor.rowcount > 0

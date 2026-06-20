@@ -34,6 +34,7 @@ from repo import (
     pagamento_repo,
 )
 from repo import chat_sala_repo, chat_participante_repo, chat_mensagem_repo
+from repo import conta_site_repo, imovel_repo, foto_imovel_repo
 
 # Rotas (API JSON)
 from routes.auth_routes import router as auth_router
@@ -47,6 +48,10 @@ from routes.pagamento_routes import router as pagamento_router
 from routes.admin_pagamentos_routes import router as admin_pagamentos_router
 from routes.admin_backups_routes import router as admin_backups_router
 from routes.admin_usuarios_routes import router as admin_usuarios_router
+from routes.publico_routes import router as publico_router
+from routes.admin_corretores_routes import router as admin_corretores_router
+from routes.conta_site_routes import router as conta_site_router
+from routes.imoveis_routes import router as imoveis_router
 
 # Seeds
 from util.seed_data import inicializar_dados
@@ -95,6 +100,10 @@ if static_path.exists():
 # ---------------------------------------------------------------------------
 TABELAS = [
     (usuario_repo, "usuario"),
+    (conta_site_repo, "conta_site"),
+    # imovel_repo.criar_tabela cria as três tabelas do módulo na ordem correta
+    # de dependência: imovel -> endereco_imovel (1:1) -> foto_imovel (1:N).
+    (imovel_repo, "imovel + endereco_imovel + foto_imovel"),
     (configuracao_repo, "configuracao"),
     (chamado_repo, "chamado"),
     (chamado_interacao_repo, "chamado_interacao"),
@@ -148,6 +157,10 @@ ROUTERS = [
     (admin_pagamentos_router, ["Admin - Pagamentos"], "admin de pagamentos"),
     (admin_backups_router, ["Admin - Backups"], "admin de backups"),
     (admin_usuarios_router, ["Admin - Usuários"], "admin de usuários"),
+    (admin_corretores_router, ["Admin - Corretores"], "admin de corretores"),
+    (conta_site_router, ["Conta Site (Corretor)"], "conta/site do corretor"),
+    (imoveis_router, ["Imóveis (Corretor)"], "imóveis do corretor"),
+    (publico_router, ["Público"], "público (vitrine)"),
 ]
 
 for router, tags, nome in ROUTERS:

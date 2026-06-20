@@ -127,3 +127,52 @@
   left: auto;
   z-index: 1090;
 }
+
+/* =====================================================================
+   CAVI — estética da vitrine (porte de cavi-react/src/index.css).
+   Escopado por .cavi-root para conviver com as telas Bootstrap legadas
+   sem quebrá-las. Os layouts/components novos vivem dentro de .cavi-root.
+   ===================================================================== */
+
+.cavi-root {
+  box-sizing: border-box;
+  font-family: 'Hanken Grotesk', sans-serif;
+  color: #1f1b18;
+  background: #faf8f3;
+  -webkit-font-smoothing: antialiased;
+}
+.cavi-root *,
+.cavi-root *::before,
+.cavi-root *::after {
+  box-sizing: border-box;
+}
+.cavi-root a {
+  color: inherit;
+}
+.cavi-root ::selection {
+  background: #f4d8bd;
+}
+.cavi-root input,
+.cavi-root select,
+.cavi-root textarea,
+.cavi-root button {
+  font-family: 'Hanken Grotesk', sans-serif;
+}
+.cavi-root input:focus,
+.cavi-root select:focus,
+.cavi-root textarea:focus {
+  outline: none;
+  border-color: #d97a2b !important;
+}
+.cavi-root ::placeholder {
+  color: #b3ab9d;
+}
+.cavi-root ::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+.cavi-root ::-webkit-scrollbar-thumb {
+  background: #ddd6c8;
+  border-radius: 6px;
+  border: 3px solid #faf8f3;
+}

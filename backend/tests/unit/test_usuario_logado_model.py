@@ -3,6 +3,9 @@ Testes para o modelo UsuarioLogado (model/usuario_logado_model.py)
 
 Testa todos os métodos do dataclass UsuarioLogado incluindo
 verificação de perfis, serialização e desserialização.
+
+Contrato MVP: apenas os perfis Administrador e Corretor existem
+(ver util/perfis.py). Os perfis legados Cliente/Vendedor foram removidos.
 """
 
 import pytest
@@ -21,13 +24,13 @@ class TestUsuarioLogadoInstanciacao:
             id=1,
             nome="João Silva",
             email="joao@teste.com",
-            perfil=Perfil.CLIENTE.value
+            perfil=Perfil.CORRETOR.value
         )
 
         assert usuario.id == 1
         assert usuario.nome == "João Silva"
         assert usuario.email == "joao@teste.com"
-        assert usuario.perfil == "Cliente"
+        assert usuario.perfil == "Corretor"
 
     def test_usuario_logado_imutavel(self):
         """UsuarioLogado deve ser imutável (frozen=True)"""
@@ -35,7 +38,7 @@ class TestUsuarioLogadoInstanciacao:
             id=1,
             nome="João",
             email="joao@teste.com",
-            perfil=Perfil.CLIENTE.value
+            perfil=Perfil.CORRETOR.value
         )
 
         with pytest.raises(AttributeError):
@@ -56,101 +59,16 @@ class TestIsAdmin:
 
         assert admin.is_admin() is True
 
-    def test_cliente_retorna_false(self):
-        """Cliente não deve ser admin"""
-        cliente = UsuarioLogado(
+    def test_corretor_retorna_false(self):
+        """Corretor não deve ser admin"""
+        corretor = UsuarioLogado(
             id=1,
-            nome="Cliente",
-            email="cliente@teste.com",
-            perfil=Perfil.CLIENTE.value
+            nome="Corretor",
+            email="corretor@teste.com",
+            perfil=Perfil.CORRETOR.value
         )
 
-        assert cliente.is_admin() is False
-
-    def test_vendedor_retorna_false(self):
-        """Vendedor não deve ser admin"""
-        vendedor = UsuarioLogado(
-            id=1,
-            nome="Vendedor",
-            email="vendedor@teste.com",
-            perfil=Perfil.VENDEDOR.value
-        )
-
-        assert vendedor.is_admin() is False
-
-
-class TestIsCliente:
-    """Testes para o método is_cliente()"""
-
-    def test_cliente_retorna_true(self):
-        """Cliente deve retornar True"""
-        cliente = UsuarioLogado(
-            id=1,
-            nome="Cliente",
-            email="cliente@teste.com",
-            perfil=Perfil.CLIENTE.value
-        )
-
-        assert cliente.is_cliente() is True
-
-    def test_admin_retorna_false(self):
-        """Admin não deve ser cliente"""
-        admin = UsuarioLogado(
-            id=1,
-            nome="Admin",
-            email="admin@teste.com",
-            perfil=Perfil.ADMIN.value
-        )
-
-        assert admin.is_cliente() is False
-
-    def test_vendedor_retorna_false(self):
-        """Vendedor não deve ser cliente"""
-        vendedor = UsuarioLogado(
-            id=1,
-            nome="Vendedor",
-            email="vendedor@teste.com",
-            perfil=Perfil.VENDEDOR.value
-        )
-
-        assert vendedor.is_cliente() is False
-
-
-class TestIsVendedor:
-    """Testes para o método is_vendedor()"""
-
-    def test_vendedor_retorna_true(self):
-        """Vendedor deve retornar True"""
-        vendedor = UsuarioLogado(
-            id=1,
-            nome="Vendedor",
-            email="vendedor@teste.com",
-            perfil=Perfil.VENDEDOR.value
-        )
-
-        assert vendedor.is_vendedor() is True
-
-    def test_admin_retorna_false(self):
-        """Admin não deve ser vendedor"""
-        admin = UsuarioLogado(
-            id=1,
-            nome="Admin",
-            email="admin@teste.com",
-            perfil=Perfil.ADMIN.value
-        )
-
-        assert admin.is_vendedor() is False
-
-    def test_cliente_retorna_false(self):
-        """Cliente não deve ser vendedor"""
-        cliente = UsuarioLogado(
-            id=1,
-            nome="Cliente",
-            email="cliente@teste.com",
-            perfil=Perfil.CLIENTE.value
-        )
-
-        assert cliente.is_vendedor() is False
+        assert corretor.is_admin() is False
 
 
 class TestTemPerfil:
@@ -169,44 +87,41 @@ class TestTemPerfil:
 
     def test_nao_tem_perfil(self):
         """Deve retornar False quando não tem o perfil"""
-        cliente = UsuarioLogado(
+        corretor = UsuarioLogado(
             id=1,
-            nome="Cliente",
-            email="cliente@teste.com",
-            perfil=Perfil.CLIENTE.value
+            nome="Corretor",
+            email="corretor@teste.com",
+            perfil=Perfil.CORRETOR.value
         )
 
-        assert cliente.tem_perfil(Perfil.ADMIN.value) is False
+        assert corretor.tem_perfil(Perfil.ADMIN.value) is False
 
     def test_tem_perfil_multiplos(self):
         """Deve retornar True quando tem um dos perfis"""
-        vendedor = UsuarioLogado(
+        corretor = UsuarioLogado(
             id=1,
-            nome="Vendedor",
-            email="vendedor@teste.com",
-            perfil=Perfil.VENDEDOR.value
+            nome="Corretor",
+            email="corretor@teste.com",
+            perfil=Perfil.CORRETOR.value
         )
 
-        # Vendedor está na lista
-        assert vendedor.tem_perfil(
+        # Corretor está na lista
+        assert corretor.tem_perfil(
             Perfil.ADMIN.value,
-            Perfil.VENDEDOR.value
+            Perfil.CORRETOR.value
         ) is True
 
     def test_nao_tem_nenhum_perfil(self):
         """Deve retornar False quando não tem nenhum dos perfis"""
-        cliente = UsuarioLogado(
+        corretor = UsuarioLogado(
             id=1,
-            nome="Cliente",
-            email="cliente@teste.com",
-            perfil=Perfil.CLIENTE.value
+            nome="Corretor",
+            email="corretor@teste.com",
+            perfil=Perfil.CORRETOR.value
         )
 
-        # Cliente não é admin nem vendedor
-        assert cliente.tem_perfil(
-            Perfil.ADMIN.value,
-            Perfil.VENDEDOR.value
-        ) is False
+        # Perfil inexistente no contrato MVP
+        assert corretor.tem_perfil(Perfil.ADMIN.value) is False
 
 
 class TestToDict:
@@ -218,7 +133,7 @@ class TestToDict:
             id=42,
             nome="Teste",
             email="teste@email.com",
-            perfil="Cliente"
+            perfil="Corretor"
         )
 
         resultado = usuario.to_dict()
@@ -227,7 +142,7 @@ class TestToDict:
             "id": 42,
             "nome": "Teste",
             "email": "teste@email.com",
-            "perfil": "Cliente"
+            "perfil": "Corretor"
         }
 
 
@@ -240,7 +155,7 @@ class TestFromDict:
             "id": 1,
             "nome": "João",
             "email": "joao@email.com",
-            "perfil": "Cliente"
+            "perfil": "Corretor"
         }
 
         usuario = UsuarioLogado.from_dict(dados)
@@ -249,7 +164,7 @@ class TestFromDict:
         assert usuario.id == 1
         assert usuario.nome == "João"
         assert usuario.email == "joao@email.com"
-        assert usuario.perfil == "Cliente"
+        assert usuario.perfil == "Corretor"
 
     def test_retorna_none_para_none(self):
         """Deve retornar None quando data é None"""
@@ -295,11 +210,11 @@ class TestFromUsuario:
         usuario_mock.id = 123
         usuario_mock.nome = "Maria"
         usuario_mock.email = "maria@email.com"
-        usuario_mock.perfil = "Vendedor"
+        usuario_mock.perfil = "Corretor"
 
         usuario_logado = UsuarioLogado.from_usuario(usuario_mock)
 
         assert usuario_logado.id == 123
         assert usuario_logado.nome == "Maria"
         assert usuario_logado.email == "maria@email.com"
-        assert usuario_logado.perfil == "Vendedor"
+        assert usuario_logado.perfil == "Corretor"

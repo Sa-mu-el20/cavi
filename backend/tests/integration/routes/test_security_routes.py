@@ -193,7 +193,7 @@ class TestPasswordSecurity:
             response = client.post(
                 "/api/cadastrar",
                 json={
-                    "perfil": Perfil.CLIENTE.value,
+                    "perfil": Perfil.CORRETOR.value,
                     "nome": "Usuario Teste",
                     "email": f"fraca{i}@example.com",
                     "senha": senha,

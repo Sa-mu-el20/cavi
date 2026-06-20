@@ -8,7 +8,14 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException, Request, status
 
 # DTOs (entrada)
-from dtos.auth_dto import LoginDTO, CadastroDTO, EsqueciSenhaDTO, RedefinirSenhaDTO
+from dtos.auth_dto import (
+    LoginDTO,
+    CadastroDTO,
+    CadastroCorretorDTO,
+    EsqueciSenhaDTO,
+    RedefinirSenhaDTO,
+)
+from dtos.conta_site_dto import gerar_slug
 
 # Schemas (saída)
 from dtos.responses.comum import MensagemResponse, TokenCsrfResponse
@@ -16,10 +23,11 @@ from dtos.responses.usuario_response import UsuarioResponse
 
 # Models
 from model.usuario_model import Usuario
+from model.conta_site_model import ContaSite
 from model.usuario_logado_model import UsuarioLogado
 
 # Repositories
-from repo import usuario_repo
+from repo import usuario_repo, conta_site_repo
 
 # Utilities
 from util.api_helpers import checar_rate_limit
@@ -28,6 +36,7 @@ from util.csrf_protection import obter_token_csrf
 from util.datetime_util import agora
 from util.email_service import servico_email
 from util.logger_config import logger
+from util.perfis import Perfil
 from util.rate_limiter import DynamicRateLimiter
 from util.security import (
     criar_hash_senha,
@@ -35,6 +44,7 @@ from util.security import (
     gerar_token_redefinicao,
     obter_data_expiracao_token,
 )
+from util.status_conta import StatusConta
 from util.validation_helpers import verificar_email_disponivel
 
 TOKEN_EXPIRACAO_HORAS = 1
@@ -162,6 +172,93 @@ async def post_cadastrar(request: Request, dto: CadastroDTO):
         )
 
     logger.info(f"Novo usuário cadastrado: {usuario.email}")
+    servico_email.enviar_boas_vindas(usuario.email, usuario.nome)
+
+    criado = usuario_repo.obter_por_id(usuario_id)
+    return UsuarioResponse.de_usuario(criado)
+
+
+def _gerar_slug_unico(nome_publico: str) -> str:
+    """
+    Gera um slug a partir do nome público e garante unicidade global na
+    tabela ``conta_site`` (usado em /v/{slug}).
+
+    Deriva o slug-base com ``gerar_slug`` e, em caso de colisão, anexa um
+    sufixo numérico incremental (``-2``, ``-3``, ...). Faz fallback para
+    ``corretor`` quando o nome não produz nenhum caractere aproveitável.
+    """
+    base = gerar_slug(nome_publico) or "corretor"
+    candidato = base
+    contador = 2
+    while conta_site_repo.obter_por_slug(candidato) is not None:
+        candidato = f"{base}-{contador}"
+        contador += 1
+    return candidato
+
+
+@router.post(
+    "/cadastrar-corretor",
+    response_model=UsuarioResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+async def post_cadastrar_corretor(request: Request, dto: CadastroCorretorDTO):
+    """
+    Auto-cadastro de corretor: cria o Usuario (perfil Corretor) e a sua
+    ContaSite (vitrine pública) vinculada, com slug único derivado do
+    nome público.
+    """
+    checar_rate_limit(cadastro_limiter, request)
+
+    disponivel, mensagem_erro = verificar_email_disponivel(dto.email)
+    if not disponivel:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail={
+                "detail": mensagem_erro,
+                "type": "conflict",
+                "errors": {"email": [mensagem_erro]},
+            },
+        )
+
+    usuario = Usuario(
+        id=0,
+        nome=dto.nome,
+        email=dto.email,
+        senha=criar_hash_senha(dto.senha),
+        perfil=Perfil.CORRETOR.value,
+        cpf=dto.cpf,
+        telefone=dto.telefone,
+    )
+    usuario_id = usuario_repo.inserir(usuario)
+    if not usuario_id:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Erro ao realizar cadastro. Tente novamente.",
+        )
+
+    conta = ContaSite(
+        id=0,
+        usuario_id=usuario_id,
+        nome_publico=dto.nome_publico,
+        slug=_gerar_slug_unico(dto.nome_publico),
+        status=StatusConta.ATIVO,
+        whatsapp=dto.whatsapp,
+        creci=dto.creci,
+        cidade=dto.cidade,
+        uf=dto.uf,
+    )
+    conta_id = conta_site_repo.inserir(conta)
+    if not conta_id:
+        # Reverte o usuário recém-criado para não deixar corretor sem vitrine.
+        usuario_repo.excluir(usuario_id)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Erro ao criar a vitrine do corretor. Tente novamente.",
+        )
+
+    logger.info(
+        f"Novo corretor cadastrado: {usuario.email} (vitrine slug='{conta.slug}')"
+    )
     servico_email.enviar_boas_vindas(usuario.email, usuario.nome)
 
     criado = usuario_repo.obter_por_id(usuario_id)
