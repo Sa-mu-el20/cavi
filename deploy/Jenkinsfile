@@ -26,7 +26,7 @@ RESEND_FROM_NAME="CAVI"
 
 # App
 APP_NAME=CAVI
-BASE_URL=http://localhost:8411
+BASE_URL=https://cavi.ifes.site
 SECRET_KEY=${SECRET_KEY}
 TIMEZONE=America/Sao_Paulo
 RUNNING_MODE=Production
