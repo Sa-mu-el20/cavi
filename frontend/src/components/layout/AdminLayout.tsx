@@ -88,9 +88,24 @@ export default function AdminLayout() {
           >
             <span style={{ fontSize: 17 }}>☷</span> Corretores
           </NavLink>
-          <div style={inativo}>
-            <span style={{ fontSize: 17 }}>⊞</span> Visão geral
-          </div>
+          <NavLink
+            to="/admin/perfil"
+            style={({ isActive }) => ({
+              display: 'flex',
+              alignItems: 'center',
+              gap: 12,
+              padding: '11px 12px',
+              borderRadius: 10,
+              cursor: 'pointer',
+              fontWeight: 600,
+              fontSize: 15,
+              textDecoration: 'none',
+              color: isActive ? colors.ink : '#cfc7b8',
+              background: isActive ? colors.orange : 'transparent',
+            })}
+          >
+            <span style={{ fontSize: 17 }}>⊙</span> Meu perfil
+          </NavLink>
           <div style={inativo}>
             <span style={{ fontSize: 17 }}>◷</span> Assinaturas
           </div>

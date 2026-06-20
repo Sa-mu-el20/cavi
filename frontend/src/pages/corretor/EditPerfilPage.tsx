@@ -1,4 +1,4 @@
-// Edição do próprio perfil do corretor (/app/perfil): foto, dados e senha.
+// Edição do próprio perfil (/app/perfil do corretor e /admin/perfil do admin): foto, dados e senha.
 // Ligado à API real:
 //   PUT /api/usuario/foto   -> UsuarioResponse  (foto cropada em base64 data URL)
 //   PUT /api/usuario/perfil -> UsuarioResponse  (nome, email)

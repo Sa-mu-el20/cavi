@@ -82,7 +82,10 @@ export const router = createBrowserRouter([
           {
             path: '/admin',
             element: <AdminLayout />,
-            children: [{ index: true, element: <AdminCorretoresPage /> }],
+            children: [
+              { index: true, element: <AdminCorretoresPage /> },
+              { path: 'perfil', element: <EditPerfilPage /> },
+            ],
           },
         ],
       },
