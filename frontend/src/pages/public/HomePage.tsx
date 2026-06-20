@@ -85,13 +85,16 @@ export default function HomePage() {
   )
   const { data: corretores, carregando, erro } = useFetch(carregarCorretores)
 
-  const verPrimeiraCatalogo = () => {
-    const slug = corretores?.[0]?.slug
-    navigate(slug ? `/v/${slug}` : '/login')
-  }
-
   return (
-    <div style={{ minHeight: '100vh', background: colors.bg, fontFamily: fonts.body }}>
+    <div
+      style={{
+        minHeight: '100vh',
+        background: colors.bg,
+        fontFamily: fonts.body,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <PublicHeader />
 
       {/* HERO */}
@@ -166,7 +169,7 @@ export default function HomePage() {
               Começar gratuitamente
             </button>
             <button
-              onClick={verPrimeiraCatalogo}
+              onClick={() => navigate('/catalogos')}
               style={{
                 background: 'transparent',
                 color: colors.ink,
@@ -178,7 +181,7 @@ export default function HomePage() {
                 cursor: 'pointer',
               }}
             >
-              Ver um catálogo →
+              Ver catálogos →
             </button>
           </div>
           <div style={{ display: 'flex', gap: 30, marginTop: 44 }}>
@@ -492,7 +495,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer style={{ borderTop: `1px solid ${colors.border}` }}>
+      <footer style={{ borderTop: `1px solid ${colors.border}`, marginTop: 'auto' }}>
         <div
           style={{
             maxWidth: 1200,

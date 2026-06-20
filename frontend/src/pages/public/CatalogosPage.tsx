@@ -27,10 +27,26 @@ export default function CatalogosPage() {
   )
 
   return (
-    <div style={{ minHeight: '100vh', background: colors.bg, fontFamily: fonts.body }}>
+    <div
+      style={{
+        minHeight: '100vh',
+        background: colors.bg,
+        fontFamily: fonts.body,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <PublicHeader />
 
-      <main style={{ maxWidth: 1200, margin: '0 auto', padding: '58px 40px 76px' }}>
+      <main
+        style={{
+          flex: 1,
+          width: '100%',
+          maxWidth: 1200,
+          margin: '0 auto',
+          padding: '58px 40px 76px',
+        }}
+      >
         <div style={{ marginBottom: 34 }}>
           <div
             style={{
@@ -94,7 +110,7 @@ export default function CatalogosPage() {
         )}
       </main>
 
-      <footer style={{ borderTop: `1px solid ${colors.border}` }}>
+      <footer style={{ borderTop: `1px solid ${colors.border}`, marginTop: 'auto' }}>
         <div
           style={{
             maxWidth: 1200,

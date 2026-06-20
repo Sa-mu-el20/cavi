@@ -60,9 +60,6 @@ export default function PublicHeader() {
           >
             Ver catálogos
           </span>
-          <span style={linkStyle} onClick={() => navigate('/login')}>
-            Planos
-          </span>
 
           {usuario ? (
             <div style={{ position: 'relative' }}>
