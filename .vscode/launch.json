@@ -11,7 +11,7 @@
                 "--host",
                 "localhost",
                 "--port",
-                "8400",
+                "8411",
                 "--reload"
             ],
             "jinja": true,
@@ -34,7 +34,7 @@
                 "--host",
                 "localhost",
                 "--port",
-                "8400"
+                "8411"
             ],
             "jinja": true,
             "justMyCode": true,

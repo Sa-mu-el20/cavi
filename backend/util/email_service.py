@@ -52,7 +52,7 @@ class ServicoEmail:
 
     def enviar_recuperacao_senha(self, para_email: str, para_nome: str, token: str) -> bool:
         """Envia e-mail de recuperação de senha"""
-        url_recuperacao = f"{os.getenv('BASE_URL', 'http://localhost:8000')}/redefinir-senha?token={token}"
+        url_recuperacao = f"{os.getenv('BASE_URL', 'http://localhost:8411')}/redefinir-senha?token={token}"
 
         html = f"""
         <html>
@@ -99,7 +99,7 @@ class ServicoEmail:
 
     def enviar_boas_vindas(self, para_email: str, para_nome: str) -> bool:
         """Envia e-mail de boas-vindas"""
-        url_app = os.getenv('BASE_URL', 'http://localhost:8000')
+        url_app = os.getenv('BASE_URL', 'http://localhost:8411')
 
         html = f"""
         <html>

@@ -309,7 +309,7 @@ async def webhook_stripe(request: Request):
     A assinatura é validada com STRIPE_WEBHOOK_SECRET no adapter.
 
     Testar localmente com Stripe CLI:
-        stripe listen --forward-to localhost:8400/api/pagamentos/webhook/stripe
+        stripe listen --forward-to localhost:8411/api/pagamentos/webhook/stripe
     """
     from util.payment_adapters.stripe_adapter import StripeAdapter
 

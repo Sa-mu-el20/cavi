@@ -54,15 +54,15 @@ cp .env.example .env             # edite ao menos SECRET_KEY e APP_NAME
 ```bash
 .venv/bin/python main.py         # ou: source .venv/bin/activate && python main.py
 ```
-Sobe em `http://localhost:8400` por padrão de dev (configurável via `HOST`/`PORT` no `.env`).
+Sobe em `http://localhost:8411` por padrão de dev (configurável via `HOST`/`PORT` no `.env`).
 Documentação interativa da API em `/docs`.
 
-Com o SPA presente em dev, o **Vite** roda separado (porta 5180) e faz **proxy de `/api`,
+Com o SPA presente em dev, o **Vite** roda separado (porta 5181) e faz **proxy de `/api`,
 `/static` e `/health`** para este backend (mesma origem) — sem CORS. O Vite proxia para
-`VITE_BACKEND_URL` (fallback `http://127.0.0.1:8400`), que casa com o `PORT=8400` do `.env`.
+`VITE_BACKEND_URL` (fallback `http://127.0.0.1:8411`), que casa com o `PORT=8411` do `.env`.
 
-> **Esquema de portas**: **8400** = dev local; **8000** = porta interna do container em
-> produção; **8410** = porta publicada no VPS para o starter kit (`deploy/` mapeia `8410:8000`).
+> **Esquema de portas**: **8411** = porta do backend em toda camada (dev local, interna do
+> container e publicada no VPS — `deploy/` mapeia `8411:8411`); **5181** = Vite dev server.
 
 ### Produção
 - Construa o build do React em `SPA_DIST_PATH` (default `../frontend/dist`).
@@ -116,7 +116,7 @@ backend/
 
 Veja `.env.example` para a lista completa e comentada. Destaques:
 
-- `SECRET_KEY`, `DATABASE_PATH`, `HOST`, `PORT` (default dev **8400**), `RUNNING_MODE`, `TIMEZONE`.
+- `SECRET_KEY`, `DATABASE_PATH`, `HOST`, `PORT` (default **8411**), `RUNNING_MODE`, `TIMEZONE`.
 - `BASE_URL` — usada nos links de e-mail (apontam para o SPA) e nas `back_urls`/webhook de pagamento.
 - `SPA_DIST_PATH` — caminho do build do React em produção (default `../frontend/dist`).
 - `RESEND_*` (e-mail), `MERCADOPAGO_*` / `STRIPE_*` / `PAYPAL_*` (pagamentos).

@@ -158,12 +158,12 @@ admin_senha = perguntar("Senha do administrador (mín. 8 chars, maiúscula, núm
 
 # ── Configurações do servidor ────────────────────────────────────────────────
 secao("4. Servidor")
-porta = perguntar("Porta do servidor", "8400")
+porta = perguntar("Porta do servidor", "8411")
 try:
     int(porta)
 except ValueError:
-    aviso(f"Porta '{porta}' inválida. Usando 8400.")
-    porta = "8400"
+    aviso(f"Porta '{porta}' inválida. Usando 8411.")
+    porta = "8411"
 
 # ── Email (opcional) ─────────────────────────────────────────────────────────
 secao("5. Serviço de Email (Resend.com) — opcional")
@@ -218,7 +218,7 @@ if not env_path.exists():
         "APP_NAME=SeuProjeto": f"APP_NAME={nome_projeto}",
         "APP_NAME=MeuProjeto": f"APP_NAME={nome_projeto}",
         "SECRET_KEY=cole_a_chave_de_sessao_aqui": f"SECRET_KEY={secret_key}",
-        "PORT=8400": f"PORT={porta}",
+        "PORT=8411": f"PORT={porta}",
         "HOST=127.0.0.1": "HOST=127.0.0.1",
     }
 

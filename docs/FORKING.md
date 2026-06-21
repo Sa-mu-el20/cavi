@@ -15,22 +15,20 @@ renomeados para o projeto.
 
 ---
 
-## 1. Conceito de portas (3 camadas — não confundir)
+## 1. Conceito de portas (CAVI: porta única em todas as camadas)
 
 | Porta | Papel | Onde |
 |------|-------|------|
-| **8000** | Porta **interna** do container (Uvicorn dentro do Docker). **Imutável**, igual em todo projeto. | `deploy/Dockerfile` (`EXPOSE`/`CMD`), `deploy/Jenkinsfile` (`PORT=8000`), healthcheck |
-| **8400** | **Dev local**: default do backend, alvo do proxy Vite, default do `configurar_projeto.py`. | `backend/.env.example`, `backend/util/config.py`, `frontend/vite.config.ts`, `configurar_projeto.py` |
-| **8410** | Porta **publicada no VPS** para o starter kit. | `deploy/docker-compose.yml` (`8410:8000`), `deploy/Jenkinsfile` (`BASE_URL=...:8410`) |
+| **8411** | Porta do backend em **toda camada**: dev local (default do backend, alvo do proxy Vite, default do `configurar_projeto.py`), **interna** do container (Uvicorn no Docker) e **publicada** no VPS. | `backend/.env.example`, `backend/util/config.py`, `frontend/vite.config.ts`, `configurar_projeto.py`, `deploy/Dockerfile` (`EXPOSE`/`CMD`), `deploy/docker-compose.yml` (`8411:8411`), `deploy/Jenkinsfile` (`PORT=8411`), healthcheck |
+| **5181** | **Vite dev server** (SPA em dev). | `frontend/vite.config.ts` |
 
-**Projeto novo**: porta de host segue convenção **+1** a partir de 8410 (8411, 8412, ...),
-podendo ser escolhida manualmente. **Evite colisão** com containers já no VPS. A porta interna
-continua **8000** — só muda o lado esquerdo do mapeamento `HOST:8000` no compose.
+> **Nota histórica:** o starter kit original separava em 3 camadas (8400 dev / 8000 interna /
+> 8410 publicada). O CAVI **unificou** o backend em **8411** — dev, interna e publicada são a
+> mesma porta, e o compose mapeia `8411:8411`.
 
-> **Convenção +1 confirmada na prática:** o CAVI publica `8411:8000` (starter publica `8410:8000`).
-> Ao escolher a porta de host, ajuste em **DOIS lugares**: `deploy/docker-compose.yml`
-> (`ports: ["<porta>:8000"]`) **e** o comentário informativo do `deploy/Jenkinsfile`
-> (`o compose publica <porta>:8000`), que duplica o valor e fica enganoso se esquecido.
+**Projeto novo**: escolha uma porta de host livre (8412, 8413, ...) e use o **mesmo** número
+nas duas pontas do mapeamento `<porta>:<porta>` do compose, além de `PORT`, `EXPOSE`/`CMD`
+e healthcheck. **Evite colisão** com containers já no VPS.
 
 ---
 
@@ -53,7 +51,7 @@ Ele reescreve, sem apagar arquivos existentes sem confirmação:
 ### 2b. Deploy — edite à mão
 **`deploy/docker-compose.yml`**:
 - `container_name: <slug>.<dominio>`  (hoje `dwa.ifes.site`)
-- `ports: ["<porta_host>:8000"]`  (hoje `8410:8000`)
+- `ports: ["<porta>:<porta>"]`  (hoje `8411:8411`) — mesmo número nas duas pontas
 - volumes (montagem **e** declaração no fim do arquivo):
   `<slug>_data:/app/data` e `<slug>_uploads:/app/static/uploads`  (hoje `dwa_data`/`dwa_uploads`)
 
@@ -65,11 +63,12 @@ Ele reescreve, sem apagar arquivos existentes sem confirmação:
 | Variável | Valor a definir | Hoje (starter) |
 |---|---|---|
 | `APP_NAME` | `<nome do projeto>` | `DefaultWebApp` |
-| `BASE_URL` | `https://<dominio-publico>` (HTTPS, **sem porta**) | `http://localhost:8410` |
+| `BASE_URL` | `https://<dominio-publico>` (HTTPS, **sem porta**) | `http://localhost:8411` |
 | `RESEND_FROM_EMAIL` | `<slug>@ifes.site` (ou endereço do seu domínio verificado) | `noreply@ifes.site` |
 | `RESEND_FROM_NAME` | `"<nome do projeto>"` | `"Default Web App"` |
 
-A porta **interna** (`PORT=8000`) e o healthcheck (`localhost:8000`) **não mudam**.
+A porta do backend (`PORT=8411`) e o healthcheck (`localhost:8411`) usam o mesmo número
+da porta publicada.
 
 > ⚠️ **CORREÇÃO 1 — `BASE_URL` de produção é o domínio público HTTPS, não `localhost`.**
 > `BASE_URL` alimenta os links dos e-mails (redefinição de senha, CTA de boas-vindas) e as
@@ -251,9 +250,8 @@ títulos e rodapés (ex.: `f'Bem-vindo ao {self.app_name}'`). Defina `APP_NAME` 
 
 ### 6c. `BASE_URL` é a origem dos links clicáveis nos e-mails
 Os links de ação (redefinir senha; CTA "Acessar o app" no e-mail de boas-vindas) são montados a partir
-de `os.getenv('BASE_URL', 'http://localhost:8000')`. Em produção, aponte para a URL pública HTTPS (ver
-Correção 1 na Seção 2b). ⚠️ Note a divergência de fallback: o código usa `localhost:8000`, mas o `.env`
-de dev usa `8400` — em dev confie sempre no `.env`.
+de `os.getenv('BASE_URL', 'http://localhost:8411')`. Em produção, aponte para a URL pública HTTPS (ver
+Correção 1 na Seção 2b). O fallback do código (`localhost:8411`) casa com o `BASE_URL` do `.env` de dev.
 
 ### 6d. Multipart text+html é obrigatório em todo e-mail transacional
 E-mail só-HTML pontua mais alto como spam. O CAVI injeta `params['text']` quando `texto` é fornecido.

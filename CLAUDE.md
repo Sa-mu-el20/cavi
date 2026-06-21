@@ -11,7 +11,7 @@ Boilerplate educacional (projetos integradores) com **arquitetura SPLIT**: API R
 - Deploy: **dwa.ifes.site**. Em dev, Vite faz proxy de `/api`, `/static`, `/health` → backend (same-origin, sem CORS).
 - `projects/` e `.lesson-bridge/` são **workspace externo** (specs de outros projetos, plugins) — não fazem parte deste app; **ignore-os** ao analisar/editar o código.
 
-> **Esquema de portas (3 camadas)**: **8000** = porta interna do container (Uvicorn no Docker; imutável). **8400** = dev local (default do backend, alvo do proxy Vite, default do `configurar_projeto.py`). **8410** = porta publicada no VPS para o starter kit (`deploy/docker-compose.yml` mapeia `8410:8000`). Novos projetos forkados publicam em **outra** porta de host (8420, 8430, ...).
+> **Esquema de portas**: **8411** = porta do backend em TODA camada — dev local (default do backend, alvo do proxy Vite, default do `configurar_projeto.py`), interna do container (Uvicorn no Docker) e publicada no VPS (`deploy/docker-compose.yml` mapeia `8411:8411`). **5181** = Vite dev server (SPA). (O starter kit original usava 8400 dev / 8000 interna / 8410 publicada; o CAVI unificou tudo em 8411.)
 
 ## Comandos
 
@@ -19,7 +19,7 @@ Boilerplate educacional (projetos integradores) com **arquitetura SPLIT**: API R
 O `.python-version` aponta para 3.14 (não instalado) — **sempre** usar o interpretador do venv:
 
 ```bash
-backend/.venv/bin/python main.py                    # sobe API (porta via .env PORT; default dev 8400)
+backend/.venv/bin/python main.py                    # sobe API (porta via .env PORT; default 8411)
 backend/.venv/bin/python -m pytest                  # todos os testes
 backend/.venv/bin/python -m pytest tests/unit       # só unitários
 backend/.venv/bin/python -m pytest tests/integration/test_x.py::TestClasse::test_metodo  # um teste
@@ -29,7 +29,7 @@ Docs interativas em `/docs`. `pytest.ini` usa `asyncio_mode=auto`.
 
 ### Frontend (rodar a partir de `frontend/`)
 ```bash
-npm run dev          # Vite dev server na porta 5180 (proxy /api -> VITE_BACKEND_URL, fallback 8400)
+npm run dev          # Vite dev server na porta 5181 (proxy /api -> VITE_BACKEND_URL, fallback 8411)
 npm run build        # tsc -b && vite build  (saída em dist/, servida pelo backend em prod)
 npm run test         # vitest run
 npx tsc -b --noEmit  # typecheck isolado

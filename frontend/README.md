@@ -19,7 +19,7 @@ e do contrato de API está no **[`../CLAUDE.md`](../CLAUDE.md)** (raiz do reposi
 
 ```bash
 npm install
-npm run dev            # Vite dev server na porta 5180 (proxy /api, /static, /health -> backend)
+npm run dev            # Vite dev server na porta 5181 (proxy /api, /static, /health -> backend)
 npm run build          # tsc -b && vite build  (saída em dist/)
 npm run preview        # serve o build
 npm run test           # vitest run
@@ -29,7 +29,7 @@ npm run lint           # eslint
 ```
 
 > **Dev precisa do backend rodando.** O Vite proxia `/api`, `/static` e `/health` para
-> `VITE_BACKEND_URL` (fallback `http://127.0.0.1:8400`), mantendo same-origin para que o
+> `VITE_BACKEND_URL` (fallback `http://127.0.0.1:8411`), mantendo same-origin para que o
 > cookie de sessão e o CSRF funcionem sem CORS. Ajuste `VITE_BACKEND_URL` se o backend
 > subir em outra porta. Em produção o build de `dist/` é servido pelo próprio FastAPI.
 
