@@ -1,3 +1,4 @@
+name: cavi
 # Execute a partir do diretório deploy/ (ou aponte -f deploy/docker-compose.yml).
 # O contexto de build é a RAIZ do repositório, pois o Dockerfile multi-stage
 # precisa de frontend/ (build do SPA) e backend/ (API FastAPI).
@@ -26,4 +27,6 @@ services:
 
 volumes:
   cavi_data:
+    name: deploy_cavi_data
   cavi_uploads:
+    name: deploy_cavi_uploads
