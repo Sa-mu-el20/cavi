@@ -162,7 +162,7 @@ export default function DashboardCorretorPage() {
                 return (
                   <div
                     key={im.id}
-                    onClick={() => navigate(`/app/imoveis/${im.id}`)}
+                    onClick={() => navigate(`/app/imoveis/${im.id}/editar`)}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
