@@ -4,25 +4,197 @@
 
 ---
 
+## Setup: preparando seu computador do zero
+
+Antes de programar qualquer coisa, você precisa deixar o computador pronto. Esta seção parte do zero: instala os programas, baixa o projeto e o deixa rodando na sua máquina. Faça **na ordem**, do começo ao fim. Se você já tem alguma das ferramentas, só confira a versão e siga em frente.
+
+### O que vamos instalar (e para que serve cada um)
+
+- **Git** — guarda o histórico do código e baixa o projeto da internet. É a ferramenta que "copia" o repositório para o seu computador.
+- **Python 3.11 ou mais novo** — a linguagem do backend (a parte que fala com o banco de dados).
+- **Bun** — o programa que instala as bibliotecas do frontend e roda a parte visual do site. Neste projeto o Bun é a ferramenta oficial; **não use npm** (mais adiante explico o porquê).
+- **VSCode** — o editor de código onde você vai escrever tudo.
+
+### 1. Instalar o Git
+
+- **Windows**: baixe em [git-scm.com](https://git-scm.com) e instale com as opções padrão (basta ir clicando em "Next").
+- **macOS**: rode `xcode-select --install` no Terminal, ou instale via [Homebrew](https://brew.sh) com `brew install git`.
+- **Linux (Ubuntu/Debian)**: `sudo apt update && sudo apt install git`.
+
+Confira se funcionou (a versão exata não importa, só precisa aparecer alguma):
+
+```bash
+git --version
+```
+
+### 2. Instalar o Python 3.11+
+
+Baixe em [python.org/downloads](https://www.python.org/downloads/). Pegue uma versão **3.11 ou mais nova** (3.11, 3.12, 3.13...).
+
+> No Windows, na tela do instalador marque a caixa **"Add Python to PATH"** antes de clicar em instalar. Sem isso, o comando `python` não vai funcionar no terminal.
+
+Confira:
+
+```bash
+python --version
+```
+
+> **Atenção a uma pegadinha deste projeto:** existe um arquivo chamado `.python-version` que pede a versão `3.14`. Essa versão pode nem existir ainda no seu computador, e isso atrapalha algumas ferramentas que leem esse arquivo (como o `pyenv`). Por isso, neste tutorial nós vamos criar o ambiente do Python **apontando direto para o Python 3.11** que você instalou, ignorando o que está escrito no `.python-version`. Mais abaixo eu mostro exatamente o comando.
+
+### 3. Instalar o Bun
+
+O Bun é o gerenciador que cuida das bibliotecas e do servidor do frontend.
+
+- **macOS / Linux**:
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
+- **Windows (PowerShell)**:
+
+```powershell
+powershell -c "irm bun.sh/install.ps1 | iex"
+```
+
+Feche e abra o terminal de novo e confira:
+
+```bash
+bun --version
+```
+
+### 4. Instalar o VSCode
+
+Baixe em [code.visualstudio.com](https://code.visualstudio.com) e instale com as opções padrão.
+
+### 5. Extensões do VSCode (instale todas)
+
+Abra o VSCode, clique no ícone de **Extensões** na barra lateral (ou aperte `Ctrl+Shift+X` / `Cmd+Shift+X`) e busque cada uma pelo nome:
+
+- **Python** — dá suporte à linguagem Python (rodar, depurar, autocompletar).
+- **Pylance** — deixa o autocompletar e a checagem de tipos do Python bem mais inteligentes.
+- **Python Debugger** — permite rodar o código pausando linha por linha para achar erros.
+- **Python Environments** — ajuda a escolher e gerenciar o ambiente Python (a `.venv`) do projeto.
+- **ESLint** — aponta erros e problemas de estilo no código JavaScript/TypeScript do frontend.
+- **SQLite3 Editor** — abre e mostra o banco de dados SQLite direto dentro do editor.
+- **vscode-icons** — coloca ícones bonitos nos arquivos, fica mais fácil de se achar.
+- **HTML CSS Support** — autocompletar para classes e estilos em HTML/CSS.
+
+### 6. Baixar (clonar) o projeto
+
+"Clonar" é baixar uma cópia completa do repositório, com todo o histórico. Escolha uma pasta e rode:
+
+```bash
+git clone https://github.com/Sa-mu-el20/cavi.git
+```
+
+Isso cria a pasta `cavi`. Abra ela no VSCode (menu **File → Open Folder** e escolha `cavi`).
+
+### 7. Criar uma branch para o seu trabalho
+
+Uma **branch** é uma linha de trabalho separada. Você cria uma cópia paralela do código, mexe nela à vontade, e o código principal continua intacto. Se algo der errado, é só voltar para a branch principal sem ter estragado nada. Por isso a gente sempre trabalha numa branch própria, em vez de mexer direto na principal.
+
+Dentro da pasta do projeto, crie e já entre na sua branch:
+
+```bash
+git checkout -b minha-feature
+```
+
+A partir daqui, tudo que você fizer fica guardado nessa branch `minha-feature`.
+
+### 8. Preparar o backend (Python)
+
+Entre na pasta do backend e crie um **ambiente virtual** (a `.venv`). O ambiente virtual é uma "caixinha" isolada onde as bibliotecas do projeto ficam, sem bagunçar o Python do resto do computador.
+
+Lembra da pegadinha do `.python-version`? É aqui que ela importa. Crie a `.venv` chamando explicitamente o Python 3.11:
+
+```bash
+cd backend
+python3.11 -m venv .venv
+```
+
+> Se `python3.11` não funcionar, tente `python -m venv .venv` (mas confirme antes com `python --version` que ele é mesmo 3.11 ou mais novo).
+
+Agora **ative** o ambiente (isso faz o terminal passar a usar o Python da caixinha):
+
+- **macOS / Linux**:
+
+```bash
+source .venv/bin/activate
+```
+
+- **Windows (PowerShell)**:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Com a `.venv` ativa, instale as bibliotecas que o backend precisa:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 9. Preparar o frontend (Bun)
+
+Em outro terminal, entre na pasta do frontend e instale as bibliotecas dele com o Bun:
+
+```bash
+cd frontend
+bun install
+```
+
+> **Por que Bun e não npm?** Neste projeto o Bun é o gerenciador oficial. Misturar npm e Bun pode gerar arquivos de trava (lockfiles) diferentes e versões conflitantes de bibliotecas. Para evitar dor de cabeça, use sempre Bun. Se em algum lugar da internet você ver um comando com `npm`, troque pelo equivalente em Bun (`npm install` → `bun install`, `npm run dev` → `bun run dev`).
+
+### 10. Rodar tudo
+
+Você vai precisar de **dois terminais abertos ao mesmo tempo**: um para o backend, outro para o frontend.
+
+**Terminal 1 — backend** (na pasta `backend/`, com a `.venv` ativa):
+
+```bash
+.venv/bin/python main.py
+```
+
+Isso sobe a API em `http://localhost:8411`.
+
+**Terminal 2 — frontend** (na pasta `frontend/`):
+
+```bash
+bun run dev
+```
+
+Isso sobe o site em `http://localhost:5181`. Abra esse endereço no navegador: se aparecer a tela do cavi, o setup deu certo e você está pronto para começar o tutorial.
+
+---
+
 ## O que você vai construir
 
-Você vai criar uma entidade nova chamada **Característica** (também chamada de "comodidade" — por exemplo: *Piscina*, *Churrasqueira*, *Academia*, *Portaria 24h*). O administrador da plataforma cadastra essas comodidades num CRUD próprio. Depois, quando o **corretor** edita um imóvel, ele marca via **checkboxes** quais comodidades aquele imóvel tem. No **detalhe público** do imóvel (a página que o visitante vê), essas comodidades aparecem como **tags** (pílulas coloridas). Como um imóvel pode ter várias comodidades e uma comodidade pode estar em vários imóveis, a relação é **N:N (muitos-para-muitos)**, e isso exige uma **tabela de junção** (`imovel_caracteristica`).
+Você vai criar uma "coisa" nova no sistema chamada **Característica** (também chamada de "comodidade" — por exemplo: *Piscina*, *Churrasqueira*, *Academia*, *Portaria 24h*). O administrador da plataforma cadastra essas comodidades numa tela só dele. Essa tela é um **CRUD**: a sigla, em inglês, junta as quatro ações básicas sobre dados — **C**riar, **R**ead (ler/listar), **U**pdate (editar) e **D**elete (excluir). Em português: cadastrar, ver, editar e apagar.
+
+Depois, quando o **corretor** edita um imóvel, ele marca em **caixinhas de seleção** (os *checkboxes*) quais comodidades aquele imóvel tem. Na página pública do imóvel (a que o visitante do site vê), essas comodidades aparecem como **tags** (aquelas etiquetas em formato de pílula colorida).
+
+Aqui entra o ponto central do tutorial. Um imóvel pode ter várias comodidades, e uma mesma comodidade (digamos, "Piscina") pode aparecer em vários imóveis diferentes. Quando os dois lados podem ter "muitos" do outro, a gente chama isso de relação **N:N (muitos-para-muitos)**. Para guardar esse tipo de relação no banco de dados, não dá para colocar tudo numa tabela só: a gente cria uma terceira tabela, a **tabela de junção** (aqui, `imovel_caracteristica`), cujo único trabalho é anotar quais pares "imóvel + comodidade" existem.
 
 Resultado final, item por item:
 
 - Uma tabela nova `caracteristica` (o catálogo de comodidades).
 - Uma tabela de junção `imovel_caracteristica` (liga imóvel ↔ característica).
-- Um repositório `caracteristica_repo` com CRUD + funções `vincular`, `desvincular` e `listar_por_imovel`.
-- Um DTO de entrada para criar/editar característica e a lista de características dentro das responses de imóvel.
-- Uma rota CRUD admin (`/api/admin/caracteristicas`) e ajuste em `imoveis_routes` para salvar e retornar os vínculos.
+- Um repositório `caracteristica_repo` com o CRUD + funções `vincular`, `desvincular` e `listar_por_imovel`.
+- Um **DTO** de entrada para criar/editar característica e a lista de características dentro das respostas de imóvel. DTO (do inglês *Data Transfer Object*, "objeto de transferência de dados") é só um molde que descreve o formato dos dados que entram ou saem da API — serve para validar o que o navegador manda e para padronizar o que a API responde.
+- Uma rota CRUD de administrador no **endpoint** `/api/admin/caracteristicas` (endpoint é um endereço da API; cada endereço atende a um tipo de pedido), e um ajuste em `imoveis_routes` para salvar e devolver os vínculos.
 - No frontend: tipos em `types.ts`, schema Zod em `schemas.ts`, chamadas via `api.ts`.
 - Uma página admin de comodidades, checkboxes no formulário de imóvel e tags no detalhe público.
+
+No fim, o visitante vê as comodidades como tags na página do imóvel, mais ou menos assim:
+
+![Detalhe público do imóvel com as comodidades exibidas como tags coloridas](img/aluno1/detalhe-publico-tags.png)
 
 ---
 
 ## Pré-requisitos
 
-Você precisa do projeto **cavi** rodando localmente (backend + frontend). Abra **dois terminais**.
+Se você seguiu a seção de **Setup** lá em cima, já tem tudo pronto. Aqui é só um lembrete de como deixar o projeto **cavi** rodando (backend + frontend). Abra **dois terminais**.
 
 **Terminal 1 — backend** (rode a partir da pasta `backend/`):
 
@@ -35,18 +207,18 @@ Isso sobe a API em `http://localhost:8411`. A documentação interativa fica em 
 **Terminal 2 — frontend** (rode a partir da pasta `frontend/`):
 
 ```bash
-npm run dev
+bun run dev
 ```
 
-Isso sobe o Vite em `http://localhost:5181`. O Vite faz *proxy* de `/api` para o backend, então você acessa tudo por `http://localhost:5181`.
+Isso sobe o Vite em `http://localhost:5181`. O Vite é o servidor que monta a parte visual do site. Ele também faz *proxy* de `/api` para o backend — ou seja, ele redireciona os pedidos que começam com `/api` para a API, então você acessa tudo por um endereço só, `http://localhost:5181`.
 
 > Dica: para testar telas de admin, exista um usuário admin seed (`cavi@ifes.site`). Veja `backend/data/admin_seed.json`.
 
-Sempre que você mexer no **backend**, pare (`Ctrl+C`) e suba de novo, ou confie no `reload`. Sempre que mexer no **frontend**, o Vite recarrega sozinho. Ao final, rode os verificadores:
+Sempre que você mexer no **backend**, pare (`Ctrl+C`) e suba de novo (ou deixe o `reload` recarregar sozinho). Sempre que mexer no **frontend**, o Vite recarrega sozinho. Ao final, rode os verificadores — eles conferem se está tudo certo antes de você entregar:
 
 ```bash
 # a partir de frontend/
-npx tsc -b --noEmit   # checa tipos do TypeScript
+bunx tsc -b --noEmit   # checa tipos do TypeScript
 # a partir de backend/
 backend/.venv/bin/python -m pytest
 ```
@@ -55,9 +227,9 @@ backend/.venv/bin/python -m pytest
 
 ## As camadas e a ordem de implementação
 
-A arquitetura do backend é em camadas: **Routes → DTOs → Repos → SQL → DB**. O frontend espelha o contrato da API: **Response DTO ↔ `types.ts` ↔ `schemas.ts` ↔ páginas**.
+O backend é organizado em **camadas**, uma em cima da outra: **Routes → DTOs → Repos → SQL → DB**. Pense numa pilha: a rota (Routes) recebe o pedido do navegador, os DTOs conferem o formato dos dados, os Repos sabem mexer no banco, o SQL são os comandos de banco, e o DB é o banco em si. O frontend segue o mesmo combinado (o "contrato") da API: **Response DTO ↔ `types.ts` ↔ `schemas.ts` ↔ páginas**.
 
-Vamos implementar **de baixo para cima**. Por quê? Porque cada camada depende da de baixo. Se você começar pela tela, ela vai chamar uma rota que não existe; a rota vai chamar um repo que não existe; o repo vai usar um SQL que não existe. Construindo de baixo para cima, **cada passo só usa coisas que já existem**, e você consegue testar pedaço por pedaço.
+Vamos construir **de baixo para cima**. Por quê? Porque cada camada usa a de baixo. Se você começasse pela tela, ela chamaria uma rota que ainda não existe; a rota chamaria um repo que ainda não existe; o repo usaria um SQL que ainda não existe — e nada rodaria. Construindo de baixo para cima, **cada passo só usa coisas que já estão prontas**, e você consegue testar pedaço por pedaço, sem ficar perdido.
 
 Ordem completa:
 
@@ -78,7 +250,7 @@ Ordem completa:
 
 ### Arquivo: `backend/sql/caracteristica_sql.py` — **ARQUIVO NOVO**
 
-Aqui ficam só *strings* de SQL puro (sem ORM), no mesmo estilo de `backend/sql/imovel_sql.py`. Duas tabelas: `caracteristica` (o catálogo) e `imovel_caracteristica` (a junção N:N). A tabela de junção tem **chave primária composta** `(imovel_id, caracteristica_id)` para impedir o mesmo vínculo duas vezes, e duas FKs com `ON DELETE CASCADE` (se o imóvel ou a característica for apagado, o vínculo some sozinho).
+Aqui ficam só os comandos de SQL escritos como texto (SQL puro, sem nenhuma biblioteca que esconda o banco — sem "ORM"), no mesmo estilo de `backend/sql/imovel_sql.py`. São duas tabelas: `caracteristica` (o catálogo de comodidades) e `imovel_caracteristica` (a tabela de junção que liga os dois lados da relação N:N). A tabela de junção usa uma **chave primária composta** `(imovel_id, caracteristica_id)` — ou seja, é o par dos dois IDs juntos que precisa ser único — e isso impede que o mesmo vínculo seja gravado duas vezes. Ela também tem duas chaves estrangeiras (as **FKs**, que apontam para outra tabela) com `ON DELETE CASCADE`: se o imóvel ou a característica for apagado, o vínculo some junto, automaticamente.
 
 ```python
 """
@@ -176,7 +348,7 @@ Pontos importantes:
 
 ### Arquivo: `backend/model/caracteristica_model.py` — **ARQUIVO NOVO**
 
-No projeto, entidades são `@dataclass` puras (nunca `dict`). Espelhe o estilo de `backend/model/foto_imovel_model.py`. Esta entidade não tem enums.
+No projeto, cada entidade (cada "coisa" do sistema) é uma `@dataclass` do Python — uma classe simples, feita só para guardar campos, em vez de um dicionário (`dict`) solto. Copie o estilo de `backend/model/foto_imovel_model.py`. Esta entidade não tem campos de lista fixa (enums).
 
 ```python
 """Modelo de domínio da Característica/Comodidade do imóvel."""
@@ -205,11 +377,11 @@ class Caracteristica:
 
 ### Arquivo: `backend/repo/caracteristica_repo.py` — **ARQUIVO NOVO**
 
-Esta é a camada que fala com o banco. Copie fielmente o estilo de `backend/repo/imovel_repo.py` e `backend/repo/foto_imovel_repo.py`:
+Esta é a camada que conversa com o banco de dados. Copie fielmente o estilo de `backend/repo/imovel_repo.py` e `backend/repo/foto_imovel_repo.py`:
 
-- Conexão sempre via `with obter_conexao() as conn:` (faz commit/rollback e ativa as FKs).
-- SQL via *prepared statement* (`?`), nunca f-string com dados.
-- Datas de gravação via `agora()` (NUNCA `datetime.now()` nem `.strftime()`).
+- Conexão sempre via `with obter_conexao() as conn:` — esse `with` garante que, ao terminar, a gravação seja confirmada (commit) ou desfeita se der erro (rollback), e já liga a checagem das FKs.
+- SQL sempre com *prepared statement* (aqueles `?` no lugar dos valores), nunca montando a string na mão com os dados do usuário — isso evita uma falha de segurança chamada injeção de SQL.
+- Datas de gravação sempre via `agora()` (NUNCA `datetime.now()` nem `.strftime()`), para todo o projeto gravar a data do mesmo jeito.
 - Uma função privada `_row_to_caracteristica` converte a linha do banco em entidade.
 - `criar_tabela()` cria as **duas** tabelas (catálogo + junção), nessa ordem.
 
@@ -384,7 +556,7 @@ Pontos importantes:
 
 ### Arquivo: `backend/dtos/caracteristica_dto.py` — **ARQUIVO NOVO**
 
-DTO de entrada valida o que chega do cliente. Use os *factories* de `backend/dtos/validators.py`, exatamente como `backend/dtos/imovel_dto.py` faz. Validators levantam `ValueError`, que vira **422** automaticamente.
+O DTO de entrada confere se o que chega do navegador está no formato certo (lembra: DTO é o molde dos dados). Use as funções prontas de validação de `backend/dtos/validators.py`, exatamente como `backend/dtos/imovel_dto.py` faz. Quando um dado está errado, o validador dispara um `ValueError`, e o FastAPI transforma isso sozinho num erro **422** (o código que significa "você me mandou dados inválidos").
 
 ```python
 """
@@ -426,7 +598,7 @@ class AtualizarCaracteristicaDTO(_CaracteristicaBaseDTO):
 
 ### Arquivo: `backend/dtos/responses/caracteristica_response.py` — **ARQUIVO NOVO**
 
-Response é o que sai para o cliente. Tem o classmethod construtor `de_caracteristica`, como `de_imovel`/`de_endereco` fazem em `backend/dtos/responses/imovel_response.py`.
+A Response é o molde do que a API devolve para o navegador (o caminho de volta). Ela tem um método construtor `de_caracteristica`, que recebe a entidade e monta a resposta — do mesmo jeito que `de_imovel`/`de_endereco` fazem em `backend/dtos/responses/imovel_response.py`.
 
 ```python
 """
@@ -584,15 +756,18 @@ Agora todo lugar que chama `obter_detalhe` (criar, editar, ver imóvel) já vem 
 
 ### Arquivo: `backend/routes/admin_caracteristicas_routes.py` — **ARQUIVO NOVO**
 
-Espelhe `backend/routes/admin_corretores_routes.py`: `APIRouter(prefix=...)` **sem** o `/api`; cada handler `async`, recebe `request: Request`, decorado com `@requer_autenticacao([Perfil.ADMIN.value])` (só admin); erros com `HTTPException` e mensagem em PT-BR; rate limit nas mutações.
+Copie o estilo de `backend/routes/admin_corretores_routes.py`. Alguns detalhes: o `APIRouter(prefix=...)` vai **sem** o `/api` (esse pedaço o `main.py` coloca depois); cada função que atende a um pedido é `async` e recebe `request: Request`; os erros são lançados com `HTTPException` e mensagem em português; e as ações que alteram dados têm um *rate limit* (um freio que limita quantos pedidos a pessoa pode fazer num intervalo, para evitar abuso).
+
+Sobre quem pode fazer o quê: as ações que **mudam** dados (POST para criar, PUT para editar, DELETE para excluir) usam `@requer_autenticacao([Perfil.ADMIN.value])`, ou seja, só o administrador. Já a **leitura** (GET, que só lista) usa `@requer_autenticacao([Perfil.ADMIN.value, Perfil.CORRETOR.value])`, liberando também o corretor. Por quê? Porque o formulário de imóvel do corretor precisa buscar o catálogo de comodidades para mostrar os checkboxes — o catálogo é compartilhado e só listar não faz mal nenhum.
 
 ```python
 """
 Rotas administrativas do CRUD de Características/Comodidades (API JSON).
 
 Permite ao administrador listar, criar, editar e excluir comodidades que os
-corretores marcam nos imóveis (relação N:N). Acesso restrito ao perfil
-Administrador.
+corretores marcam nos imóveis (relação N:N). Mutações restritas ao perfil
+Administrador; a listagem (GET) também é liberada ao Corretor, pois o
+formulário de imóvel precisa do catálogo para exibir os checkboxes.
 
 Camada Routes da arquitetura Routes -> DTOs -> Repos -> SQL -> DB.
 """
@@ -656,12 +831,17 @@ def _obter_ou_404(id: int) -> Caracteristica:
 # =============================================================================
 
 @router.get("", response_model=list[CaracteristicaResponse])
-@requer_autenticacao([Perfil.ADMIN.value])
+@requer_autenticacao([Perfil.ADMIN.value, Perfil.CORRETOR.value])
 async def listar(
     request: Request,
     usuario_logado: Optional[UsuarioLogado] = None,
 ):
-    """Lista todas as comodidades cadastradas (ordenadas por nome)."""
+    """Lista todas as comodidades cadastradas (ordenadas por nome).
+
+    Leitura liberada para Administrador e Corretor: o catálogo de comodidades é
+    compartilhado e o formulário de imóvel do corretor precisa carregá-lo para
+    exibir os checkboxes. A criação/edição/exclusão permanece restrita ao Admin.
+    """
     assert usuario_logado is not None
     todas = caracteristica_repo.obter_todos()
     return [CaracteristicaResponse.de_caracteristica(c) for c in todas]
@@ -756,15 +936,19 @@ async def excluir(
 
 Pontos importantes:
 
-- O `usuario_logado` aparece como `Optional[...] = None` na assinatura porque o **decorator** `@requer_autenticacao` é quem injeta ele (não é body). O `assert usuario_logado is not None` no início é só para o type-checker.
-- O endpoint de listar retorna uma **lista simples** (não paginada) — o catálogo de comodidades costuma ser pequeno. Por isso `response_model=list[CaracteristicaResponse]`.
+- O `usuario_logado` aparece na assinatura como `Optional[...] = None` porque quem preenche ele é o **decorator** `@requer_autenticacao` (aquele `@` em cima da função, que "embrulha" a função e roda antes dela). Ou seja, o usuário logado não vem no corpo do pedido; o decorator descobre quem está logado e entrega. O `assert usuario_logado is not None` no começo serve só para o verificador de tipos não reclamar.
+- O endpoint de listar devolve uma **lista simples**, sem paginação (sem quebrar em páginas) — o catálogo de comodidades costuma ser pequeno e cabe tudo de uma vez. Por isso `response_model=list[CaracteristicaResponse]`.
 - Status HTTP: POST → 201, PUT → 200, DELETE → 204 (`Response(status_code=204)`), conflito de nome → 409.
+
+Mais à frente, quando a tela de administração estiver pronta (Passos 9 e 10), essa rota vai alimentar uma página parecida com esta, onde o admin cadastra, edita e remove comodidades:
+
+![Tela de administração do CRUD de comodidades, com formulário e lista](img/aluno1/crud-admin-comodidades.png)
 
 ---
 
 ## Passo 6 — Ajustar `imoveis_routes.py` para salvar/retornar vínculos
 
-O corretor marca as comodidades **dentro do formulário do imóvel**. Então o DTO de imóvel precisa aceitar a lista de IDs, e as rotas de criar/editar precisam gravar os vínculos.
+O corretor marca as comodidades **dentro do próprio formulário do imóvel** (não numa tela separada). Então o DTO de imóvel precisa aceitar a lista de IDs das comodidades marcadas, e as rotas de criar/editar precisam gravar esses vínculos.
 
 ### Editar: `backend/dtos/imovel_dto.py` — **EDIÇÃO**
 
@@ -788,7 +972,7 @@ Adicione **logo abaixo** um campo novo para a lista de IDs de comodidades:
     )
 ```
 
-Com `default_factory=list`, se a tela não mandar nada, vem uma lista vazia (nenhuma comodidade) — e isso é válido. Não precisa de validator extra: cada ID é um `int`, e IDs inexistentes são ignorados pelo `OR IGNORE` da junção.
+Com `default_factory=list`, se a tela não mandar nada, chega uma lista vazia (nenhuma comodidade) — e isso é totalmente válido. Não precisa de validação extra: cada ID é um número inteiro (`int`), e se vier um ID que não existe, o `OR IGNORE` da tabela de junção simplesmente ignora, sem dar erro.
 
 ### Editar: `backend/routes/imoveis_routes.py` — **EDIÇÃO**
 
@@ -876,9 +1060,9 @@ Troque por (adicionando a regravação dos vínculos):
 
 ## Passo 7 — Registrar a tabela e o router no startup ⚠️
 
-**Este é o passo que mais se erra.** Se você esquecer, a tabela nunca é criada e o router nunca é montado — e nada funciona, mesmo com o código todo certo.
+**Este é o passo que mais gente esquece.** Se você pular ele, a tabela nunca é criada e a rota nunca é ligada — e aí nada funciona, mesmo com todo o resto do código perfeito. Vale a pena caprichar aqui.
 
-Tudo acontece em **`backend/main.py`**. São quatro pequenas edições.
+Tudo acontece no arquivo **`backend/main.py`**. São quatro pequenas edições.
 
 ### Editar: `backend/main.py` — **EDIÇÃO**
 
@@ -972,7 +1156,7 @@ Pare o backend (`Ctrl+C`) e suba de novo. Nos logs você deve ver `Tabela 'carac
 
 ## Passo 8 — Frontend: tipos e schema
 
-O contrato precisa bater **exato** entre backend e frontend. O cliente HTTP central (`frontend/src/lib/api.ts`) já existe e cuida de cookies/CSRF — **não mexa nele**, apenas use.
+O combinado de dados (o "contrato") precisa bater **exatamente** entre backend e frontend: o que a API manda tem que ter o mesmo formato que o frontend espera receber. O código central que faz os pedidos para a API (`frontend/src/lib/api.ts`) já existe e cuida sozinho dos cookies e da proteção contra CSRF (um tipo de ataque que finge ser você num pedido) — **não mexa nele**, apenas use.
 
 ### Editar: `frontend/src/lib/types.ts` — **EDIÇÃO**
 
@@ -1025,7 +1209,7 @@ Adicione o campo de IDs de comodidades:
 export type ImovelForm = z.infer<typeof imovelSchema>
 ```
 
-`z.array(...).default([])`: aceita uma lista de números inteiros positivos; se vier `undefined`, vira lista vazia. Isso bate com o `caracteristica_ids: list[int] = Field(default_factory=list)` do backend.
+`z.array(...).default([])`: aceita uma lista de números inteiros positivos; se não vier nada (`undefined`), vira lista vazia. Isso casa direitinho com o `caracteristica_ids: list[int] = Field(default_factory=list)` do backend — os dois lados combinam.
 
 **(8.d)** Crie também um schema para o formulário admin de comodidade (use na página admin). No final do arquivo `schemas.ts`, adicione:
 
@@ -1041,7 +1225,7 @@ export const caracteristicaSchema = z.object({
 export type CaracteristicaForm = z.infer<typeof caracteristicaSchema>
 ```
 
-> Não há um `api.ts` para editar: você chama `api.get/post/put/delete` direto nas páginas, como mostrado a seguir. Os caminhos são relativos a `/api` (não inclua o prefixo).
+> Você não precisa editar o `api.ts`: é só chamar `api.get/post/put/delete` direto nas páginas, como mostrado a seguir. Os caminhos já começam depois de `/api` (não escreva o `/api` de novo, o `api.ts` já põe).
 
 ---
 
@@ -1049,7 +1233,7 @@ export type CaracteristicaForm = z.infer<typeof caracteristicaSchema>
 
 ### Arquivo: `frontend/src/pages/admin/AdminCaracteristicasPage.tsx` — **ARQUIVO NOVO**
 
-Página admin de CRUD das comodidades. Segue o estilo de `AdminCorretoresPage.tsx`: *default export*, nome = arquivo, **inline styles** com tokens de `lib/theme.ts`, leitura via `useFetch`, feedback via `toast`/`pedirConfirmacao` (NUNCA `alert`/`confirm` nativos), chamadas via `api`.
+Esta é a página de administração onde o admin faz o CRUD das comodidades (criar, listar, editar, excluir). Siga o estilo de `AdminCorretoresPage.tsx`: o componente é exportado como *default export* e tem o mesmo nome do arquivo; os estilos ficam escritos direto nos elementos (*inline styles*), usando as cores e fontes de `lib/theme.ts`; a leitura dos dados usa o hook `useFetch`; e o retorno para o usuário (mensagens de sucesso/erro e confirmação) vem do `toast` e do `pedirConfirmacao` — NUNCA use os `alert`/`confirm` nativos do navegador, que são feios e travam a tela. As chamadas à API passam pelo `api`.
 
 ```tsx
 // Administração de comodidades (/admin/caracteristicas): lista + criar/editar/excluir.
@@ -1331,9 +1515,13 @@ export default function AdminCaracteristicasPage() {
 }
 ```
 
+Repare que a tela já trata o caso de nome repetido: se o admin tentar cadastrar uma comodidade com um nome que já existe, o backend devolve o erro 409 e a página mostra um aviso (toast) explicando o problema, mais ou menos assim:
+
+![Aviso (toast) na tela de comodidades quando o nome já existe](img/aluno1/toast-nome-duplicado.png)
+
 ### Editar: `frontend/src/pages/corretor/ImovelFormPage.tsx` — **EDIÇÃO**
 
-Vamos adicionar um card de checkboxes. São quatro pequenas mudanças.
+Agora vamos adicionar o card de checkboxes no formulário do imóvel. São quatro pequenas mudanças.
 
 **(9.a)** Nos imports do topo, procure:
 
@@ -1414,7 +1602,7 @@ Acrescente uma linha que marca as comodidades que já estão no imóvel:
       })
 ```
 
-> Observação: a rota `GET /api/admin/caracteristicas` exige perfil admin. Se na sua aplicação o corretor não puder chamar essa rota, o `.catch` acima simplesmente esconde o card (o corretor verá o formulário sem comodidades). Para o corretor enxergar a lista, você pode, futuramente, expor um GET público/corretor de comodidades — mas isso está fora do escopo deste tutorial.
+> Observação: a rota `GET /api/admin/caracteristicas` libera leitura para **admin e corretor** (ver o decorator `@requer_autenticacao([Perfil.ADMIN.value, Perfil.CORRETOR.value])` na seção da rota). Assim o formulário do corretor consegue carregar o catálogo e exibir os checkboxes. O `.catch` acima continua útil como rede de segurança: se a listagem falhar por qualquer motivo (ex.: catálogo ainda vazio retornando lista vazia, ou erro de rede), o card simplesmente não aparece e o formulário segue funcionando. As **mutações** (criar/editar/excluir comodidade) permanecem restritas ao admin.
 
 **(9.d)** Inclua os IDs marcados no payload enviado. Procure a função `montarPayload` no topo do arquivo. Ela recebe `(c, status)`. Vamos passar também os marcados. Primeiro, mude a **assinatura e o `return`** dela:
 
@@ -1508,15 +1696,23 @@ Insira **antes** desse comentário:
 
 ```
 
+Com isso, o formulário do imóvel passa a mostrar o card de comodidades com os checkboxes:
+
+![Card de comodidades com checkboxes no formulário do imóvel do corretor](img/aluno1/card-checkboxes-corretor.png)
+
+E, ao marcar algumas, elas ficam destacadas (borda e fundo em laranja):
+
+![Checkboxes de comodidades marcados, destacados em laranja](img/aluno1/checkboxes-marcados.png)
+
 Pontos importantes:
 
-- O estado `marcadas` é um array de IDs (`number[]`). O checkbox adiciona/remove o ID.
-- `caracteristica_ids` no payload é validado pelo `imovelSchema` (passo 8.c) e cai no `dto.caracteristica_ids` do backend (passo 6.a).
-- O card só aparece se houver comodidades cadastradas (`comodidades.length > 0`).
+- O estado `marcadas` é uma lista de IDs (`number[]`). Cada clique no checkbox adiciona ou remove o ID dessa lista.
+- O `caracteristica_ids` que vai no envio é conferido pelo `imovelSchema` (passo 8.c) e chega no `dto.caracteristica_ids` do backend (passo 6.a).
+- O card só aparece se houver comodidades cadastradas (`comodidades.length > 0`). Sem comodidades, ele nem é desenhado.
 
 ### Editar: `frontend/src/pages/catalogo/PropertyDetailPage.tsx` — **EDIÇÃO**
 
-Mostre as comodidades como tags no detalhe público.
+Por fim, vamos mostrar as comodidades como tags na página pública do imóvel (a que qualquer visitante vê). É o resultado final que apareceu lá no comecinho do tutorial.
 
 **(9.f)** Procure o bloco "Sobre o imóvel" e os `StatBox` (área/quartos/etc.):
 
@@ -1619,7 +1815,7 @@ Adicione a rota das comodidades:
           },
 ```
 
-A rota fica sob `AdminRoute` + `AdminLayout`, então só admin logado acessa.
+A rota fica dentro de `AdminRoute` + `AdminLayout`, então só um admin logado consegue abrir essa tela.
 
 ### Editar: `frontend/src/components/layout/AdminLayout.tsx` — **EDIÇÃO**
 
@@ -1695,13 +1891,13 @@ Abra `http://localhost:8411/docs` e confira que aparecem os endpoints sob **Admi
 A partir de `frontend/`:
 
 ```bash
-npm run dev
+bun run dev
 ```
 
-E rode o typecheck (não pode ter erro):
+E rode a checagem de tipos (não pode aparecer nenhum erro):
 
 ```bash
-npx tsc -b --noEmit
+bunx tsc -b --noEmit
 ```
 
 ### 3. Fluxo na tela
@@ -1760,7 +1956,7 @@ backend/.venv/bin/python -m pytest backend/tests/unit/test_caracteristica_repo.p
    Mutações (POST/PUT/DELETE) exigem o header `X-CSRF-Token`. Se você usar `api.post/put/delete`, isso é automático. **Não** use `fetch` cru para essas chamadas (a única exceção no projeto é upload multipart de foto, que já trata o CSRF com `garantirCsrf()`).
 
 6. **`tsc` reclama de tipo em `im.caracteristicas` ou no checkbox.**
-   Você não atualizou `types.ts`: a `interface Imovel` precisa ter `caracteristicas: Caracteristica[]` (8.b) e a interface `Caracteristica` precisa existir (8.a). Rode `npx tsc -b --noEmit` para localizar.
+   Você não atualizou `types.ts`: a `interface Imovel` precisa ter `caracteristicas: Caracteristica[]` (8.b) e a interface `Caracteristica` precisa existir (8.a). Rode `bunx tsc -b --noEmit` para localizar.
 
 7. **Erro 422 ao criar comodidade.**
    O nome tem menos de 2 ou mais de 60 caracteres (validator do DTO, passo 4). O contrato de erro `{detail, type, errors}` chega no `ApiError.errors` e a página mostra a mensagem por campo. Confira o `caracteristicaSchema` (8.d) batendo com o DTO.
@@ -1789,4 +1985,4 @@ Marque cada item conforme concluir:
 - [ ] **Tags** — seção de comodidades no `PropertyDetailPage.tsx`.
 - [ ] **Rota front** — `/admin/caracteristicas` em `router.tsx`.
 - [ ] **Menu front** — item "Comodidades" no `AdminLayout.tsx`.
-- [ ] **Verificação** — `npx tsc -b --noEmit` passa e o fluxo na tela funciona ponta a ponta.
+- [ ] **Verificação** — `bunx tsc -b --noEmit` passa e o fluxo na tela funciona ponta a ponta.

@@ -1,12 +1,137 @@
 # Tutorial passo a passo — Contador de visualizações do imóvel + Ordenar catálogo público
 
-Este tutorial é para alunos de graduação. Vamos com calma e **sem pular nada**. Se você seguir cada passo na ordem, ao final terá as duas features funcionando de ponta a ponta (backend + frontend). Leia com atenção, copie os códigos exatamente como estão e confira cada caminho de arquivo.
+Este tutorial foi escrito para você seguir do zero, sem precisar saber nada de antemão. Vamos com calma e **sem pular nada**. Se você fizer cada passo na ordem, no final vai ter as duas funcionalidades rodando de ponta a ponta (ou seja, do banco de dados até a tela que aparece no navegador). Leia com atenção, copie os códigos exatamente como estão e confira cada caminho de arquivo. Sempre que aparecer um termo técnico pela primeira vez, eu explico em seguida o que ele significa.
+
+---
+
+## Setup — preparando o computador do zero
+
+Antes de tocar no código, você precisa instalar algumas ferramentas e baixar o projeto. Faça esta seção inteira **uma vez só**; depois é só programar. Se você já tem alguma dessas ferramentas, pule a instalação dela e só confira a versão.
+
+### 1. Instalar as ferramentas
+
+Você vai precisar de quatro programas:
+
+- **Git** — guarda o histórico do código e baixa o projeto da internet. Baixe em [git-scm.com](https://git-scm.com/downloads).
+- **Python 3.11 ou mais novo** — é a linguagem do backend (a parte que roda no servidor). Baixe em [python.org/downloads](https://www.python.org/downloads/). **Atenção:** o projeto tem um arquivo `.python-version` apontando para a versão 3.14, que pode ainda nem existir no seu computador. Não tem problema: mais abaixo eu mostro como criar o ambiente usando o Python 3.11, que funciona perfeitamente.
+- **Bun** — é o programa que instala e roda as bibliotecas do frontend (a parte que aparece no navegador). É o substituto que este projeto usa no lugar do npm. Instale seguindo as instruções de [bun.sh](https://bun.sh).
+- **VSCode** — o editor de código onde você vai escrever tudo. Baixe em [code.visualstudio.com](https://code.visualstudio.com).
+
+Depois de instalar, **feche e abra o terminal** (para ele "enxergar" os programas novos) e confira se cada um respondeu com um número de versão:
+
+```bash
+git --version
+python --version
+bun --version
+```
+
+Se algum comando der "command not found" (comando não encontrado), a instalação não terminou ou o terminal não foi reaberto. Resolva isso antes de seguir, senão os próximos passos não vão funcionar.
+
+> Por que conferir a versão? Porque um número de versão respondendo é a prova de que o programa foi instalado e o terminal sabe onde ele está. É o jeito mais rápido de descobrir um problema agora, em vez de no meio do tutorial.
+
+### 2. Baixar o projeto (clonar o repositório)
+
+"Clonar" é baixar uma cópia completa do projeto, com todo o histórico, para a sua máquina. Em um terminal, na pasta onde você quer guardar o projeto, rode:
+
+```bash
+git clone https://github.com/Sa-mu-el20/cavi.git
+cd cavi
+```
+
+Isso cria uma pasta `cavi` com o código dentro. O `cd cavi` entra nessa pasta — todos os comandos seguintes assumem que você está dentro dela.
+
+### 3. Preparar o backend (Python)
+
+O backend tem suas próprias bibliotecas, e a boa prática é instalá-las dentro de um **ambiente virtual** (chamado de "venv"). Pense no venv como uma caixinha isolada só para este projeto: assim as bibliotecas dele não se misturam com as de outros projetos no seu computador.
+
+Crie o venv usando o Python 3.11 (mesmo que o `.python-version` peça 3.14) e ative-o:
+
+```bash
+cd backend
+python -m venv .venv
+```
+
+Agora **ative** o ambiente. O comando muda conforme o sistema:
+
+```bash
+# Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+
+# macOS / Linux
+source .venv/bin/activate
+```
+
+Com o venv ativado (você vai ver `(.venv)` no início da linha do terminal), instale as bibliotecas que o projeto precisa:
+
+```bash
+pip install -r requirements.txt
+```
+
+> O `requirements.txt` é uma lista das bibliotecas do backend. O `pip install -r` lê essa lista e baixa tudo de uma vez, na versão certa.
+
+### 4. Preparar o frontend (Bun)
+
+Agora as bibliotecas da parte visual. A partir da raiz do projeto, entre na pasta `frontend` e use o Bun:
+
+```bash
+cd frontend
+bun install
+```
+
+Isso baixa tudo que o frontend precisa. Use sempre o **Bun** neste projeto — não use `npm`, mesmo que você veja `npm` em tutoriais por aí.
+
+### 5. Rodar o projeto
+
+Você vai deixar duas coisas rodando ao mesmo tempo, cada uma em um terminal:
+
+```bash
+# Terminal 1 — backend (com o venv ativado, dentro de backend/)
+.venv/bin/python main.py
+```
+
+```bash
+# Terminal 2 — frontend (dentro de frontend/)
+bun run dev
+```
+
+O backend sobe na porta **8411** e o frontend na **5181**. Abra `http://localhost:5181` no navegador para ver o site no ar.
+
+### 6. Criar uma branch para o seu trabalho
+
+Antes de começar a programar, crie uma **branch**. Uma branch é como uma "linha do tempo paralela" do código: você faz suas mudanças nela sem mexer na versão principal (a `main`). Se algo der errado, é só voltar para a `main` que está intacta. Por isso nunca trabalhamos direto na principal.
+
+Da raiz do projeto:
+
+```bash
+git checkout -b minha-feature
+```
+
+O `-b` cria a branch nova chamada `minha-feature` e já te coloca dentro dela. Daqui pra frente, tudo que você fizer fica nessa branch.
+
+### 7. Extensões recomendadas do VSCode
+
+Extensões são "plugins" que deixam o VSCode mais esperto para cada linguagem. Abra o VSCode na pasta do projeto, vá no ícone de extensões (na barra lateral) e instale estas:
+
+- **Python** — dá suporte básico para escrever e rodar código Python.
+- **Pylance** — autocompletar inteligente e checagem de tipos do Python enquanto você digita.
+- **Python Debugger** — permite rodar o código passo a passo para achar erros.
+- **Python Environments** — ajuda a escolher e gerenciar o venv certo dentro do editor.
+- **ESLint** — aponta problemas e descuidos no código do frontend (JavaScript/TypeScript).
+- **SQLite3 Editor** — abre e mostra o banco de dados do projeto direto no editor.
+- **vscode-icons** — coloca ícones nos arquivos para você se achar mais rápido na lista.
+- **HTML CSS Support** — autocompletar para HTML e CSS.
+
+Pronto. Com tudo instalado, o projeto rodando e a sua branch criada, você está pronto para começar.
 
 ---
 
 ## O que você vai construir
 
-Você vai implementar **duas features** no projeto CAVI (um SaaS imobiliário onde cada corretor tem um catálogo público com imóveis). A primeira é um **contador de visualizações**: toda vez que um visitante abre a página de detalhe de um imóvel, o sistema registra essa visita em uma tabela nova (`visualizacao_imovel`). Com esses dados, o painel do corretor (dashboard) ganha um bloco "Imóveis mais vistos" (top 5) e um número de "Total de acessos". A segunda feature é a **ordenação do catálogo público**: o visitante poderá escolher como os imóveis aparecem (mais recentes, menor preço, maior preço) através de um seletor na tela, que envia um parâmetro `ordenar` para a API e muda o `ORDER BY` da consulta no banco.
+Você vai construir **duas funcionalidades** (no jargão de programação, chamamos de "features") no projeto CAVI. O CAVI é um site de imobiliária onde cada corretor tem um catálogo público com os seus imóveis.
+
+A primeira feature é um **contador de visualizações**: toda vez que um visitante abre a página de detalhe de um imóvel, o sistema anota essa visita em uma tabela nova do banco de dados (`visualizacao_imovel`). Com esses dados, o painel do corretor (o "dashboard", que é a tela de controle dele) ganha um bloco "Imóveis mais vistos" (os 5 campeões de acessos) e um número de "Total de acessos".
+
+A segunda feature é a **ordenação do catálogo público**: o visitante vai poder escolher a ordem em que os imóveis aparecem (mais recentes, menor preço, maior preço) usando um seletor na tela. Esse seletor envia um parâmetro chamado `ordenar` para a API e muda o `ORDER BY` (o trecho do comando que define a ordem) da consulta no banco. Aqui já aparece a palavra **API**: é o "garçom" do sistema — o programa do servidor que recebe os pedidos da tela e devolve os dados. Cada pedido específico que a API atende (por exemplo, "me dê os imóveis deste catálogo") é chamado de **endpoint**, que é um endereço com uma função bem definida.
 
 Resultado final:
 
@@ -35,7 +160,7 @@ backend/.venv/bin/python backend/main.py
 
 ```bash
 cd frontend
-npm run dev
+bun run dev
 ```
 
 > O Vite sobe na porta **5181** e faz proxy de `/api`, `/static` e `/health` para o backend. Abra `http://localhost:5181` no navegador.
@@ -46,7 +171,9 @@ Para testar a área do corretor você precisa estar **logado como corretor** e j
 
 ## As camadas que vamos tocar e a ordem de implementação
 
-O CAVI segue a arquitetura **Routes → DTOs → Repos → SQL → DB** no backend e **api → types → schemas → páginas → router** no frontend. Vamos implementar **de baixo para cima**: primeiro o banco, depois o que usa o banco, e por último a tela. Fazemos assim porque cada camada **depende** da camada de baixo: a rota só funciona se o repo existir, o repo só funciona se o SQL existir, e a tela só funciona se a API já estiver respondendo. Se você começasse pela tela, não teria o que testar.
+O backend do CAVI é organizado em "camadas", cada uma com um papel: **Routes → DTOs → Repos → SQL → DB**. Em português, da tela para o fundo: as **Routes** (rotas) recebem os pedidos; os **DTOs** definem o formato dos dados que entram e saem (DTO quer dizer "Data Transfer Object", ou "objeto de transferência de dados" — é basicamente um molde que descreve quais campos uma mensagem tem); os **Repos** (repositórios) executam as operações; o **SQL** são os comandos que falam com o banco; e o **DB** é o banco de dados em si. O frontend tem a sua própria ordem: **api → types → schemas → páginas → router**.
+
+Vamos construir **de baixo para cima**: primeiro o banco, depois o que usa o banco, e por último a tela. Por quê? Porque cada camada **depende** da que está embaixo dela: a rota só funciona se o repositório existir, o repositório só funciona se o SQL existir, e a tela só funciona se a API já estiver respondendo. Se você começasse pela tela, não teria nada pronto para testar.
 
 Ordem completa:
 
@@ -76,7 +203,7 @@ Ordem completa:
 
 ### Arquivo: `backend/sql/visualizacao_imovel_sql.py` — ARQUIVO NOVO
 
-Crie este arquivo. Ele guarda **só strings de SQL** (prepared statements, sempre com `?`). É o mesmo estilo do `imovel_sql.py` que já existe no projeto.
+Crie este arquivo. Ele guarda **só os comandos SQL em texto** (as "strings de SQL"). Eles são escritos como *prepared statements* (comandos preparados): em vez de colar valores direto no texto do comando, deixamos um `?` no lugar e mandamos o valor à parte. Isso é mais seguro, porque impede que alguém injete comando malicioso pelo campo de dados. É o mesmo estilo do `imovel_sql.py` que já existe no projeto.
 
 ```python
 """
@@ -130,12 +257,12 @@ LIMIT 5
 
 Pontos importantes:
 
-- `CREATE TABLE IF NOT EXISTS` — não dá erro se a tabela já existir (o startup roda isso toda vez).
-- `id INTEGER PRIMARY KEY AUTOINCREMENT` — padrão de chave primária do projeto.
-- `data_visualizacao TIMESTAMP` — coluna de data, exatamente como nas outras tabelas.
-- `FOREIGN KEY (imovel_id) ... ON DELETE CASCADE` — se o imóvel for excluído, as visualizações dele somem junto.
-- `CONTAR_POR_CONTA` e `TOP_MAIS_VISTOS` usam `INNER JOIN imovel` porque a tabela de visualização não sabe de qual corretor é o imóvel; o `conta_site_id` mora na tabela `imovel`.
-- `GROUP BY` + `COUNT(...)` é uma **agregação**: agrupa por imóvel e conta quantas linhas existem.
+- `CREATE TABLE IF NOT EXISTS` — só cria a tabela se ela ainda não existir; assim não dá erro quando o sistema sobe de novo (o startup, ou seja, a inicialização do servidor, roda isso toda vez).
+- `id INTEGER PRIMARY KEY AUTOINCREMENT` — a coluna `id` é a chave primária (o número único que identifica cada linha) e cresce sozinha a cada nova linha. É o padrão do projeto.
+- `data_visualizacao TIMESTAMP` — a coluna que guarda a data e a hora do acesso, igual às outras tabelas.
+- `FOREIGN KEY (imovel_id) ... ON DELETE CASCADE` — a "chave estrangeira" liga cada visualização a um imóvel. O `ON DELETE CASCADE` faz o seguinte: se o imóvel for apagado, as visualizações dele somem junto, sem deixar lixo no banco.
+- `CONTAR_POR_CONTA` e `TOP_MAIS_VISTOS` usam `INNER JOIN imovel` (juntar as duas tabelas pelo campo em comum) porque a tabela de visualização não sabe de qual corretor é o imóvel; quem guarda o `conta_site_id` (o dono do imóvel) é a tabela `imovel`.
+- `GROUP BY` + `COUNT(...)` é uma **agregação**: agrupa as linhas por imóvel e conta quantas existem em cada grupo — é assim que descobrimos quantos acessos cada imóvel teve.
 
 ---
 
@@ -143,7 +270,7 @@ Pontos importantes:
 
 ### Arquivo: `backend/repo/visualizacao_imovel_repo.py` — ARQUIVO NOVO
 
-Crie este arquivo. Ele é a camada que **executa** o SQL. Repare que copiamos fielmente o estilo do `imovel_repo.py`: conexão via `with obter_conexao()`, datas via `agora()`, e a função `criar_tabela()`.
+Crie este arquivo. Ele é a camada que **executa** o SQL (pega aquelas strings do passo anterior e roda no banco). Repare que copiamos fielmente o estilo do `imovel_repo.py`: a conexão com o banco é aberta com `with obter_conexao()`, as datas vêm da função `agora()`, e existe a função `criar_tabela()`. Seguir o mesmo padrão dos arquivos que já existem deixa o código mais fácil de entender para quem vier depois.
 
 ```python
 """
@@ -219,11 +346,11 @@ def top_mais_vistos(conta_site_id: int) -> list[dict]:
 
 Pontos importantes:
 
-- `criar_tabela()` mora **no repo**, não no SQL. É essa função que o `main.py` chama no startup.
-- `registrar()` usa `agora()` (de `util/datetime_util.py`) para a data. **Nunca** use `datetime.now()` nem `.strftime()` — é regra do projeto.
-- Todos os métodos abrem a conexão com `with obter_conexao() as conn:`, que faz commit/rollback sozinho e ativa as foreign keys.
-- O SQL é sempre passado com **tupla de parâmetros** (`(imovel_id, agora())`), nunca com f-string. Isso evita SQL injection.
-- `row["total"]` funciona porque o projeto usa `row_factory = sqlite3.Row`, que permite acessar colunas pelo nome.
+- `criar_tabela()` fica **no repo**, não no arquivo de SQL. É essa função que o `main.py` chama na inicialização do servidor.
+- `registrar()` usa `agora()` (que vem de `util/datetime_util.py`) para pegar a data e a hora. **Nunca** use `datetime.now()` nem `.strftime()` direto — é regra do projeto, para que todas as datas venham do mesmo lugar e fiquem no mesmo formato.
+- Todos os métodos abrem a conexão com `with obter_conexao() as conn:`. Esse `with` cuida de salvar as mudanças se tudo deu certo (commit) ou desfazê-las se algo falhou (rollback), e ainda liga a verificação de chaves estrangeiras — tudo automático, sem você precisar lembrar.
+- Os valores vão sempre numa **tupla de parâmetros** (`(imovel_id, agora())`) separada do comando, nunca grudados no texto com f-string. É isso que evita o tal SQL injection (alguém enganar o banco mandando comando disfarçado de dado).
+- `row["total"]` funciona porque o projeto configurou o banco com `row_factory = sqlite3.Row`, um ajuste que deixa a gente pegar o valor de cada coluna pelo nome dela, em vez de pela posição.
 
 ---
 
@@ -272,7 +399,7 @@ TABELAS = [
 ]
 ```
 
-O `main.py` tem um loop que percorre `TABELAS` e chama `repo.criar_tabela()` para cada um. Ao adicionar a tupla, sua tabela passa a ser criada no startup. **Reinicie o backend** (Ctrl+C no Terminal 1 e suba de novo) e confira no log a linha `Tabela 'visualizacao_imovel' criada/verificada`.
+O `main.py` tem um laço de repetição que passa por cada item de `TABELAS` e chama `repo.criar_tabela()`. Ao adicionar a sua tupla nessa lista, a sua tabela passa a ser criada junto com as outras quando o servidor sobe. **Reinicie o backend** (aperte Ctrl+C no Terminal 1 para parar e rode de novo) e procure no log (as mensagens que aparecem no terminal) a linha `Tabela 'visualizacao_imovel' criada/verificada`. Se ela apareceu, deu certo.
 
 ---
 
@@ -333,8 +460,8 @@ Adicione a chamada `registrar(...)` logo **antes** do `return`, depois de já te
 
 Pontos importantes:
 
-- Registramos **só depois** de confirmar que o imóvel existe e está publicado. Assim não contamos acessos a imóveis ocultos ou inexistentes (esses casos já caíram no 404 antes).
-- Esta é uma rota `GET` pública (sem login). GETs não exigem CSRF no projeto, então não precisa se preocupar com token aqui.
+- Registramos **só depois** de confirmar que o imóvel existe e está publicado. Assim não contamos acessos a imóveis escondidos ou que nem existem (esses casos já devolveram o erro 404 — "não encontrado" — antes de chegar aqui).
+- Esta é uma rota `GET` pública (qualquer um acessa, sem login). `GET` é o tipo de pedido que só lê dados, sem mudar nada. No projeto, pedidos `GET` não exigem CSRF (uma proteção contra pedidos falsos vindos de outro site), então você não precisa se preocupar com token de segurança aqui.
 
 ---
 
@@ -342,7 +469,7 @@ Pontos importantes:
 
 ### Arquivo: `backend/dtos/responses/visualizacao_response.py` — ARQUIVO NOVO
 
-Crie este arquivo. Ele define o **formato exato** do JSON que a API vai devolver para o dashboard. É o contrato que o frontend vai espelhar.
+Crie este arquivo. Ele é um **DTO de resposta**: lembra que DTO é o "molde" que descreve o formato dos dados? Aqui o molde diz exatamente quais campos o JSON (o formato de texto que a API usa para mandar dados) vai ter quando o dashboard pedir as visualizações. Esse molde é o "contrato": o frontend vai copiar esse mesmo formato do outro lado, para os dois conversarem sem confusão.
 
 ```python
 """
@@ -385,9 +512,9 @@ class VisualizacoesDashboardResponse(BaseModel):
 
 Pontos importantes:
 
-- Os nomes dos campos (`total_acessos`, `mais_vistos`, `imovel_id`, `titulo`, `total`) precisam bater **exatamente** com os tipos do frontend (Passo 7). Se mudar um nome aqui, mude lá também.
-- O classmethod `de_dict` segue o padrão `de_<algo>` usado em todos os response DTOs do projeto (como `de_conta`, `de_imovel`).
-- `default_factory=list` garante que `mais_vistos` seja uma lista vazia quando não houver dados (em vez de erro).
+- Os nomes dos campos (`total_acessos`, `mais_vistos`, `imovel_id`, `titulo`, `total`) precisam ser **exatamente iguais** aos do frontend (Passo 7). Se mudar um nome de um lado, mude do outro também, senão eles param de se entender.
+- O `classmethod` `de_dict` (um método "de fábrica", que monta um objeto a partir de um dicionário) segue o padrão `de_<algo>` usado em todos os DTOs de resposta do projeto (como `de_conta`, `de_imovel`). Seguir o mesmo nome ajuda quem lê o código.
+- `default_factory=list` faz `mais_vistos` começar como uma lista vazia quando não houver nenhum dado, em vez de dar erro.
 
 ---
 
@@ -459,14 +586,16 @@ async def visualizacoes(
 
 Pontos importantes:
 
-- `@requer_autenticacao()` sem argumentos = qualquer usuário logado. O decorator injeta o `usuario_logado` (por isso ele aparece como `Optional[...] = None` na assinatura). O `assert` é só para o type checker entender que ele não é `None` daqui pra frente.
-- `request: Request` vem primeiro, `usuario_logado` por último — é a ordem padrão das rotas do projeto.
-- `_obter_conta_do_usuario(usuario_logado)` é um helper que já existe neste arquivo; ele resolve a conta-site do corretor logado (e dá 404 se ele ainda não tem catálogo).
-- Coloque a rota `/visualizacoes` **antes** da rota `/{id}` (que está mais abaixo). Como `/visualizacoes` é um caminho fixo e `/{id}` é variável, se a fixa vier depois o FastAPI ainda resolve corretamente (caminhos literais têm prioridade), mas por clareza deixamos a fixa junto do `/dashboard`, no topo.
+- `@requer_autenticacao()` sem nada dentro dos parênteses significa "qualquer usuário logado pode acessar". Esse `@...` é um **decorator** — um envelope que adiciona um comportamento à função (aqui, a checagem de login) sem você reescrever nada. Ele entrega o `usuario_logado` para a função (por isso ele aparece como `Optional[...] = None` na assinatura). O `assert` serve só para o verificador de tipos entender que, daqui pra frente, ele não é `None`.
+- `request: Request` vem primeiro e `usuario_logado` por último — é a ordem padrão das rotas do projeto.
+- `_obter_conta_do_usuario(usuario_logado)` é um "helper" (uma função auxiliar) que já existe neste arquivo; ele descobre qual é a conta do corretor logado (e devolve 404 se ele ainda não tem catálogo).
+- Coloque a rota `/visualizacoes` **antes** da rota `/{id}` (que fica mais abaixo). Como `/visualizacoes` é um caminho fixo e `/{id}` é variável (pode ser qualquer número), se a fixa viesse depois o FastAPI ainda acertaria (caminhos exatos têm prioridade), mas por clareza deixamos a fixa lá em cima, junto do `/dashboard`.
 
-> **Importante sobre o router:** você **não** precisa registrar nada novo no `main.py` para este endpoint. O `imoveis_router` já está registrado lá (na lista `ROUTERS`). Você só registra no `main.py` quando cria um **arquivo de router novo**. Aqui só adicionamos uma rota a um router que já existe.
+> **Importante sobre o router:** você **não** precisa registrar nada novo no `main.py` para este endpoint. O router (o objeto que agrupa as rotas) `imoveis_router` já está cadastrado lá na lista `ROUTERS`. Você só mexe no `main.py` quando cria um **arquivo de router novo**. Aqui a gente só pendurou mais uma rota num router que já existia.
 
-Teste no Swagger: reinicie o backend, abra `http://localhost:8411/docs`, e confira que apareceu `GET /api/imoveis/visualizacoes`.
+Teste no Swagger (a página que lista e deixa você experimentar os endpoints): reinicie o backend, abra `http://localhost:8411/docs`, e confira que apareceu `GET /api/imoveis/visualizacoes`.
+
+![Endpoint de visualizações listado no Swagger](img/aluno2/swagger-endpoint-visualizacoes.png)
 
 ---
 
@@ -474,7 +603,7 @@ Teste no Swagger: reinicie o backend, abra `http://localhost:8411/docs`, e confi
 
 ### Arquivo: `frontend/src/lib/types.ts` — EDIÇÃO
 
-Agora o frontend. Primeiro espelhamos o response DTO em tipos TypeScript. Vá ao **final** do arquivo `types.ts` e adicione:
+Agora começa a parte da tela (o frontend). O primeiro passo é "espelhar" o DTO de resposta do backend em tipos do TypeScript — ou seja, escrever do lado do frontend o mesmo molde de dados que o backend usa, para o editor saber quais campos esperar. Vá ao **final** do arquivo `types.ts` e adicione:
 
 ```ts
 // ===== Visualizações (dashboard do corretor) =====
@@ -493,9 +622,9 @@ export interface VisualizacoesDashboard {
 
 Pontos importantes:
 
-- Os nomes (`total_acessos`, `mais_vistos`, `imovel_id`, `titulo`, `total`) batem exatamente com o response DTO do backend (Passo 5). É o "contrato espelhado": mudou de um lado, espelhe no outro.
-- Tipos numéricos do Python (`int`) viram `number` no TypeScript.
-- Como essa feature não tem formulário de entrada (só leitura), **não** precisamos criar nada em `schemas.ts` (os schemas Zod são para validar formulários de envio).
+- Os nomes (`total_acessos`, `mais_vistos`, `imovel_id`, `titulo`, `total`) são iguaizinhos aos do DTO de resposta do backend (Passo 5). É o tal "contrato espelhado": mexeu de um lado, copie no outro.
+- Os números do Python (`int`, número inteiro) viram `number` no TypeScript.
+- Como essa feature só **lê** dados (não tem formulário para o usuário preencher e enviar), **não** precisamos criar nada em `schemas.ts`. Os schemas do Zod (uma biblioteca que valida o que o usuário digita) só servem para os formulários de envio.
 
 ---
 
@@ -545,7 +674,7 @@ E logo abaixo das variáveis derivadas (`const recentes = recentesPagina?.items 
   const maisVistos = visualizacoes?.mais_vistos ?? []
 ```
 
-> Repare no padrão `?? 0` e `?? []`: enquanto os dados não chegam, `visualizacoes` é `undefined`, então usamos valores padrão para a tela não quebrar.
+> Repare no padrão `?? 0` e `?? []`: o `??` quer dizer "se o que está à esquerda não existir, use o que está à direita". Enquanto os dados ainda estão chegando do servidor, `visualizacoes` é `undefined` (vazio), então caímos no valor padrão (0 ou lista vazia) e a tela não quebra.
 
 **Mudança 8.3 — mostrar o card "Total de acessos".** Localize a grade de cards de estatística (`StatCard`):
 
@@ -636,12 +765,20 @@ Logo **antes** do bloco "Atalhos" (ou seja, como primeiro filho dessa coluna), a
 
 Pontos importantes:
 
-- Reutilizamos exatamente os mesmos tokens (`colors`, `fonts`) e o estilo inline do projeto. **Nada de Bootstrap ou classes** — é regra do CAVI.
-- Clicar num imóvel mais visto leva para a edição dele (`navigate(\`/app/imoveis/${mv.imovel_id}/editar\`)`), igual ao comportamento dos imóveis recentes.
-- Tratamos a lista vazia com uma mensagem amigável.
-- Você **não** precisa mexer no `router.tsx` nem na sidebar nesta feature: o dashboard já é uma página existente (rota `index` de `/app`). Só editamos o conteúdo dela.
+- Reaproveitamos os mesmos tokens de estilo (`colors`, `fonts`, que são as cores e fontes padronizadas) e o estilo escrito direto no elemento ("inline"), igual ao resto do projeto. **Nada de Bootstrap nem classes CSS** — é regra do CAVI manter tudo no mesmo padrão.
+- Clicar num imóvel mais visto leva para a tela de edição dele (`navigate(\`/app/imoveis/${mv.imovel_id}/editar\`)`), do mesmo jeito que já acontece com os imóveis recentes.
+- Quando a lista está vazia, mostramos uma mensagem amigável em vez de um espaço em branco.
+- Você **não** precisa mexer no `router.tsx` (o arquivo que define as rotas da tela) nem no menu lateral: o dashboard já é uma página que existe (a rota inicial de `/app`). A gente só mudou o conteúdo dela.
 
-Para passar no typecheck, lembre de rodar `npx tsc -b --noEmit` na pasta `frontend/` (o projeto usa modo estrito; imports não usados ou tipos errados quebram o build).
+Para passar no "typecheck" (a checagem de tipos, que confere se você usou cada variável do jeito certo), lembre de rodar `bunx tsc -b --noEmit` na pasta `frontend/`. O projeto usa o modo estrito: imports que você não usa ou tipos errados quebram o build (a montagem final do código).
+
+Com o backend e o frontend rodando, abra `http://localhost:5181/app`. O dashboard deve mostrar o novo card "Total de acessos" (em laranja) e o bloco "Imóveis mais vistos". É isto que você deve ver depois de gerar alguns acessos:
+
+![Dashboard com Total de acessos e Imóveis mais vistos](img/aluno2/dashboard-total-acessos-mais-vistos.png)
+
+E, se ainda não houver nenhum acesso registrado, o bloco mostra a mensagem de lista vazia e o card fica em 0:
+
+![Dashboard sem visualizações (estado vazio)](img/aluno2/dashboard-empty-state.png)
 
 ---
 
@@ -651,7 +788,7 @@ Para passar no typecheck, lembre de rodar `npx tsc -b --noEmit` na pasta `fronte
 
 ### Arquivo: `backend/sql/imovel_sql.py` — EDIÇÃO
 
-Hoje a listagem tem uma ordenação fixa. Vamos adicionar opções. Localize, na seção "LISTAGEM / FILTROS", a constante de ordenação:
+Hoje a listagem aparece sempre na mesma ordem (fixa). Vamos dar opções de ordem para o visitante. Localize, na seção "LISTAGEM / FILTROS", a constante de ordenação (o `ORDER BY` define a ordem em que as linhas saem do banco):
 
 ```python
 # Ordenação fixa aplicada ao fim das listagens.
@@ -673,9 +810,9 @@ ORDENACAO_PADRAO = "recentes"
 
 Pontos importantes:
 
-- Não apague `ORDENAR_LISTAGEM` — a listagem do corretor (área autenticada) continua usando ele. Estamos **adicionando**, não substituindo.
-- `ORDENACOES` é um dicionário que mapeia o valor recebido na API (`recentes`, `preco_asc`, `preco_desc`) para o trecho de SQL correto. Como esses valores são **chaves fixas que nós controlamos** (e não dados digitados pelo usuário inseridos direto na string), validamos contra esse dicionário antes de usar — então não há risco de SQL injection.
-- `preco_asc` = menor preço primeiro (ascendente). `preco_desc` = maior preço primeiro (descendente).
+- Não apague `ORDENAR_LISTAGEM` — a listagem da área do corretor (que exige login) continua usando ele. A gente está **somando** uma opção nova, não trocando a antiga.
+- `ORDENACOES` é um dicionário (uma tabela de "apelido → valor") que liga cada palavra que chega pela API (`recentes`, `preco_asc`, `preco_desc`) ao trecho de SQL certo. Como essas palavras são **opções fixas que nós mesmos definimos** (e não texto livre digitado pelo usuário colado direto no comando), conferimos a palavra contra esse dicionário antes de usar. Por isso não há risco de SQL injection aqui.
+- `preco_asc` = do menor preço para o maior (ASC vem de "ascendente", de baixo pra cima). `preco_desc` = do maior para o menor ("descendente").
 
 ---
 
@@ -757,9 +894,9 @@ Troque a linha do `sql_dados` para escolher a ordenação a partir do dicionári
 
 Pontos importantes:
 
-- `ORDENACOES.get(chave, padrao)` devolve o padrão se a chave não existir. Ou seja, se o front mandar um `ordenar` inválido (ou vazio), caímos com segurança na ordenação `recentes`.
-- O `sql_count` continua sem `ORDER BY` (contar não precisa ordenar).
-- Como `ordenar` tem default `None`, **todas** as chamadas existentes de `listar_por_conta` (inclusive a da área do corretor em `imoveis_routes.py`) continuam funcionando sem alteração.
+- `ORDENACOES.get(chave, padrao)` busca a chave no dicionário; se ela não existir, devolve o valor padrão. Ou seja, se o frontend mandar um `ordenar` que a gente não reconhece (ou vazio), caímos com segurança na ordenação `recentes`, sem dar erro.
+- O `sql_count` (o comando que só conta quantos imóveis existem) continua sem `ORDER BY`, porque para contar não importa a ordem.
+- Como o parâmetro `ordenar` tem valor padrão `None` (ou seja, é opcional), **todas** as chamadas de `listar_por_conta` que já existiam — inclusive a da área do corretor em `imoveis_routes.py` — continuam funcionando sem precisar de nenhuma mudança.
 
 ---
 
@@ -767,7 +904,7 @@ Pontos importantes:
 
 ### Arquivo: `backend/routes/publico_routes.py` — EDIÇÃO
 
-Agora expomos o parâmetro `ordenar` na API pública. Localize a função `listar_imoveis_do_catalogo` (decorada com `@router.get("/catalogo/{slug}/imoveis", ...)`). A assinatura dela é:
+Agora deixamos o parâmetro `ordenar` disponível na API pública, para a tela poder enviá-lo. Localize a função `listar_imoveis_do_catalogo` (que tem o decorator `@router.get("/catalogo/{slug}/imoveis", ...)` em cima). A "assinatura" dela (a primeira linha, com o nome e a lista de parâmetros) é:
 
 ```python
 async def listar_imoveis_do_catalogo(
@@ -835,9 +972,9 @@ Adicione `ordenar=ordenar` na chamada:
 
 Pontos importantes:
 
-- Um parâmetro de função sem path/body, com tipo simples (`Optional[str] = None`), vira automaticamente um **query param** no FastAPI. Ou seja, a URL fica `GET /api/publico/catalogo/{slug}/imoveis?ordenar=preco_asc`.
-- Não precisa validar `ordenar` aqui: o repo já cai no padrão quando o valor é desconhecido (Passo 10).
-- Não há nada para registrar no `main.py`: `publico_router` já está registrado.
+- No FastAPI, um parâmetro de função com tipo simples (`Optional[str] = None`) que não vem do caminho da URL nem do corpo do pedido vira automaticamente um **query param** — aquele pedacinho que vai depois do `?` na URL. Ou seja, o endereço fica `GET /api/publico/catalogo/{slug}/imoveis?ordenar=preco_asc`.
+- Não precisa validar o `ordenar` aqui: o repositório já cai no padrão quando o valor é desconhecido (você fez isso no Passo 10).
+- Não há nada para cadastrar no `main.py`: o `publico_router` já está registrado lá.
 
 Teste no Swagger: `GET /api/publico/catalogo/{slug}/imoveis` agora tem um campo `ordenar`. Experimente com `preco_asc` e veja os imóveis virem do mais barato para o mais caro.
 
@@ -849,7 +986,7 @@ Teste no Swagger: `GET /api/publico/catalogo/{slug}/imoveis` agora tem um campo 
 
 Por fim, o seletor na tela pública.
 
-**Mudança 12.1 — guardar a ordenação no estado.** Localize, dentro do componente `CatalogPage`, as declarações de estado:
+**Mudança 12.1 — guardar a ordenação no estado.** "Estado" é a memória do componente: um valor que a tela guarda e que, ao mudar, faz a tela se redesenhar. Localize, dentro do componente `CatalogPage`, as declarações de estado:
 
 ```ts
   const [f, setF] = useState<Filtros>(FILTROS_VAZIOS)
@@ -891,7 +1028,7 @@ Inclua o `ordenar` nos params e na lista de dependências:
   }, [pagina, f, ordenar])
 ```
 
-> Adicionar `ordenar` no array de dependências do `useMemo` é o que faz a lista recarregar quando o visitante muda a ordenação (o `useFetch` depende de `params`).
+> O `useMemo` só refaz aquele cálculo quando algo da lista de dependências muda. Por isso adicionar `ordenar` nessa lista é o que faz a tela recarregar os imóveis quando o visitante troca a ordenação (a busca de dados, o `useFetch`, depende do `params`).
 
 **Mudança 12.3 — adicionar o seletor na barra de filtros.** Localize, dentro da barra de filtros, o `<Select>` de preço máximo seguido do botão "Limpar":
 
@@ -953,9 +1090,17 @@ Adicione um novo `<Select>` de ordenação **entre** o select de preço e o bot�
 
 Pontos importantes:
 
-- Os valores das `<option>` (`recentes`, `preco_asc`, `preco_desc`) batem **exatamente** com as chaves do dicionário `ORDENACOES` no backend (Passo 9). Se você escrever diferente, a API cai no padrão e a ordenação não muda.
-- Ao mudar a ordenação, voltamos para a página 1 (`setPagina(1)`), porque a ordem muda e não faz sentido manter a página antiga.
-- Reusamos o componente `<Select>` que já existe nesse arquivo, mantendo a estética igual aos outros filtros.
+- Os valores das `<option>` (`recentes`, `preco_asc`, `preco_desc`) são **exatamente iguais** às chaves do dicionário `ORDENACOES` no backend (Passo 9). Se você escrever diferente, o backend não acha a chave, cai no padrão, e a ordenação parece "não funcionar".
+- Ao trocar a ordenação, voltamos para a página 1 (`setPagina(1)`), porque a ordem mudou e não faria sentido continuar na página antiga.
+- Reaproveitamos o componente `<Select>` que já existe nesse arquivo, para o seletor novo ficar com a mesma cara dos outros filtros.
+
+Com isso a tela do catálogo (`/v/{slug}`) ganha o seletor de ordenação, entre "Preço máximo" e o botão "Limpar":
+
+![Catálogo com o novo seletor de ordenação](img/aluno2/catalogo-seletor-ordenacao.png)
+
+Ao escolher "Menor preço", os imóveis se reordenam do mais barato para o mais caro:
+
+![Catálogo ordenado por menor preço](img/aluno2/catalogo-ordenado-menor-preco.png)
 
 ---
 
@@ -980,41 +1125,128 @@ Pontos importantes:
 
 ### Teste automatizado (opcional)
 
-O projeto usa **pytest** no backend. Você pode escrever um teste de integração simples. Crie `backend/tests/integration/test_visualizacao.py`:
+O projeto usa o **pytest** (uma ferramenta que roda testes automáticos) no backend. Você pode escrever um teste de integração simples — "de integração" quer dizer que ele testa as peças funcionando juntas (a rota HTTP, o repo gravando e lendo de verdade no banco), não isoladas. A ideia do teste abaixo é: criar um corretor, sua conta-site (catálogo) e um imóvel **publicado**, depois acessar o **endpoint** público de detalhe do imóvel duas vezes e conferir que o contador de acessos sobe de 0 para 1 e depois para 2.
+
+Para isso usamos só o que o projeto **já oferece**: a fixture `client` (um cliente HTTP de teste, vinda do `backend/tests/conftest.py`) e os repos reais (`usuario_repo`, `conta_site_repo`, `imovel_repo`, `visualizacao_imovel_repo`). Não invente fixtures: o imóvel é montado direto pelos repos, do mesmo jeito que os outros testes de `backend/tests/integration/` fazem.
+
+Crie `backend/tests/integration/routes/test_visualizacao_imovel.py`:
 
 ```python
-import pytest
-from repo import visualizacao_imovel_repo
+"""
+Teste de integração da feature "Contador de visualizações".
+
+Exercita a rota pública de detalhe do imóvel (GET /publico/imoveis/{id}) duas
+vezes e confere que a contagem de acessos da conta-site (corretor) sobe de
+forma consistente, usando apenas fixtures e repositórios reais do projeto.
+"""
+from repo import (
+    usuario_repo,
+    conta_site_repo,
+    imovel_repo,
+    visualizacao_imovel_repo,
+)
+from model.usuario_model import Usuario
+from model.conta_site_model import ContaSite
+from model.imovel_model import Imovel, TipoImovel, FinalidadeImovel, StatusImovel
+from util.security import criar_hash_senha
+from util.status_conta import StatusConta
+from util.perfis import Perfil
 
 
-@pytest.mark.integration
-def test_registrar_e_contar(criar_imovel_publicado):
-    # criar_imovel_publicado é uma fixture hipotética que devolve (imovel_id, conta_id).
-    imovel_id, conta_id = criar_imovel_publicado
+def test_contador_de_visualizacoes_sobe_a_cada_acesso(client):
+    """A cada acesso ao detalhe público do imóvel, a contagem aumenta em 1."""
+    # A tabela do contador não é criada pela fixture de integração; criamos aqui.
+    visualizacao_imovel_repo.criar_tabela()
 
-    visualizacao_imovel_repo.registrar(imovel_id)
-    visualizacao_imovel_repo.registrar(imovel_id)
+    # 1) Corretor dono do catálogo.
+    usuario_id = usuario_repo.inserir(Usuario(
+        id=0,
+        nome="Corretor Teste",
+        email="corretor_vis@example.com",
+        senha=criar_hash_senha("Senha@123"),
+        perfil=Perfil.CORRETOR.value,
+    ))
 
+    # 2) Conta-site (catálogo) ATIVA do corretor.
+    conta_id = conta_site_repo.inserir(ContaSite(
+        id=0,
+        usuario_id=usuario_id,
+        nome_publico="Imobiliária Teste",
+        slug="imobiliaria-teste",
+        status=StatusConta.ATIVO,
+    ))
+
+    # 3) Imóvel PUBLICADO dessa conta (só publicados aparecem na rota pública).
+    imovel_id = imovel_repo.inserir(Imovel(
+        id=0,
+        conta_site_id=conta_id,
+        titulo="Apartamento Centro",
+        tipo=TipoImovel.APARTAMENTO,
+        finalidade=FinalidadeImovel.VENDA,
+        preco=250000.0,
+        status_publicacao=StatusImovel.PUBLICADO,
+    ))
+
+    # Antes de qualquer acesso, a contagem da conta começa em zero.
+    assert visualizacao_imovel_repo.contar_por_conta(conta_id) == 0
+
+    # Primeiro acesso ao detalhe público -> registra 1 visualização.
+    resposta1 = client.get(f"/api/publico/imoveis/{imovel_id}")
+    assert resposta1.status_code == 200
+    assert visualizacao_imovel_repo.contar_por_conta(conta_id) == 1
+
+    # Segundo acesso -> a contagem sobe de forma consistente para 2.
+    resposta2 = client.get(f"/api/publico/imoveis/{imovel_id}")
+    assert resposta2.status_code == 200
     assert visualizacao_imovel_repo.contar_por_conta(conta_id) == 2
-    top = visualizacao_imovel_repo.top_mais_vistos(conta_id)
-    assert top[0]["imovel_id"] == imovel_id
-    assert top[0]["total"] == 2
 ```
 
-Rode com:
+Rode com (a partir da pasta `backend`):
 
 ```bash
-backend/.venv/bin/python -m pytest tests/integration/test_visualizacao.py
+backend/.venv/bin/python -m pytest tests/integration/routes/test_visualizacao_imovel.py -q
 ```
 
-> Observação: o exemplo usa uma fixture `criar_imovel_publicado` que você precisaria criar ou adaptar a partir dos `conftest.py` existentes em `backend/tests/`. Olhe os testes que já existem para ver como criar um imóvel de teste.
+Você deve ver **`1 passed`** no final. Dois detalhes que esse teste mostra na prática: (1) a tabela `visualizacao_imovel` não é criada pela fixture de tabelas dos testes, então o próprio teste chama `visualizacao_imovel_repo.criar_tabela()`; e (2) o endpoint público fica sob o prefixo `/api`, por isso a URL é `/api/publico/imoveis/{id}` — exatamente a mesma rota onde, no Passo 5, você chamou `registrar()`.
 
 Não esqueça também de rodar o typecheck do frontend:
 
 ```bash
 cd frontend
-npx tsc -b --noEmit
+bunx tsc -b --noEmit
 ```
+
+---
+
+## Resultado visual
+
+As imagens abaixo mostram o resultado esperado com a feature funcionando ponta a ponta.
+
+### Dashboard do corretor — "Total de acessos" e "Imóveis mais vistos"
+
+O dashboard passa a ter um grid de **4** StatCards (Imóveis, Publicados, Ocultos e o novo **Total de acessos**, em laranja). Na coluna lateral direita, **acima** do bloco "Atalhos", aparece o bloco "Imóveis mais vistos" com até 5 imóveis ordenados do mais visto para o menos visto (cada um com a contagem em laranja, ex.: "3 acessos" / "1 acesso"). Clicar em um item navega para `/app/imoveis/{id}/editar`.
+
+![Dashboard com Total de acessos e Imóveis mais vistos](img/aluno2/dashboard-total-acessos-mais-vistos.png)
+
+Quando ainda não há nenhuma visualização registrada, o bloco mostra a mensagem **"Nenhuma visualização registrada ainda."** e o card "Total de acessos" fica em 0.
+
+![Dashboard sem visualizações (estado vazio)](img/aluno2/dashboard-empty-state.png)
+
+### Catálogo público — seletor de ordenação
+
+A barra de filtros do catálogo (`/v/{slug}`) ganha um novo seletor de ordenação com as opções **Mais recentes**, **Menor preço** e **Maior preço**, posicionado entre "Preço máximo" e o botão "Limpar".
+
+![Catálogo com o novo seletor de ordenação](img/aluno2/catalogo-seletor-ordenacao.png)
+
+Selecionar **"Menor preço"** reordena os cards do mais barato para o mais caro (e a chamada `GET /publico/catalogo/{slug}/imoveis` passa a enviar `ordenar=preco_asc`).
+
+![Catálogo ordenado por menor preço](img/aluno2/catalogo-ordenado-menor-preco.png)
+
+### Swagger — endpoint de visualizações
+
+No Swagger (`http://localhost:8411/docs`) existe o endpoint autenticado `GET /api/imoveis/visualizacoes`, que devolve `{ total_acessos, mais_vistos: [...] }`, além do parâmetro `ordenar` no `GET /api/publico/catalogo/{slug}/imoveis`.
+
+![Endpoint de visualizações no Swagger](img/aluno2/swagger-endpoint-visualizacoes.png)
 
 ---
 
@@ -1028,7 +1260,7 @@ npx tsc -b --noEmit
 
 4. **Erro 401 ao acessar `/imoveis/visualizacoes`** — esse endpoint exige login (`@requer_autenticacao()`). Ele é para a área do corretor (`/app`), não para o público. No frontend, a chamada já passa pelo `lib/api.ts`, que envia o cookie de sessão automaticamente — só certifique-se de estar logado como corretor.
 
-5. **`tsc` reclama de import não usado ou tipo faltando** — o frontend é estrito (`noUnusedLocals`). Se importou `VisualizacoesDashboard` mas não usou (ou vice-versa), o build quebra. Rode `npx tsc -b --noEmit` e corrija o que ele apontar antes de considerar pronto.
+5. **`tsc` reclama de import não usado ou tipo faltando** — o frontend é estrito (`noUnusedLocals`, uma regra que proíbe deixar variáveis ou imports sem uso). Se importou `VisualizacoesDashboard` mas não usou (ou o contrário), o build quebra. Rode `bunx tsc -b --noEmit` e corrija o que ele apontar antes de considerar pronto.
 
 6. **CSRF / 403 em alguma chamada** — lembre que **GET não precisa de CSRF**. As duas features usam só GET nas rotas novas, então você não deve enfrentar isso. Se aparecer, é sinal de que você usou `fetch` cru em vez do `lib/api.ts` (que injeta o `X-CSRF-Token` nas mutações automaticamente). Use sempre `api.get/post/...`.
 
@@ -1058,6 +1290,6 @@ npx tsc -b --noEmit
 **Geral**
 
 - [ ] Backend sobe sem erros e o Swagger mostra os endpoints novos/alterados.
-- [ ] `npx tsc -b --noEmit` passa sem erros no frontend.
+- [ ] `bunx tsc -b --noEmit` passa sem erros no frontend.
 - [ ] Teste manual das duas features feito no navegador (porta 5181).
 ```
