@@ -33,6 +33,7 @@ import EditPerfilPage from './pages/corretor/EditPerfilPage'
 
 // Administração (/admin)
 import AdminCorretoresPage from './pages/admin/AdminCorretoresPage'
+import AdminCaracteristicasPage from './pages/admin/AdminCaracteristicasPage'
 
 export const router = createBrowserRouter([
   {
@@ -84,6 +85,7 @@ export const router = createBrowserRouter([
             element: <AdminLayout />,
             children: [
               { index: true, element: <AdminCorretoresPage /> },
+              { path: 'caracteristicas', element: <AdminCaracteristicasPage /> },
               { path: 'perfil', element: <EditPerfilPage /> },
             ],
           },

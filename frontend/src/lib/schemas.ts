@@ -248,6 +248,7 @@ export const imovelSchema = z.object({
     })
     .default(StatusImovel.OCULTO),
   endereco: enderecoImovelSchema.optional(),
+  caracteristica_ids: z.array(z.coerce.number().int().positive()).default([]),
 })
 export type ImovelForm = z.infer<typeof imovelSchema>
 
@@ -273,3 +274,12 @@ export const filtrosCatalogoSchema = z.object({
   por_pagina: z.coerce.number().int().min(1).max(100).optional(),
 })
 export type FiltrosCatalogoForm = z.infer<typeof filtrosCatalogoSchema>
+// ===== Característica/Comodidade (espelha _CaracteristicaBaseDTO) =====
+export const caracteristicaSchema = z.object({
+  nome: z
+    .string()
+    .min(2, 'O nome deve ter no mínimo 2 caracteres')
+    .max(60, 'O nome deve ter no máximo 60 caracteres'),
+  icone: z.string().max(20, 'O ícone deve ter no máximo 20 caracteres').optional(),
+})
+export type CaracteristicaForm = z.infer<typeof caracteristicaSchema>

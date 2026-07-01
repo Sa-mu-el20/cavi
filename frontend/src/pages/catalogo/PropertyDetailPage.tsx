@@ -187,7 +187,43 @@ export default function PropertyDetailPage() {
               <StatBox label="Banheiros" value={im.banheiros ?? 0} />
               <StatBox label="Vagas" value={im.vagas ?? 0} />
             </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14 }}>
+              <StatBox label="Área" value={formatarArea(im.area)} />
+              <StatBox label="Quartos" value={im.quartos ?? 0} />
+              <StatBox label="Banheiros" value={im.banheiros ?? 0} />
+              <StatBox label="Vagas" value={im.vagas ?? 0} />
+            </div>
+
+            {im.caracteristicas && im.caracteristicas.length > 0 && (
+              <div style={{ marginTop: 28 }}>
+                <h2 style={{ fontFamily: fonts.display, fontWeight: 500, fontSize: 24, margin: '0 0 14px' }}>
+                  Comodidades
+                </h2>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                  {im.caracteristicas.map((c) => (
+                    <span
+                      key={c.id}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 7,
+                        padding: '8px 14px',
+                        borderRadius: 999,
+                        background: '#fbeedd',
+                        color: '#a85c1a',
+                        fontSize: 14,
+                        fontWeight: 600,
+                      }}
+                    >
+                      <span style={{ fontSize: 15 }}>{c.icone || '✦'}</span>
+                      {c.nome}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
+          
 
           {end && (
             <div style={{ marginTop: 36 }}>

@@ -69,6 +69,10 @@ class _ImovelBaseDTO(BaseModel):
     endereco: Optional[EnderecoImovelDTO] = Field(
         default=None, description="Endereço do imóvel (1:1, opcional)"
     )
+    caracteristica_ids: list[int] = Field(
+        default_factory=list,
+        description="IDs das comodidades vinculadas (N:N)",
+    )
 
     _validar_titulo = field_validator("titulo")(
         validar_string_obrigatoria(

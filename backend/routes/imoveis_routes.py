@@ -49,7 +49,7 @@ from model.imovel_model import FinalidadeImovel, Imovel, StatusImovel, TipoImove
 from model.usuario_logado_model import UsuarioLogado
 
 # Repositories
-from repo import conta_site_repo, foto_imovel_repo, imovel_repo
+from repo import caracteristica_repo, conta_site_repo, foto_imovel_repo, imovel_repo
 
 # Utilities
 from util.api_helpers import checar_rate_limit
@@ -273,6 +273,9 @@ async def criar(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Erro ao cadastrar o imóvel. Tente novamente.",
         )
+    
+     # Grava os vínculos N:N com as comodidades marcadas no formulário.
+    caracteristica_repo.definir_do_imovel(novo_id, dto.caracteristica_ids)
 
     logger.info(
         f"Imóvel #{novo_id} '{dto.titulo}' criado na conta {conta.id} "
@@ -339,6 +342,9 @@ async def atualizar(
         endereco=_endereco_de_dto(dto.endereco),
     )
     imovel_repo.atualizar(atualizado)
+
+     # Regrava o conjunto de comodidades (a UI manda a lista completa marcada).
+    caracteristica_repo.definir_do_imovel(id, dto.caracteristica_ids)
 
     logger.info(f"Imóvel #{id} atualizado por usuário {usuario_logado.id}")
 

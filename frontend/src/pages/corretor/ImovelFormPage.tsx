@@ -15,7 +15,7 @@ import { imovelSchema, type ImovelForm } from '../../lib/schemas'
 import { formatarNumeroComoMoedaInput, mascararMoeda, moedaParaNumero } from '../../lib/masks'
 import { colors, fonts } from '../../lib/theme'
 import { StatusImovel, TipoImovel, FinalidadeImovel } from '../../lib/types'
-import type { Imovel } from '../../lib/types'
+import type { Imovel, Caracteristica } from '../../lib/types'
 import { toast } from '../../store/uiStore'
 
 // =============================================================================
@@ -138,7 +138,7 @@ function camposDeImovel(im: Imovel): CamposForm {
 
 // Monta o payload validado pelo Zod a partir dos campos do form.
 // Campos opcionais vazios viram undefined para não disparar coerções inválidas.
-function montarPayload(c: CamposForm, status: string): unknown {
+function montarPayload(c: CamposForm, status: string, caracteristicaIds: number[]): unknown {
   const opcNum = (v: string) => (v.trim() === '' ? undefined : v)
   const opcStr = (v: string) => (v.trim() === '' ? undefined : v.trim())
   const endereco = {
@@ -165,6 +165,7 @@ function montarPayload(c: CamposForm, status: string): unknown {
     destaque: false,
     status_publicacao: status,
     endereco: temEndereco ? endereco : undefined,
+    caracteristica_ids: caracteristicaIds,
   }
 }
 
@@ -181,6 +182,8 @@ export default function ImovelFormPage() {
   const [publicado, setPublicado] = useState(false)
   const [fotos, setFotos] = useState<Imovel['fotos']>([])
   const [codigo, setCodigo] = useState<string | null>(null)
+  const [comodidades, setComodidades] = useState<Caracteristica[]>([])
+  const [marcadas, setMarcadas] = useState<number[]>([])
 
   const [erros, setErros] = useState<Record<string, string>>({})
   const [carregando, setCarregando] = useState(editando)
@@ -201,6 +204,7 @@ export default function ImovelFormPage() {
         setPublicado(im.status_publicacao === StatusImovel.PUBLICADO)
         setFotos(im.fotos ?? [])
         setCodigo(im.codigo ?? null)
+         setMarcadas((im.caracteristicas ?? []).map((c) => c.id))
       })
       .catch((e) => {
         if (!ativo) return
@@ -215,6 +219,22 @@ export default function ImovelFormPage() {
       ativo = false
     }
   }, [editando, id, navigate])
+
+    // Carrega o catálogo de comodidades disponíveis (uma vez).
+  useEffect(() => {
+    let ativo = true
+    api
+      .get<Caracteristica[]>('/admin/caracteristicas')
+      .then((lista) => {
+        if (ativo) setComodidades(lista)
+      })
+      .catch(() => {
+        // Sem comodidades cadastradas ainda: segue sem o card.
+      })
+    return () => {
+      ativo = false
+    }
+  }, [])
 
   function set<K extends keyof CamposForm>(campo: K, valor: string) {
     setCampos((c) => ({ ...c, [campo]: valor }))
@@ -235,7 +255,7 @@ export default function ImovelFormPage() {
   // ---------------------------------------------------------------------------
   async function salvar() {
     const statusDesejado = publicado ? StatusImovel.PUBLICADO : StatusImovel.OCULTO
-    const payload = montarPayload(campos, statusDesejado)
+    const payload = montarPayload(campos, statusDesejado, marcadas)
 
     const parsed = imovelSchema.safeParse(payload)
     if (!parsed.success) {
@@ -505,6 +525,48 @@ export default function ImovelFormPage() {
           ))}
         </div>
       </Card>
+
+            {/* Comodidades */}
+      {comodidades.length > 0 && (
+        <Card title="Comodidades" sub="Marque as comodidades que este imóvel oferece.">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+            {comodidades.map((c) => {
+              const ativa = marcadas.includes(c.id)
+              return (
+                <label
+                  key={c.id}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    padding: '10px 12px',
+                    border: `1px solid ${ativa ? colors.orange : colors.field}`,
+                    borderRadius: 10,
+                    background: ativa ? '#fbeedd' : '#fff',
+                    cursor: 'pointer',
+                    fontSize: 14,
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={ativa}
+                    onChange={() =>
+                      setMarcadas((atual) =>
+                        atual.includes(c.id)
+                          ? atual.filter((x) => x !== c.id)
+                          : [...atual, c.id],
+                      )
+                    }
+                  />
+                  <span style={{ fontSize: 16 }}>{c.icone || '✦'}</span>
+                  {c.nome}
+                </label>
+              )
+            })}
+          </div>
+        </Card>
+      )}
+
 
       {/* Endereço */}
       <Card title="Endereço">

@@ -137,6 +137,15 @@ export interface FotoImovel {
   legenda?: string | null
 }
 
+// Espelha backend/dtos/responses/caracteristica_response.py.
+export interface Caracteristica {
+  id: number
+  nome: string
+  icone?: string | null
+  data_cadastro?: string | null
+  data_atualizacao?: string | null
+}
+
 export interface Imovel {
   id: number
   conta_site_id: number
@@ -157,6 +166,7 @@ export interface Imovel {
   data_atualizacao?: string | null
   endereco?: EnderecoImovel | null
   fotos: FotoImovel[]
+  caracteristicas: Caracteristica[]
 }
 
 // Espelha ImovelResumoResponse (cards/listagens).

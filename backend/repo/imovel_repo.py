@@ -45,7 +45,7 @@ from sql.imovel_sql import (
     CONTAR_DESTAQUES_POR_CONTA,
     CONTAR_POR_FINALIDADE,
 )
-from repo import foto_imovel_repo
+from repo import foto_imovel_repo, caracteristica_repo
 from util.db_util import obter_conexao
 from util.datetime_util import agora
 from util.logger_config import logger
@@ -249,6 +249,7 @@ def obter_detalhe(id: int) -> Optional[Imovel]:
             imovel.endereco = _row_to_endereco(row_end)
 
     imovel.fotos = foto_imovel_repo.obter_por_imovel(id)
+    imovel.caracteristicas = caracteristica_repo.listar_por_imovel(id)
     return imovel
 
 

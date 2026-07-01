@@ -11,6 +11,7 @@ from typing import Optional
 from util.enum_base import EnumEntidade
 from model.endereco_imovel_model import EnderecoImovel
 from model.foto_imovel_model import FotoImovel
+from model.caracteristica_model import Caracteristica
 
 
 class StatusImovel(EnumEntidade):
@@ -75,3 +76,4 @@ class Imovel:
     # Agregados (carregados sob demanda)
     endereco: Optional[EnderecoImovel] = None
     fotos: list[FotoImovel] = field(default_factory=list)
+    caracteristicas: list[Caracteristica] = field(default_factory=list)

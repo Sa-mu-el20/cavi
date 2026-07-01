@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field
 from model.imovel_model import Imovel
 from model.endereco_imovel_model import EnderecoImovel
 from model.foto_imovel_model import FotoImovel
-
+from dtos.responses.caracteristica_response import CaracteristicaResponse
 
 class EnderecoImovelResponse(BaseModel):
     """Endereço de um imóvel."""
@@ -91,6 +91,7 @@ class ImovelResponse(BaseModel):
     data_atualizacao: Optional[datetime] = None
     endereco: Optional[EnderecoImovelResponse] = None
     fotos: list[FotoImovelResponse] = Field(default_factory=list)
+    caracteristicas: list[CaracteristicaResponse] = Field(default_factory=list)
 
     @classmethod
     def de_imovel(cls, imovel: Imovel) -> "ImovelResponse":
@@ -119,6 +120,10 @@ class ImovelResponse(BaseModel):
                 else None
             ),
             fotos=[FotoImovelResponse.de_foto(f) for f in imovel.fotos],
+            caracteristicas=[
+                CaracteristicaResponse.de_caracteristica(c)
+                for c in imovel.caracteristicas
+            ],
         )
 
 

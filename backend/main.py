@@ -28,7 +28,7 @@ from repo import (
     configuracao_repo,
     indices_repo,
 )
-from repo import conta_site_repo, imovel_repo, foto_imovel_repo
+from repo import conta_site_repo, imovel_repo, foto_imovel_repo, caracteristica_repo
 
 # Rotas (API JSON)
 from routes.auth_routes import router as auth_router
@@ -37,6 +37,7 @@ from routes.publico_routes import router as publico_router
 from routes.admin_corretores_routes import router as admin_corretores_router
 from routes.conta_site_routes import router as conta_site_router
 from routes.imoveis_routes import router as imoveis_router
+from routes.admin_caracteristicas_routes import router as admin_caracteristicas_router
 
 # Seeds
 from util.seed_data import inicializar_dados
@@ -89,6 +90,9 @@ TABELAS = [
     # imovel_repo.criar_tabela cria as três tabelas do módulo na ordem correta
     # de dependência: imovel -> endereco_imovel (1:1) -> foto_imovel (1:N).
     (imovel_repo, "imovel + endereco_imovel + foto_imovel"),
+    # caracteristica_repo.criar_tabela cria 'caracteristica' + a junção N:N
+    # 'imovel_caracteristica' (FK -> imovel, por isso vem DEPOIS de imovel).
+    (caracteristica_repo, "caracteristica + imovel_caracteristica"),
     (configuracao_repo, "configuracao"),
 ]
 
@@ -122,6 +126,7 @@ ROUTERS = [
     (auth_router, ["Autenticação"], "autenticação"),
     (usuario_router, ["Usuário"], "usuário"),
     (admin_corretores_router, ["Admin - Corretores"], "admin de corretores"),
+    (admin_caracteristicas_router, ["Admin - Comodidades"], "admin de comodidades"),
     (conta_site_router, ["Conta Site (Corretor)"], "conta/site do corretor"),
     (imoveis_router, ["Imóveis (Corretor)"], "imóveis do corretor"),
     (publico_router, ["Público"], "público (catálogo)"),
