@@ -1,0 +1,2037 @@
+2026-06-30 23:46:09 - root - ERROR - Erro ao buscar configuração 'rate_limit_login_max' do banco: no such table: configuracao
+2026-06-30 23:46:09 - root - ERROR - Erro ao buscar configuração 'rate_limit_login_minutos' do banco: no such table: configuracao
+2026-06-30 23:46:09 - root - ERROR - Erro ao buscar configuração 'rate_limit_cadastro_max' do banco: no such table: configuracao
+2026-06-30 23:46:09 - root - ERROR - Erro ao buscar configuração 'rate_limit_cadastro_minutos' do banco: no such table: configuracao
+2026-06-30 23:46:09 - root - ERROR - Erro ao buscar configuração 'rate_limit_esqueci_senha_max' do banco: no such table: configuracao
+2026-06-30 23:46:09 - root - ERROR - Erro ao buscar configuração 'rate_limit_esqueci_senha_minutos' do banco: no such table: configuracao
+2026-06-30 23:46:09 - root - ERROR - Erro ao buscar configuração 'rate_limit_upload_foto_max' do banco: no such table: configuracao
+2026-06-30 23:46:09 - root - ERROR - Erro ao buscar configuração 'rate_limit_upload_foto_minutos' do banco: no such table: configuracao
+2026-06-30 23:46:09 - root - ERROR - Erro ao buscar configuração 'rate_limit_alterar_senha_max' do banco: no such table: configuracao
+2026-06-30 23:46:09 - root - ERROR - Erro ao buscar configuração 'rate_limit_alterar_senha_minutos' do banco: no such table: configuracao
+2026-06-30 23:46:10 - root - ERROR - Erro ao buscar configuração 'rate_limit_publico_listagem_max' do banco: no such table: configuracao
+2026-06-30 23:46:10 - root - ERROR - Erro ao buscar configuração 'rate_limit_publico_listagem_minutos' do banco: no such table: configuracao
+2026-06-30 23:46:10 - root - ERROR - Erro ao buscar configuração 'rate_limit_admin_corretores_max' do banco: no such table: configuracao
+2026-06-30 23:46:10 - root - ERROR - Erro ao buscar configuração 'rate_limit_admin_corretores_minutos' do banco: no such table: configuracao
+2026-06-30 23:46:10 - root - ERROR - Erro ao buscar configuração 'rate_limit_conta_atualizar_max' do banco: no such table: configuracao
+2026-06-30 23:46:10 - root - ERROR - Erro ao buscar configuração 'rate_limit_conta_atualizar_minutos' do banco: no such table: configuracao
+2026-06-30 23:46:10 - root - ERROR - Erro ao buscar configuração 'rate_limit_imovel_criar_max' do banco: no such table: configuracao
+2026-06-30 23:46:10 - root - ERROR - Erro ao buscar configuração 'rate_limit_imovel_criar_minutos' do banco: no such table: configuracao
+2026-06-30 23:46:10 - root - ERROR - Erro ao buscar configuração 'rate_limit_imovel_foto_max' do banco: no such table: configuracao
+2026-06-30 23:46:10 - root - ERROR - Erro ao buscar configuração 'rate_limit_imovel_foto_minutos' do banco: no such table: configuracao
+2026-06-30 23:46:10 - root - INFO - Middlewares (Segurança + Session + CSRF) habilitados
+2026-06-30 23:46:10 - root - INFO - Exception handlers JSON registrados
+2026-06-30 23:46:10 - root - INFO - Arquivos estáticos montados em /static
+2026-06-30 23:46:10 - root - INFO - Criando tabelas do banco de dados...
+2026-06-30 23:46:10 - root - INFO - Tabela 'usuario' criada/verificada
+2026-06-30 23:46:10 - root - INFO - Tabela 'conta_site' criada/verificada
+2026-06-30 23:46:10 - root - INFO - Tabela 'imovel + endereco_imovel + foto_imovel' criada/verificada
+2026-06-30 23:46:10 - root - INFO - Tabela 'configuracao' criada/verificada
+2026-06-30 23:46:10 - root - INFO - Todos os índices verificados/criados com sucesso
+2026-06-30 23:46:10 - root - INFO - ==================================================
+2026-06-30 23:46:10 - root - INFO - Iniciando carga de dados seed...
+2026-06-30 23:46:10 - root - INFO - ==================================================
+2026-06-30 23:46:10 - root - INFO - Nenhum usuário encontrado. Carregando 1 usuário(s) de admin_seed.json...
+2026-06-30 23:46:10 - root - INFO - Foto padrão criada para usuário ID: 1
+2026-06-30 23:46:10 - root - INFO - ✓ Usuário cavi@ifes.site criado com sucesso (ID: 1)
+2026-06-30 23:46:10 - root - INFO - Resumo do seed de usuários: 1 criados, 0 com erro
+2026-06-30 23:46:10 - root - INFO - Foto padrão criada para usuário ID: 2
+2026-06-30 23:46:10 - root - INFO - ✓ ContaSite 'albuquerque' criada (ID: 1)
+2026-06-30 23:46:11 - root - INFO - Foto padrão criada para usuário ID: 3
+2026-06-30 23:46:11 - root - INFO - ✓ ContaSite 'rtimoveis' criada (ID: 2)
+2026-06-30 23:46:11 - root - INFO - Foto padrão criada para usuário ID: 4
+2026-06-30 23:46:11 - root - INFO - ✓ ContaSite 'helenasouza' criada (ID: 3)
+2026-06-30 23:46:11 - root - INFO - Resumo do seed de corretores: 3 contas, 5 imóveis, 0 erro(s)
+2026-06-30 23:46:11 - root - INFO - ==================================================
+2026-06-30 23:46:11 - root - INFO - Dados seed carregados!
+2026-06-30 23:46:11 - root - INFO - ==================================================
+2026-06-30 23:46:11 - root - INFO - Iniciando migração de configurações do .env para o banco...
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'app_name' = 'Cavi' (Aplicação)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'resend_from_email' = 'noreply@cavi.cachoeiro.es' (Aplicação)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'resend_from_name' = 'Cavi' (Aplicação)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'foto_perfil_tamanho_max' = '256' (Fotos)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'foto_max_upload_bytes' = '5242880' (Fotos)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'toast_auto_hide_delay_ms' = '5000' (Interface)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'rate_limit_login_max' = '5' (Segurança - Autenticação)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'rate_limit_login_minutos' = '5' (Segurança - Autenticação)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'rate_limit_cadastro_max' = '3' (Segurança - Autenticação)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'rate_limit_cadastro_minutos' = '10' (Segurança - Autenticação)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'rate_limit_esqueci_senha_max' = '1' (Segurança - Autenticação)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'rate_limit_esqueci_senha_minutos' = '1' (Segurança - Autenticação)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'rate_limit_upload_foto_max' = '5' (Operações de Usuário)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'rate_limit_upload_foto_minutos' = '10' (Operações de Usuário)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'rate_limit_alterar_senha_max' = '5' (Operações de Usuário)
+2026-06-30 23:46:11 - root - INFO - ✓ Configuração migrada: 'rate_limit_alterar_senha_minutos' = '15' (Operações de Usuário)
+2026-06-30 23:46:11 - root - INFO - Migração concluída: 16 configs analisadas, 16 migradas, 0 ignoradas/existentes
+2026-06-30 23:46:11 - root - INFO - Router de autenticação incluído em /api
+2026-06-30 23:46:11 - root - INFO - Router de usuário incluído em /api
+2026-06-30 23:46:11 - root - INFO - Router de admin de corretores incluído em /api
+2026-06-30 23:46:11 - root - INFO - Router de conta/site do corretor incluído em /api
+2026-06-30 23:46:11 - root - INFO - Router de imóveis do corretor incluído em /api
+2026-06-30 23:46:11 - root - INFO - Router de público (catálogo) incluído em /api
+2026-06-30 23:46:11 - root - INFO - ============================================================
+2026-06-30 23:46:11 - root - INFO - Iniciando Cavi v1.0.0 (API JSON)
+2026-06-30 23:46:11 - root - INFO - ============================================================
+2026-06-30 23:46:11 - root - INFO - Servidor: http://127.0.0.1:8400
+2026-06-30 23:46:11 - root - INFO - Documentação: http://127.0.0.1:8400/docs
+2026-06-30 23:46:11 - root - INFO - ============================================================
+2026-06-30 23:46:13 - root - INFO - Middlewares (Segurança + Session + CSRF) habilitados
+2026-06-30 23:46:13 - root - INFO - Exception handlers JSON registrados
+2026-06-30 23:46:13 - root - INFO - Arquivos estáticos montados em /static
+2026-06-30 23:46:13 - root - INFO - Criando tabelas do banco de dados...
+2026-06-30 23:46:13 - root - INFO - Tabela 'usuario' criada/verificada
+2026-06-30 23:46:13 - root - INFO - Tabela 'conta_site' criada/verificada
+2026-06-30 23:46:13 - root - INFO - Tabela 'imovel + endereco_imovel + foto_imovel' criada/verificada
+2026-06-30 23:46:13 - root - INFO - Tabela 'configuracao' criada/verificada
+2026-06-30 23:46:13 - root - INFO - Todos os índices verificados/criados com sucesso
+2026-06-30 23:46:13 - root - INFO - ==================================================
+2026-06-30 23:46:13 - root - INFO - Iniciando carga de dados seed...
+2026-06-30 23:46:13 - root - INFO - ==================================================
+2026-06-30 23:46:13 - root - INFO - Já existem 4 usuários cadastrados. Seed não será executado.
+2026-06-30 23:46:13 - root - INFO - Já existem contas de catálogo. Seed de corretores não será executado.
+2026-06-30 23:46:13 - root - INFO - ==================================================
+2026-06-30 23:46:13 - root - INFO - Dados seed carregados!
+2026-06-30 23:46:13 - root - INFO - ==================================================
+2026-06-30 23:46:13 - root - INFO - Iniciando migração de configurações do .env para o banco...
+2026-06-30 23:46:13 - root - INFO - Migração concluída: 16 configs analisadas, 0 migradas, 16 ignoradas/existentes
+2026-06-30 23:46:13 - root - INFO - Router de autenticação incluído em /api
+2026-06-30 23:46:13 - root - INFO - Router de usuário incluído em /api
+2026-06-30 23:46:13 - root - INFO - Router de admin de corretores incluído em /api
+2026-06-30 23:46:13 - root - INFO - Router de conta/site do corretor incluído em /api
+2026-06-30 23:46:13 - root - INFO - Router de imóveis do corretor incluído em /api
+2026-06-30 23:46:13 - root - INFO - Router de público (catálogo) incluído em /api
+2026-06-30 23:46:13 - root - INFO - Middlewares (Segurança + Session + CSRF) habilitados
+2026-06-30 23:46:13 - root - INFO - Exception handlers JSON registrados
+2026-06-30 23:46:13 - root - INFO - Arquivos estáticos montados em /static
+2026-06-30 23:46:13 - root - INFO - Criando tabelas do banco de dados...
+2026-06-30 23:46:13 - root - INFO - Tabela 'usuario' criada/verificada
+2026-06-30 23:46:13 - root - INFO - Tabela 'conta_site' criada/verificada
+2026-06-30 23:46:13 - root - INFO - Tabela 'imovel + endereco_imovel + foto_imovel' criada/verificada
+2026-06-30 23:46:13 - root - INFO - Tabela 'configuracao' criada/verificada
+2026-06-30 23:46:13 - root - INFO - Todos os índices verificados/criados com sucesso
+2026-06-30 23:46:13 - root - INFO - ==================================================
+2026-06-30 23:46:13 - root - INFO - Iniciando carga de dados seed...
+2026-06-30 23:46:13 - root - INFO - ==================================================
+2026-06-30 23:46:13 - root - INFO - Já existem 4 usuários cadastrados. Seed não será executado.
+2026-06-30 23:46:13 - root - INFO - Já existem contas de catálogo. Seed de corretores não será executado.
+2026-06-30 23:46:13 - root - INFO - ==================================================
+2026-06-30 23:46:13 - root - INFO - Dados seed carregados!
+2026-06-30 23:46:13 - root - INFO - ==================================================
+2026-06-30 23:46:13 - root - INFO - Iniciando migração de configurações do .env para o banco...
+2026-06-30 23:46:13 - root - INFO - Migração concluída: 16 configs analisadas, 0 migradas, 16 ignoradas/existentes
+2026-06-30 23:46:13 - root - INFO - Router de autenticação incluído em /api
+2026-06-30 23:46:13 - root - INFO - Router de usuário incluído em /api
+2026-06-30 23:46:13 - root - INFO - Router de admin de corretores incluído em /api
+2026-06-30 23:46:13 - root - INFO - Router de conta/site do corretor incluído em /api
+2026-06-30 23:46:13 - watchfiles.main - INFO - 5 changes detected
+2026-06-30 23:46:13 - root - INFO - Router de imóveis do corretor incluído em /api
+2026-06-30 23:46:13 - root - INFO - Router de público (catálogo) incluído em /api
+2026-06-30 23:46:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:46:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:47:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:48:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:49:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:33 - root - INFO - Middlewares (Segurança + Session + CSRF) habilitados
+2026-06-30 23:50:33 - root - INFO - Exception handlers JSON registrados
+2026-06-30 23:50:33 - root - INFO - Arquivos estáticos montados em /static
+2026-06-30 23:50:33 - root - INFO - Criando tabelas do banco de dados...
+2026-06-30 23:50:33 - root - INFO - Tabela 'usuario' criada/verificada
+2026-06-30 23:50:33 - root - INFO - Tabela 'conta_site' criada/verificada
+2026-06-30 23:50:33 - root - INFO - Tabela 'imovel + endereco_imovel + foto_imovel' criada/verificada
+2026-06-30 23:50:33 - root - INFO - Tabela 'configuracao' criada/verificada
+2026-06-30 23:50:33 - root - INFO - Todos os índices verificados/criados com sucesso
+2026-06-30 23:50:33 - root - INFO - ==================================================
+2026-06-30 23:50:33 - root - INFO - Iniciando carga de dados seed...
+2026-06-30 23:50:33 - root - INFO - ==================================================
+2026-06-30 23:50:33 - root - INFO - Já existem 4 usuários cadastrados. Seed não será executado.
+2026-06-30 23:50:33 - root - INFO - Já existem contas de catálogo. Seed de corretores não será executado.
+2026-06-30 23:50:33 - root - INFO - ==================================================
+2026-06-30 23:50:33 - root - INFO - Dados seed carregados!
+2026-06-30 23:50:33 - root - INFO - ==================================================
+2026-06-30 23:50:33 - root - INFO - Iniciando migração de configurações do .env para o banco...
+2026-06-30 23:50:33 - root - INFO - Migração concluída: 16 configs analisadas, 0 migradas, 16 ignoradas/existentes
+2026-06-30 23:50:33 - root - INFO - Router de autenticação incluído em /api
+2026-06-30 23:50:33 - root - INFO - Router de usuário incluído em /api
+2026-06-30 23:50:33 - root - INFO - Router de admin de corretores incluído em /api
+2026-06-30 23:50:33 - root - INFO - Router de conta/site do corretor incluído em /api
+2026-06-30 23:50:33 - root - INFO - Router de imóveis do corretor incluído em /api
+2026-06-30 23:50:33 - root - INFO - Router de público (catálogo) incluído em /api
+2026-06-30 23:50:33 - root - INFO - ============================================================
+2026-06-30 23:50:33 - root - INFO - Iniciando Cavi v1.0.0 (API JSON)
+2026-06-30 23:50:33 - root - INFO - ============================================================
+2026-06-30 23:50:33 - root - INFO - Servidor: http://127.0.0.1:8400
+2026-06-30 23:50:33 - root - INFO - Documentação: http://127.0.0.1:8400/docs
+2026-06-30 23:50:33 - root - INFO - ============================================================
+2026-06-30 23:50:34 - root - INFO - Middlewares (Segurança + Session + CSRF) habilitados
+2026-06-30 23:50:34 - root - INFO - Exception handlers JSON registrados
+2026-06-30 23:50:34 - root - INFO - Arquivos estáticos montados em /static
+2026-06-30 23:50:34 - root - INFO - Criando tabelas do banco de dados...
+2026-06-30 23:50:34 - root - INFO - Tabela 'usuario' criada/verificada
+2026-06-30 23:50:34 - root - INFO - Tabela 'conta_site' criada/verificada
+2026-06-30 23:50:34 - root - INFO - Tabela 'imovel + endereco_imovel + foto_imovel' criada/verificada
+2026-06-30 23:50:34 - root - INFO - Tabela 'configuracao' criada/verificada
+2026-06-30 23:50:34 - root - INFO - Todos os índices verificados/criados com sucesso
+2026-06-30 23:50:34 - root - INFO - ==================================================
+2026-06-30 23:50:34 - root - INFO - Iniciando carga de dados seed...
+2026-06-30 23:50:34 - root - INFO - ==================================================
+2026-06-30 23:50:34 - root - INFO - Já existem 4 usuários cadastrados. Seed não será executado.
+2026-06-30 23:50:34 - root - INFO - Já existem contas de catálogo. Seed de corretores não será executado.
+2026-06-30 23:50:34 - root - INFO - ==================================================
+2026-06-30 23:50:34 - root - INFO - Dados seed carregados!
+2026-06-30 23:50:34 - root - INFO - ==================================================
+2026-06-30 23:50:34 - root - INFO - Iniciando migração de configurações do .env para o banco...
+2026-06-30 23:50:34 - root - INFO - Migração concluída: 16 configs analisadas, 0 migradas, 16 ignoradas/existentes
+2026-06-30 23:50:34 - root - INFO - Router de autenticação incluído em /api
+2026-06-30 23:50:34 - root - INFO - Router de usuário incluído em /api
+2026-06-30 23:50:34 - root - INFO - Router de admin de corretores incluído em /api
+2026-06-30 23:50:34 - root - INFO - Router de conta/site do corretor incluído em /api
+2026-06-30 23:50:34 - root - INFO - Router de imóveis do corretor incluído em /api
+2026-06-30 23:50:34 - root - INFO - Router de público (catálogo) incluído em /api
+2026-06-30 23:50:34 - root - INFO - Middlewares (Segurança + Session + CSRF) habilitados
+2026-06-30 23:50:34 - root - INFO - Exception handlers JSON registrados
+2026-06-30 23:50:34 - root - INFO - Arquivos estáticos montados em /static
+2026-06-30 23:50:34 - root - INFO - Criando tabelas do banco de dados...
+2026-06-30 23:50:34 - root - INFO - Tabela 'usuario' criada/verificada
+2026-06-30 23:50:34 - root - INFO - Tabela 'conta_site' criada/verificada
+2026-06-30 23:50:34 - root - INFO - Tabela 'imovel + endereco_imovel + foto_imovel' criada/verificada
+2026-06-30 23:50:34 - root - INFO - Tabela 'configuracao' criada/verificada
+2026-06-30 23:50:34 - root - INFO - Todos os índices verificados/criados com sucesso
+2026-06-30 23:50:34 - root - INFO - ==================================================
+2026-06-30 23:50:34 - root - INFO - Iniciando carga de dados seed...
+2026-06-30 23:50:34 - root - INFO - ==================================================
+2026-06-30 23:50:34 - root - INFO - Já existem 4 usuários cadastrados. Seed não será executado.
+2026-06-30 23:50:34 - root - INFO - Já existem contas de catálogo. Seed de corretores não será executado.
+2026-06-30 23:50:34 - root - INFO - ==================================================
+2026-06-30 23:50:34 - root - INFO - Dados seed carregados!
+2026-06-30 23:50:34 - root - INFO - ==================================================
+2026-06-30 23:50:34 - root - INFO - Iniciando migração de configurações do .env para o banco...
+2026-06-30 23:50:34 - root - INFO - Migração concluída: 16 configs analisadas, 0 migradas, 16 ignoradas/existentes
+2026-06-30 23:50:34 - root - INFO - Router de autenticação incluído em /api
+2026-06-30 23:50:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:34 - root - INFO - Router de usuário incluído em /api
+2026-06-30 23:50:34 - root - INFO - Router de admin de corretores incluído em /api
+2026-06-30 23:50:34 - root - INFO - Router de conta/site do corretor incluído em /api
+2026-06-30 23:50:34 - root - INFO - Router de imóveis do corretor incluído em /api
+2026-06-30 23:50:34 - root - INFO - Router de público (catálogo) incluído em /api
+2026-06-30 23:50:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:50:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:51 - root - INFO - Middlewares (Segurança + Session + CSRF) habilitados
+2026-06-30 23:51:51 - root - INFO - Exception handlers JSON registrados
+2026-06-30 23:51:51 - root - INFO - Arquivos estáticos montados em /static
+2026-06-30 23:51:51 - root - INFO - Criando tabelas do banco de dados...
+2026-06-30 23:51:51 - root - INFO - Tabela 'usuario' criada/verificada
+2026-06-30 23:51:51 - root - INFO - Tabela 'conta_site' criada/verificada
+2026-06-30 23:51:51 - root - INFO - Tabela 'imovel + endereco_imovel + foto_imovel' criada/verificada
+2026-06-30 23:51:51 - root - INFO - Tabela 'configuracao' criada/verificada
+2026-06-30 23:51:51 - root - INFO - Todos os índices verificados/criados com sucesso
+2026-06-30 23:51:51 - root - INFO - ==================================================
+2026-06-30 23:51:52 - root - INFO - Iniciando carga de dados seed...
+2026-06-30 23:51:52 - root - INFO - ==================================================
+2026-06-30 23:51:52 - root - INFO - Já existem 4 usuários cadastrados. Seed não será executado.
+2026-06-30 23:51:52 - root - INFO - Já existem contas de catálogo. Seed de corretores não será executado.
+2026-06-30 23:51:52 - root - INFO - ==================================================
+2026-06-30 23:51:52 - root - INFO - Dados seed carregados!
+2026-06-30 23:51:52 - root - INFO - ==================================================
+2026-06-30 23:51:52 - root - INFO - Iniciando migração de configurações do .env para o banco...
+2026-06-30 23:51:52 - root - INFO - Migração concluída: 16 configs analisadas, 0 migradas, 16 ignoradas/existentes
+2026-06-30 23:51:52 - root - INFO - Router de autenticação incluído em /api
+2026-06-30 23:51:52 - root - INFO - Router de usuário incluído em /api
+2026-06-30 23:51:52 - root - INFO - Router de admin de corretores incluído em /api
+2026-06-30 23:51:52 - root - INFO - Router de conta/site do corretor incluído em /api
+2026-06-30 23:51:52 - root - INFO - Router de imóveis do corretor incluído em /api
+2026-06-30 23:51:52 - root - INFO - Router de público (catálogo) incluído em /api
+2026-06-30 23:51:52 - root - INFO - ============================================================
+2026-06-30 23:51:52 - root - INFO - Iniciando Cavi v1.0.0 (API JSON)
+2026-06-30 23:51:52 - root - INFO - ============================================================
+2026-06-30 23:51:52 - root - INFO - Servidor: http://127.0.0.1:8400
+2026-06-30 23:51:52 - root - INFO - Documentação: http://127.0.0.1:8400/docs
+2026-06-30 23:51:52 - root - INFO - ============================================================
+2026-06-30 23:51:53 - root - INFO - Middlewares (Segurança + Session + CSRF) habilitados
+2026-06-30 23:51:53 - root - INFO - Exception handlers JSON registrados
+2026-06-30 23:51:53 - root - INFO - Arquivos estáticos montados em /static
+2026-06-30 23:51:53 - root - INFO - Criando tabelas do banco de dados...
+2026-06-30 23:51:53 - root - INFO - Tabela 'usuario' criada/verificada
+2026-06-30 23:51:53 - root - INFO - Tabela 'conta_site' criada/verificada
+2026-06-30 23:51:53 - root - INFO - Tabela 'imovel + endereco_imovel + foto_imovel' criada/verificada
+2026-06-30 23:51:53 - root - INFO - Tabela 'configuracao' criada/verificada
+2026-06-30 23:51:53 - root - INFO - Todos os índices verificados/criados com sucesso
+2026-06-30 23:51:53 - root - INFO - ==================================================
+2026-06-30 23:51:53 - root - INFO - Iniciando carga de dados seed...
+2026-06-30 23:51:53 - root - INFO - ==================================================
+2026-06-30 23:51:53 - root - INFO - Já existem 4 usuários cadastrados. Seed não será executado.
+2026-06-30 23:51:53 - root - INFO - Já existem contas de catálogo. Seed de corretores não será executado.
+2026-06-30 23:51:53 - root - INFO - ==================================================
+2026-06-30 23:51:53 - root - INFO - Dados seed carregados!
+2026-06-30 23:51:53 - root - INFO - ==================================================
+2026-06-30 23:51:53 - root - INFO - Iniciando migração de configurações do .env para o banco...
+2026-06-30 23:51:53 - root - INFO - Migração concluída: 16 configs analisadas, 0 migradas, 16 ignoradas/existentes
+2026-06-30 23:51:53 - root - INFO - Router de autenticação incluído em /api
+2026-06-30 23:51:53 - root - INFO - Router de usuário incluído em /api
+2026-06-30 23:51:53 - root - INFO - Router de admin de corretores incluído em /api
+2026-06-30 23:51:53 - root - INFO - Router de conta/site do corretor incluído em /api
+2026-06-30 23:51:53 - root - INFO - Router de imóveis do corretor incluído em /api
+2026-06-30 23:51:53 - root - INFO - Router de público (catálogo) incluído em /api
+2026-06-30 23:51:53 - root - INFO - Middlewares (Segurança + Session + CSRF) habilitados
+2026-06-30 23:51:53 - root - INFO - Exception handlers JSON registrados
+2026-06-30 23:51:53 - root - INFO - Arquivos estáticos montados em /static
+2026-06-30 23:51:53 - root - INFO - Criando tabelas do banco de dados...
+2026-06-30 23:51:53 - root - INFO - Tabela 'usuario' criada/verificada
+2026-06-30 23:51:53 - root - INFO - Tabela 'conta_site' criada/verificada
+2026-06-30 23:51:53 - root - INFO - Tabela 'imovel + endereco_imovel + foto_imovel' criada/verificada
+2026-06-30 23:51:53 - root - INFO - Tabela 'configuracao' criada/verificada
+2026-06-30 23:51:53 - root - INFO - Todos os índices verificados/criados com sucesso
+2026-06-30 23:51:53 - root - INFO - ==================================================
+2026-06-30 23:51:53 - root - INFO - Iniciando carga de dados seed...
+2026-06-30 23:51:53 - root - INFO - ==================================================
+2026-06-30 23:51:53 - root - INFO - Já existem 4 usuários cadastrados. Seed não será executado.
+2026-06-30 23:51:53 - root - INFO - Já existem contas de catálogo. Seed de corretores não será executado.
+2026-06-30 23:51:53 - root - INFO - ==================================================
+2026-06-30 23:51:53 - root - INFO - Dados seed carregados!
+2026-06-30 23:51:53 - root - INFO - ==================================================
+2026-06-30 23:51:53 - root - INFO - Iniciando migração de configurações do .env para o banco...
+2026-06-30 23:51:53 - root - INFO - Migração concluída: 16 configs analisadas, 0 migradas, 16 ignoradas/existentes
+2026-06-30 23:51:53 - root - INFO - Router de autenticação incluído em /api
+2026-06-30 23:51:53 - root - INFO - Router de usuário incluído em /api
+2026-06-30 23:51:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:53 - root - INFO - Router de admin de corretores incluído em /api
+2026-06-30 23:51:53 - root - INFO - Router de conta/site do corretor incluído em /api
+2026-06-30 23:51:53 - root - INFO - Router de imóveis do corretor incluído em /api
+2026-06-30 23:51:53 - root - INFO - Router de público (catálogo) incluído em /api
+2026-06-30 23:51:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:51:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:46 - root - WARNING - HTTPException 404: Not Found - Path: /login - IP: 127.0.0.1
+2026-06-30 23:52:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:52:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:53:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:54:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:55:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:56:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:57:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:58:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:00 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:01 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:02 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:03 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:04 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:05 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:06 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:07 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:08 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:09 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:10 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:11 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:12 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:13 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:14 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:15 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:16 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:17 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:18 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:19 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:20 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:21 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:22 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:23 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:24 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:25 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:26 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:27 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:28 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:29 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:30 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:31 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:32 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:33 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:34 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:35 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:36 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:37 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:38 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:39 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:40 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:41 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:42 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:43 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:44 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:45 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:46 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:47 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:48 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:49 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:50 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:51 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:52 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:53 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:54 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:55 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:56 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:57 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:58 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:59 - watchfiles.main - INFO - 1 change detected
+2026-06-30 23:59:59 - watchfiles.main - INFO - 1 change detected
